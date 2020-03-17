@@ -3,8 +3,7 @@
 #include "rectangle.hpp"
 
 int main() {
-  try
-  {
+  try {
     point_t mover{ 1.5,2.9 };
 	Shape* shape1 = new Rectangle(point_t{ 2.0, 3.0 }, 4.0, 9.0);
 	std::cout << "Shape pointer initialised by rectangle object:\n";
@@ -53,13 +52,11 @@ int main() {
     circ.printInfo(std::cout);
     std::cout << "Circle area: " << circ.getArea() << std::endl;
   }
-  catch (std::invalid_argument & invarg) 
-  {
+  catch (std::invalid_argument & invarg) {
     std::cerr << invarg.what() << '\n';
     return -1;
   }
-  catch (...) 
-  {
+  catch (...) {
     std::cerr << "Undefined error\n";
     return -1;
   }
