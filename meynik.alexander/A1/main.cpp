@@ -53,12 +53,12 @@ int main() {
     circ.printInfo(std::cout);
     std::cout << "Circle area: " << circ.getArea() << std::endl;
   }
-  catch (std::invalid_argument & invarg)
+  catch (std::invalid_argument & invarg) 
   {
     std::cerr << invarg.what() << '\n';
     return -1;
   }
-  catch (...)
+  catch (...) 
   {
     std::cerr << "Undefined error\n";
     return -1;
