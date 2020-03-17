@@ -6,7 +6,6 @@ int main() {
 	try
 	{
 		point_t mover{ 1.5,2.9 };
-
 		Shape* shape1 = new Rectangle(point_t{ 2.0, 3.0 }, 4.0, 9.0);
 		std::cout << "Shape pointer initialised by rectangle object:\n";
 		std::cout << "Rectangle before moving:\n";
@@ -19,7 +18,6 @@ int main() {
 		shape1->printInfo(std::cout);
 		std::cout << "Rectangle area: " << shape1->getArea() << std::endl<< std::endl;
 		delete shape1;
-
 		Rectangle rect(point_t{ 2.0, 3.0 }, 4.0, 9.0);
 		std::cout << "Object of rectangle class:\n";
 		std::cout << "Rectangle before moving:\n";
@@ -31,7 +29,6 @@ int main() {
 		std::cout << "Rectangle returned to it's initial position:\n";
 		rect.printInfo(std::cout);
 		std::cout << "Rectangle area: " << rect.getArea() << std::endl <<std::endl;
-
 		Shape* shape2 = new Circle(point_t{ 1.2, 2.1 }, 2.281336);
 		std::cout << "Shape pointer initialised by circle object\n";
 		std::cout << "Circle before moving:\n";
@@ -44,7 +41,6 @@ int main() {
 		shape2->printInfo(std::cout);
 		std::cout << "Circle area: " << shape2->getArea() << std::endl << std::endl;
 		delete shape2;
-
 		Circle circ(point_t{ 1.2, 2.1 }, 2.281336);
 		std::cout << "Object of circle class:\n";
 		std::cout << "Circle before moving:\n";
