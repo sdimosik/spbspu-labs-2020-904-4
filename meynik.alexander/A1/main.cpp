@@ -52,7 +52,7 @@ int main() {
     std::cout << "Circle returned to it's initial position:\n";
     circ.printInfo(std::cout);
     std::cout << "Circle area: " << circ.getArea() << std::endl;
-	}
+  }
   catch (std::invalid_argument & invarg)
   {
     std::cerr << invarg.what() << '\n';
