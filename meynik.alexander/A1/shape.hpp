@@ -1,41 +1,22 @@
+#ifndef SHAPE_HPP
+#define SHAPE_HPP
+#include "base-types.hpp"
 
-#include "circle.hpp"
-#include <stdexcept>
-
-
-Circle::Circle(const point_t& pos, double radius) :
-    centre_(pos),
-    radius_(radius)
+class Shape
 {
-    if (radius <= 0)
-    {
-        throw std::invalid_argument("Radius of circle must be positive\n");
-    }
-}
+public:
+    virtual ~Shape() = default;
 
-double Circle::getArea() const
-{
-    return M_PI * radius_ * radius_;
-}
+    virtual double getArea() const = 0;
 
-rectangle_t Circle::getFrameRect() const
-{
-    return rectangle_t{ radius_ * 2, radius_ * 2, centre_ };
-}
+    virtual rectangle_t getFrameRect() const = 0;
 
-void Circle::move(const point_t& point)
-{
-    centre_ = point;
-}
+    virtual void move(const point_t& position) = 0;
 
-void Circle::move(const double x, const double y)
-{
-    centre_.x += x;
-    centre_.y += y;
-}
+    virtual void move(double x, double y) = 0;
 
-void Circle::printInfo(std::ostream& out) const
-{
-    out << "Radius: " << radius_ << '\n'
-        << "Center: (" << centre_.x << ", " << centre_.y << ")\n";
-}
+    virtual void printInfo(std::ostream& out) const = 0;
+
+};
+
+#endif
