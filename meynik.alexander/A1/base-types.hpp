@@ -1,8 +1,6 @@
 #ifndef BASE_TYPES_HPP
 #define BASE_TYPES_HPP
 
-#include "ostream"
-
 struct point_t
 {
     double x, y;

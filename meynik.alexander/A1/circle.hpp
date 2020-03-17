@@ -1,8 +1,6 @@
 #ifndef CIRCLE_HPP
 #define CIRCLE_HPP
 #include "shape.hpp"
-#include <ostream>
-#define M_PI       3.14159265358979323846
 
 class Circle : public Shape
 {

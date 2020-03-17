@@ -1,5 +1,5 @@
-#include "rectangle.hpp"
 #include <stdexcept>
+#include "rectangle.hpp"
 
 Rectangle::Rectangle(const point_t& pos, const double width, const double height) :
   pos_(pos),
@@ -8,7 +8,9 @@ Rectangle::Rectangle(const point_t& pos, const double width, const double height
 {
   if (width <= 0 || height <= 0)
   {
-  throw std::invalid_argument("Height and width of rectangle must be positive numbers.\n");
+    std::string fullMessage("Width and height of rectangle must be positive numbers.\nWidth value: ");
+    fullMessage = fullMessage + std::to_string(width) + "\nHeight value: " + std::to_string(height);
+    throw std::invalid_argument(fullMessage);
   }
 }
 
