@@ -1,7 +1,7 @@
+#include "circle.hpp"
+
 #include <cmath>
 #include <stdexcept>
-
-#include "circle.hpp"
 
 Circle::Circle(const point_t& pos, double radius) :
   centre_(pos),
@@ -9,9 +9,7 @@ Circle::Circle(const point_t& pos, double radius) :
 {
   if (radius <= 0)
   {
-    std::string fullMessage("Radius of circle must be positive\nRadius value: ");
-    fullMessage += std::to_string(radius);
-    throw std::invalid_argument(fullMessage);
+    throw std::invalid_argument(std::string("Radius of circle must be positive\nRadius value: ")+std::to_string(radius));
   }
 }
 

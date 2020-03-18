@@ -13,7 +13,7 @@ public:
 
     void move(const point_t& position) override;
 
-    void move(double x, double y) override;
+    void move(const double x,const double y) override;
 
     void printInfo(std::ostream& out) const override;
 
