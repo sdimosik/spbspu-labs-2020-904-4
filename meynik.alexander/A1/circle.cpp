@@ -10,7 +10,7 @@ Circle::Circle(const point_t& pos, double radius) :
   if (radius <= 0)
   {
     throw std::invalid_argument(std::string("Radius of circle must be positive\n")
-       +"Radius value:" +std::to_string(radius));
+      +"Radius value:" +std::to_string(radius));
   }
 }
 
