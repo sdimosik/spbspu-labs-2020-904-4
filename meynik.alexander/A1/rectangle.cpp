@@ -8,7 +8,9 @@ Rectangle::Rectangle(const point_t& pos, const double width, const double height
 {
   if (width <= 0 || height <= 0)
   {
-    throw std::invalid_argument(std::string("Width and height of rectangle must be positive numbers.\nWidth value: ")+ std::to_string(width) + "\nHeight value: " + std::to_string(height));
+    throw std::invalid_argument(std::string("Width and height of rectangle must")
+       +" be positive numbers.\nWidth value: "+ std::to_string(width)
+       + "\nHeight value: " + std::to_string(height));
   }
 }
 
