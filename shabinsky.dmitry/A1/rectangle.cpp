@@ -1,7 +1,7 @@
 //
 // Created by sdimosik on 21.03.2020.
 //
-#include "rectangle.h"
+#include "rectangle.hpp"
 #include <stdexcept>
 
 Rectangle::Rectangle(const point_t &position, double width, double height)

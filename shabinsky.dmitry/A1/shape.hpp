@@ -3,8 +3,7 @@
 //
 #ifndef HW01_SHAPE_H
 #define HW01_SHAPE_H
-
-#include "base-types.h"
+#include "base-types.hpp"
 
 class Shape
 {

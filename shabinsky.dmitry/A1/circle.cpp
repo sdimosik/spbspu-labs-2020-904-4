@@ -1,7 +1,7 @@
 //
 // Created by sdimosik on 21.03.2020.
 //
-#include "circle.h"
+#include "circle.hpp"
 #include <stdexcept>
 #include <cmath>
 

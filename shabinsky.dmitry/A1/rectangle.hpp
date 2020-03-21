@@ -3,7 +3,7 @@
 //
 #ifndef HW01_RECTANGLE_H
 #define HW01_RECTANGLE_H
-#include "shape.h"
+#include "shape.hpp"
 
 class Rectangle : public Shape
 {

@@ -3,7 +3,7 @@
 //
 #ifndef HW01_CIRCLE_H
 #define HW01_CIRCLE_H
-#include "shape.h"
+#include "shape.hpp"
 
 class Circle : public Shape
 {
