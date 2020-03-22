@@ -26,12 +26,12 @@ BOOST_AUTO_TEST_CASE(test_invalid_argument_rectangle_scale)
 BOOST_AUTO_TEST_CASE(test_invalid_argument_circle)
 {
   meynik::point_t pos{1.2, 2.1};
-  BOOST_CHECK_THROW(meynik::Circle circle(-2.28, pos), std::invalid_argument);
+  BOOST_CHECK_THROW(meynik::Circle circle(pos, -2.28), std::invalid_argument);
 };
 
 BOOST_AUTO_TEST_CASE(test_invalid_argument_circle_scale)
 { meynik::point_t pos{1.2, 2.1};
-  meynik::Circle circle(-2.28, pos);
+  meynik::Circle circle(pos, -2.28);
   BOOST_CHECK_THROW(circle.scale(-2.0), std::invalid_argument);
 };
 
@@ -54,7 +54,7 @@ BOOST_AUTO_TEST_CASE(test_correct_move_rectangle)
 BOOST_AUTO_TEST_CASE(test_correct_move_circle)
 {
   meynik::point_t pos{1.2, 2.1};
-  meynik::Circle circle(2.28, pos);
+  meynik::Circle circle(pos, 2.28);
   const double deltaX = 2.1,
     deltaY = 1.2,
     primaryX = circle.getCentre().x,
@@ -80,7 +80,7 @@ BOOST_AUTO_TEST_CASE(test_scale_rectangle_area)
 BOOST_AUTO_TEST_CASE(test_scale_circle_area)
 {
   meynik::point_t pos{1.2, 2.1};
-  meynik::Circle circle(10.0, pos);
+  meynik::Circle circle(pos, 10.0);
   const double circle_area = circle.getArea(),
     scale = 0.1;
   circle.scale(scale);
@@ -106,7 +106,7 @@ BOOST_AUTO_TEST_CASE(test_permanency_move_rectange)
 BOOST_AUTO_TEST_CASE(test_permanency_move_circle)
 {
   meynik::point_t pos{1.2, 2.1};
-  meynik::Circle circle(2.28, pos);
+  meynik::Circle circle(pos, 2.28);
   const meynik::rectangle_t frameRect = circle.getFrameRect();
   const double circle_area = circle.getArea();
   circle.move(2.1, 1.2);
