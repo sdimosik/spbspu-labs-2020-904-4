@@ -41,14 +41,14 @@ BOOST_AUTO_TEST_CASE(test_correct_move_rectangle)
   meynik::Rectangle rect(pos, 10.0, 10.0);
   const double deltaX = 6,
     deltaY = 6,
-    primaryX = rect.getPosition().x,
-    primaryY = rect.getPosition().y;
+    primaryX = rect.getCentre().x,
+    primaryY = rect.getCentre().y;
   rect.move(deltaX, deltaY);
-  BOOST_CHECK_CLOSE(rect.getPosition().x, deltaX + primaryX, ACCURACY_DOUBLE);
-  BOOST_CHECK_CLOSE(rect.getPosition().y, deltaY + primaryY, ACCURACY_DOUBLE);
+  BOOST_CHECK_CLOSE(rect.getCentre().x, deltaX + primaryX, ACCURACY_DOUBLE);
+  BOOST_CHECK_CLOSE(rect.getCentre().y, deltaY + primaryY, ACCURACY_DOUBLE);
   rect.move({deltaX, deltaY});
-  BOOST_CHECK_CLOSE(rect.getPosition().x, deltaX, ACCURACY_DOUBLE);
-  BOOST_CHECK_CLOSE(rect.getPosition().y, deltaY, ACCURACY_DOUBLE);
+  BOOST_CHECK_CLOSE(rect.getCentre().x, deltaX, ACCURACY_DOUBLE);
+  BOOST_CHECK_CLOSE(rect.getCentre().y, deltaY, ACCURACY_DOUBLE);
 }
 
 BOOST_AUTO_TEST_CASE(test_correct_move_circle)
