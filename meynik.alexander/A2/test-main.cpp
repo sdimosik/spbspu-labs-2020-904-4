@@ -31,7 +31,7 @@ BOOST_AUTO_TEST_CASE(test_invalid_argument_circle)
 
 BOOST_AUTO_TEST_CASE(test_invalid_argument_circle_scale)
 { meynik::point_t pos{1.2, 2.1};
-  meynik::Circle circle(pos, -2.28);
+  meynik::Circle circle(pos, 2.28);
   BOOST_CHECK_THROW(circle.scale(-2.0), std::invalid_argument);
 };
 
