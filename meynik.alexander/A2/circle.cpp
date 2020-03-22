@@ -43,6 +43,11 @@ namespace meynik
       << "Center: (" << centre_.x << ", " << centre_.y << ")\n";
   }
 
+  meynik::point_t Circle::getCentre() const
+  {
+    return centre_;
+  }
+
   void Circle::scale(const double coefficient)
   {
     if (coefficient <= 0)

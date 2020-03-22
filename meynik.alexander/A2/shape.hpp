@@ -22,6 +22,8 @@ namespace meynik
 
     virtual void printInfo(std::ostream& out) const = 0;
 
+    virtual meynik::point_t getCentre() const = 0;
+
     virtual void scale(const double coefficient) = 0;
 
   };

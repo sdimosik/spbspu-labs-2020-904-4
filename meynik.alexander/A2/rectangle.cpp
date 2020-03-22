@@ -44,6 +44,11 @@ namespace meynik
       << "Center: (" << pos_.x << ", " << pos_.y << ")\n";
   }
 
+  meynik::point_t Rectangle::getCentre() const
+  {
+    return pos_;
+  }
+
   void Rectangle::scale(const double coefficient)
   {
     if (coefficient <= 0)
