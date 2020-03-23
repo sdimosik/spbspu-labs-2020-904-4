@@ -1,18 +1,18 @@
-//
-// Created by sdimosik on 21.03.2020.
-//
 #include "rectangle.hpp"
 #include <stdexcept>
 
-Rectangle::Rectangle(const point_t &position, double width, double height)
+Rectangle::Rectangle(const point_t &position, double width, double height) :
+  position_(position),
+  width_(width),
+  height_(height)
 {
-    if (width <= 0 && height <= 0)
+    if (width <= 0 || height <= 0)
     {
-        throw std::invalid_argument("Height and Width must be positive");
+        std::string message = "Height and Width must be positive.";
+        message += " Width: " + std::to_string(width);
+        message += " Height: " + std::to_string(height);
+        throw std::invalid_argument(message);
     }
-    position_ = position;
-    width_ = width;
-    height_ = height;
 }
 
 double Rectangle::getWidth() const
@@ -47,5 +47,6 @@ void Rectangle::move(const point_t &position)
 
 void Rectangle::move(double x, double y)
 {
-    position_ = {x + position_.x, y + position_.y};
+    position_.x += x;
+    position_.y += y;
 }

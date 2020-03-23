@@ -1,19 +1,15 @@
-//
-// Created by sdimosik on 21.03.2020.
-//
 #include "circle.hpp"
 #include <stdexcept>
 #include <cmath>
 
-Circle::Circle(double radius, const point_t &position)
+Circle::Circle(double radius, const point_t &position) :
+  radius_(radius),
+  position_(position)
 {
     if (radius <= 0)
     {
-        throw std::invalid_argument("Radius must be positive");
+        throw std::invalid_argument("Radius must be positive. Radius: " + std::to_string(radius));
     }
-
-    radius_ = radius;
-    position_ = position;
 }
 
 double Circle::getRadius() const
@@ -43,5 +39,6 @@ void Circle::move(const point_t &position)
 
 void Circle::move(double x, double y)
 {
-    position_ = {x + position_.x, y + position_.y};
+    position_.x += x;
+    position_.y += y;
 }

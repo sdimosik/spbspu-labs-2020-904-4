@@ -1,6 +1,3 @@
-//
-// Created by sdimosik on 21.03.2020.
-//
 #ifndef HW01_RECTANGLE_H
 #define HW01_RECTANGLE_H
 #include "shape.hpp"
@@ -9,8 +6,6 @@ class Rectangle : public Shape
 {
 public:
     Rectangle(const point_t &position, double width, double height);
-
-    ~Rectangle() override = default;
 
     double getWidth() const;
 

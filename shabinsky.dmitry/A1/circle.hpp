@@ -1,6 +1,3 @@
-//
-// Created by sdimosik on 21.03.2020.
-//
 #ifndef HW01_CIRCLE_H
 #define HW01_CIRCLE_H
 #include "shape.hpp"
@@ -9,8 +6,6 @@ class Circle : public Shape
 {
 public:
     Circle(double radius, const point_t &position);
-
-    ~Circle() override = default;
 
     double getRadius() const;
 

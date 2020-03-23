@@ -1,7 +1,3 @@
-//
-// Created by sdimosik on 21.03.2020.
-//
-
 #ifndef HW01_BASE_TYPES_H
 #define HW01_BASE_TYPES_H
 
