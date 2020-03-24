@@ -54,8 +54,8 @@ BOOST_AUTO_TEST_CASE(test_correct_move_circle)
 {
   meynik::point_t pos{1.2, 2.1};
   meynik::Circle circle(pos, 2.28);
-  const double X = 2.1,
-    Y = 1.2,
+  const double x = 2.1,
+    y = 1.2,
     primaryX = circle.getCentre().x,
     primaryY= circle.getCentre().y;
   circle.move(x, y);
