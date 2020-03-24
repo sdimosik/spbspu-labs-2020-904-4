@@ -38,32 +38,32 @@ BOOST_AUTO_TEST_CASE(test_correct_move_rectangle)
 {
   meynik::point_t pos{-2.0, 2.0};
   meynik::Rectangle rect(pos, 10.0, 10.0);
-  const double deltaX = 6,
-    deltaY = 6,
+  const double x = 6,
+    y = 6,
     primaryX = rect.getCentre().x,
     primaryY = rect.getCentre().y;
-  rect.move(deltaX, deltaY);
-  BOOST_CHECK_CLOSE(rect.getCentre().x, deltaX + primaryX, ACCURACY_DOUBLE);
-  BOOST_CHECK_CLOSE(rect.getCentre().y, deltaY + primaryY, ACCURACY_DOUBLE);
-  rect.move({deltaX, deltaY});
-  BOOST_CHECK_CLOSE(rect.getCentre().x, deltaX, ACCURACY_DOUBLE);
-  BOOST_CHECK_CLOSE(rect.getCentre().y, deltaY, ACCURACY_DOUBLE);
+  rect.move(x, y);
+  BOOST_CHECK_CLOSE(rect.getCentre().x, x + primaryX, ACCURACY_DOUBLE);
+  BOOST_CHECK_CLOSE(rect.getCentre().y, y + primaryY, ACCURACY_DOUBLE);
+  rect.move({x, y});
+  BOOST_CHECK_CLOSE(rect.getCentre().x, x, ACCURACY_DOUBLE);
+  BOOST_CHECK_CLOSE(rect.getCentre().y, y, ACCURACY_DOUBLE);
 }
 
 BOOST_AUTO_TEST_CASE(test_correct_move_circle)
 {
   meynik::point_t pos{1.2, 2.1};
   meynik::Circle circle(pos, 2.28);
-  const double deltaX = 2.1,
-    deltaY = 1.2,
+  const double X = 2.1,
+    Y = 1.2,
     primaryX = circle.getCentre().x,
     primaryY= circle.getCentre().y;
-  circle.move(deltaX, deltaY);
-  BOOST_CHECK_CLOSE(circle.getCentre().x, deltaX + primaryX, ACCURACY_DOUBLE);
-  BOOST_CHECK_CLOSE(circle.getCentre().y, deltaY + primaryY, ACCURACY_DOUBLE);
-  circle.move({deltaX, deltaY});
-  BOOST_CHECK_CLOSE(circle.getCentre().x, deltaX, ACCURACY_DOUBLE);
-  BOOST_CHECK_CLOSE(circle.getCentre().y, deltaY, ACCURACY_DOUBLE);
+  circle.move(x, y);
+  BOOST_CHECK_CLOSE(circle.getCentre().x, x + primaryX, ACCURACY_DOUBLE);
+  BOOST_CHECK_CLOSE(circle.getCentre().y, y + primaryY, ACCURACY_DOUBLE);
+  circle.move({x, y})
+  BOOST_CHECK_CLOSE(circle.getCentre().x, x, ACCURACY_DOUBLE);
+  BOOST_CHECK_CLOSE(circle.getCentre().y, y, ACCURACY_DOUBLE);
 }
 
 BOOST_AUTO_TEST_CASE(test_scale_rectangle_area)

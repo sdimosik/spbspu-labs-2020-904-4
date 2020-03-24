@@ -39,11 +39,11 @@ namespace meynik
 
   void Circle::printInfo(std::ostream& out) const
   {
-    out << "Radius: " << radius_ << '\n'
-      << "Center: (" << centre_.x << ", " << centre_.y << ")\n";
+    out << "Radius: " << radius_ << "\nCenter: ("
+      << centre_.x << ", " << centre_.y << ")\n";
   }
 
-  meynik::point_t Circle::getCentre() const
+  point_t Circle::getCentre() const
   {
     return centre_;
   }

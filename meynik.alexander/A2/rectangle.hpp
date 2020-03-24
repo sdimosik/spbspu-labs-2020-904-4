@@ -19,7 +19,7 @@ namespace meynik
 
     void printInfo(std::ostream& out) const override;
 
-    meynik::point_t getCentre() const override;
+    point_t getCentre() const override;
 
     void scale(const double coefficient) override;
 

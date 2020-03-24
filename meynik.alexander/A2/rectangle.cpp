@@ -44,7 +44,7 @@ namespace meynik
       << "Center: (" << pos_.x << ", " << pos_.y << ")\n";
   }
 
-  meynik::point_t Rectangle::getCentre() const
+  point_t Rectangle::getCentre() const
   {
     return pos_;
   }
