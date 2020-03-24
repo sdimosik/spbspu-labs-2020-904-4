@@ -1,5 +1,6 @@
 #ifndef HW01_CIRCLE_H
 #define HW01_CIRCLE_H
+
 #include "shape.hpp"
 
 class Circle : public Shape
@@ -19,11 +20,11 @@ public:
   
   void move(double x, double y) override;
   
-  friend std::ostream &operator<<(std::ostream &out, const Circle &circle);
+  void show(std::ostream &out) override;
 
 private:
   double radius_;
-  point_t position_{};
+  point_t position_;
 };
 
 #endif //HW01_CIRCLE_H

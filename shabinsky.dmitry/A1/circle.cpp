@@ -43,8 +43,7 @@ void Circle::move(double x, double y)
   position_.y += y;
 }
 
-std::ostream &operator<<(std::ostream &out, const Circle &circle)
+void Circle::show(std::ostream &out)
 {
-  out << "[R: " << circle.radius_ << ";" << circle.position_ << "]";
-  return out;
+  out << "[R: " << this->radius_ << ";" << this->position_ << "]";
 }

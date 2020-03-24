@@ -51,8 +51,7 @@ void Rectangle::move(double x, double y)
   position_.y += y;
 }
 
-std::ostream &operator<<(std::ostream &out, const Rectangle &rectangle)
+void Rectangle::show(std::ostream &out)
 {
-  out << "[H: " << rectangle.height_ << ";W: " << rectangle.width_ << ";" << rectangle.position_ << "]";
-  return out;
+  out << "[H: " << this->height_ << ";W: " << this->width_ << ";" << this->width_ << "]";
 }

@@ -1,5 +1,6 @@
 #ifndef HW01_RECTANGLE_H
 #define HW01_RECTANGLE_H
+
 #include "shape.hpp"
 
 class Rectangle : public Shape
@@ -21,11 +22,11 @@ public:
   
   void move(double x, double y) override;
   
-  friend std::ostream &operator<<(std::ostream &out, const Rectangle &rectangle);
+  void show(std::ostream &out) override;
 
 private:
   double width_, height_;
-  point_t position_{};
+  point_t position_;
 };
 
 #endif //HW01_RECTANGLE_H
