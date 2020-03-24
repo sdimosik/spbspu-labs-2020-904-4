@@ -46,8 +46,10 @@ int main()
     std::cout << "-------Polymorphism test-------\n";
     Shape *shape = new Circle(6, {3, 4});
     shape->show(std::cout);
+    delete shape;
     shape = new Rectangle(point_t{228, 1337}, 6, 9);
     shape->show(std::cout);
+    delete shape;
   }
   catch (const std::invalid_argument &err)
   {

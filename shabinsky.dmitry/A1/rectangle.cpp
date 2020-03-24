@@ -53,5 +53,5 @@ void Rectangle::move(double x, double y)
 
 void Rectangle::show(std::ostream &out)
 {
-  out << "[H: " << this->height_ << ";W: " << this->width_ << ";" << this->width_ << "]";
+  out << "[H: " << this->height_ << ";W: " << this->width_ << ";" << this->position_ << "]";
 }
