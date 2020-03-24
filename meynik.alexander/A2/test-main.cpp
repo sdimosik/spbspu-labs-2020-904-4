@@ -61,7 +61,7 @@ BOOST_AUTO_TEST_CASE(test_correct_move_circle)
   circle.move(x, y);
   BOOST_CHECK_CLOSE(circle.getCentre().x, x + primaryX, ACCURACY_DOUBLE);
   BOOST_CHECK_CLOSE(circle.getCentre().y, y + primaryY, ACCURACY_DOUBLE);
-  circle.move({x, y})
+  circle.move({ x, y });
   BOOST_CHECK_CLOSE(circle.getCentre().x, x, ACCURACY_DOUBLE);
   BOOST_CHECK_CLOSE(circle.getCentre().y, y, ACCURACY_DOUBLE);
 }
