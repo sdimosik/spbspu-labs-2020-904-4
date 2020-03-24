@@ -4,56 +4,57 @@
 
 int main()
 {
-    try
-    {
-        std::cout << "-------Rectangle test-------\n";
-        Rectangle rectangle(point_t{228, 1337}, 6, 9);
-        std::cout << "width: " << rectangle.getWidth() << "\nheight: " << rectangle.getHeight() << "\nposition: ( " <<
-                  rectangle.getPosition().x << " ; " << rectangle.getPosition().y << "\narea: " << rectangle.getArea()
-                  << "\n";
-        double x1 = 123, y1 = 321;
-        std::cout << "-------moving to ( " << x1 << " ; " << y1 << " )-------\ncurrent: ( " << rectangle.getPosition().x
-                  << " ; " << rectangle.getPosition().y << " )    destination: ( " << x1 << " ; " << y1
-                  << " )\nmoving...\n";
-        rectangle.move({x1, y1});
-        std::cout << "current: ( " << rectangle.getPosition().x
-                  << " ; " << rectangle.getPosition().y << " )    destination: ( " << x1 << " ; " << y1 << "\n"
-                  << "-------moving " << x1 << " by x and" << y1 << " by y-------\n" << "current: ( "
-                  << rectangle.getPosition().x << " ; " << rectangle.getPosition().y << " )    " << "destination: ( "
-                  << rectangle.getPosition().x + x1 << " ; " << rectangle.getPosition().y + y1
-                  << " )\n" << "mooving...\n";
-        rectangle.move(rectangle.getPosition().x + x1, rectangle.getPosition().y + y1);
-        std::cout << "current: ( " << rectangle.getPosition().x << " ; " << rectangle.getPosition().y << " )    "
-                  << "destination: ( " << rectangle.getPosition().x + x1 << " ; " << rectangle.getPosition().y + y1
-                  << " )\n" << "-------Circle test-------\n";
-        Circle circle(6, {3, 4});
-        std::cout << "radius: " << circle.getRadius() << '\n' << "position: ( " << circle.getPosition().x << " ; "
-                  << circle.getPosition().y << " )\n" << "area: " << circle.getArea() << '\n';
-        x1 = 111;
-        y1 = 222;
-        std::cout << "-------moving to ( " << x1 << " ; " << y1 << " )-------\n" << "current: ( "
-                  << circle.getPosition().x << " ; " << circle.getPosition().y << " )    " << "destination: ( " << x1
-                  << " ; " << y1 << " )\n" << "mooving...\n";
-        circle.move({x1, y1});
-        std::cout << "current: ( " << circle.getPosition().x << " ; " << circle.getPosition().y << " )    "
-                  << "destination: ( " << x1 << " ; " << y1 << " )\n" << "-------moving " << x1 << " by x and" << y1
-                  << " by y-------\n" << "current: ( " << circle.getPosition().x << " ; " << circle.getPosition().y
-                  << " )    " << "destination: ( " << circle.getPosition().x + x1 << " ; "
-                  << circle.getPosition().y + y1 << " )\n" << "mooving...\n";
-        circle.move(circle.getPosition().x + x1, circle.getPosition().y + y1);
-        std::cout << "current: ( " << circle.getPosition().x << " ; " << circle.getPosition().y << " )    "
-                  << "destination: ( " << circle.getPosition().x + x1 << " ; " << circle.getPosition().y + y1 << " )\n";
-    }
-    catch (const std::invalid_argument &err)
-    {
-        std::cerr << "Error: invalid data\n" << err.what() << std::endl;
-        return 1;
-    }
-    catch (...)
-    {
-        std::cerr << "Error:Unknown problem" << std::endl;
-        return 2;
-    }
-
-    return 0;
+  try
+  {
+    std::cout << "-------Rectangle test-------\n";
+    Rectangle rectangle(point_t{228, 1337}, 6, 9);
+    std::cout << "width: " << rectangle.getWidth() << "\nheight: " << rectangle.getHeight() << "\nposition: ( "
+      << rectangle.getPosition().x << " ; " << rectangle.getPosition().y << "\narea: " << rectangle.getArea() << "\n";
+    double x1 = 123, y1 = 321;
+    std::cout << "-------moving to ( " << x1 << " ; " << y1 << " )-------\ncurrent: ( " << rectangle.getPosition().x
+      << " ; " << rectangle.getPosition().y << " )    destination: ( " << x1 << " ; " << y1 << " )\nmoving...\n";
+    rectangle.move({x1, y1});
+    std::cout << "current: ( " << rectangle.getPosition().x
+      << " ; " << rectangle.getPosition().y << " )    destination: ( " << x1 << " ; " << y1 << "\n"
+      << "-------moving " << x1 << " by x and" << y1 << " by y-------\n" << "current: ( "
+      << rectangle.getPosition().x << " ; " << rectangle.getPosition().y << " )    " << "destination: ( "
+      << rectangle.getPosition().x + x1 << " ; " << rectangle.getPosition().y + y1 << " )\n" << "mooving...\n";
+    rectangle.move(rectangle.getPosition().x + x1, rectangle.getPosition().y + y1);
+    std::cout << "current: ( " << rectangle.getPosition().x << " ; " << rectangle.getPosition().y << " )    "
+      << "destination: ( " << rectangle.getPosition().x + x1 << " ; " << rectangle.getPosition().y + y1
+      << " )\n" << "-------Circle test-------\n";
+    Circle circle(6, {3, 4});
+    std::cout << "radius: " << circle.getRadius() << '\n' << "position: ( " << circle.getPosition().x << " ; "
+      << circle.getPosition().y << " )\n" << "area: " << circle.getArea() << '\n';
+    x1 = 111;
+    y1 = 222;
+    std::cout << "-------moving to ( " << x1 << " ; " << y1 << " )-------\n" << "current: ( "
+      << circle.getPosition().x << " ; " << circle.getPosition().y << " )    " << "destination: ( " << x1
+      << " ; " << y1 << " )\n" << "mooving...\n";
+    circle.move({x1, y1});
+    std::cout << "current: ( " << circle.getPosition().x << " ; " << circle.getPosition().y << " )    "
+      << "destination: ( " << x1 << " ; " << y1 << " )\n" << "-------moving " << x1 << " by x and" << y1
+      << " by y-------\n" << "current: ( " << circle.getPosition().x << " ; " << circle.getPosition().y
+      << " )    " << "destination: ( " << circle.getPosition().x + x1 << " ; "
+      << circle.getPosition().y + y1 << " )\n" << "mooving...\n";
+    circle.move(circle.getPosition().x + x1, circle.getPosition().y + y1);
+    std::cout << "current: ( " << circle.getPosition().x << " ; " << circle.getPosition().y << " )    "
+      << "destination: ( " << circle.getPosition().x + x1 << " ; " << circle.getPosition().y + y1 << " )\n";
+    std::cout << "-------Polymorphism test-------\n|rectangle|------------|circle|\n" << rectangle << "         "
+      << circle << "\n------------getArea------------\n"
+      << rectangle.getArea() << "                    " << circle.getArea() << "\n------------getFrameRect------------\n"
+      << rectangle.getFrameRect() << "           " << circle.getFrameRect() << "\n";
+  }
+  catch (const std::invalid_argument &err)
+  {
+    std::cerr << "Error: invalid data\n" << err.what() << std::endl;
+    return 1;
+  }
+  catch (...)
+  {
+    std::cerr << "Error:Unknown problem" << std::endl;
+    return 2;
+  }
+  
+  return 0;
 }
