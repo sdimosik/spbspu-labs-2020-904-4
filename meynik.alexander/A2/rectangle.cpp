@@ -11,8 +11,8 @@ namespace meynik
     if (width <= 0 || height <= 0)
     {
       throw std::invalid_argument(std::string("Width and height of rectangle must")
-        + " be positive numbers!\nWidth value: " + std::to_string(width)
-        + "\nHeight value: " + std::to_string(height));
+          + " be positive numbers!\nWidth value: " + std::to_string(width)
+          + "\nHeight value: " + std::to_string(height));
     }
   }
 
@@ -39,9 +39,9 @@ namespace meynik
 
   void Rectangle::printInfo(std::ostream& out) const
   {
-    out << "Width: " << width_ << '\n'
-      << "Height: " << height_ << '\n'
-      << "Center: (" << pos_.x << ", " << pos_.y << ")\n";
+    out << "Width: " << width_ << '\n' << "Height: "
+        << height_ << '\n'<< "Center: ("<< pos_.x
+        << ", " << pos_.y << ")\n";
   }
 
   point_t Rectangle::getCentre() const
@@ -54,7 +54,7 @@ namespace meynik
     if (coefficient <= 0)
     {
       throw std::invalid_argument(std::string("Coefficient must be positive!")
-        +"\nCoefficient value: " + std::to_string(coefficient)+'\n');
+          +"\nCoefficient value: " + std::to_string(coefficient)+'\n');
     }
     height_ *= coefficient;
     width_ *= coefficient;

@@ -39,9 +39,9 @@ BOOST_AUTO_TEST_CASE(test_correct_move_rectangle)
   meynik::point_t pos{-2.0, 2.0};
   meynik::Rectangle rect(pos, 10.0, 10.0);
   const double x = 6,
-    y = 6,
-    primaryX = rect.getCentre().x,
-    primaryY = rect.getCentre().y;
+      y = 6,
+      primaryX = rect.getCentre().x,
+      primaryY = rect.getCentre().y;
   rect.move(x, y);
   BOOST_CHECK_CLOSE(rect.getCentre().x, x + primaryX, ACCURACY_DOUBLE);
   BOOST_CHECK_CLOSE(rect.getCentre().y, y + primaryY, ACCURACY_DOUBLE);
@@ -55,9 +55,9 @@ BOOST_AUTO_TEST_CASE(test_correct_move_circle)
   meynik::point_t pos{1.2, 2.1};
   meynik::Circle circle(pos, 2.28);
   const double x = 2.1,
-    y = 1.2,
-    primaryX = circle.getCentre().x,
-    primaryY= circle.getCentre().y;
+      y = 1.2,
+      primaryX = circle.getCentre().x,
+      primaryY= circle.getCentre().y;
   circle.move(x, y);
   BOOST_CHECK_CLOSE(circle.getCentre().x, x + primaryX, ACCURACY_DOUBLE);
   BOOST_CHECK_CLOSE(circle.getCentre().y, y + primaryY, ACCURACY_DOUBLE);
@@ -71,7 +71,7 @@ BOOST_AUTO_TEST_CASE(test_scale_rectangle_area)
   meynik::point_t pos{1.2, 2.1};
   meynik::Rectangle rect(pos, 2.0, 6.0);
   const double rect_area = rect.getArea(),
-    scale = 2.5;
+      scale = 2.5;
   rect.scale(scale);
   BOOST_CHECK_CLOSE(rect_area * scale * scale, rect.getArea(), ACCURACY_DOUBLE);
 }
@@ -81,7 +81,7 @@ BOOST_AUTO_TEST_CASE(test_scale_circle_area)
   meynik::point_t pos{1.2, 2.1};
   meynik::Circle circle(pos, 10.0);
   const double circle_area = circle.getArea(),
-    scale = 0.1;
+      scale = 0.1;
   circle.scale(scale);
   BOOST_CHECK_CLOSE(circle_area * scale * scale, circle.getArea(), ACCURACY_DOUBLE);
 }

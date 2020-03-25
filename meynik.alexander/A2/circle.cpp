@@ -12,7 +12,7 @@ namespace meynik
     if (radius <= 0)
     {
       throw std::invalid_argument(std::string("Radius of circle must be positive!\n")
-        + "Radius value:" + std::to_string(radius));
+          + "Radius value:" + std::to_string(radius));
     }
   }
 
@@ -39,8 +39,8 @@ namespace meynik
 
   void Circle::printInfo(std::ostream& out) const
   {
-    out << "Radius: " << radius_ << "\nCenter: ("
-      << centre_.x << ", " << centre_.y << ")\n";
+    out << "Radius: " << radius_ << "\nCenter: ("<< centre_.x 
+        << ", " << centre_.y << ")\n";
   }
 
   point_t Circle::getCentre() const
@@ -53,7 +53,7 @@ namespace meynik
     if (coefficient <= 0)
     {
       throw std::invalid_argument(std::string("Coefficient must be positive!")
-        + "\nCoefficient value: " + std::to_string(coefficient) + '\n');
+          + "\nCoefficient value: " + std::to_string(coefficient) + '\n');
     }
     radius_ *= coefficient;
   }
