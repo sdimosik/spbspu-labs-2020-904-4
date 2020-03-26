@@ -17,14 +17,13 @@ int main()
     rectangle.move({x1, y1});
     std::cout << "current: ( " << rectangle.getPosition().x
       << " ; " << rectangle.getPosition().y << " )    destination: ( " << x1 << " ; " << y1 << "\n"
-       << "-------moving " << x1 << " by x and" << y1 << " by y-------\n" << "current: ( "
-        << rectangle.getPosition().x << " ; " << rectangle.getPosition().y << " )    " << "destination: ( "
-         << rectangle.getPosition().x + x1 << " ; " << rectangle.getPosition().y + y1 << " )\n" << "mooving...\n";
+      << "-------moving " << x1 << " by x and" << y1 << " by y-------\n" << "current: ( "
+      << rectangle.getPosition().x << " ; " << rectangle.getPosition().y << " )    " << "destination: ( "
+      << rectangle.getPosition().x + x1 << " ; " << rectangle.getPosition().y + y1 << " )\n" << "mooving...\n";
     rectangle.move(rectangle.getPosition().x + x1, rectangle.getPosition().y + y1);
     std::cout << "current: ( " << rectangle.getPosition().x << " ; " << rectangle.getPosition().y << " )    "
       << "destination: ( " << rectangle.getPosition().x + x1 << " ; " << rectangle.getPosition().y + y1
-       << " )\n" << "-------Circle test-------\n";
-    
+      << " )\n" << "-------Circle test-------\n";
     Circle circle(6, {3, 4});
     std::cout << "radius: " << circle.getRadius() << '\n' << "position: ( " << circle.getPosition().x << " ; "
       << circle.getPosition().y << " )\n" << "area: " << circle.getArea() << '\n';
@@ -32,18 +31,17 @@ int main()
     y1 = 222;
     std::cout << "-------moving to ( " << x1 << " ; " << y1 << " )-------\n" << "current: ( "
       << circle.getPosition().x << " ; " << circle.getPosition().y << " )    " << "destination: ( " << x1
-       << " ; " << y1 << " )\n" << "mooving...\n";
+      << " ; " << y1 << " )\n" << "mooving...\n";
     circle.move({x1, y1});
     std::cout << "current: ( " << circle.getPosition().x << " ; " << circle.getPosition().y << " )    "
       << "destination: ( " << x1 << " ; " << y1 << " )\n" << "-------moving " << x1 << " by x and" << y1
-       << " by y-------\n" << "current: ( " << circle.getPosition().x << " ; " << circle.getPosition().y
-        << " )    " << "destination: ( " << circle.getPosition().x + x1 << " ; "
-         << circle.getPosition().y + y1 << " )\n" << "mooving...\n";
+      << " by y-------\n" << "current: ( " << circle.getPosition().x << " ; " << circle.getPosition().y
+      << " )    " << "destination: ( " << circle.getPosition().x + x1 << " ; "
+      << circle.getPosition().y + y1 << " )\n" << "mooving...\n";
     circle.move(circle.getPosition().x + x1, circle.getPosition().y + y1);
     std::cout << "current: ( " << circle.getPosition().x << " ; " << circle.getPosition().y << " )    "
-      << "destination: ( " << circle.getPosition().x + x1 << " ; " << circle.getPosition().y + y1 << " )\n";
-    
-    std::cout << "-------Polymorphism test-------\n";
+      << "destination: ( " << circle.getPosition().x + x1 << " ; " << circle.getPosition().y + y1 << " )\n"
+      << "-------Polymorphism test-------\n";
     Shape *shape = new Circle(6, {3, 4});
     shape->show(std::cout);
     delete shape;
