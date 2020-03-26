@@ -1,7 +1,7 @@
 #include "circle.hpp"
-
 #include <cmath>
 #include <stdexcept>
+#include <string>
 
 namespace meynik
 {
