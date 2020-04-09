@@ -4,9 +4,9 @@
 namespace shabinsky
 {
   Rectangle::Rectangle(const point_t &position, double width, double height) :
-          width_(width),
-          height_(height),
-          position_(position)
+    width_(width),
+    height_(height),
+    position_(position)
   {
     if (width <= 0 || height <= 0)
     {

@@ -5,8 +5,8 @@
 namespace shabinsky
 {
   Circle::Circle(double radius, const point_t &position) :
-          radius_(radius),
-          position_(position)
+    radius_(radius),
+    position_(position)
   {
     if (radius <= 0)
     {
