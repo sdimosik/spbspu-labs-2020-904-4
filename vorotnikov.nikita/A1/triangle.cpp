@@ -57,7 +57,7 @@ rectangle_t Triangle::getFrameRect() const
     high = point3_.y;
   }
 
-  return rectangle_t{ abs(right) - abs(left), abs(high) - abs(low), { ((2 * right) + (2 * left)) / 4, ((2 * high) + (2 * low)) / 4 } };
+  return rectangle_t{ abs(right + 0.0) - abs(left + 0.0), abs(high) - abs(low), { ((2 * right) + (2 * left)) / 4, ((2 * high) + (2 * low)) / 4 } };
 }
 
 void Triangle::move(const point_t &point)
