@@ -24,55 +24,35 @@ double Triangle::getArea() const
 rectangle_t Triangle::getFrameRect() const
 {
   double left, right, high, low;
-  if ((point1_.x < point2_.x) && (point1_.x < point3_.x))
-  {
+  if ((point1_.x < point2_.x) && (point1_.x < point3_.x)) {
     left = point1_.x;
-  }
-  else if ((point2_.x < point1_.x) && (point2_.x < point3_.x))
-  {
+  } else if ((point2_.x < point1_.x) && (point2_.x < point3_.x)) {
     left = point2_.x;
-  }
-  else if ((point3_.x < point1_.x) && (point3_.x < point2_.x))
-  {
+  } else if ((point3_.x < point1_.x) && (point3_.x < point2_.x)) {
     left = point3_.x;
   }
 
-  if ((point1_.y < point2_.y) && (point1_.y < point3_.y))
-  {
+  if ((point1_.y < point2_.y) && (point1_.y < point3_.y)) {
     low = point1_.y;
-  }
-  else if ((point2_.y < point1_.y) && (point2_.y < point3_.y))
-  {
+  } else if ((point2_.y < point1_.y) && (point2_.y < point3_.y)) {
     low = point2_.y;
-  }
-  else if ((point3_.y < point1_.y) && (point3_.y < point2_.y))
-  {
+  } else if ((point3_.y < point1_.y) && (point3_.y < point2_.y)) {
     low = point3_.y;
   }
 
-  if ((point1_.x > point2_.x) && (point1_.x > point3_.x))
-  {
+  if ((point1_.x > point2_.x) && (point1_.x > point3_.x)) {
     right = point1_.x;
-  }
-  else if ((point2_.x > point1_.x) && (point2_.x > point3_.x))
-  {
+  } else if ((point2_.x > point1_.x) && (point2_.x > point3_.x)) {
     right = point2_.x;
-  }
-  else if ((point3_.x > point1_.x) && (point3_.x > point2_.x))
-  {
+  } else if ((point3_.x > point1_.x) && (point3_.x > point2_.x)) {
     right = point3_.x;
   }
 
-  if ((point1_.y > point2_.y) && (point1_.y > point3_.y))
-  {
+  if ((point1_.y > point2_.y) && (point1_.y > point3_.y)) {
     high = point1_.y;
-  }
-  else if ((point2_.y > point1_.y) && (point2_.y > point3_.y))
-  {
+  } else if ((point2_.y > point1_.y) && (point2_.y > point3_.y)) {
     high = point2_.y;
-  }
-  else if ((point3_.y > point1_.y) && (point3_.y > point2_.y))
-  {
+  } else if ((point3_.y > point1_.y) && (point3_.y > point2_.y)) {
     high = point3_.y;
   }
 
