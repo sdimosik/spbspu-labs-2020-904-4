@@ -1,4 +1,4 @@
-image: 'alexeymartynov/cxx-test:0.4'
+image: 'alexeymartynov/cxx-test:0.4.3'
 stages:
   - sanity
   - build
