@@ -3,12 +3,12 @@
 
 struct point_t
 {
-    double x, y;
+ double x, y;
 };
 
 struct rectangle_t
 {
-    double width, height;
-	point_t pos;
+  double width, height;
+  point_t pos;
 };
 #endif
