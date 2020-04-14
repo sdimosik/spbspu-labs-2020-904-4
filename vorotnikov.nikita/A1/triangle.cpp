@@ -24,7 +24,7 @@ double Triangle::getArea() const
 
 rectangle_t Triangle::getFrameRect() const
 {
-  double left, right, high, low;
+  double left = 0.0, right = 0.0, high = 0.0, low = 0.0;
   if ((point1_.x < point2_.x) && (point1_.x < point3_.x)) {
     left = point1_.x;
   } else if ((point2_.x < point1_.x) && (point2_.x < point3_.x)) {
@@ -57,7 +57,7 @@ rectangle_t Triangle::getFrameRect() const
     high = point3_.y;
   }
 
-  return rectangle_t{ abs(right + 0.0) - abs(left + 0.0), abs(high) - abs(low), { ((2 * right) + (2 * left)) / 4, ((2 * high) + (2 * low)) / 4 } };
+  return rectangle_t{ abs(right) - abs(left), abs(high) - abs(low), { ((2 * right) + (2 * left)) / 4, ((2 * high) + (2 * low)) / 4 } };
 }
 
 void Triangle::move(const point_t &point)
