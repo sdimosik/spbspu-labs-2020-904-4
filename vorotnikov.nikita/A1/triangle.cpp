@@ -9,7 +9,8 @@ Triangle::Triangle(const point_t &point1, const point_t &point2, const point_t &
   point3_(point3)
 
 {
-  side1 = sqrt((pow((abs(point2_.x) - abs(point1_.x)), 2) + pow((abs(point2_.y) - abs(point1_.y)), 2)));	  side2 = sqrt((pow((abs(point3_.x) - abs(point2_.x)), 2) + pow((abs(point3_.y) - abs(point2_.y)), 2)));
+  side1 = sqrt((pow((abs(point2_.x) - abs(point1_.x)), 2) + pow((abs(point2_.y) - abs(point1_.y)), 2)));
+  side2 = sqrt((pow((abs(point3_.x) - abs(point2_.x)), 2) + pow((abs(point3_.y) - abs(point2_.y)), 2)));
   side3 = sqrt((pow((abs(point3_.x) - abs(point1_.x)), 2) + pow((abs(point3_.y) - abs(point1_.y)), 2)));
   pos_.x = (point1_.x + point2_.x + point3_.x) / 3;
   pos_.y = (point1_.y + point2_.y + point3_.y) / 3;
