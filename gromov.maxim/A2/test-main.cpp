@@ -65,14 +65,14 @@ BOOST_AUTO_TEST_CASE(test_correct_move_rectangle)
   gromov::Rectangle rect({1.0, 1.0}, 10.0, 10.0);
   const double x = 5.0,
     y = 5.0,
-    oldX = rect.getPosition().x,
-    oldY = rect.getPosition().y;
+    oldX = rect.getCentre().x,
+    oldY = rect.getCentre().y;
   rect.move(x, y);
-  BOOST_CHECK_CLOSE(rect.getPosition().x, x + oldX, ACCURACY_DOUBLE);
-  BOOST_CHECK_CLOSE(rect.getPosition().y, y + oldY, ACCURACY_DOUBLE);
+  BOOST_CHECK_CLOSE(rect.getCentre().x, x + oldX, ACCURACY_DOUBLE);
+  BOOST_CHECK_CLOSE(rect.getCentre().y, y + oldY, ACCURACY_DOUBLE);
   rect.move({x,y});
-  BOOST_CHECK_CLOSE(rect.getPosition().x, x, ACCURACY_DOUBLE);
-  BOOST_CHECK_CLOSE(rect.getPosition().y, y, ACCURACY_DOUBLE);
+  BOOST_CHECK_CLOSE(rect.getCentre().x, x, ACCURACY_DOUBLE);
+  BOOST_CHECK_CLOSE(rect.getCentre().y, y, ACCURACY_DOUBLE);
 }
 
 BOOST_AUTO_TEST_CASE(test_correct_move_circle)

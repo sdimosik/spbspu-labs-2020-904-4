@@ -11,38 +11,37 @@ namespace gromov
   {
     if(radius <= 0)
     {
-      throw std::invalid_argument(std::string("Radius must be positive,radius = " 
-        + std::to_string(radius_)));
+      throw std::invalid_argument(std::string("Radius must be positive,radius = " + std::to_string(radius_)));
     }
   }
 
-  void Circle::move(const point_t& position)
+  void Circle::move(const point_t& position) noexcept
   {
     position_ = position;
   }
 
-  void Circle::move(const double x, const double y)
+  void Circle::move(const double x, const double y) noexcept
   {
     position_.x += x;
     position_.y += y;
   }
 
-  double Circle::getArea() const
+  double Circle::getArea() const noexcept
   {
     return (radius_ * radius_ * M_PI);
   }
 
-  rectangle_t Circle::getFrameRect() const
+  rectangle_t Circle::getFrameRect() const noexcept
   {
     return rectangle_t{2 * radius_, 2 * radius_, position_};
   }
 
-  double Circle::getRadius() const
+  double Circle::getRadius() const noexcept
   {
     return radius_;
   }
 
-  point_t Circle::getCentre() const
+  point_t Circle::getCentre() const noexcept
   {
     return position_;
   }
@@ -51,8 +50,7 @@ namespace gromov
   {
     if(coefficient <= 0)
     {
-      throw std::invalid_argument(std::string("Coefficient must be positive,coefficient = " 
-        + std::to_string(coefficient)));
+      throw std::invalid_argument(std::string("Coefficient must be positive,coefficient = " + std::to_string(coefficient)));
     }
     radius_ *= coefficient;
   }
