@@ -33,23 +33,23 @@ int main()
 
     std::cout << "Area of rectangle is " << rect.getArea() << std::endl
       << "Width is " << rect.getWidth() << "  Height is " << rect.getHeight() << std::endl
-      << "Centre coordinate is x = " << rect.getPosition().x << ",  y = " << rect.getPosition().y << std::endl
+      << "Centre coordinate is x = " << rect.getCentre().x << ",  y = " << rect.getCentre().y << std::endl
       <<  "Frame of rectangle is height x = " << rect.getFrameRect().height
       << ",  y = " << rect.getFrameRect().width << std::endl
       << "Coordinates of rectangle before moving by changing coordinate x = "
-      << rect.getPosition().x << ",  y = " << rect.getPosition().y << std::endl;
+      << rect.getCentre().x << ",  y = " << rect.getCentre().y << std::endl;
 
     rect.move(1000, 200);
 
     std::cout << "Coordinates of rectangle after moving by changing coordinate x = "
-      << rect.getPosition().x << ",  y = " << rect.getPosition().y << std::endl
+      << rect.getCentre().x << ",  y = " << rect.getCentre().y << std::endl
       << "Coordinates of rectangle before moving by changing centre  x = "
-      << rect.getPosition().x << ",  y = " << rect.getPosition().y << std::endl;
+      << rect.getCentre().x << ",  y = " << rect.getCentre().y << std::endl;
 
     rect.move(point1);
 
     std::cout << "Coordinates of rectangle after moving by changing centre  x = "
-      << rect.getPosition().x << ",  y = " << rect.getPosition().y << std::endl
+      << rect.getCentre().x << ",  y = " << rect.getCentre().y << std::endl
       << "Polymorphism test:" << std::endl;
 
     gromov::Shape* shape = &rect;
