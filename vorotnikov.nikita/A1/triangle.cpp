@@ -3,58 +3,58 @@
 #include <stdexcept>
 #include <cmath>
 
-Triangle::Triangle(const point_t &point1, const point_t &point2, const point_t &point3) :
-  point1_(point1),
-  point2_(point2),
-  point3_(point3),
-  pos_({(point1_.x + point2_.x + point3_.x) / 3, (point1_.y + point2_.y + point3_.y) / 3 }),
-  side1(sqrt((pow((abs(point2_.x) - abs(point1_.x)), 2) + pow((abs(point2_.y) - abs(point1_.y)), 2)))),
-  side2(sqrt((pow((abs(point3_.x) - abs(point2_.x)), 2) + pow((abs(point3_.y) - abs(point2_.y)), 2)))),
-  side3(sqrt((pow((abs(point3_.x) - abs(point1_.x)), 2) + pow((abs(point3_.y) - abs(point1_.y)), 2))))
+Triangle::Triangle(const point_t &point_one, const point_t &point_two, const point_t &point_three) :
+  point_one_(point_one),
+  point_two_(point_two),
+  point_three_(point_three),
+  pos_({(point_one_.x + point_two_.x + point_three_.x) / 3, (point_one_.y + point_two_.y + point_three_.y) / 3 }),
+  side_one_(sqrt((pow((abs(point_two_.x) - abs(point_one_.x)), 2) + pow((abs(point_two_.y) - abs(point_one_.y)), 2)))),
+  side_two_(sqrt((pow((abs(point_three_.x) - abs(point_two_.x)), 2) + pow((abs(point_three_.y) - abs(point_two_.y)), 2)))),
+  side_three_(sqrt((pow((abs(point_three_.x) - abs(point_one_.x)), 2) + pow((abs(point_three_.y) - abs(point_one_.y)), 2))))
 {}
 
 double Triangle::getArea() const
 {
-  double half_perimetr = (side1 + side2 + side3) / 2;
-  return sqrt(half_perimetr * (half_perimetr - side1) * (half_perimetr - side2) * (half_perimetr - side3));
+  double half_perimetr = (side_one_ + side_two_ + side_three_) / 2;
+  return sqrt(half_perimetr * (half_perimetr - side_one_) * (half_perimetr - side_two_) * (half_perimetr - side_three_));
 }
 
 rectangle_t Triangle::getFrameRect() const
 {
   double left = 0.0, right = 0.0, high = 0.0, low = 0.0;
-  if ((point1_.x < point2_.x) && (point1_.x < point3_.x)) {
-    left = point1_.x;
-  } else if ((point2_.x < point1_.x) && (point2_.x < point3_.x)) {
-    left = point2_.x;
-  } else if ((point3_.x < point1_.x) && (point3_.x < point2_.x)) {
-    left = point3_.x;
+  if ((point_one_.x < point_two_.x) && (point_one_.x <point_three_.x)) {
+    left = point_one_.x;
+  } else if ((point_two_.x < point_one_.x) && (point_two_.x < point_three_.x)) {
+    left = point_two_.x;
+  } else if ((point_three_.x < point_one_.x) && (point_three_.x < point_two_.x)) {
+    left = point_three_.x;
   }
 
-  if ((point1_.y < point2_.y) && (point1_.y < point3_.y)) {
-    low = point1_.y;
-  } else if ((point2_.y < point1_.y) && (point2_.y < point3_.y)) {
-    low = point2_.y;
-  } else if ((point3_.y < point1_.y) && (point3_.y < point2_.y)) {
-    low = point3_.y;
+  if ((point_one_.y < point_two_.y) && (point_one_.y < point_three_.y)) {
+    low = point_one_.y;
+  } else if ((point_two_.y < point_one_.y) && (point_two_.y < point_three_.y)) {
+    low = point_two_.y;
+  } else if ((point_three_.y < point_one_.y) && (point_three_.y < point_two_.y)) {
+    low = point_three_.y;
   }
 
-  if ((point1_.x > point2_.x) && (point1_.x > point3_.x)) {
-    right = point1_.x;
-  } else if ((point2_.x > point1_.x) && (point2_.x > point3_.x)) {
-    right = point2_.x;
-  } else if ((point3_.x > point1_.x) && (point3_.x > point2_.x)) {
-    right = point3_.x;
+  if ((point_one_.x > point_two_.x) && (point_one_.x > point_three_.x)) {
+    right = point_one_.x;
+  } else if ((point_two_.x > point_one_.x) && (point_two_.x > point_three_.x)) {
+    right = point_two_.x;
+  } else if ((point_three_.x > point_one_.x) && (point_three_.x > point_two_.x)) {
+    right = point_three_.x;
   }
 
-  if ((point1_.y > point2_.y) && (point1_.y > point3_.y)) {
-    high = point1_.y;
-  } else if ((point2_.y > point1_.y) && (point2_.y > point3_.y)) {
-    high = point2_.y;
-  } else if ((point3_.y > point1_.y) && (point3_.y > point2_.y)) {
-    high = point3_.y;
+  if ((point_one_.y > point_two_.y) && (point_one_.y > point_three_.y)) {
+    high = point_one_.y;
+  } else if ((point_two_.y > point_one_.y) && (point_two_.y > point_three_.y)) {
+    high = point_two_.y;
+  } else if ((point_three_.y > point_one_.y) && (point_three_.y > point_two_.y)) {
+    high = point_three_.y;
   }
 
-  return rectangle_t{ std::abs(right) - std::abs(left), std::abs(high) - std::abs(low), { ((2 * right) + (2 * left)) / 4, ((2 * high) + (2 * low)) / 4 } };
+  return rectangle_t{ right - left, high - low, { (right + left) / 2, (high + low) / 2 } };
 }
 
 void Triangle::move(const point_t &point)
@@ -64,22 +64,22 @@ void Triangle::move(const point_t &point)
 
 void Triangle::move(double x, double y)
 {
-  point1_.x += x;
-  point1_.y += y;
-  point2_.x += x;
-  point2_.y += y;
-  point3_.x += x;
-  point3_.y += y;
+  point_one_.x += x;
+  point_one_.y += y;
+  point_two_.x += x;
+  point_two_.y += y;
+  point_three_.x += x;
+  point_three_.y += y;
   pos_.x += x;
   pos_.y += y;
 }
 
-double Triangle::getCenterX()
+double Triangle::getCenterX() const
 {
   return pos_.x;
 }
 
-double Triangle::getCenterY()
+double Triangle::getCenterY() const
 {
   return pos_.y;
 }

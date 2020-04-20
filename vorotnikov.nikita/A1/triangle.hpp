@@ -5,7 +5,7 @@
 class Triangle : public Shape
 {
 public:
-  Triangle(const point_t &pos1, const point_t &pos2, const point_t &pos3);
+  Triangle(const point_t &point_one, const point_t &point_two, const point_t &point_three);
 
   double getArea() const override;
 
@@ -15,13 +15,13 @@ public:
 
   void move(double x, double y) override;
 
-  double getCenterX();
+  double getCenterX() const;
 
-  double getCenterY();
+  double getCenterY() const;
 
 private:
-  point_t point1_, point2_, point3_;
+  point_t point_one_, point_two_, point_three_;
   point_t pos_;
-  double side1, side2, side3;
+  double side_one_, side_two_, side_three_;
 };
 #endif

@@ -20,4 +20,3 @@ private:
   point_t pos_;
 };
 #endif
-
