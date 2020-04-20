@@ -22,6 +22,5 @@ public:
 private:
   point_t point_one_, point_two_, point_three_;
   point_t pos_;
-  double side_one_, side_two_, side_three_;
 };
 #endif
