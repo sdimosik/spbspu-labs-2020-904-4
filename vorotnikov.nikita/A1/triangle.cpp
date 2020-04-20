@@ -6,15 +6,12 @@
 Triangle::Triangle(const point_t &point1, const point_t &point2, const point_t &point3) :
   point1_(point1),
   point2_(point2),
-  point3_(point3)
-
-{
-  side1 = sqrt((pow((abs(point2_.x) - abs(point1_.x)), 2) + pow((abs(point2_.y) - abs(point1_.y)), 2)));
-  side2 = sqrt((pow((abs(point3_.x) - abs(point2_.x)), 2) + pow((abs(point3_.y) - abs(point2_.y)), 2)));
-  side3 = sqrt((pow((abs(point3_.x) - abs(point1_.x)), 2) + pow((abs(point3_.y) - abs(point1_.y)), 2)));
-  pos_.x = (point1_.x + point2_.x + point3_.x) / 3;
-  pos_.y = (point1_.y + point2_.y + point3_.y) / 3;
-}
+  point3_(point3),
+  pos_({(point1_.x + point2_.x + point3_.x) / 3, (point1_.y + point2_.y + point3_.y) / 3 }),
+  side1(sqrt((pow((abs(point2_.x) - abs(point1_.x)), 2) + pow((abs(point2_.y) - abs(point1_.y)), 2)))),
+  side2(sqrt((pow((abs(point3_.x) - abs(point2_.x)), 2) + pow((abs(point3_.y) - abs(point2_.y)), 2)))),
+  side3(sqrt((pow((abs(point3_.x) - abs(point1_.x)), 2) + pow((abs(point3_.y) - abs(point1_.y)), 2))))
+{}
 
 double Triangle::getArea() const
 {
@@ -62,13 +59,7 @@ rectangle_t Triangle::getFrameRect() const
 
 void Triangle::move(const point_t &point)
 {
-  point1_.x += point.x - pos_.x;
-  point1_.y += point.y - pos_.y;
-  point2_.x += point.x - pos_.x;
-  point2_.y += point.y - pos_.y;
-  point3_.x += point.x - pos_.x;
-  point3_.y += point.y - pos_.y;
-  pos_ = point;
+  move(point.x - pos_.x, point.y - pos_.y);
 }
 
 void Triangle::move(double x, double y)
