@@ -9,7 +9,20 @@ Triangle::Triangle(const point_t &point_one, const point_t &point_two, const poi
   point_two_(point_two),
   point_three_(point_three),
   pos_({(point_one_.x + point_two_.x + point_three_.x) / 3, (point_one_.y + point_two_.y + point_three_.y) / 3 })
-{}
+{
+    if ( (point_one_ == point_two_) || (point_two_ == point_three_) || (point_one_ == point_three_) ) {
+        throw std::invalid_argument(std::string("Invalid parameters: point shouldn't be equal, point one (X,Y) = "
+          + std::to_string(point_one_.x) + "," + std::to_string(point_one_.y) + ", point two (X,Y) = "
+            + std::to_string(point_two_.x) + "," + std::to_string(point_two_.y) + ", point three (X,Y) = "
+              + std::to_string(point_three_.x) + "," + std::to_string(point_three_.y)));
+    }
+    if (((point_three_.x - point_one_.x) / (point_two.x - point_one_.x)) == ((point_three_.y - point_one_.y) / (point_two.y - point_one_.y))) {
+        throw std::invalid_argument(std::string("Invalid parameters: point shouldn't be on one line, point one (X,Y) = "
+          + std::to_string(point_one_.x) + "," + std::to_string(point_one_.y) + ", point two (X,Y) = "
+            + std::to_string(point_two_.x) + "," + std::to_string(point_two_.y) + ", point three (X,Y) = "
+              + std::to_string(point_three_.x) + "," + std::to_string(point_three_.y)));
+    }
+}
 
 double Triangle::getArea() const
 {
