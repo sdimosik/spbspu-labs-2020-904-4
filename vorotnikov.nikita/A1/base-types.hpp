@@ -4,8 +4,8 @@
 struct point_t
 {
  double x, y;
-bool operator==(const point_t& other)  {
-    return (this->x == other.x) && (this->y == other.y);
+ bool operator==(const point_t& other) {
+   return (this->x == other.x) && (this->y == other.y);
 }
 };
 
