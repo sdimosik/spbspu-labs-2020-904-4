@@ -83,7 +83,7 @@ BOOST_AUTO_TEST_CASE(test_get_frame_composite_shape)
   compShape.insertShape(rect1);
   compShape.insertShape(rect2);
   compShape.insertShape(circ1);
-  const double width = 10.6,
+  const double width = 9.6,
       height = 11.1;
   BOOST_CHECK_CLOSE(compShape.getFrameRect().width, width, ACCURACY_DOUBLE);
   BOOST_CHECK_CLOSE(compShape.getFrameRect().height, height, ACCURACY_DOUBLE);
