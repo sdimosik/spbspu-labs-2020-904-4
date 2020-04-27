@@ -158,7 +158,7 @@ BOOST_AUTO_TEST_CASE(test_copy_composite_shape)
 BOOST_AUTO_TEST_CASE(test_semantics_move_composite_shape)
 {
   std::shared_ptr<meynik::Shape> circle
-      = std::make_shared<meynik::Circle>(meynik::Circle(meynik::point_t{ 0.0,1.0 }, 2.28)));
+      = std::make_shared<meynik::Circle>(meynik::Circle(meynik::point_t{ 0.0,1.0 }, 2.28));
   meynik::CompositeShape compShape;
   compShape.insertShape(circle);
   const double area_circle = circle->getArea();
