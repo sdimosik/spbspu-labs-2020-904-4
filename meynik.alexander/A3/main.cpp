@@ -11,6 +11,7 @@ int main()
     meynik::point_t point1{ 2.0, 3.0 };
     meynik::point_t point2{ 1.2, 2.1 };
     meynik::point_t mover{ 1.0, 2.9 };
+
     double scale1 = 2.0;
     double scale2 = 3.0;
     meynik::Shape* shape1 = new meynik::Rectangle(point1, 4.0, 9.0);
