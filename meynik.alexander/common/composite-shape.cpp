@@ -96,9 +96,8 @@ namespace meynik
     }
     if (capacity_ == size_)
     {
-      const double coefficient = 1.618;
-      int newCapacity = capacity_ * coefficient;
-      arrayPtr temp(new std::shared_ptr<Shape>[newCapacity]);
+      const int coefficient = 2;
+      arrayPtr temp(new std::shared_ptr<Shape>[capacity_ * coefficient]);
       for (size_t i = 0; i < size_; i++)
       {
         temp[i] = array_[i];

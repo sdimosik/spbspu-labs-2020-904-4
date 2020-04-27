@@ -7,7 +7,6 @@
 #include "rectangle.hpp"
 #include "composite-shape.hpp"
 
-
 const double ACCURACY_DOUBLE = 0.0001;
 
 BOOST_AUTO_TEST_CASE(test_invalid_argument_scale_composite_shape)
