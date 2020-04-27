@@ -103,7 +103,7 @@ int main()
     std::cout << "First composite shape after moving in point(2.0, 0.5):\n";
     compShape1.printInfo(std::cout);
     compShape1.move( -2.0,-0.5 );
-    std::cout << "First composite shape after moving by -2.0 and -0.5:\n";
+    std::cout << "First composite shape after moving by -2.0(x) and -0.5(y):\n";
     compShape1.printInfo(std::cout);
     meynik::CompositeShape compShape2(compShape1);
     std::cout << "Second composite shape initialised by first composite shape:\n";
