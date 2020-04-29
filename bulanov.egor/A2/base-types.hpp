@@ -1,7 +1,6 @@
 #ifndef BASE_TYPES_HPP
 #define BASE_TYPES_HPP
-
-namespace gromov
+namespace bulanov
 {
   struct point_t
   {
@@ -15,4 +14,4 @@ namespace gromov
   };
 }
 
-#endif 
+#endif
