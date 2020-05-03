@@ -3,9 +3,8 @@
 #include <cmath>
 struct point_t {
   double x, y;
-  bool operator==(const point_t& other) {
-    return ((this->x == other.x) && (this->y == other.y));
-  }
+  bool operator==(const point_t &other);
+  double getLength(const point_t &other) const;
 };
 
 struct rectangle_t {
