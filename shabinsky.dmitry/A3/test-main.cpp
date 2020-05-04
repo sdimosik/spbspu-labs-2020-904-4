@@ -109,11 +109,6 @@ BOOST_AUTO_TEST_CASE(test_scale_circle_area)
   BOOST_CHECK_CLOSE(area_circle * scale * scale, circle.getArea(), ACCURACY_DOUBLE);
 }
 
-BOOST_AUTO_TEST_CASE(test_invalid_composite_create)
-{
-  BOOST_CHECK_THROW(shabinsky::CompositeShape compositeShape(-5), std::bad_alloc);
-}
-
 BOOST_AUTO_TEST_CASE(test_invalid_composite_operator)
 {
   shabinsky::CompositeShape compositeShape;
