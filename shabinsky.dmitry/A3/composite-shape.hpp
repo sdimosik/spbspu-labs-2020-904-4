@@ -41,9 +41,9 @@ namespace shabinsky
   
   private:
     using compositionPtr = std::unique_ptr<std::shared_ptr<Shape>[]>;
-    compositionPtr composition_;
     size_t size_;
     size_t length_;
+    compositionPtr composition_;
   };
 }
 

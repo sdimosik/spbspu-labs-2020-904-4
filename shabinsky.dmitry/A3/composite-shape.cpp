@@ -12,12 +12,7 @@ namespace shabinsky
     size_(0),
     length_(length),
     composition_(new std::shared_ptr<Shape>[length])
-  {
-    if (length < 0)
-    {
-      throw std::invalid_argument("Incorrect argument of length. Length = " + std::to_string(length));
-    }
-  }
+  {}
   
   CompositeShape::CompositeShape(const CompositeShape &compositeShape) :
     size_(compositeShape.size_),
@@ -62,7 +57,7 @@ namespace shabinsky
   
   void CompositeShape::deleteShape(size_t index)
   {
-    if (size_ == 0 || index < 0 || index > (size_ - 1))
+    if (size_ == 0 || index > (size_ - 1))
     {
       throw std::out_of_range("Index is incorrect. Index = " + std::to_string(index));
     }
@@ -84,13 +79,14 @@ namespace shabinsky
     {
       area += composition_[i]->getArea();
     }
+    return area;
   }
   
   rectangle_t CompositeShape::getFrameRect() const noexcept
   {
     if (size_ == 0)
     {
-      return rectangle_t{0, 0, {0, 0}};
+      return {0, 0, {0, 0}};
     }
     rectangle_t frame = composition_[0]->getFrameRect();
     double left = frame.pos.x - frame.width / 2;
