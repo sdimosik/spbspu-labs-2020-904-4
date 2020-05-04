@@ -227,3 +227,4 @@ BOOST_AUTO_TEST_CASE(test_composite_scale)
   BOOST_CHECK(rectangle.pos.x = 6);
   BOOST_CHECK(rectangle.pos.y = 3);
 }
+
