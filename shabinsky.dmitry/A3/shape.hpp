@@ -1,6 +1,5 @@
 #ifndef HW01_SHAPE_H
 #define HW01_SHAPE_H
-
 #include "base-types.hpp"
 
 namespace shabinsky

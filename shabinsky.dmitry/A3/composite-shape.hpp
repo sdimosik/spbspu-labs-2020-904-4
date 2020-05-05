@@ -1,6 +1,5 @@
 #ifndef COMPOSITE_SHAPE_HPP
 #define COMPOSITE_SHAPE_HPP
-
 #include <memory>
 #include "shape.hpp"
 

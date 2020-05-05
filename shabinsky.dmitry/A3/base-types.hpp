@@ -1,6 +1,5 @@
 #ifndef HW01_BASE_TYPES_H
 #define HW01_BASE_TYPES_H
-
 #include <ostream>
 
 namespace shabinsky

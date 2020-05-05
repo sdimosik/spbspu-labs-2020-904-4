@@ -1,5 +1,6 @@
 #include "composite-shape.hpp"
 
+
 namespace shabinsky
 {
   shabinsky::CompositeShape::CompositeShape() noexcept:

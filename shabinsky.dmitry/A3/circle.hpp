@@ -1,6 +1,5 @@
 #ifndef HW01_CIRCLE_H
 #define HW01_CIRCLE_H
-
 #include "shape.hpp"
 
 namespace shabinsky
