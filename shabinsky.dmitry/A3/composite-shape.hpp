@@ -48,3 +48,4 @@ namespace shabinsky
 }
 
 #endif //COMPOSITE_SHAPE_HPP
+

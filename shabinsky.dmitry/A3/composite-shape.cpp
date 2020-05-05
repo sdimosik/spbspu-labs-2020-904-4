@@ -168,3 +168,4 @@ namespace shabinsky
     return length_;
   }
 }
+
