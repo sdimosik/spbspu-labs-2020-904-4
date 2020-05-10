@@ -18,22 +18,22 @@ namespace biryukova
     }
   }
 
-  double Circle::getArea() const
+  double Circle::getArea() const noexcept
   {
     return (M_PI * radius_ * radius_);
   }
 
-  rectangle_t Circle::getFrameRect() const
+  rectangle_t Circle::getFrameRect() const noexcept
   {
     return {radius_ * 2, radius_ * 2 , centre_};
   }
 
-  void Circle::move(const point_t& centre)
+  void Circle::move(const point_t& centre) noexcept
   {
     centre_ = centre;
   }
 
-  void Circle::move(double x, double y)
+  void Circle::move(double x, double y) noexcept
   {
     centre_.x += x;
     centre_.y += y;
@@ -55,12 +55,12 @@ namespace biryukova
     radius_ *= coefficient;
   }
 
-  double Circle::getRadius() const
+  double Circle::getRadius() const noexcept
   {
     return radius_;
   }
 
-  point_t Circle::getPosition() const
+  point_t Circle::getCentre() const noexcept
   {
     return centre_;
   }

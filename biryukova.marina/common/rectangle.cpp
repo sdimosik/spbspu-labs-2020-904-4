@@ -17,22 +17,22 @@ namespace biryukova
   }
 
 
-  double Rectangle::getArea() const
+  double Rectangle::getArea() const noexcept
   {
     return (rectangle_.width * rectangle_.height);
   }
 
-  rectangle_t Rectangle::getFrameRect() const
+  rectangle_t Rectangle::getFrameRect() const noexcept
   {
     return rectangle_;
   }
 
-  void Rectangle::move(const point_t& centre)
+  void Rectangle::move(const point_t& centre) noexcept
   {
     rectangle_.pos = centre;
   }
 
-  void Rectangle::move(double x, double y)
+  void Rectangle::move(double x, double y) noexcept
   {
     rectangle_.pos.x += x;
     rectangle_.pos.y += y;
@@ -70,17 +70,17 @@ namespace biryukova
     rectangle_.height *= coefficient;
   }
 
-  double Rectangle::getHeight() const
+  double Rectangle::getHeight() const noexcept
   {
     return rectangle_.height;
   }
 
-  double Rectangle::getWidth() const
+  double Rectangle::getWidth() const noexcept
   {
     return rectangle_.width;
   }
 
-  point_t Rectangle::getPosition() const
+  point_t Rectangle::getCentre() const noexcept
   {
     return rectangle_.pos;
   }

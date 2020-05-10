@@ -9,14 +9,14 @@ namespace biryukova
   {
   public:
     Circle(const point_t& point, double radius);
-    double getArea() const override;
-    rectangle_t getFrameRect() const override;
-    void move(const biryukova::point_t& point) override;
-    void move(double x, double y) override;
+    double getArea() const noexcept override;
+    rectangle_t getFrameRect() const noexcept override;
+    void move(const biryukova::point_t& point) noexcept override;
+    void move(double x, double y) noexcept override;
     void print() const override;
     void scale(double coefficient) override;
-    double getRadius() const;
-    point_t getPosition() const;
+    double getRadius() const noexcept;
+    point_t getCentre() const noexcept override;
   private:
     double radius_;
     point_t centre_;
