@@ -73,7 +73,6 @@ namespace meynik
     }
     size_ = array.size_;
     capacity_ = array.capacity_;
-    array_.reset();
     array_ = std::move(array.array_);
     array.size_ = 0;
     array.capacity_ = 0;
@@ -89,9 +88,9 @@ namespace meynik
     }
     if (capacity_ == 0)
     {
-      capacity_ = 1;
       arrayPtr temp;
-      temp.reset(new std::shared_ptr<Shape>[capacity_]);
+      temp.reset(new std::shared_ptr<Shape>[1]);
+      capacity_ = 1;
       array_ = std::move(temp);
     }
     if (capacity_ == size_)
@@ -145,12 +144,12 @@ namespace meynik
     return comp_area;
   }
 
-  point_t CompositeShape::getCentre() const
+  point_t CompositeShape::getCentre() const noexcept
   {
     return getFrameRect().pos;
   }
 
-  rectangle_t CompositeShape::getFrameRect() const
+  rectangle_t CompositeShape::getFrameRect() const noexcept
   {
     if (size_ == 0)
     {
@@ -161,7 +160,7 @@ namespace meynik
     double rightSide = frame.pos.x + frame.width / 2;
     double topSide = frame.pos.y + frame.height / 2;
     double lowerSide = frame.pos.y - frame.height / 2;
-    for (size_t i = 0; i < size_; i++)
+    for (size_t i = 1; i < size_; i++)
     {
       frame = array_[i]->getFrameRect();
       if ((frame.pos.x - frame.width / 2) < leftSide)

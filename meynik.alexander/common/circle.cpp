@@ -16,12 +16,12 @@ namespace meynik
     }
   }
 
-  double Circle::getArea() const
+  double Circle::getArea() const noexcept
   {
     return M_PI * radius_ * radius_;
   }
 
-  rectangle_t Circle::getFrameRect() const
+  rectangle_t Circle::getFrameRect() const noexcept
   {
     return rectangle_t{ radius_ * 2, radius_ * 2, centre_ };
   }
@@ -43,7 +43,7 @@ namespace meynik
         << ", " << centre_.y << ")\n";
   }
 
-  point_t Circle::getCentre() const
+  point_t Circle::getCentre() const noexcept
   {
     return centre_;
   }

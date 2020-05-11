@@ -32,13 +32,13 @@ namespace meynik
 
     double getArea() const noexcept override;
 
-    point_t getCentre() const override;
+    point_t getCentre() const noexcept override;
 
     size_t getSize() const noexcept;
 
     size_t getCapacity() const noexcept;
 
-    rectangle_t getFrameRect() const override;
+    rectangle_t getFrameRect() const noexcept override;
 
     void move(const double x, const double y) noexcept override;
 
