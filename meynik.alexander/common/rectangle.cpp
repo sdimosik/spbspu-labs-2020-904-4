@@ -17,7 +17,7 @@ namespace meynik
     }
   }
 
-  double Rectangle::getArea() const
+  double Rectangle::getArea() const noexcept
   {
     return width_ * height_;
   }
@@ -45,7 +45,7 @@ namespace meynik
         << ", " << pos_.y << ")\n";
   }
 
-  point_t Rectangle::getCentre() const
+  point_t Rectangle::getCentre() const noexcept
   {
     return pos_;
   }
