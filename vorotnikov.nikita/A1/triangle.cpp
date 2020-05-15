@@ -13,8 +13,8 @@ Triangle::Triangle(const point_t &point_one, const point_t &point_two, const poi
   if ( this->getArea() == 0 ) {
     throw std::invalid_argument(std::string("Invalid parameters: point shouldn't be equal or be on one line, point one (X,Y) = "
         + std::to_string(point_one_.x) + "," + std::to_string(point_one_.y) + ", point two (X,Y) = "
-            + std::to_string(point_two_.x) + "," + std::to_string(point_two_.y) + ", point three (X,Y) = "
-                + std::to_string(point_three_.x) + "," + std::to_string(point_three_.y)));
+          + std::to_string(point_two_.x) + "," + std::to_string(point_two_.y) + ", point three (X,Y) = "
+            + std::to_string(point_three_.x) + "," + std::to_string(point_three_.y)));
   }
 }
 
