@@ -10,13 +10,13 @@ namespace bakaeva
   public:
     Circle(double radius, const point_t &pos);
 
-    double getArea() const override;
+    double getArea() const noexcept override;
 
-    rectangle_t getFrameRect() const override;
+    rectangle_t getFrameRect() const noexcept override;
 
-    void move(const point_t &center) override;
+    void move(const point_t &center) noexcept override;
 
-    void move(double x, double y) override;
+    void move(double x, double y) noexcept override;
 
     void printData() const override;
 
