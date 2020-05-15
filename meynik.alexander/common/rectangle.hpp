@@ -9,7 +9,7 @@ namespace meynik
   public:
     Rectangle(const point_t& pos, double width, double height);
 
-    double getArea() const override;
+    double getArea() const noexcept override;
 
     rectangle_t getFrameRect() const override;
 
@@ -19,7 +19,7 @@ namespace meynik
 
     void printInfo(std::ostream& out) const override;
 
-    point_t getCentre() const override;
+    point_t getCentre() const  noexcept override;
 
     void scale(const double coefficient) override;
 

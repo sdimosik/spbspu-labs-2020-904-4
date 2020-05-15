@@ -9,9 +9,9 @@ namespace meynik
   public:
     Circle(const point_t& pos, double radius);
 
-    double getArea() const override;
+    double getArea() const noexcept override;
 
-    rectangle_t getFrameRect() const override;
+    rectangle_t getFrameRect() const noexcept override;
 
     void move(const point_t& position) override;
 
@@ -19,7 +19,7 @@ namespace meynik
 
     void printInfo(std::ostream& out) const override;
   
-    point_t getCentre() const override;
+    point_t getCentre() const noexcept override;
 
     void scale(const double coefficient) override;
 
