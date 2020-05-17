@@ -3,7 +3,6 @@
 #include <cmath>
 #include <boost/test/included/unit_test.hpp>
 #include <boost/test/floating_point_comparison.hpp>
-
 #include "rectangle.hpp"
 #include "circle.hpp"
 #include "composite-shape.hpp"
@@ -26,6 +25,18 @@ BOOST_AUTO_TEST_CASE(test_invalid_composite_deleteShape)
 {
   shabinsky::CompositeShape compositeShape;
   BOOST_CHECK_THROW(compositeShape.deleteShape(0), std::out_of_range);
+}
+
+BOOST_AUTO_TEST_CASE(test_invalid_composite_scale)
+{
+  shabinsky::CompositeShape compositeShape;
+  std::shared_ptr<shabinsky::Shape> rect1 = std::make_shared<shabinsky::Rectangle>(shabinsky::Rectangle({1, 1}, 2, 2));
+  std::shared_ptr<shabinsky::Shape> rect2 = std::make_shared<shabinsky::Rectangle>(shabinsky::Rectangle({11, 1}, 2, 2));
+  std::shared_ptr<shabinsky::Shape> rect3 = std::make_shared<shabinsky::Rectangle>(shabinsky::Rectangle({4, 5}, 2, 2));
+  compositeShape.addShape(rect1);
+  compositeShape.addShape(rect2);
+  compositeShape.addShape(rect3);
+  BOOST_CHECK_THROW(compositeShape.scale(-2), std::invalid_argument);
 }
 
 BOOST_AUTO_TEST_CASE(test_composite_create)

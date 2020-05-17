@@ -1,5 +1,5 @@
+#include <iostream>
 #include "composite-shape.hpp"
-
 
 namespace shabinsky
 {
@@ -42,7 +42,7 @@ namespace shabinsky
     {
       throw std::invalid_argument("Shape is nullptr");
     }
-    if (size_ >= length_)
+    if (size_ == length_)
     {
       compositionPtr tempComposition(new std::shared_ptr<Shape>[length_ + 1]);
       for (size_t i = 0; i < length_; ++i)
@@ -62,15 +62,13 @@ namespace shabinsky
     {
       throw std::out_of_range("Index is incorrect. Index = " + std::to_string(index));
     }
-    else
+    size_--;
+    for (size_t i = index; i < size_; ++i)
     {
-      size_--;
-      for (size_t i = index; i < size_; ++i)
-      {
-        composition_[i] = composition_[i + 1];
-      }
-      composition_[size_] = nullptr;
+      composition_[i] = composition_[i + 1];
     }
+    composition_[size_] = nullptr;
+    
   }
   
   double CompositeShape::getArea() const noexcept
@@ -97,22 +95,11 @@ namespace shabinsky
     for (size_t i = 1; i < size_; ++i)
     {
       frame = composition_[i]->getFrameRect();
-      if ((frame.pos.x - frame.width / 2) < left)
-      {
-        left = frame.pos.x - frame.width / 2;
-      }
-      if ((frame.pos.x + frame.width / 2) > right)
-      {
-        right = frame.pos.x + frame.width / 2;
-      }
-      if ((frame.pos.y + frame.height / 2) > top)
-      {
-        top = frame.pos.y + frame.height / 2;
-      }
-      if ((frame.pos.y - frame.height / 2) < lower)
-      {
-        lower = frame.pos.y - frame.height / 2;
-      }
+      
+      left = std::min(left, frame.pos.x - frame.width / 2);
+      right = std::max(right, frame.pos.x + frame.width / 2);
+      top = std::max(top, frame.pos.y + frame.height / 2);
+      lower = std::min(lower, frame.pos.y - frame.height / 2);
     }
     return {(right - left), (top - lower), {(left + (right - left) / 2), (lower + (top - lower) / 2)}};
   }
@@ -133,16 +120,23 @@ namespace shabinsky
     }
   }
   
-  void CompositeShape::show(std::ostream &out) noexcept
+  void CompositeShape::show(std::ostream &out)
   {
-    out << "Composition:\n";
-    for (size_t i = 0; i < size_; ++i)
+    try
     {
-      composition_[i]->show(out);
+      out.exceptions(std::ostream::failbit);
+      out << "Composition:\n";
+      for (size_t i = 0; i < size_; ++i)
+      {
+        composition_[i]->show(out);
+      }
+    } catch (const std::ios_base::failure& f)
+    {
+      std::cerr << "Caught error: " << f.what() << '\n';
     }
   }
   
-  void CompositeShape::scale(double coefficient) noexcept
+  void CompositeShape::scale(double coefficient)
   {
     for (size_t i = 0; i < size_; ++i)
     {

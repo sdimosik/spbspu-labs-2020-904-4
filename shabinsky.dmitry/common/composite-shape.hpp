@@ -1,5 +1,6 @@
 #ifndef COMPOSITE_SHAPE_HPP
 #define COMPOSITE_SHAPE_HPP
+
 #include <memory>
 #include "shape.hpp"
 
@@ -28,9 +29,9 @@ namespace shabinsky
     
     void move(double x, double y) noexcept override;
     
-    void show(std::ostream &out) noexcept override;
+    void show(std::ostream &out) override;
     
-    void scale(double coefficient) noexcept override;
+    void scale(double coefficient) override;
     
     std::shared_ptr<Shape> &operator[](size_t index) const;
     
