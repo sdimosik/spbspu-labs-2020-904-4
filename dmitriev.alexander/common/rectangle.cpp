@@ -14,22 +14,22 @@ namespace dmitriev
     }
   }
 
-  double Rectangle::getArea() const
+  double Rectangle::getArea() const noexcept
   {
     return width_ * height_;
   }
 
-  rectangle_t Rectangle::getFrameRect() const
+  rectangle_t Rectangle::getFrameRect() const noexcept
   {
     return rectangle_t{width_, height_, pos_};
   }
 
-  void Rectangle::move(const point_t &point)
+  void Rectangle::move(const point_t &point) noexcept
   {
     pos_ = point;
   }
 
-  void Rectangle::move(const double x, const double y)
+  void Rectangle::move(const double x, const double y) noexcept
   {
     pos_.x += x;
     pos_.y += y;

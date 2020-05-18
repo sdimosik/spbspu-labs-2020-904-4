@@ -10,13 +10,13 @@ namespace dmitriev
   public:
     Rectangle(const point_t &pos, double width, double height);
 
-    double getArea() const override;
+    double getArea() const noexcept override;
 
-    rectangle_t getFrameRect() const override;
+    rectangle_t getFrameRect() const noexcept override;
 
-    void move(const point_t &position) override;
+    void move(const point_t &position) noexcept override;
 
-    void move(double x, double y) override;
+    void move(double x, double y) noexcept override;
 
     void scale(double factor) override;
 
