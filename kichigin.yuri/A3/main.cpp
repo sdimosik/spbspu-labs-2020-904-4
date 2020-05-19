@@ -1,6 +1,7 @@
 #include <iostream>
 #include "rectangle.hpp"
 #include "circle.hpp"
+#include "composite-shape.hpp"
 
 int main()
 {
@@ -43,9 +44,37 @@ int main()
         << shape->getArea() << '\n';
     shape = &circle;
     std::cout << "Now pointer to shape refers to circle and its area is: "
-        << shape->getArea() << '\n';
+        << shape->getArea() << "\nComposite shape test:\n";
+    kichigin::CompositeShape compShape(1);
+    std::cout << "Full size of composite shape is " << compShape.getFullSize() <<
+        "\nCurrent size of composite shape is " << compShape.getCurrentSize();
+    std::shared_ptr<kichigin::Shape> sharedPointer = std::make_shared<kichigin::Rectangle>(rect);
+    compShape.addShape(sharedPointer);
+    std::cout << "\nAfter adding first shape full size of composite shape is " << compShape.getFullSize() <<
+        "\nCurrent size of composite shape is " << compShape.getCurrentSize();
+    sharedPointer = std::make_shared<kichigin::Circle>(circle);
+    compShape.addShape(sharedPointer);
+    std::cout << "\nAfter adding second shape full size of composite shape is " << compShape.getFullSize()
+        << "\nCurrent size of composite shape is " << compShape.getCurrentSize()
+        << "\nArea of first shape in composite shape is " << compShape[0]->getArea()
+        << "\nArea of second shape in composite shape is " << compShape[1]->getArea()
+        << "\nTotal area of composite shape is "<< compShape.getArea()
+        << "\nCoordinates of composite shape are (" << compShape.getFrameRect().pos.x << ','
+        << compShape.getFrameRect().pos.y << ")\n";
+    kichigin::point_t newCompShapePosition = { 5.0, 5.0 };
+    compShape.move(newCompShapePosition);
+    std::cout << "Coordinates of composite shape afmer moving to (5,5) are("
+        << compShape.getFrameRect().pos.x << ',' << compShape.getFrameRect().pos.y << ")\n";
+    compShape.scale(1.5);
+    std::cout << "After scale with coefficient 1.5 area of composite shape is: "
+        << compShape.getArea();
   }
   catch (const std::invalid_argument& error)
+  {
+    std::cerr << error.what() << "\nEnd of programm\n";
+    return 1;
+  }
+  catch (const std::out_of_range& error)
   {
     std::cerr << error.what() << "\nEnd of programm\n";
     return 1;
