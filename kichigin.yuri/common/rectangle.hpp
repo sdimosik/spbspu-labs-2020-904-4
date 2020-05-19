@@ -9,15 +9,15 @@ namespace kichigin
   {
   public:
     Rectangle(double width, double high, const point_t& pos);
-    double getWidth() const;
-    double getHeight() const;
-    point_t getPosition() const;
-    double getArea() const override;
-    rectangle_t getFrameRect() const override;
+    double getWidth() const noexcept;
+    double getHeight() const noexcept;
+    point_t getPosition() const noexcept;
+    double getArea() const noexcept override;
+    rectangle_t getFrameRect() const noexcept override;
     void setWidth(double width);
     void setHeight(double high);
-    void move(const point_t& position) override;
-    void move(double x, double y) override;
+    void move(const point_t& position) noexcept override;
+    void move(double x, double y) noexcept override;
     void scale(double coefficient) override;
   private:
     rectangle_t figure_;

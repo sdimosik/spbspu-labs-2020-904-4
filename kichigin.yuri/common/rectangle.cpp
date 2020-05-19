@@ -17,27 +17,27 @@ namespace kichigin
     }
   }
 
-  double Rectangle::getWidth() const
+  double Rectangle::getWidth() const noexcept
   {
     return figure_.width;
   }
 
-  double Rectangle::getHeight() const
+  double Rectangle::getHeight() const noexcept
   {
     return figure_.height;
   }
 
-  point_t Rectangle::getPosition() const
+  point_t Rectangle::getPosition() const noexcept
   {
     return figure_.pos;
   }
 
-  double Rectangle::getArea() const
+  double Rectangle::getArea() const noexcept
   {
     return (figure_.height * figure_.width);
   }
 
-  rectangle_t Rectangle::getFrameRect() const
+  rectangle_t Rectangle::getFrameRect() const noexcept
   {
     return figure_;
   }
@@ -60,12 +60,12 @@ namespace kichigin
     figure_.height = height;
   }
 
-  void Rectangle::move(const point_t& position)
+  void Rectangle::move(const point_t& position) noexcept
   {
     figure_.pos = position;
   }
 
-  void Rectangle::move(double x, double y)
+  void Rectangle::move(double x, double y) noexcept
   {
     figure_.pos.x += x;
     figure_.pos.y += y;
