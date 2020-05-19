@@ -15,23 +15,23 @@ namespace bulanov
     }
   }
 
-  void Circle::move(const point_t &center)
+  void Circle::move(const point_t &center) noexcept
   {
     pos_ = center;
   }
 
-  void Circle::move(const double x, const double y)
+  void Circle::move(const double x, const double y) noexcept
   {
     pos_.x += x;
     pos_.y += y;
   }
 
-  double Circle::getArea() const
+  double Circle::getArea() const noexcept
   {
     return (M_PI * radius_ * radius_);
   }
 
-  rectangle_t Circle::getFrameRect() const
+  rectangle_t Circle::getFrameRect() const noexcept
   {
     return rectangle_t{2 * radius_, 2 * radius_, pos_};
   }
@@ -46,10 +46,10 @@ namespace bulanov
   {
     std::cout << "Rect frame information:   width = " << getFrameRect().width
         << "; height = " << getFrameRect().height << "; center = (" << getFrameRect().pos.x
-        << ", " << getFrameRect().pos.y << ')' << std::endl;
+        << ", " << getFrameRect().pos.y << ")\n";
   }
 
-  point_t Circle::getCenter() const
+  point_t Circle::getCenter() const noexcept
   {
     return pos_;
   }

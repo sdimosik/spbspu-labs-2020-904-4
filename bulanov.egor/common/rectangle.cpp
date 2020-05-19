@@ -19,23 +19,23 @@ namespace bulanov
     }
   }
 
-  void Rectangle::move(const point_t &center)
+  void Rectangle::move(const point_t &center) noexcept
   {
     pos_ = center;
   }
 
-  void Rectangle::move(const double x, const double y)
+  void Rectangle::move(const double x, const double y) noexcept
   {
     pos_.x += x;
     pos_.y += y;
   }
 
-  double Rectangle::getArea() const
+  double Rectangle::getArea() const noexcept
   {
     return (height_ * width_);
   }
 
-  rectangle_t Rectangle::getFrameRect() const
+  rectangle_t Rectangle::getFrameRect() const noexcept
   {
     return rectangle_t{width_, height_, pos_};
   }
@@ -43,17 +43,17 @@ namespace bulanov
   void Rectangle::printInform() const
   {
     std::cout << "Rectangle width: " << width_ << "; Rectangle height: " << height_
-        << "; Rectangle center: (" << pos_.x << ", " << pos_.y << ')' << std::endl;
+        << "; Rectangle center: (" << pos_.x << ", " << pos_.y << ")\n";
   }
 
   void Rectangle::printFrameInform() const
   {
     std::cout << "Rect frame information:   width = " << getFrameRect().width
         << "; height = " << getFrameRect().height << "; center = (" << getFrameRect().pos.x
-        << ", " << getFrameRect().pos.y << ')' << std::endl;
+        << ", " << getFrameRect().pos.y << ")\n";
   }
 
-  point_t Rectangle::getCenter() const
+  point_t Rectangle::getCenter() const noexcept
   {
     return pos_;
   }
