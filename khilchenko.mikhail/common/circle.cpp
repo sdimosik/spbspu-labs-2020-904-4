@@ -18,7 +18,7 @@ namespace khilchenko
     }
   }
 
-  double Circle::getArea() const
+  double Circle::getArea() const noexcept
   {
     return (rad_ * rad_ * M_PI);
   }
@@ -28,18 +28,18 @@ namespace khilchenko
     return rectangle_t{ pos_, 2 * rad_, 2 * rad_ };
   }
 
-  void Circle::move(const point_t &newPos)
+  void Circle::move(const point_t &newPos) noexcept
   {
     pos_ = newPos;
   }
 
-  void Circle::move(double x, double y)
+  void Circle::move(double x, double y) noexcept
   {
     pos_.x += x;
     pos_.y += y;
   }
 
-  point_t Circle::getCenter() const
+  point_t Circle::getCenter() const noexcept
   {
     return point_t{ pos_.x, pos_.y };
   }
