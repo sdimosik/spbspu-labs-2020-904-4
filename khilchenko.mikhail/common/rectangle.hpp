@@ -9,11 +9,11 @@ namespace khilchenko
   {
   public:
     Rectangle(double width, double height, const point_t &pos);
-    double getArea() const override;
+    double getArea() const noexcept override;
     rectangle_t getFrameRect() const override;
-    void move(const point_t &newPos) override;
-    void move(double x, double y) override;
-    point_t getCenter() const override;
+    void move(const point_t &newPos) noexcept override;
+    void move(double x, double y) noexcept override;
+    point_t getCenter() const noexcept override;
     void scale(double coefficient) override;
   private:
     rectangle_t figure_;

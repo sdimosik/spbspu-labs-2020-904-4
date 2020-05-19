@@ -14,17 +14,17 @@ namespace khilchenko
     }
   }
 
-  double Rectangle::getArea() const
+  double Rectangle::getArea() const noexcept
   {
     return (figure_.height * figure_.width);
   }
 
-  void Rectangle::move(const point_t &newPos)
+  void Rectangle::move(const point_t &newPos) noexcept
   {
     figure_.pos = newPos;
   }
 
-  void Rectangle::move(double x, double y)
+  void Rectangle::move(double x, double y) noexcept
   {
     figure_.pos.x += x;
     figure_.pos.y += y;
@@ -35,7 +35,7 @@ namespace khilchenko
     return rectangle_t{ figure_.pos, figure_.width, figure_.height };
   }
 
-  point_t Rectangle::getCenter() const
+  point_t Rectangle::getCenter() const noexcept
   {
     return point_t{ figure_.pos.x, figure_.pos.y };
   }
