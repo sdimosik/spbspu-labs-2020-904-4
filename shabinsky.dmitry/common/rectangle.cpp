@@ -54,8 +54,8 @@ namespace shabinsky
   
   void Rectangle::move(const point_t &position)
   {
-    double deltaX = position.x - position.x;
-    double deltaY = position.y - position.y;
+    double deltaX = position.x - position_.x;
+    double deltaY = position.y - position_.y;
     move(deltaX, deltaY);
   }
   
@@ -81,10 +81,25 @@ namespace shabinsky
     {
       throw std::invalid_argument("Coefficient must be positive. Coefficient: " + std::to_string(coefficient));
     }
-    for (point_t &edge : edges_)
+    for (int i = 0; i < 4; ++i)
     {
-      edge.x = (edge.x - (width_ / 2)) * coefficient;
-      edge.y = (edge.y - (height_ / 2)) * coefficient;
+      if (i == 0 || i == 4)
+      {
+        edges_[i].x = (position_.x - (width_ / 2) * coefficient);
+      }
+      else
+      {
+        edges_[i].x = (position_.x + (width_ / 2) * coefficient);
+      }
+      
+      if (i == 0 || i == 1)
+      {
+        edges_[i].y = (position_.y + (height_ / 2) * coefficient);
+      }
+      else
+      {
+        edges_[i].y = (position_.y - (height_ / 2) * coefficient);
+      }
     }
     width_ *= coefficient;
     height_ *= coefficient;
