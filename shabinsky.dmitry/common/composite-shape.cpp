@@ -1,4 +1,5 @@
 #include <iostream>
+#include <math.h>
 #include "composite-shape.hpp"
 
 namespace shabinsky
@@ -130,7 +131,7 @@ namespace shabinsky
       {
         composition_[i]->show(out);
       }
-    } catch (const std::ios_base::failure& f)
+    } catch (const std::ios_base::failure &f)
     {
       std::cerr << "Caught error: " << f.what() << '\n';
     }
@@ -162,5 +163,12 @@ namespace shabinsky
   {
     return length_;
   }
+  
+  void CompositeShape::rotate(double angle)
+  {
+    for (size_t i = 0; i < size_; ++i)
+    {
+      composition_[i]->rotate(angle);
+    }
+  }
 }
-
