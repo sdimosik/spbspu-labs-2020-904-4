@@ -6,8 +6,8 @@ int main()
 {
   try
   {
-    meynik::point_t mover{ 1.5,2.9 };
-    meynik::Shape* shape1 = new meynik::Rectangle(meynik::point_t{ 2.0, 3.0 }, 4.0, 9.0);
+    point_t mover{ 1.5,2.9 };
+    Shape* shape1 = new Rectangle(point_t{ 2.0, 3.0 }, 4.0, 9.0);
     std::cout << "Shape pointer initialised by rectangle object:" << std::endl
       << "Rectangle before moving:" << std::endl;
     shape1->printInfo(std::cout);
@@ -19,7 +19,7 @@ int main()
     shape1->printInfo(std::cout);
     std::cout << "Rectangle area: " << shape1->getArea() << std::endl << std::endl;
     delete shape1;
-    meynik::Rectangle rect(meynik::point_t{ 2.0, 3.0 }, 4.0, 9.0);
+    Rectangle rect(point_t{ 2.0, 3.0 }, 4.0, 9.0);
     std::cout << "Object of rectangle class:" << std::endl
       << "Rectangle before moving:" << std::endl;
     rect.printInfo(std::cout);
@@ -30,7 +30,7 @@ int main()
     std::cout << "Rectangle returned to it's initial position:" << std::endl;
     rect.printInfo(std::cout);
     std::cout << "Rectangle area: " << rect.getArea() << std::endl << std::endl;
-    meynik::Shape* shape2 = new meynik::Circle(meynik::point_t{ 1.2, 2.1 }, 2.281336);
+    Shape* shape2 = new Circle(point_t{ 1.2, 2.1 }, 2.281336);
     std::cout << "Shape pointer initialised by circle object" << std::endl
       << "Circle before moving:" << std::endl;
     shape2->printInfo(std::cout);
@@ -42,7 +42,7 @@ int main()
     shape2->printInfo(std::cout);
     std::cout << "Circle area: " << shape2->getArea() << std::endl << std::endl;
     delete shape2;
-    meynik::Circle circ(meynik::point_t{ 1.2, 2.1 }, 2.281336);
+    Circle circ(point_t{ 1.2, 2.1 }, 2.281336);
     std::cout << "Object of circle class:" << std::endl
       << "Circle before moving:" << std::endl;
     circ.printInfo(std::cout);
@@ -54,7 +54,7 @@ int main()
     circ.printInfo(std::cout);
     std::cout << "Circle area: " << circ.getArea() << std::endl;
   }
-  catch (const std::invalid_argument& exception)
+  catch (const std::invalid_argument & exception)
   {
     std::cerr << exception.what() << std::endl;
     return 1;
