@@ -13,23 +13,23 @@ namespace  meshcheryakova
     }
   }
 
-  double Circle::getArea() const
+  double Circle::getArea() const noexcept
   {
     return M_PI * radius_ * radius_;
   }
 
-  rectangle_t Circle::getFrameRect() const
+  rectangle_t Circle::getFrameRect() const noexcept
   {
     return rectangle_t{radius_ * 2, radius_ * 2, pos_};
   }
 
-  void Circle::move(double x, double y)
+  void Circle::move(double x, double y) noexcept
   {
     pos_.x += x;
     pos_.y += y;
   }
 
-  void Circle::move(const point_t &spot)
+  void Circle::move(const point_t &spot) noexcept
   {
     pos_ = spot;
   }
