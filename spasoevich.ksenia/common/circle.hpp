@@ -8,10 +8,10 @@ namespace spasoevich
   {
   public:
     Circle(const point_t& center, double radius);
-    double getArea() const override;
-    rectangle_t getFrameRect() const override;
-    void move(const double dx, const double dy) override;
-    void move(const point_t& pt) override;
+    double getArea() const noexcept override;
+    rectangle_t getFrameRect() const noexcept override;
+    void move(const double dx, const double dy) noexcept override;
+    void move(const point_t& pt) noexcept override;
     void scale(const double coefficient) override;
   private:
     point_t center_;
