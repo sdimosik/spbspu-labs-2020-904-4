@@ -10,7 +10,7 @@ namespace lovkacheva
     if (radius <= 0)
     {
       throw std::invalid_argument(
-        "The radius of the circle must be positive (radius = " + std::to_string(radius) + ")");
+          "The radius of the circle must be positive (radius = " + std::to_string(radius) + ")");
     }
   }
 
@@ -19,22 +19,22 @@ namespace lovkacheva
     out << "Circle ( radius_ = " << radius_ << "; centre_(" << centre_.x << ", " << centre_.y << "))";
   }
 
-  double Circle::getArea() const
+  double Circle::getArea() const noexcept
   {
     return (M_PI * pow(radius_, 2));
   }
 
-  rectangle_t Circle::getFrameRect() const
+  rectangle_t Circle::getFrameRect() const noexcept
   {
     return rectangle_t{radius_ * 2, radius_ * 2, centre_};
   }
 
-  void Circle::move(const point_t& newPosition)
+  void Circle::move(const point_t& newPosition) noexcept
   {
     centre_ = newPosition;
   }
 
-  void Circle::move(double dx, double dy)
+  void Circle::move(double dx, double dy) noexcept
   {
     centre_.x += dx;
     centre_.y += dy;
@@ -45,7 +45,7 @@ namespace lovkacheva
     if (coefficient <= 0.0)
     {
       throw std::invalid_argument(
-        "The coefficient must be positive (coefficient = " + std::to_string(coefficient) + ")");
+          "The coefficient must be positive (coefficient = " + std::to_string(coefficient) + ")");
     }
     radius_ *= coefficient;
   }
