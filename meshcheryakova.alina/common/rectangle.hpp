@@ -8,13 +8,13 @@ namespace  meshcheryakova
   public:
     Rectangle(double width, double height, const point_t &spot);
 
-    double getArea() const override;
+    double getArea() const noexcept override;
 
-    rectangle_t getFrameRect() const override;
+    rectangle_t getFrameRect() const noexcept override;
 
-    void move(double x, double y) override;
+    void move(double x, double y) noexcept override;
 
-    void move(const point_t &spot) override;
+    void move(const point_t &spot) noexcept override;
 
     void printSpot(std::ostream &out) override;
 
