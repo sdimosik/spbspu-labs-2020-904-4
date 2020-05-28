@@ -15,23 +15,23 @@ namespace spasoevich
     }
   }
 
-  double Circle::getArea() const
+  double Circle::getArea() const noexcept
   {
     return (radius_ * radius_ * M_PI);
   }
 
-  rectangle_t Circle::getFrameRect() const
+  rectangle_t Circle::getFrameRect() const noexcept
   {
     return rectangle_t{ center_, radius_ * 2, radius_ * 2 };
   }
 
-  void Circle::move(double dx, double dy)
+  void Circle::move(double dx, double dy) noexcept
   {
     center_.x += dx;
     center_.y += dy;
   }
 
-  void Circle::move(const point_t& pt)
+  void Circle::move(const point_t& pt) noexcept
   {
     center_ = pt;
   }
@@ -42,6 +42,8 @@ namespace spasoevich
     {
       throw std::invalid_argument("Coefficent can't be less or equal to zero. ");
     }
-    radius_ = radius_ * coefficient;
+    
+      radius_ = radius_ * coefficient;
   }
+
 }
