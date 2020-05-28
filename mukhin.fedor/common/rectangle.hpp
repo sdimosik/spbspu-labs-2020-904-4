@@ -8,14 +8,14 @@ namespace mukhin
   {
   public:
     Rectangle(const double width, const double height, const point_t& core);
-    double getArea() const override;
-    rectangle_t getFrameRect() const override;
-    void move(const double dx, const double dy) override;
-    void move(const point_t& core) override;
+    double getArea() const noexcept override;
+    rectangle_t getFrameRect() const noexcept override;
+    void move(const double dx, const double dy) noexcept override;
+    void move(const point_t& core) noexcept override;
     void scale(const double factor) override;
-    point_t getCore() const;
-    double getHeight() const;
-    double getWidth() const;
+    point_t getCore() const noexcept override;
+    double getHeight() const noexcept;
+    double getWidth() const noexcept;
   private:
     point_t pos_;
     double width_;
