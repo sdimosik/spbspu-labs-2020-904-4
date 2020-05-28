@@ -16,23 +16,23 @@ namespace mukhin
     }
   }
 
-  double Circle::getArea() const
+  double Circle::getArea() const noexcept
   {
     return M_PI * radius_ * radius_;
   }
 
-  rectangle_t Circle::getFrameRect() const
+  rectangle_t Circle::getFrameRect() const noexcept
   {
     return { pos_, 2 * radius_, 2 * radius_ };
   }
 
-  void Circle::move(const double dx, const double dy)
+  void Circle::move(const double dx, const double dy) noexcept
   {
     pos_.x += dx;
     pos_.y += dy;
   }
 
-  void Circle::move(const point_t& core)
+  void Circle::move(const point_t& core) noexcept
   {
     pos_ = core;
   }
@@ -47,12 +47,12 @@ namespace mukhin
     radius_ *= factor;
   }
 
-  point_t Circle::getCore() const
+  point_t Circle::getCore() const noexcept
   {
     return pos_;
   }
 
-  double Circle::getRadius() const
+  double Circle::getRadius() const noexcept
   {
     return radius_;
   }

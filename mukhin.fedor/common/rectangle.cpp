@@ -17,23 +17,23 @@ namespace mukhin
     }
   }
 
-  double Rectangle::getArea() const
+  double Rectangle::getArea() const noexcept
   {
     return width_ * height_;
   }
 
-  rectangle_t Rectangle::getFrameRect() const
+  rectangle_t Rectangle::getFrameRect() const noexcept
   {
     return { pos_, width_, height_ };
   }
 
-  void Rectangle::move(const double dx, const double dy)
+  void Rectangle::move(const double dx, const double dy) noexcept
   {
     pos_.x += dx;
     pos_.y += dy;
   }
  
-  void Rectangle::move(const point_t& core)
+  void Rectangle::move(const point_t& core) noexcept
   {
     pos_ = core;
   }
@@ -49,17 +49,17 @@ namespace mukhin
     width_ *= factor;
   }
  
-  point_t Rectangle::getCore() const
+  point_t Rectangle::getCore() const noexcept
   {
     return pos_;
   }
 
-  double Rectangle::getHeight() const
+  double Rectangle::getHeight() const noexcept
   {
     return height_;
   }
 
-  double Rectangle::getWidth() const
+  double Rectangle::getWidth() const noexcept
   {
     return width_;
   }
