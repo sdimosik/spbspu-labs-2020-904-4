@@ -13,13 +13,13 @@ namespace lovkacheva
 
     void print(std::ostream& out) const override;
 
-    double getArea() const override;
+    double getArea() const noexcept override;
 
-    rectangle_t getFrameRect() const override;
+    rectangle_t getFrameRect() const noexcept override;
 
-    void move(const point_t& newPosition) override;
+    void move(const point_t& newPosition) noexcept override;
 
-    void move(double dx, double dy) override;
+    void move(double dx, double dy) noexcept override;
 
     void scale(double coefficient) override;
 

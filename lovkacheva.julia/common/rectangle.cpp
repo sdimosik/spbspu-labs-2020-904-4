@@ -8,12 +8,12 @@ namespace lovkacheva
     if (contents.width <= 0)
     {
       throw std::invalid_argument(
-        "The width of the rectangle must be positive (width = " + std::to_string(contents.width) + ")");
+          "The width of the rectangle must be positive (width = " + std::to_string(contents.width) + ")");
     }
     if (contents.height <= 0)
     {
       throw std::invalid_argument(
-        "The height of the rectangle must be positive (height = " + std::to_string(contents.height) + ")");
+          "The height of the rectangle must be positive (height = " + std::to_string(contents.height) + ")");
     }
   }
 
@@ -23,22 +23,22 @@ namespace lovkacheva
         << "; pos(" << contents_.pos.x << ", " << contents_.pos.y << "))";
   }
 
-  double Rectangle::getArea() const
+  double Rectangle::getArea() const noexcept
   {
     return (contents_.height * contents_.width);
   }
 
-  rectangle_t Rectangle::getFrameRect() const
+  rectangle_t Rectangle::getFrameRect() const noexcept
   {
     return contents_;
   }
 
-  void Rectangle::move(const point_t& newPosition)
+  void Rectangle::move(const point_t& newPosition) noexcept
   {
     contents_.pos = newPosition;
   }
 
-  void Rectangle::move(double dx, double dy)
+  void Rectangle::move(double dx, double dy) noexcept
   {
     contents_.pos.x += dx;
     contents_.pos.y += dy;
@@ -49,7 +49,7 @@ namespace lovkacheva
     if (coefficient <= 0.0)
     {
       throw std::invalid_argument(
-        "The coefficient must be positive (coefficient = " + std::to_string(coefficient) + ")");
+          "The coefficient must be positive (coefficient = " + std::to_string(coefficient) + ")");
     }
     contents_.width *= coefficient;
     contents_.height *= coefficient;
