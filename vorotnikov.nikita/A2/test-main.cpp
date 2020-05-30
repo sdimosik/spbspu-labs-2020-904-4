@@ -2,16 +2,30 @@
 #include <cassert>
 #include <vector>
 #include <functional>
-#include "../common/triangle.hpp"
-#include "../common/circle.hpp"
-#include "../common/rectangle.hpp"
-
-bool was_catched = false;
+#include "triangle.hpp"
+#include "circle.hpp"
+#include "rectangle.hpp"
 
 bool isEqualAround (double pre_value, double post_value) {
   const double ACCURACY = 0.00001;
   return std::abs(pre_value - post_value) < ACCURACY;
 }
+
+typedef void (*initShape)();
+
+bool checkException(initShape func)
+{
+  try
+  {
+    func();
+  }
+  catch (std::invalid_argument &e)
+  {
+    return true;
+  }
+  return false;
+}
+
 
 void circleMoveTest() {
   vorotnikov::Circle post_circle(50.0, {10.0, 10.0});
@@ -77,84 +91,42 @@ void triangleScaleTest() {
 }
 
 void circleInvalidArgumentTest() {
-  try {
-    vorotnikov::Circle circle(-5.0, {10.0, 10.0});
-  }
-  catch (const std::invalid_argument& exception) {
-    was_catched = true;
-  }
-  if(!was_catched) {
-    assert(false);
-  }
-  was_catched = false;
+  assert(checkException([]() {
+    vorotnikov::Circle(-1, {10, 10});
+  }));
 }
 
 void rectangleInvalidArgumentTest() {
-  try {
-    vorotnikov::Rectangle rectangle(-3.0, 10.0, {10.0, 10.0});
-  }
-  catch (const std::invalid_argument& exception) {
-    was_catched = true;
-  }
-  if(!was_catched) {
-    assert(false);
-  }
-  was_catched = false;
+  assert(checkException([]() {
+    vorotnikov::Rectangle(-1, 2, {10, 10});
+  }));
 }
 
 void triangleInvalidArgumentTest() {
-  try {
-    vorotnikov::Triangle triangle({10.0, 10.0}, {10.0, 10.0}, {-5.0, 21.0});
-  }
-  catch (const std::invalid_argument& exception) {
-    was_catched = true;
-  }
-  if(!was_catched) {
-    assert(false);
-  }
-  was_catched = false;
+  assert(checkException([]() {
+    vorotnikov::Triangle({10.0, 10.0}, {10.0, 10.0}, {-5.0, 21.0});
+  }));
 }
 
 void circleInvalidScaleArgumentTest() {
-  try {
+  assert(checkException([]() {
     vorotnikov::Circle circle(10.0, {10.0, 10.0});
     circle.scale(-2.0);
-  }
-  catch (const std::invalid_argument& exception) {
-    was_catched = true;
-  }
-  if(!was_catched) {
-    assert(false);
-  }
-  was_catched = false;
+  }));
 }
 
 void rectangleInvalidScaleArgumentTest() {
-  try {
+  assert(checkException([]() {
     vorotnikov::Rectangle rectangle(10.0, 10.0, {10.0, 10.0});
     rectangle.scale(-2.0);
-  }
-  catch (const std::invalid_argument& exception) {
-    was_catched = true;
-  }
-  if(!was_catched) {
-    assert(false);
-  }
-  was_catched = false;
+  }));
 }
 
 void triangleInvalidScaleArgumentTest() {
-  try {
+  assert(checkException([]() {
     vorotnikov::Triangle triangle({10.0, 10.0}, {11.0, 10.0}, {-5.0, 21.0});
     triangle.scale(-2.0);
-  }
-  catch (const std::invalid_argument& exception) {
-    was_catched = true;
-  }
-  if(!was_catched) {
-    assert(false);
-  }
-  was_catched = false;
+  }));
 }
 
 int main() {

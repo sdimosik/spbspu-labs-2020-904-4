@@ -6,10 +6,10 @@
 
 namespace vorotnikov {
   Triangle::Triangle(const point_t &point_one, const point_t &point_two, const point_t &point_three) :
-      point_one_(point_one),
-      point_two_(point_two),
-      point_three_(point_three),
-      pos_({(point_one_.x + point_two_.x + point_three_.x) / 3, (point_one_.y + point_two_.y + point_three_.y) / 3})
+    point_one_(point_one),
+    point_two_(point_two),
+    point_three_(point_three),
+    pos_({(point_one_.x + point_two_.x + point_three_.x) / 3, (point_one_.y + point_two_.y + point_three_.y) / 3})
     {
       if (this->getArea() == 0) {
         throw std::invalid_argument(std::string("Invalid parameters: point shouldn't be equal or be on one line, point one (X,Y) = "

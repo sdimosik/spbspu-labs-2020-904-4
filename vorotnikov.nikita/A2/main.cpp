@@ -1,14 +1,14 @@
 #include <iostream>
-#include "../common/rectangle.hpp"
-#include "../common/circle.hpp"
-#include "../common/triangle.hpp"
+#include "rectangle.hpp"
+#include "circle.hpp"
+#include "triangle.hpp"
 
 int main() {
   try {
-    vorotnikov::Shape *shape;
     std::cout << "Circle test: \n";
     vorotnikov::point_t point = { 5.0, 5.0 };
     vorotnikov::Circle circle(5.0, point);
+    vorotnikov::Shape *shape;
     shape = &circle;
     std::cout << "Circle area: " << shape->getArea() << '\n';
     vorotnikov::rectangle_t circle_frame = shape->getFrameRect();
