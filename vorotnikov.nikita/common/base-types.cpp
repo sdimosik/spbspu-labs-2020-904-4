@@ -1,4 +1,4 @@
-#include "base-types.h"
+#include "base-types.hpp"
 
 namespace vorotnikov {
   bool point_t::operator==(const point_t &other) {

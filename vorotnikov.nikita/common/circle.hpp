@@ -1,6 +1,6 @@
-#ifndef CIRCLE_H
-#define CIRCLE_H
-#include "shape.h"
+#ifndef CIRCLE_HPP
+#define CIRCLE_HPP
+#include "shape.hpp"
 
 namespace vorotnikov {
   class Circle : public Shape {

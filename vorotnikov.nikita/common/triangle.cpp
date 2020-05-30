@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include <cmath>
 #include <algorithm>
-#include "triangle.h"
+#include "triangle.hpp"
 
 namespace vorotnikov {
   Triangle::Triangle(const point_t &point_one, const point_t &point_two, const point_t &point_three) :

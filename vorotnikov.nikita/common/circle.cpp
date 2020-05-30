@@ -2,7 +2,7 @@
 #include <cmath>
 #include <stdexcept>
 #include <string>
-#include "circle.h"
+#include "circle.hpp"
 
 namespace vorotnikov {
   Circle::Circle(double radius, const point_t &pos) :

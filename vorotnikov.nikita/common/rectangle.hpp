@@ -1,6 +1,6 @@
-#ifndef RECTANGLE_H
-#define RECTANGLE_H
-#include "shape.h"
+#ifndef RECTANGLE_HPP
+#define RECTANGLE_HPP
+#include "shape.hpp"
 
 namespace vorotnikov {
   class Rectangle : public Shape {

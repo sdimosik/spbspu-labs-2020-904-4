@@ -1,6 +1,6 @@
-#ifndef SHAPE_H
-#define SHAPE_H
-#include "base-types.h"
+#ifndef SHAPE_HPP
+#define SHAPE_HPP
+#include "base-types.hpp"
 
 namespace  vorotnikov {
   class Shape {

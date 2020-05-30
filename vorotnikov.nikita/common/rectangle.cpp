@@ -1,6 +1,6 @@
 #include <string>
 #include <stdexcept>
-#include "rectangle.h"
+#include "rectangle.hpp"
 
 namespace vorotnikov {
   Rectangle::Rectangle(double width, double height, const point_t &pos) :

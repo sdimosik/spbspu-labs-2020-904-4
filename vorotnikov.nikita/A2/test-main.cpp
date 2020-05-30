@@ -2,9 +2,9 @@
 #include <cassert>
 #include <vector>
 #include <functional>
-#include "../common/triangle.h"
-#include "../common/circle.h"
-#include "../common/rectangle.h"
+#include "../common/triangle.hpp"
+#include "../common/circle.hpp"
+#include "../common/rectangle.hpp"
 
 bool was_catched = false;
 

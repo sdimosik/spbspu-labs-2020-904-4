@@ -1,6 +1,6 @@
-#ifndef TRIANGLE_H
-#define TRIANGLE_H
-#include "shape.h"
+#ifndef TRIANGLE_HPP
+#define TRIANGLE_HPP
+#include "shape.hpp"
 
 namespace vorotnikov {
   class Triangle : public Shape {
