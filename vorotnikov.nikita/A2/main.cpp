@@ -38,7 +38,7 @@ int main() {
     std::cout << "Rectangle area after move: " << shape->getArea() << '\n';
     rectangle_frame = shape->getFrameRect();
     std::cout << "Rectangle frame after move: \n" << "height: " << rectangle_frame.height << " width: "
-        << rectangle_frame.width << " center (X,Y): " << rectangle_frame.pos.x << ", " << rectangle_frame.pos.y << '\n';
+              << rectangle_frame.width << " center (X,Y): " << rectangle_frame.pos.x << ", " << rectangle_frame.pos.y << '\n';
     shape->move({ 1.0, 1.0 });
     rectangle_frame = shape->getFrameRect();
     std::cout << "Rectangle center after point movement (X,Y): " << rectangle_frame.pos.x << ", " << rectangle_frame.pos.y << '\n';

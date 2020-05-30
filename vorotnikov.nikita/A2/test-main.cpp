@@ -133,10 +133,10 @@ void triangleInvalidScaleArgumentTest() {
 
 int main() {
   std::vector<std::function<void()>> tests = {
-    circleMoveTest, rectangleMoveTest, triangleMoveTest,
-    circleInvalidArgumentTest, rectangleInvalidArgumentTest, triangleInvalidArgumentTest,
-    circleInvalidScaleArgumentTest, rectangleInvalidScaleArgumentTest, triangleInvalidScaleArgumentTest,
-    circleScaleTest, rectangleScaleTest, triangleScaleTest
+      circleMoveTest, rectangleMoveTest, triangleMoveTest,
+      circleInvalidArgumentTest, rectangleInvalidArgumentTest, triangleInvalidArgumentTest,
+      circleInvalidScaleArgumentTest, rectangleInvalidScaleArgumentTest, triangleInvalidScaleArgumentTest,
+      circleScaleTest, rectangleScaleTest, triangleScaleTest
   };
   for(auto & test : tests)
   {
