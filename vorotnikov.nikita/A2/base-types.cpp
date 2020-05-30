@@ -1,5 +1,4 @@
 #include "base-types.hpp"
-#include <cmath>
 
 namespace vorotnikov {
   bool point_t::operator==(const point_t &other) {
