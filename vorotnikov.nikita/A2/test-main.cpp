@@ -68,7 +68,7 @@ void rectangleScaleTest() {
 }
 
 void triangleScaleTest() {
-  vorotnikov::Triangle triangle ({10.0, 10.0}, {24.0, 11.0}, {5.0, 21.0});
+  vorotnikov::Triangle triangle ({10.0, 10.0}, {24.0, 11.0}, {-5.0, 21.0});
   const double pre_area = triangle.getArea();
   triangle.scale(3.0);
   assert(isEqualAround(triangle.getArea(), pre_area * pow(3, 2)));
@@ -76,7 +76,7 @@ void triangleScaleTest() {
 
 void circleInvalidArgumentTest() {
   try {
-    vorotnikov::Circle circle(5.0, {10.0, 10.0});
+    vorotnikov::Circle circle(-5.0, {10.0, 10.0});
   }
   catch (const std::invalid_argument& exception) {
     assert(false);
@@ -85,7 +85,7 @@ void circleInvalidArgumentTest() {
 
 void rectangleInvalidArgumentTest() {
   try {
-    vorotnikov::Rectangle rectangle(3.0, 10.0, {10.0, 10.0});
+    vorotnikov::Rectangle rectangle(-3.0, 10.0, {10.0, 10.0});
   }
   catch (const std::invalid_argument& exception) {
     assert(false);
@@ -94,7 +94,7 @@ void rectangleInvalidArgumentTest() {
 
 void triangleInvalidArgumentTest() {
   try {
-    vorotnikov::Triangle triangle({10.0, 10.0}, {16.0, 10.0}, {-5.0, 21.0});
+    vorotnikov::Triangle triangle({10.0, 10.0}, {10.0, 10.0}, {-5.0, 21.0});
   }
   catch (const std::invalid_argument& exception) {
     assert(false);
@@ -104,7 +104,7 @@ void triangleInvalidArgumentTest() {
 void circleInvalidScaleArgumentTest() {
   try {
     vorotnikov::Circle circle(10.0, {10.0, 10.0});
-    circle.scale(2.0);
+    circle.scale(-1.0);
   }
   catch (const std::invalid_argument& exception) {
     assert(false);
@@ -114,7 +114,7 @@ void circleInvalidScaleArgumentTest() {
 void rectangleInvalidScaleArgumentTest() {
   try {
     vorotnikov::Rectangle rectangle(10.0, 10.0, {10.0, 10.0});
-    rectangle.scale(2.0);
+    rectangle.scale(-1.0);
   }
   catch (const std::invalid_argument& exception) {
     assert(false);
@@ -124,7 +124,7 @@ void rectangleInvalidScaleArgumentTest() {
 void triangleInvalidScaleArgumentTest() {
   try {
     vorotnikov::Triangle triangle({10.0, 10.0}, {11.0, 10.0}, {-5.0, 21.0});
-    triangle.scale(2.0);
+    triangle.scale(-1.0);
   }
   catch (const std::invalid_argument& exception) {
     assert(false);
