@@ -1,7 +1,7 @@
 #include <iostream>
-#include "rectangle.h"
-#include "circle.h"
-#include "triangle.h"
+#include "../common/rectangle.h"
+#include "../common/circle.h"
+#include "../common/triangle.h"
 
 int main() {
   try {
