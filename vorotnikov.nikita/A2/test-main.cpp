@@ -5,7 +5,6 @@
 #include "triangle.hpp"
 #include "circle.hpp"
 #include "rectangle.hpp"
-bool was_catched = false;
 
 bool isEqualAround (double pre_value, double post_value) {
   const double ACCURACY = 0.00001;
@@ -77,83 +76,59 @@ void triangleScaleTest() {
 
 void circleInvalidArgumentTest() {
   try {
-    vorotnikov::Circle circle(-5.0, {10.0, 10.0});
+    vorotnikov::Circle circle(5.0, {10.0, 10.0});
   }
   catch (const std::invalid_argument& exception) {
-    was_catched = true;
-  }
-  if(!was_catched) {
     assert(false);
   }
-  was_catched = false;
 }
 
 void rectangleInvalidArgumentTest() {
   try {
-    vorotnikov::Rectangle rectangle(-3.0, 10.0, {10.0, 10.0});
+    vorotnikov::Rectangle rectangle(3.0, 10.0, {10.0, 10.0});
   }
   catch (const std::invalid_argument& exception) {
-    was_catched = true;
-  }
-  if(!was_catched) {
     assert(false);
   }
-  was_catched = false;
 }
 
 void triangleInvalidArgumentTest() {
   try {
-    vorotnikov::Triangle triangle({10.0, 10.0}, {10.0, 10.0}, {-5.0, 21.0});
+    vorotnikov::Triangle triangle({10.0, 10.0}, {16.0, 10.0}, {-5.0, 21.0});
   }
   catch (const std::invalid_argument& exception) {
-    was_catched = true;
-  }
-  if(!was_catched) {
     assert(false);
   }
-  was_catched = false;
 }
 
 void circleInvalidScaleArgumentTest() {
   try {
     vorotnikov::Circle circle(10.0, {10.0, 10.0});
-    circle.scale(-2.0);
+    circle.scale(2.0);
   }
   catch (const std::invalid_argument& exception) {
-    was_catched = true;
-  }
-  if(!was_catched) {
     assert(false);
   }
-  was_catched = false;
 }
 
 void rectangleInvalidScaleArgumentTest() {
   try {
     vorotnikov::Rectangle rectangle(10.0, 10.0, {10.0, 10.0});
-    rectangle.scale(-2.0);
+    rectangle.scale(2.0);
   }
   catch (const std::invalid_argument& exception) {
-    was_catched = true;
-  }
-  if(!was_catched) {
     assert(false);
   }
-  was_catched = false;
 }
 
 void triangleInvalidScaleArgumentTest() {
   try {
     vorotnikov::Triangle triangle({10.0, 10.0}, {11.0, 10.0}, {-5.0, 21.0});
-    triangle.scale(-2.0);
+    triangle.scale(2.0);
   }
   catch (const std::invalid_argument& exception) {
-    was_catched = true;
-  }
-  if(!was_catched) {
     assert(false);
   }
-  was_catched = false;
 }
 
 int main() {
