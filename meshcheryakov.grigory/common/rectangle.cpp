@@ -51,7 +51,7 @@ namespace meshcheryakov
     rect_.height *= coefficient;
   }
 
-  point_t Rectangle::getPosition() const
+  point_t Rectangle::getPosition() const noexcept
   {
     return rect_.pos;
   }

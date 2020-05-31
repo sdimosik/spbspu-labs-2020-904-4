@@ -48,7 +48,7 @@ namespace meshcheryakov
     radius_ *= coefficient;
   }
 
-  point_t Circle::getPosition() const
+  point_t Circle::getPosition() const noexcept
   {
     return point_;
   }
