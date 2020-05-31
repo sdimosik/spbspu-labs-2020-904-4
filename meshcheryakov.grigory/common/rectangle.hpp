@@ -13,7 +13,7 @@ namespace meshcheryakov
     void move(double dx, double dy) override;
     void move(const point_t &point) override;
     void scale(const double coefficient) override;
-    point_t getPosition() const;
+    point_t getPosition() const noexcept override;
     double getWidth() const;
     double getHeight() const;
 
