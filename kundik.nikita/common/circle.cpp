@@ -10,9 +10,9 @@ namespace kundik {
     radius_(radius),
     pos_(pos)
   {
-    if (radius <= 0.0) 
+    if (radius <= 0.0)
     {
-      throw std::invalid_argument("Radius circle is invalid value " + std::to_string(radius));
+      throw std::invalid_argument(std::string("Invalid radius value in circle = ") += std::to_string(radius));
     }
   }
 
@@ -52,11 +52,10 @@ namespace kundik {
     return pos_.y;
   }
 
-  void Circle::scale(double coefficent) 
-  {
-    if (coefficent <= 0.0) 
+  void Circle::scale(double coefficent) {
+    if (coefficent <= 0.0)
     {
-      throw std::invalid_argument("Coefficent circle is invalid value " + std::to_string(coefficent));
+      throw std::invalid_argument(std::string("Invalid coefficent scaling value in circle = ") += std::to_string(coefficent));
     }
     radius_ *= coefficent;
   }
