@@ -9,15 +9,14 @@ namespace kundik {
     width_(width),
     pos_(pos)
   {
-
-    if (height <= 0.0) 
+    if (height <= 0.0)
     {
-      throw std::invalid_argument("Height rectangle is invalid value " + std::to_string(height));
+      throw std::invalid_argument(std::string("Invalid height value in rectangle  = ") += std::to_string(height));
     }
 
-    if (width <= 0.0) 
+    if (width <= 0.0)
     {
-      throw std::invalid_argument("Width rectangle is invalid value " + std::to_string(width));
+      throw std::invalid_argument(std::string("Invalid width value in rectangle  = ") += std::to_string(width));
     }
   }
 
@@ -62,11 +61,10 @@ namespace kundik {
     return(pos_.y);
   }
 
-  void Rectangle::scale(double coefficent) 
-  {
-    if (coefficent <= 0.0) 
+  void Rectangle::scale(double coefficent) {
+    if (coefficent <= 0.0)
     {
-      throw std::invalid_argument("Coefficent rectangle is invalid value " + std::to_string(coefficent));
+      throw std::invalid_argument(std::string("Invalid coefficent scaling value in rectangle = ") += std::to_string(coefficent));
     }
     height_ *= coefficent;
     width_ *= coefficent;

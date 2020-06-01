@@ -54,8 +54,9 @@ BOOST_AUTO_TEST_CASE(test_rectangle_area_scale)
 {
   kundik::Rectangle rectangle(coordinates, rectangleHeight, rectangleWidth);
   const double area = rectangle.getArea();
-  rectangle.scale(2);
-  BOOST_CHECK_CLOSE(area * 4, rectangle.getArea(), ACCURACY);
+  double coefficent = 2;
+  rectangle.scale(coefficent);
+  BOOST_CHECK_CLOSE(area * coefficent * coefficent, rectangle.getArea(), ACCURACY);
 }
 BOOST_AUTO_TEST_CASE(test_invalid_value_circle_radius)
 {
