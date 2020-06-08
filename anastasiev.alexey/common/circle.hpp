@@ -9,10 +9,10 @@ namespace anastasiev
     Circle(const double, const point_t&);
     double getRadius() const;
     point_t getPosition() const;
-    double getArea() const override;
-    rectangle_t getFrameRect() const override;
-    void move(const point_t&) override;
-    void move (const double, const double) override;
+    double getArea() const noexcept override;
+    rectangle_t getFrameRect() const noexcept override;
+    void move(const point_t&) noexcept override;
+    void move (const double, const double) noexcept override;
     void scale(const double) override;
   private:
     double radius_;

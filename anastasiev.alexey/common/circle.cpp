@@ -25,21 +25,21 @@ namespace anastasiev
     return pos_;
   }
   
-  double Circle::getArea() const
+  double Circle::getArea() const noexcept
   {
     return (M_PI * radius_ * radius_);
   }
-  rectangle_t Circle::getFrameRect() const
+  rectangle_t Circle::getFrameRect() const noexcept
   {
     return rectangle_t{ radius_ * 2 , radius_ * 2,pos_ };
   }
 
-  void Circle::move(const point_t& pos)
+  void Circle::move(const point_t& pos) noexcept
   {
     pos_ = pos;
   }
 
-  void Circle::move (const double x, const double y)
+  void Circle::move (const double x, const double y) noexcept
   {
     pos_.x += x;
     pos_.y += y;

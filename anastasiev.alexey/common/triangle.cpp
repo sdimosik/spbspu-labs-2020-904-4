@@ -21,12 +21,12 @@ namespace anastasiev
     return pos_;
   }  
 
-  double Triangle::getArea() const
+  double Triangle::getArea() const noexcept
   {
     return (abs((b_.x - a_.x) * (c_.y - a_.y) - (c_.x -a_.x) * (b_.y - a_.y)))/2;
   }
 
-  rectangle_t Triangle::getFrameRect() const
+  rectangle_t Triangle::getFrameRect() const noexcept
   {
     double minX = std::fmin(std::fmin(a_.x, b_.x), c_.x),
         maxX = std::fmax(std::fmax(a_.x, b_.x), c_.x),
@@ -39,13 +39,13 @@ namespace anastasiev
     return rectangle_t{width, height, point_t{posX,posY}};
   
   }
-  void Triangle::move(const point_t & pos)
+  void Triangle::move(const point_t & pos) noexcept
   {
     double dx = pos.x - pos_.x,
         dy = pos.y - pos_.y;
     this->move(dx, dy);
   }
-  void Triangle::move(const double dx, const double dy)
+  void Triangle::move(const double dx, const double dy) noexcept
   {
     pos_ = {pos_.x + dx, pos_.y + dy};
     a_ = {a_.x + dx, a_.y + dy};
