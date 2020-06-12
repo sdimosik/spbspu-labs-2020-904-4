@@ -59,7 +59,6 @@ void shabinsky::Matrix::add(const shabinsky::Matrix::shapePtr &shape)
   }
   else
   {
-    //row = layer
     for (size_t i = columns_ * (layer - 1); i < layer * columns_; i++)
     {
       if (elements_[i] == nullptr)
@@ -102,25 +101,21 @@ shabinsky::Matrix::isOverlay(const shabinsky::Matrix::shapePtr &shape1, const sh
 {
   rectangle_t rectangle1 = shape1->getFrameRect();
   rectangle_t rectangle2 = shape2->getFrameRect();
-  double
-    x11 = rectangle1.pos.x - rectangle1.width / 2,
-    x12 = rectangle1.pos.x + rectangle1.width / 2,
-    x21 = rectangle2.pos.x - rectangle2.width / 2,
-    x22 = rectangle2.pos.x + rectangle2.width / 2,
-    y11 = rectangle1.pos.y + rectangle1.height / 2,
-    y12 = rectangle1.pos.y - rectangle1.height / 2,
-    y21 = rectangle2.pos.y + rectangle2.height / 2,
-    y22 = rectangle2.pos.y - rectangle2.height / 2;
+  double x11 = rectangle1.pos.x - rectangle1.width / 2;
+  double x12 = rectangle1.pos.x + rectangle1.width / 2;
+  double x21 = rectangle2.pos.x - rectangle2.width / 2;
+  double x22 = rectangle2.pos.x + rectangle2.width / 2;
+  double y11 = rectangle1.pos.y + rectangle1.height / 2;
+  double y12 = rectangle1.pos.y - rectangle1.height / 2;
+  double y21 = rectangle2.pos.y + rectangle2.height / 2;
+  double y22 = rectangle2.pos.y - rectangle2.height / 2;
   
-  return x11 >= x21 &&
-         x12 <= x22 &&
-         y11 <= y21 &&
-         y12 >= y22;
+  return x11 >= x21 && x12 <= x22 && y11 <= y21 && y12 >= y22;
 }
 
 void shabinsky::Matrix::remove(size_t layerNumber, size_t shapeNumberInLayer)
 {
-  if (layerNumber >= rows_ || shapeNumberInLayer >= columns_ || rows_ * columns_ == 0)
+  if (layerNumber >= rows_ || shapeNumberInLayer >= columns_)
   {
     throw std::out_of_range(std::string("Data is out of range. Your data = Rows:  ")
                             + std::to_string(layerNumber) + std::string(" Columns: ")
@@ -162,11 +157,25 @@ size_t shabinsky::Matrix::getSize() const
   return rows_ * columns_;
 }
 
-shabinsky::Matrix::matrixPtr::pointer shabinsky::Matrix::operator[](size_t index) const
+shabinsky::Matrix::Layer::Layer(Matrix::shapePtr *shapes, size_t size) :
+  shapes_(shapes),
+  size_(size)
+{}
+
+shabinsky::Matrix::shapePtr &shabinsky::Matrix::Layer::operator[](size_t index)
+{
+  if (index >= size_)
+  {
+    throw std::out_of_range(std::string("Index is out of range = ") + std::to_string(index));
+  }
+  return shapes_[index];
+}
+
+shabinsky::Matrix::Layer shabinsky::Matrix::operator[](size_t index)
 {
   if (rows_ == 0 || index > rows_)
   {
     throw std::out_of_range(std::string("Index is out of range = ") + std::to_string(index));
   }
-  return elements_.get() + index * columns_;
+  return Layer(&elements_[columns_ * index], columns_);
 }

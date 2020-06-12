@@ -16,11 +16,33 @@ namespace shabinsky
     using shapePtr = std::shared_ptr<shabinsky::Shape>;
     using matrixPtr = std::unique_ptr<shapePtr[]>;
     
+    class Layer
+    {
+    public:
+      friend class Matrix;
+      
+      shapePtr &operator[](size_t index);
+    
+    private:
+      Layer(shapePtr *shapes, size_t size);
+      
+      Layer(const Layer &layer) = default;
+  
+      Layer(Layer && layer) = default;
+      
+      shapePtr *shapes_;
+      size_t size_;
+    };
+    
     Matrix();
     
     Matrix(const Matrix &matrix);
     
     Matrix(Matrix &&matrix) noexcept;
+    
+    ~Matrix() = default;
+    
+    Layer operator[](size_t index);
     
     void add(const shapePtr &shape);
     
@@ -33,8 +55,6 @@ namespace shabinsky
     size_t getColumns() const;
     
     size_t getSize() const;
-    
-    matrixPtr::pointer operator[](size_t index) const;
   
   private:
     matrixPtr elements_;

@@ -6,7 +6,7 @@
 
 namespace shabinsky
 {
-  class CompositeShape : Shape
+  class CompositeShape : public Shape
   {
   public:
     using shapePtr = std::shared_ptr<shabinsky::Shape>;

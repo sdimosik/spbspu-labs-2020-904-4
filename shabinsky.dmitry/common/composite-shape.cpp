@@ -166,9 +166,19 @@ namespace shabinsky
   
   void CompositeShape::rotate(double angle)
   {
+    double angleRadian = (angle * M_PI) / 180;
+    point_t center = getFrameRect().pos;
+    
     for (size_t i = 0; i < size_; ++i)
     {
       composition_[i]->rotate(angle);
+      
+      point_t centerShape = composition_[i]->getFrameRect().pos;
+      double deltaX = centerShape.x - center.x;
+      double deltaY = centerShape.y - center.y;
+      double distanceX = (deltaX * abs(cos(angleRadian)) - deltaY * abs(sin(angleRadian)));
+      double distanceY = (deltaX * abs(sin(angleRadian)) + deltaY * abs(cos(angleRadian)));
+      composition_[i]->move({center.x + distanceX, center.y + distanceY});
     }
   }
 }

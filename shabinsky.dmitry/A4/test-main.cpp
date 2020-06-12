@@ -35,9 +35,9 @@ BOOST_AUTO_TEST_CASE(test_rotate_composite_shape)
   compositeShape.addShape(rect1);
   compositeShape.addShape(rect2);
   compositeShape.addShape(rect3);
-  shabinsky::rectangle_t rectangle = compositeShape.getFrameRect();
   compositeShape.rotate(90);
-  BOOST_CHECK(rectangle == compositeShape.getFrameRect());
+  shabinsky::rectangle_t rectangle1{6, 12, {6, 3}};
+  BOOST_CHECK(compositeShape.getFrameRect() == rectangle1);
 }
 
 BOOST_AUTO_TEST_CASE(test_invalid_index_matrix)

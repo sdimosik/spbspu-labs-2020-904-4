@@ -48,7 +48,7 @@ namespace shabinsky
   
   void Circle::show(std::ostream &out)
   {
-    out << "[R: " << this->radius_ << ";" << this->position_ << "]";
+    out << "[R: " << this->radius_ << ";" << this->position_ << "]\n";
   }
   
   void Circle::scale(double coefficient)

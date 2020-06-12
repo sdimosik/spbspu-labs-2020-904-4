@@ -72,7 +72,7 @@ namespace shabinsky
   
   void Rectangle::show(std::ostream &out)
   {
-    out << "[H: " << this->height_ << ";W: " << this->width_ << ";" << this->position_ << "]";
+    out << "[H: " << this->height_ << ";W: " << this->width_ << ";" << this->position_ << "]\n";
   }
   
   void Rectangle::scale(double coefficient)

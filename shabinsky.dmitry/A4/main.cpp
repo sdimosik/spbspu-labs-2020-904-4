@@ -83,7 +83,7 @@ int main()
     std::cout << "\n Matrix test:\n";
     shabinsky::Matrix matrix;
     shabinsky::Rectangle r({0.0, 5.0}, 3.1, 4.8);
-    shabinsky::Circle c(3, {5.0, 10.0});
+    shabinsky::Circle c(1, {5.0, 10.0});
     shabinsky::CompositeShape compositeShape(4);
     compositeShape.addShape(shape1);
     compositeShape.addShape(shape2);
@@ -94,7 +94,16 @@ int main()
     matrix.add(s1);
     matrix.add(s2);
     matrix.print();
-    
+  
+    std::cout << "\nMatrix:\n";
+    for (size_t i = 0; i < matrix.getRows(); ++i)
+    {
+      std::cout << "Layer: " << i << "\n";
+      for (size_t j = 0; j < matrix.getColumns(); ++j)
+      {
+        matrix[i][j]->show(std::cout);
+      }
+    }
   }
   catch (const std::invalid_argument &err)
   {
