@@ -21,6 +21,8 @@ namespace gromov
     virtual void move(const point_t& center) noexcept = 0;
 
     virtual void scale(const double coefficient) = 0;
+
+    virtual void rotate(double angle) noexcept = 0;
     
   };
 }
