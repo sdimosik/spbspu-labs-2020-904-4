@@ -114,10 +114,8 @@ BOOST_AUTO_TEST_CASE(test_move_composite_shape)
   BOOST_CHECK_CLOSE(rect->getCentre().x, x + rect_oldX, ACCURACY_DOUBLE);
   BOOST_CHECK_CLOSE(rect->getCentre().y, y + rect_oldY, ACCURACY_DOUBLE);
   array.move({x, y});
-  BOOST_CHECK_CLOSE(circle->getCentre().x, x, ACCURACY_DOUBLE);
-  BOOST_CHECK_CLOSE(circle->getCentre().y, y, ACCURACY_DOUBLE);
-  BOOST_CHECK_CLOSE(rect->getCentre().x, x, ACCURACY_DOUBLE);
-  BOOST_CHECK_CLOSE(rect->getCentre().y, y, ACCURACY_DOUBLE);
+  BOOST_CHECK_CLOSE(array.getFrameRect().width, 24.5, ACCURACY_DOUBLE);
+  BOOST_CHECK_CLOSE(array.getFrameRect().height, 24, ACCURACY_DOUBLE);
 }
 
 BOOST_AUTO_TEST_CASE(test_scale_composite_shape)
