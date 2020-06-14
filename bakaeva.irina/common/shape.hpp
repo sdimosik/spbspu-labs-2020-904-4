@@ -23,6 +23,11 @@ namespace bakaeva
     virtual void printFrameRect() const = 0;
 
     virtual void scale(const double coefficient) = 0;
+
+    virtual void rotate(const double angle) noexcept = 0;
+
+    virtual point_t getCenter() const noexcept = 0;
+
   };
 }
 
