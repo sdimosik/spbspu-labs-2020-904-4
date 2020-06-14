@@ -38,7 +38,7 @@ namespace bakaeva
 
   void Circle::printData() const
   {
-    std::cout << "Circle radius: " << radius_ << '\n'
+    std::cout << "Circle:\n" << "Circle radius: " << radius_ << '\n'
         << "Circle center: (" << pos_.x << ", " << pos_.y << ")\n";
   }
 
@@ -59,4 +59,11 @@ namespace bakaeva
     radius_ *= coefficient;
   }
 
+  void Circle::rotate(const double) noexcept
+  {}
+
+  point_t Circle::getCenter() const noexcept
+  {
+    return pos_;
+  }
 }
