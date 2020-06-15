@@ -22,6 +22,8 @@ namespace lovkacheva
     virtual void move(double dx, double dy) = 0;
 
     virtual void scale(double coefficient) = 0;
+
+    virtual void rotate(double angle) = 0;
   };
 }
 #endif

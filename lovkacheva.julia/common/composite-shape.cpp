@@ -1,4 +1,6 @@
 #include "composite-shape.hpp"
+#include <cmath>
+
 
 namespace lovkacheva
 {
@@ -144,7 +146,7 @@ namespace lovkacheva
     if (coefficient <= 0.0)
     {
       throw std::invalid_argument(
-          "The coefficient must be positive (coefficient = " + std::to_string(coefficient) + ")");
+        "The coefficient must be positive (coefficient = " + std::to_string(coefficient) + ")");
     }
     point_t compositePosition = getFrameRect().pos;
     for (size_t i = 0; i < size_; ++i)
@@ -167,12 +169,12 @@ namespace lovkacheva
     }
     if (capacity_ == 0)
     {
-      componentShapes_ = std::make_unique<ShapePtr[]>(capacity_);
+      componentShapes_ = std::make_unique<ShapePtr[]>(1);
       capacity_ = 1;
     }
     else if (size_ == capacity_)
     {
-      ShapeArray temp = std::make_unique<ShapePtr[]>(capacity_);
+      ShapeArray temp = std::make_unique<ShapePtr[]>(capacity_ * 2);
       capacity_ *= 2;
       for (size_t i = 0; i < size_; ++i)
       {
@@ -201,5 +203,35 @@ namespace lovkacheva
   size_t CompositeShape::getSize() const noexcept
   {
     return size_;
+  }
+
+  void CompositeShape::rotate(double angle) noexcept
+  {
+    double angleInRadians = (angle / 180) * M_PI;
+    point_t compositePosition = getFrameRect().pos;
+    for (size_t i = 0; i < size_; ++i)
+    {
+      componentShapes_[i]->rotate(angle);
+      point_t componentPosition = componentShapes_[i]->getFrameRect().pos;
+      double distanceFromCentreX = componentPosition.x - compositePosition.x;
+      double distanceFromCentreY = componentPosition.y - compositePosition.y;
+      double newDistanceFromCentreX =
+          distanceFromCentreX * std::cos(angleInRadians) - distanceFromCentreY * std::sin(angleInRadians);
+      double dx = newDistanceFromCentreX - distanceFromCentreX;
+      double newDistanceFromCentreY =
+          distanceFromCentreX * std::sin(angleInRadians) + distanceFromCentreY * std::cos(angleInRadians);
+      double dy = newDistanceFromCentreY - distanceFromCentreY;
+      componentShapes_[i]->move(dx, dy);
+    }
+  }
+
+  Matrix CompositeShape::split() const
+  {
+    Matrix matrix;
+    for (size_t i = 0; i < size_; ++i)
+    {
+      matrix.addShape(componentShapes_[i]);
+    }
+    return matrix;
   }
 }

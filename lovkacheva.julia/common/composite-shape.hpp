@@ -3,6 +3,7 @@
 
 #include <memory>
 #include "shape.hpp"
+#include "matrix.hpp"
 
 namespace lovkacheva
 {
@@ -42,6 +43,10 @@ namespace lovkacheva
     void removeShape(size_t index);
 
     size_t getSize() const noexcept;
+
+    void rotate(double angle) noexcept override;
+
+    Matrix split() const;
 
   private:
     using ShapeArray = std::unique_ptr<ShapePtr[]>;
