@@ -25,6 +25,8 @@ namespace bulanov
 
     virtual void scale(const double rate) = 0;
 
+    virtual void rotate(const double angle) noexcept = 0;
+
   };
 }
 

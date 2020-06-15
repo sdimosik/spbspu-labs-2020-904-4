@@ -25,9 +25,14 @@ namespace bulanov
 
     void scale(const double rate) override;
 
+    void rotate(const double angle) noexcept override;
+
+    double getAngle() const noexcept;
+
   private:
     double width_, height_;
     point_t pos_;
+    double angle_;
   };
 }
 
