@@ -12,13 +12,15 @@ namespace stolyarov
 
     Rectangle(double width, double height, const point_t& pos);
 
-    double getArea() const override;
+    double getArea() const noexcept override;
 
-    rectangle_t getFrameRect() const;
+    rectangle_t getFrameRect() const noexcept override;
 
-    void move(double x, double y) override;
+    point_t getCenter() const noexcept override;
 
-    void move(const point_t& pos) override;
+    void move(double x, double y) noexcept override;
+
+    void move(const point_t& pos) noexcept override;
 
     void printInf() override;
 

@@ -16,25 +16,30 @@ namespace stolyarov
     }
   }
 
-  void Circle::move(double x, double y)
+  void Circle::move(double x, double y) noexcept
   {
     pos_.x += x;
     pos_.y += y;
   }
 
-  void Circle::move(const point_t& pos)
+  void Circle::move(const point_t& pos) noexcept
   {
     pos_ = pos;
   }
 
-  double Circle::getArea() const
+  double Circle::getArea() const noexcept
   {
     return (M_PI * radius_ * radius_);
   }
 
-  rectangle_t Circle::getFrameRect() const
+  rectangle_t Circle::getFrameRect() const noexcept
   {
     return rectangle_t({ 2 * radius_,2 * radius_,pos_ });
+  }
+
+  point_t Circle::getCenter() const noexcept
+  {
+    return pos_;
   }
 
   void Circle::printInf()

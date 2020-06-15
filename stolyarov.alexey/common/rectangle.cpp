@@ -20,25 +20,30 @@ namespace stolyarov
     }
   }
 
-  void Rectangle::move(double x, double y)
+  void Rectangle::move(double x, double y) noexcept
   {
     pos_.x += x;
     pos_.y += y;
   }
 
-  void Rectangle::move(const point_t& pos)
+  void Rectangle::move(const point_t& pos) noexcept
   {
     pos_ = pos;
   }
 
-  double Rectangle::getArea() const
+  double Rectangle::getArea() const noexcept
   {
     return width_ * height_;
   }
 
-  rectangle_t Rectangle::getFrameRect() const
+  rectangle_t Rectangle::getFrameRect() const noexcept
   {
     return rectangle_t({ width_, height_, pos_ });
+  }
+
+  point_t Rectangle::getCenter() const noexcept
+  {
+    return pos_;
   }
 
   void Rectangle::printInf()
