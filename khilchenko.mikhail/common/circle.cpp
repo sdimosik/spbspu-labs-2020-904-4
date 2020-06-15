@@ -51,4 +51,7 @@ namespace khilchenko
     }
     rad_ *= coefficient;
   }
+
+  void Circle::rotate(double) noexcept
+  {}
 }
