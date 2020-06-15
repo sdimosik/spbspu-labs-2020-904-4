@@ -15,7 +15,9 @@ namespace khilchenko
     void move(double x, double y) noexcept override;
     point_t getCenter() const noexcept override;
     void scale(double coefficient) override;
+    void rotate(double angle) noexcept override;
   private:
+    double angle_;
     rectangle_t figure_;
   };
 }
