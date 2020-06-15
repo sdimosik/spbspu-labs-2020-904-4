@@ -1,7 +1,8 @@
 #ifndef COMPOSITE_SHAPE_HPP
 #define COMPOSITE_SHAPE_HPP
-#include "shape.hpp"
 #include <memory>
+#include "shape.hpp"
+#include "matrix.hpp"
 
 namespace biryukova
 {
@@ -26,6 +27,8 @@ namespace biryukova
     void print() const override;
     void scale(double coefficient) override;
     point_t getCentre() const noexcept override;
+    void rotate(double angle) override;
+    Matrix partition() const;
   private:
     using shapesArray = std::unique_ptr<shapePtr[]>;
     size_t size_;

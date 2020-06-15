@@ -15,6 +15,7 @@ namespace biryukova
     virtual void print() const = 0;
     virtual void scale(double coefficient) = 0;
     virtual point_t getCentre() const noexcept = 0;
+    virtual void rotate(double angle) = 0;
   };
 }
 

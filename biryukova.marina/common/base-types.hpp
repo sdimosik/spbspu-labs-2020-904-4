@@ -15,6 +15,8 @@ namespace biryukova
     double height;
     point_t pos;
   };
+
+  bool intersection(const rectangle_t& first, const rectangle_t& second);
 }
 
 #endif
