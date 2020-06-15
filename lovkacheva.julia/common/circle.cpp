@@ -49,4 +49,7 @@ namespace lovkacheva
     }
     radius_ *= coefficient;
   }
+
+  void Circle::rotate(double) noexcept
+  {}
 }

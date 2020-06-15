@@ -23,8 +23,11 @@ namespace lovkacheva
 
     void scale(double coefficient) override;
 
+    void rotate(double angle) noexcept override ;
+
   private:
     rectangle_t contents_;
+    double angle_;
   };
 }
 #endif

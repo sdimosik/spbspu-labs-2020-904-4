@@ -1,9 +1,11 @@
 #include "rectangle.hpp"
+#include <cmath>
 
 namespace lovkacheva
 {
   Rectangle::Rectangle(const rectangle_t& contents) :
-    contents_(contents)
+    contents_(contents),
+    angle_(0)
   {
     if (contents.width <= 0)
     {
@@ -21,6 +23,10 @@ namespace lovkacheva
   {
     out << "Rectangle (width = " << contents_.width << "; height = " << contents_.height
         << "; pos(" << contents_.pos.x << ", " << contents_.pos.y << "))";
+    if (angle_)
+    {
+      std::cout << " rotated by the angle " << ((angle_ / M_PI) * 180);
+    }
   }
 
   double Rectangle::getArea() const noexcept
@@ -30,7 +36,8 @@ namespace lovkacheva
 
   rectangle_t Rectangle::getFrameRect() const noexcept
   {
-    return contents_;
+    return rectangle_t{contents_.height * std::sin(angle_) + contents_.width * fabs(std::cos(angle_)),
+        contents_.width * std::sin(angle_) + contents_.height * fabs(std::cos(angle_)), contents_.pos};
   }
 
   void Rectangle::move(const point_t& newPosition) noexcept
@@ -53,5 +60,18 @@ namespace lovkacheva
     }
     contents_.width *= coefficient;
     contents_.height *= coefficient;
+  }
+
+  void Rectangle::rotate(double angle) noexcept
+  {
+    angle_ += (angle / 180) * M_PI;
+    if (angle_ >= M_PI)
+    {
+      angle_ = fmod(angle_, M_PI);
+    }
+    else if ( angle_ < 0)
+    {
+      angle_ = M_PI + fmod(angle_, M_PI);
+    }
   }
 }
