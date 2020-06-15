@@ -3,6 +3,7 @@
 
 #include <memory>
 #include "shape.hpp"
+#include "matrix.hpp"
 
 namespace shabinsky
 {
@@ -43,6 +44,8 @@ namespace shabinsky
     size_t getLength() const noexcept;
     
     void rotate(double angle) override;
+  
+    Matrix makeMatrix() const;
   
   private:
     size_t size_;

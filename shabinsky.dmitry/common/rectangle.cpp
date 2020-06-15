@@ -9,7 +9,6 @@ namespace shabinsky
     width_(width),
     height_(height),
     position_(position),
-    angle_(0),
     edges_{{position.x - width / 2, position.y + height / 2},
            {position.x + width / 2, position.y + height / 2},
            {position.x - width / 2, position.y - height / 2},
@@ -84,48 +83,19 @@ namespace shabinsky
     }
     for (int i = 0; i < 4; ++i)
     {
-      if (edges_[i].x >= position_.x)
-      {
-        edges_[i].x = (position_.x + (width_ / 2) * coefficient);
-        if (edges_[i].y >= position_.y)
-        {
-          edges_[i].y = (position_.y + (height_ / 2) * coefficient);
-        }
-        else
-        {
-          edges_[i].y = (position_.y - (height_ / 2) * coefficient);
-        }
-      }
-      else
-      {
-        edges_[i].x = (position_.x - (width_ / 2) * coefficient);
-        if (edges_[i].y >= position_.y)
-        {
-          edges_[i].y = (position_.y + (height_ / 2) * coefficient);
-        }
-        else
-        {
-          edges_[i].y = (position_.y - (height_ / 2) * coefficient);
-        }
-      }
-      /*
-      if (i == 0 || i == 4)
-      {
-        edges_[i].x = (position_.x - (width_ / 2) * coefficient);
-      }
-      else
-      {
-        edges_[i].x = (position_.x + (width_ / 2) * coefficient);
-      }
+      int kX = 1;
+      int kY = 1;
       
-      if (i == 0 || i == 1)
+      if (edges_[i].x < position_.x)
       {
-        edges_[i].y = (position_.y + (height_ / 2) * coefficient);
+        kX = -1;
       }
-      else
+      if (edges_[i].y < position_.y)
       {
-        edges_[i].y = (position_.y - (height_ / 2) * coefficient);
-      }*/
+        kY = -1;
+      }
+      edges_[i].x = (position_.x + kX * (width_ / 2) * coefficient);
+      edges_[i].y = (position_.y + kY * (height_ / 2) * coefficient);
     }
     width_ *= coefficient;
     height_ *= coefficient;

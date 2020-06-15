@@ -181,4 +181,14 @@ namespace shabinsky
       composition_[i]->move({center.x + distanceX, center.y + distanceY});
     }
   }
+  
+  Matrix CompositeShape::makeMatrix() const
+  {
+    Matrix matrix;
+    for(size_t i = 0; i < size_; ++i)
+    {
+      matrix.add(composition_[i]);
+    }
+    return matrix;
+  }
 }

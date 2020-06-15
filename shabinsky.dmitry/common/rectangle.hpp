@@ -33,7 +33,6 @@ namespace shabinsky
   private:
     double width_, height_;
     point_t position_;
-    double angle_;
     point_t edges_[4];
   };
 }
