@@ -52,8 +52,10 @@ void shabinsky::Matrix::add(const shabinsky::Matrix::shapePtr &shape)
   size_t tempColumn = columns_;
   size_t freeColumns = 0;
   
+  bool dontCreate = true;
   if (layer > rows_)
   {
+    dontCreate = false;
     tempRow++;
     freeColumns = columns_;
   }
@@ -70,30 +72,38 @@ void shabinsky::Matrix::add(const shabinsky::Matrix::shapePtr &shape)
   
   if (freeColumns == 0)
   {
+    dontCreate = false;
     tempColumn++;
     freeColumns = 1;
   }
   
-  matrixPtr tempElements(std::make_unique<shapePtr[]>(tempRow * tempColumn));
-  
-  for (size_t i = 0; i < tempRow; i++)
+  if(dontCreate)
   {
-    for (size_t j = 0; j < tempColumn; j++)
-    {
-      if (i >= rows_ || j >= columns_)
-      {
-        tempElements[i * tempColumn + j] = nullptr;
-        continue;
-      }
-      tempElements[i * tempColumn + j] = elements_[i * columns_ + j];
-    }
+    elements_[layer * columns_ - freeColumns] = shape;
   }
+  else
+  {
+    matrixPtr tempElements(std::make_unique<shapePtr[]>(tempRow * tempColumn));
   
-  tempElements[layer * tempColumn - freeColumns] = shape;
+    for (size_t i = 0; i < tempRow; i++)
+    {
+      for (size_t j = 0; j < tempColumn; j++)
+      {
+        if (i >= rows_ || j >= columns_)
+        {
+          tempElements[i * tempColumn + j] = nullptr;
+          continue;
+        }
+        tempElements[i * tempColumn + j] = elements_[i * columns_ + j];
+      }
+    }
   
-  elements_ = std::move(tempElements);
-  rows_ = tempRow;
-  columns_ = tempColumn;
+    tempElements[layer * tempColumn - freeColumns] = shape;
+  
+    elements_ = std::move(tempElements);
+    rows_ = tempRow;
+    columns_ = tempColumn;
+  }
 }
 
 bool

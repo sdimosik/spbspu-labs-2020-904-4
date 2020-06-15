@@ -83,24 +83,31 @@ int main()
     std::cout << "\n Matrix test:\n";
     shabinsky::Matrix matrix;
     shabinsky::Rectangle r({0.0, 5.0}, 3.1, 4.8);
-    shabinsky::Circle c(1, {5.0, 10.0});
-    shabinsky::CompositeShape compositeShape(4);
+    shabinsky::Circle c(3, {0, 5.0});
+    shabinsky::Matrix::shapePtr s1 = std::make_shared<shabinsky::Rectangle>(r);
+    shabinsky::Matrix::shapePtr s2 = std::make_shared<shabinsky::Circle>(c);
+    shabinsky::CompositeShape compositeShape(5);
     compositeShape.addShape(shape1);
     compositeShape.addShape(shape2);
     compositeShape.addShape(shape3);
     compositeShape.addShape(shape4);
-    shabinsky::Matrix::shapePtr s1 = std::make_shared<shabinsky::Rectangle>(r);
-    shabinsky::Matrix::shapePtr s2 = std::make_shared<shabinsky::Circle>(c);
+    compositeShape.addShape(s1);
+    shabinsky::Matrix::shapePtr s3 = std::make_shared<shabinsky::CompositeShape>(compositeShape);
     matrix.add(s1);
     matrix.add(s2);
+    matrix.add(s3);
     matrix.print();
-  
+    
     std::cout << "\nMatrix:\n";
     for (size_t i = 0; i < matrix.getRows(); ++i)
     {
       std::cout << "Layer: " << i << "\n";
       for (size_t j = 0; j < matrix.getColumns(); ++j)
       {
+        if (matrix[i][j] == nullptr)
+        {
+          break;
+        }
         matrix[i][j]->show(std::cout);
       }
     }

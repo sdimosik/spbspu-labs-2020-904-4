@@ -20,6 +20,8 @@ namespace shabinsky
     {
     public:
       friend class Matrix;
+  
+      ~Layer() = default;
       
       shapePtr &operator[](size_t index);
     
