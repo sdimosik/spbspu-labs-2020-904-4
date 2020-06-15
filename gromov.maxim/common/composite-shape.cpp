@@ -224,4 +224,14 @@ namespace gromov
 
   }
 
+  Matrix CompositeShape::makePartition() const
+  {
+    Matrix matrix;
+    for(size_t i = 0; i < size_; ++i)
+    {
+      matrix.add(array_[i]);
+    }
+    return matrix;
+  }
+
 }

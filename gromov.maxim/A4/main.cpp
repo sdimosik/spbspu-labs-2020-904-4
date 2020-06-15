@@ -106,21 +106,23 @@ int main()
         << "First element of array = " << array1[1]->getArea() << "\n"
         << "Second element of array = " << array1[2]->getArea() << "\n";
 
-    gromov::Matrix matrix;
     std::shared_ptr<gromov::Shape> rectangle = std::make_shared<gromov::Rectangle>(gromov::Rectangle({1,1},10,10));
     std::shared_ptr<gromov::Shape> rectangle1 = std::make_shared<gromov::Rectangle>(gromov::Rectangle({1,1},5,5));
     std::shared_ptr<gromov::Shape> rectangle2 = std::make_shared<gromov::Rectangle>(gromov::Rectangle({1000,1000},5,5));
     std::shared_ptr<gromov::Shape> rectangle3 = std::make_shared<gromov::Rectangle>(gromov::Rectangle({10000,10000},100,100));
     std::shared_ptr<gromov::Shape> compositeShape = std::make_shared<gromov::CompositeShape>(gromov::CompositeShape(array));
-    matrix.add(rectangle);
-    matrix.add(compositeShape);
-    matrix.add(rectangle1);
-    matrix.add(rectangle2);
-    matrix.add(rectangle2);
-    matrix.add(rectangle1);
-    matrix.add(rectangle1);
-    matrix.add(rectangle1);
-    matrix.add(rectangle1);
+
+    array.addShape(rectangle);
+    array.addShape(compositeShape);
+    array.addShape(rectangle1);
+    array.addShape(rectangle2);
+    array.addShape(rectangle2);
+    array.addShape(rectangle1);
+    array.addShape(rectangle1);
+    array.addShape(rectangle1);
+    array.addShape(rectangle1);
+    
+    gromov::Matrix matrix = array.makePartition();
     matrix.printMatrixAreas(std::cout);
     std::cout << '\n' << matrix[0][0]->getArea() << '\n';
   }

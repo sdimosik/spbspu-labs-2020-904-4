@@ -15,7 +15,6 @@ namespace gromov
   {
     if(width <= 0 || height <= 0)
     {
-      std::string str = "Height and Width must be positive,height = ";
       throw std::invalid_argument(std::string("Height and Width must be positive,height = "
           + std::to_string(height) + " ,width = "
           + std::to_string(width)));
