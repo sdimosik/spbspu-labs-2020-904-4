@@ -103,14 +103,14 @@ BOOST_AUTO_TEST_CASE(test_area_composite_shape)
 BOOST_AUTO_TEST_CASE(test_move_composite_shape)
 {
   std::shared_ptr<meynik::Shape> rect
-      = std::make_shared<meynik::Rectangle>(meynik::Rectangle(meynik::point_t{ 3.3, 4.1 }, 3.0, 5.0));
-  std::shared_ptr<meynik::Shape> circle 
-      = std::make_shared<meynik::Circle>(meynik::Circle(meynik::point_t{ 0.0,0.0 }, 2.28));
+    = std::make_shared<meynik::Rectangle>(meynik::Rectangle(meynik::point_t{ 3.3, 4.1 }, 3.0, 5.0));
+  std::shared_ptr<meynik::Shape> circle
+    = std::make_shared<meynik::Circle>(meynik::Circle(meynik::point_t{ 0.0,0.0 }, 3));
   meynik::CompositeShape compShape;
   compShape.insertShape(circle);
   compShape.insertShape(rect);
-  const double x = 4.0,
-      y = 14.0,
+  const double x = 3.0,
+      y = 4.0,
       rectangle_oldX = rect->getCentre().x,
       rectangle_oldY = rect->getCentre().y,
       circle_oldX = circle->getCentre().x,
@@ -121,10 +121,10 @@ BOOST_AUTO_TEST_CASE(test_move_composite_shape)
   BOOST_CHECK_CLOSE(rect->getCentre().x, x + rectangle_oldX, ACCURACY_DOUBLE);
   BOOST_CHECK_CLOSE(rect->getCentre().y, y + rectangle_oldY, ACCURACY_DOUBLE);
   compShape.move({ x, y });
-  BOOST_CHECK_CLOSE(circle->getCentre().x, x, ACCURACY_DOUBLE);
-  BOOST_CHECK_CLOSE(circle->getCentre().y, y, ACCURACY_DOUBLE);
-  BOOST_CHECK_CLOSE(rect->getCentre().x, x, ACCURACY_DOUBLE);
-  BOOST_CHECK_CLOSE(rect->getCentre().y, y, ACCURACY_DOUBLE);
+  BOOST_CHECK_CLOSE(circle->getCentre().x, 2.1, ACCURACY_DOUBLE);
+  BOOST_CHECK_CLOSE(circle->getCentre().y, 2.2, ACCURACY_DOUBLE);
+  BOOST_CHECK_CLOSE(rect->getCentre().x, 5.4, ACCURACY_DOUBLE);
+  BOOST_CHECK_CLOSE(rect->getCentre().y, 6.3, ACCURACY_DOUBLE);
 }
 
 BOOST_AUTO_TEST_CASE(test_scale_composite_shape)

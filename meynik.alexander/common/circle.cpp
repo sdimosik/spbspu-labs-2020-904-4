@@ -57,4 +57,8 @@ namespace meynik
     }
     radius_ *= coefficient;
   }
+
+  void Circle::rotate(double)
+  {
+  }
 }
