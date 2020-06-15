@@ -46,13 +46,14 @@ BOOST_AUTO_TEST_CASE(test_rotate_composite_shape)
 
 BOOST_AUTO_TEST_CASE(test_layering)
 {
-  gromov::Matrix matrix;
   std::shared_ptr<gromov::Shape> rect = std::make_shared<gromov::Rectangle>(gromov::Rectangle({1.0, 1.0}, 10.0, 10.0));
   std::shared_ptr<gromov::Shape> rect1 = std::make_shared<gromov::Rectangle>(gromov::Rectangle({20.0, 20.0}, 10.0, 10.0));
   std::shared_ptr<gromov::Shape> circle = std::make_shared<gromov::Circle>(gromov::Circle(10, {10,10}));
-  matrix.add(rect);
-  matrix.add(rect1);
-  matrix.add(circle);
+  gromov::CompositeShape cs;
+  cs.addShape(rect);
+  cs.addShape(rect1);
+  cs.addShape(circle);
+  gromov::Matrix matrix = cs.makePartition();
   BOOST_CHECK(matrix.getShapeCount(0) == 2);
   BOOST_CHECK(matrix.getShapeCount(1) == 1);
 }
