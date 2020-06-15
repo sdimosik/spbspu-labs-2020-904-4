@@ -1,11 +1,13 @@
 #include "composite-shape.hpp"
 #include <iostream>
-#include <memory>
 #include <limits>
 #include <stdexcept>
+#include <cmath>
 
 namespace bulanov
 {
+  const double  CIRCLE_ANGLE = 360.0;
+
   CompositeShape::CompositeShape() :
     size_(0),
     place_(1),
@@ -74,7 +76,7 @@ namespace bulanov
     return *this;
   }
 
-  CompositeShape::shapePtr &CompositeShape::operator[](const size_t index) const
+  CompositeShape::shapePtr &CompositeShape::operator[](const size_t index)
   {
     if (size_ == 0 || index >= size_)
     {
@@ -140,7 +142,7 @@ namespace bulanov
   {
     if (rate <= 0)
     {
-      throw std::invalid_argument("Invalid rate received. False rate: " + std::to_string(rate));
+      throw std::invalid_argument("Invalid rate of composite shape received. False rate: " + std::to_string(rate));
     }
 
     point_t commonCenter = getCenter();
@@ -164,7 +166,7 @@ namespace bulanov
   {
     if (element == nullptr)
     {
-      throw std::invalid_argument("Error: the element received is null");
+      throw std::invalid_argument("Error: the element of composite shape received is null");
     }
     if (size_ == place_)
     {
@@ -184,7 +186,7 @@ namespace bulanov
   {
     if (size_ == 0 || index >= size_)
     {
-      throw std::out_of_range("Invalid index received. False index: " + std::to_string(index));
+      throw std::out_of_range("Invalid index of composite shape received. False index: " + std::to_string(index));
     }
     for (size_t i = index; i < size_ - 1; i++)
     {
@@ -204,9 +206,37 @@ namespace bulanov
   {
     rectangle_t commonFrame = getFrameRect();
     std::cout << "Information of Rectangle frame composite shape:   width = " << commonFrame.width
-              << "; height = " << commonFrame.height << "; center = (" << commonFrame.pos.x
-              << ", " << commonFrame.pos.y << ')' << std::endl;
+        << "; height = " << commonFrame.height << "; center = (" << commonFrame.pos.x
+        << ", " << commonFrame.pos.y << ')' << std::endl;
 
   }
+
+  void CompositeShape::rotate(const double angle) noexcept
+  {
+    double RadAngle = angle * M_PI / (CIRCLE_ANGLE / 2);
+    point_t commonCenter = getCenter();
+
+    for (size_t i = 0; i < size_; i++)
+    {
+      double distanceX = shapes_[i]->getCenter().x - commonCenter.x;
+      double distanceY = shapes_[i]->getCenter().y - commonCenter.y;
+      const double shiftX = (distanceX * fabs(cos(RadAngle))) - (distanceY * fabs(sin(RadAngle)));
+      const double shiftY = (distanceX * fabs(sin(RadAngle))) + (distanceY * fabs(cos(RadAngle)));
+      shapes_[i]->move({commonCenter.x + shiftX,commonCenter.y + shiftY});
+      shapes_[i]->rotate(angle);
+
+    }
+  }
+
+  Matrix CompositeShape::makeLayering() const
+  {
+    Matrix matrix;
+    for (size_t i = 0; i < size_; i++)
+    {
+      matrix.addElement(shapes_[i]);
+    }
+    return matrix;
+  }
+
 }
 
