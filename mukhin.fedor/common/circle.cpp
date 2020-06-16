@@ -47,6 +47,9 @@ namespace mukhin
     radius_ *= factor;
   }
 
+  void Circle::rotate(const double) noexcept
+  {}
+
   point_t Circle::getCore() const noexcept
   {
     return pos_;
