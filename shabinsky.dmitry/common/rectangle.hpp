@@ -8,6 +8,8 @@ namespace shabinsky
   class Rectangle : public Shape
   {
   public:
+    const static int countEdges = 4;
+    
     Rectangle(const point_t &position, double width, double height);
     
     double getWidth() const;
@@ -31,8 +33,7 @@ namespace shabinsky
     void rotate(double angle) override;
   
   private:
-    point_t position_;
-    point_t edges_[4];
+    point_t edges_[countEdges];
   };
 }
 

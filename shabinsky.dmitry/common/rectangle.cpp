@@ -1,12 +1,12 @@
 #include "rectangle.hpp"
 
 #include <stdexcept>
+#include <algorithm>
 #include <math.h>
 
 namespace shabinsky
 {
   Rectangle::Rectangle(const point_t &position, double width, double height) :
-    position_(position),
     edges_{{position.x - width / 2, position.y + height / 2},
            {position.x + width / 2, position.y + height / 2},
            {position.x - width / 2, position.y - height / 2},
@@ -33,7 +33,15 @@ namespace shabinsky
   
   point_t Rectangle::getPosition() const
   {
-    return position_;
+    point_t point{0,0};
+    for (int i = 0; i < countEdges; ++i)
+    {
+      point.x += edges_[i].x;
+      point.y += edges_[i].y;
+    }
+    point.x /= countEdges;
+    point.y /= countEdges;
+    return point;
   }
   
   double Rectangle::getArea() const
@@ -52,15 +60,13 @@ namespace shabinsky
   
   void Rectangle::move(const point_t &position)
   {
-    double deltaX = position.x - position_.x;
-    double deltaY = position.y - position_.y;
+    double deltaX = position.x - getPosition().x;
+    double deltaY = position.y - getPosition().y;
     move(deltaX, deltaY);
   }
   
   void Rectangle::move(double x, double y)
   {
-    position_.x += x;
-    position_.y += y;
     for (point_t &edge : edges_)
     {
       edge.x += x;
@@ -70,7 +76,7 @@ namespace shabinsky
   
   void Rectangle::show(std::ostream &out)
   {
-    out << "[H: " << getHeight() << ";W: " << getWidth() << ";" << this->position_ << "]\n";
+    out << "[H: " << getHeight() << ";W: " << getWidth() << ";" << getPosition() << "]\n";
   }
   
   void Rectangle::scale(double coefficient)
@@ -81,21 +87,23 @@ namespace shabinsky
     }
     double width = getWidth();
     double height = getHeight();
-    for (int i = 0; i < 4; ++i)
+    point_t position = getPosition();
+    
+    for (int i = 0; i < countEdges; ++i)
     {
       int kX = 1;
       int kY = 1;
       
-      if (edges_[i].x < position_.x)
+      if (edges_[i].x < position.x)
       {
         kX = -1;
       }
-      if (edges_[i].y < position_.y)
+      if (edges_[i].y < position.y)
       {
         kY = -1;
       }
-      edges_[i].x = (position_.x + kX * (width / 2) * coefficient);
-      edges_[i].y = (position_.y + kY * (height / 2) * coefficient);
+      edges_[i].x = (position.x + kX * (width / 2) * coefficient);
+      edges_[i].y = (position.y + kY * (height / 2) * coefficient);
     }
   }
   
@@ -104,10 +112,10 @@ namespace shabinsky
     const double angleRad = (angle * M_PI) / 180;
     const double sin = std::sin(angleRad),
       cos = std::cos(angleRad);
+    const double centerX = getPosition().x;
+    const double centerY = getPosition().y;
     for (point_t &edge : edges_)
     {
-      const double centerX = position_.x;
-      const double centerY = position_.y;
       const double distanceX = edge.x - centerX;
       const double distanceY = edge.y - centerY;
       edge.x = centerX + distanceX * cos - distanceY * sin;

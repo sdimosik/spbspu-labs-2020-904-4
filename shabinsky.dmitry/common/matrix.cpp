@@ -205,3 +205,15 @@ shabinsky::Matrix &shabinsky::Matrix::operator=(const shabinsky::Matrix &other)
   }
   return *this;
 }
+
+shabinsky::Matrix &shabinsky::Matrix::operator=(shabinsky::Matrix &&other)
+{
+  elements_ = std::move(other.elements_);
+  rows_ = other.rows_;
+  columns_ = other.columns_;
+  
+  other.elements_.reset();
+  rows_ = 0;
+  columns_ = 0;
+  return *this;
+}

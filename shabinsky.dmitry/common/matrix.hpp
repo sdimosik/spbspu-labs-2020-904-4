@@ -52,7 +52,7 @@ namespace shabinsky
   
     Matrix& operator=(const Matrix& other);
   
-    Matrix& operator=(Matrix&& other) = default;
+    Matrix& operator=(Matrix&& other);
   
     Layer operator[](size_t index);
     
