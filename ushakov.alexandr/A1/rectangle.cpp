@@ -16,16 +16,15 @@ Rectangle::Rectangle(double width, double height, const point_t& pos) :
   }
 }
 
-Rectangle::Rectangle(const rectangle_t& rectangle)
-{
-  pos_ = rectangle.pos;
-  width_ = rectangle.width;
-  height_ = rectangle.height;
-}
+Rectangle::Rectangle(const rectangle_t& rectangle) :
+    width_(rectangle.width),
+    height_(rectangle.height),
+    pos_(rectangle.pos)
+{}
 
 double Rectangle::getArea() const
 {
-  return 2 * (height_ + width_);
+  return height_ * width_;
 }
 
 rectangle_t Rectangle::getFrameRect() const
