@@ -14,6 +14,7 @@ namespace mukhin
     virtual void move(const double x, const double y) noexcept = 0;
     virtual void move(const point_t& core) noexcept = 0;
     virtual void scale(const double factor) = 0;
+    virtual void rotate(const double angle) noexcept = 0;
   };
 }
 #endif //SHAPE_HPP
