@@ -14,7 +14,7 @@ Circle::Circle(const point_t& center, double radius):
 
 double Circle::getArea() const
 {
-  return 2 * M_PI * radius_;
+  return M_PI * radius_ * radius_;
 }
 
 rectangle_t Circle::getFrameRect() const
