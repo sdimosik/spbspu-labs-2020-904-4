@@ -3,6 +3,7 @@
 
 #include <memory>
 #include "shape.hpp"
+#include "matrix.hpp"
 
 namespace anastasiev
 {
@@ -26,6 +27,9 @@ namespace anastasiev
     void move(const point_t &) noexcept override;
     void move(const double, const double) noexcept override;
     void scale(const double) override;
+    void rotate(double) noexcept override;
+    void rotateAroundPoint(double, const point_t&) noexcept override;
+    Matrix getLayered() const;
   private:
     unsigned int size_;
     unsigned int capacity_;

@@ -1,5 +1,6 @@
 #include "composite-shape.hpp"
 #include <stdexcept>
+#include <cmath>
 
 namespace anastasiev
 {
@@ -177,5 +178,25 @@ namespace anastasiev
       shapeArray_[i]->move(dx, dy);
       shapeArray_[i]->scale(factor);
     }
+  }
+  void CompositeShape::rotate(double angle) noexcept
+  {
+    rotateAroundPoint(angle, getFrameRect().pos);
+  }
+  void CompositeShape::rotateAroundPoint(double angle,const point_t& point) noexcept
+  {
+    for(unsigned int i = 0; i < size_; i++)
+    {
+      shapeArray_[i]->rotateAroundPoint(angle, point);
+    }
+  }
+  Matrix CompositeShape::getLayered() const 
+  {
+    Matrix matrix;
+    for (unsigned int i = 0; i < size_; i++)
+    {
+      matrix.addShape(shapeArray_[i]);
+    }
+    return matrix;
   }
 } // namespace anastasiev

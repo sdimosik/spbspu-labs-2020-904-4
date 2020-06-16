@@ -14,7 +14,9 @@ namespace anastasiev
     void move(const point_t&) noexcept override;
     void move (const double, const double) noexcept override;
     void scale(const double) override;
-  private:
+    void rotate (double) noexcept override;
+    void rotateAroundPoint (double, const point_t&) noexcept override;
+    private:
     double radius_;
     point_t pos_;
   };

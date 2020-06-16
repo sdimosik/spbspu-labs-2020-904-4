@@ -13,7 +13,9 @@ namespace anastasiev
     virtual rectangle_t getFrameRect() const noexcept = 0;
     virtual void move(const point_t &) noexcept = 0;
     virtual void move(const double, const double) noexcept = 0;
-    virtual void scale(const double) =0;
+    virtual void scale(const double) = 0;
+    virtual void rotate(double) noexcept = 0;
+    virtual void rotateAroundPoint(double,const point_t&) noexcept = 0;
   };
 } // namespace anastasiev
 #endif
