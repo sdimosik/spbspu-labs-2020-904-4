@@ -77,14 +77,14 @@ void shabinsky::Matrix::add(const shabinsky::Matrix::shapePtr &shape)
     freeColumns = 1;
   }
   
-  if(dontCreate)
+  if (dontCreate)
   {
     elements_[layer * columns_ - freeColumns] = shape;
   }
   else
   {
     matrixPtr tempElements(std::make_unique<shapePtr[]>(tempRow * tempColumn));
-  
+    
     for (size_t i = 0; i < tempRow; i++)
     {
       for (size_t j = 0; j < tempColumn; j++)
@@ -97,9 +97,9 @@ void shabinsky::Matrix::add(const shabinsky::Matrix::shapePtr &shape)
         tempElements[i * tempColumn + j] = elements_[i * columns_ + j];
       }
     }
-  
+    
     tempElements[layer * tempColumn - freeColumns] = shape;
-  
+    
     elements_ = std::move(tempElements);
     rows_ = tempRow;
     columns_ = tempColumn;
@@ -188,4 +188,20 @@ shabinsky::Matrix::Layer shabinsky::Matrix::operator[](size_t index)
     throw std::out_of_range(std::string("Index is out of range = ") + std::to_string(index));
   }
   return Layer(&elements_[columns_ * index], columns_);
+}
+
+shabinsky::Matrix &shabinsky::Matrix::operator=(const shabinsky::Matrix &other)
+{
+  if (this != &other)
+  {
+    matrixPtr tempElements = std::make_unique<shapePtr[]>(getSize());
+    columns_ = other.columns_;
+    rows_ = other.rows_;
+    for (size_t i = 0; i < getSize(); ++i)
+    {
+      tempElements[i] = elements_[i];
+    }
+    elements_ = std::move(tempElements);
+  }
+  return *this;
 }

@@ -26,12 +26,18 @@ namespace shabinsky
       shapePtr &operator[](size_t index);
     
     private:
+      Layer() = default;
+      
       Layer(shapePtr *shapes, size_t size);
       
       Layer(const Layer &layer) = default;
   
       Layer(Layer && layer) = default;
-      
+  
+      Layer& operator=(const Layer& other) = default;
+  
+      Layer& operator=(Layer&& other) = default;
+  
       shapePtr *shapes_;
       size_t size_;
     };
@@ -43,7 +49,11 @@ namespace shabinsky
     Matrix(Matrix &&matrix) noexcept;
     
     ~Matrix() = default;
-    
+  
+    Matrix& operator=(const Matrix& other);
+  
+    Matrix& operator=(Matrix&& other) = default;
+  
     Layer operator[](size_t index);
     
     void add(const shapePtr &shape);

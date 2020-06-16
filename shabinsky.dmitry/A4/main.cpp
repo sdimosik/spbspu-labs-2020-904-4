@@ -117,7 +117,7 @@ int main()
     list.addShape(std::make_shared<shabinsky::Rectangle>(shabinsky::Rectangle({0.0, 5.0}, 3.1, 4.8)));
     list.addShape(std::make_shared<shabinsky::Circle>(shabinsky::Circle(shabinsky::Circle(3, {0, 5.0}))));
     list.addShape(cs);
-    shabinsky::Matrix matrix1 = list.makeMatrix();
+    shabinsky::Matrix matrix1 = list.getMatrix();
     matrix1.print();
   }
   catch (const std::invalid_argument &err)

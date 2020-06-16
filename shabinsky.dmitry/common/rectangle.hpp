@@ -31,7 +31,6 @@ namespace shabinsky
     void rotate(double angle) override;
   
   private:
-    double width_, height_;
     point_t position_;
     point_t edges_[4];
   };

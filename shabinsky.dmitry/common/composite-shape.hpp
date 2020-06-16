@@ -45,7 +45,7 @@ namespace shabinsky
     
     void rotate(double angle) override;
   
-    Matrix makeMatrix() const;
+    Matrix getMatrix() const;
   
   private:
     size_t size_;

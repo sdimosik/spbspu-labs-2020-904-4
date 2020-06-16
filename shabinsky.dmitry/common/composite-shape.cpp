@@ -182,7 +182,7 @@ namespace shabinsky
     }
   }
   
-  Matrix CompositeShape::makeMatrix() const
+  Matrix CompositeShape::getMatrix() const
   {
     Matrix matrix;
     for(size_t i = 0; i < size_; ++i)

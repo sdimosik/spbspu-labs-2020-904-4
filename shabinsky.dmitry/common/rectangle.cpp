@@ -6,8 +6,6 @@
 namespace shabinsky
 {
   Rectangle::Rectangle(const point_t &position, double width, double height) :
-    width_(width),
-    height_(height),
     position_(position),
     edges_{{position.x - width / 2, position.y + height / 2},
            {position.x + width / 2, position.y + height / 2},
@@ -25,12 +23,12 @@ namespace shabinsky
   
   double Rectangle::getWidth() const
   {
-    return width_;
+    return std::sqrt(std::pow(edges_[0].x - edges_[1].x, 2) + std::pow(edges_[0].y - edges_[1].y, 2));
   }
   
   double Rectangle::getHeight() const
   {
-    return height_;
+    return std::sqrt(std::pow(edges_[0].x - edges_[2].x, 2) + std::pow(edges_[0].y - edges_[2].y, 2));;
   }
   
   point_t Rectangle::getPosition() const
@@ -40,7 +38,7 @@ namespace shabinsky
   
   double Rectangle::getArea() const
   {
-    return width_ * height_;
+    return getHeight() * getWidth();
   }
   
   rectangle_t Rectangle::getFrameRect() const
@@ -72,7 +70,7 @@ namespace shabinsky
   
   void Rectangle::show(std::ostream &out)
   {
-    out << "[H: " << this->height_ << ";W: " << this->width_ << ";" << this->position_ << "]\n";
+    out << "[H: " << getHeight() << ";W: " << getWidth() << ";" << this->position_ << "]\n";
   }
   
   void Rectangle::scale(double coefficient)
@@ -81,6 +79,8 @@ namespace shabinsky
     {
       throw std::invalid_argument("Coefficient must be positive. Coefficient: " + std::to_string(coefficient));
     }
+    double width = getWidth();
+    double height = getHeight();
     for (int i = 0; i < 4; ++i)
     {
       int kX = 1;
@@ -94,11 +94,9 @@ namespace shabinsky
       {
         kY = -1;
       }
-      edges_[i].x = (position_.x + kX * (width_ / 2) * coefficient);
-      edges_[i].y = (position_.y + kY * (height_ / 2) * coefficient);
+      edges_[i].x = (position_.x + kX * (width / 2) * coefficient);
+      edges_[i].y = (position_.y + kY * (height / 2) * coefficient);
     }
-    width_ *= coefficient;
-    height_ *= coefficient;
   }
   
   void Rectangle::rotate(double angle)
