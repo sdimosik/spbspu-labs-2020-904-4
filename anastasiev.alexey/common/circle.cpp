@@ -53,4 +53,13 @@ namespace anastasiev
     }
     radius_ *= factor;
   }
+  void Circle::rotate (double) noexcept
+  {}
+  void Circle::rotateAroundPoint (double angle, const point_t& point) noexcept
+  {
+    angle = angle * M_PI / 180;
+    double x = pos_.x;
+    pos_.x = point.x + (pos_.x - point.x) * std::cos(angle) - (pos_.y - point.y) * std::sin(angle);
+    pos_.y = point.y + (pos_.y - point.y) * std::cos(angle) + (x - point.x) * std::sin(angle);
+  }
 } //namespace anastasiev

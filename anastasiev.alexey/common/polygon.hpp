@@ -1,14 +1,16 @@
-#ifndef TRIANGLE_HPP
-#define TRIANGLE_HPP
+#ifndef POLYGON_HPP
+#define POLYGON_HPP
+
+#include <memory>
+#include <initializer_list>
 #include "shape.hpp"
 
 namespace anastasiev
 {
-  class Triangle : public Shape
+  class Polygon : public Shape
   {
   public:
-    Triangle(const point_t &, const point_t &, const point_t &);
-    point_t getPosition() const;
+    Polygon(const std::initializer_list<point_t>&);
     double getArea() const noexcept override;
     rectangle_t getFrameRect() const noexcept override;
     void move(const point_t &) noexcept override;
@@ -16,8 +18,11 @@ namespace anastasiev
     void scale(const double) override;
     void rotate(double) noexcept override;
     void rotateAroundPoint(double,const point_t&) noexcept override;
+    point_t getPosition() noexcept; 
   private:
-    point_t vertices_[3];
+    bool isConvex() const;
+    unsigned int count_;
+    std::unique_ptr<point_t[]> points_;
   };
-}//namespace anastasiev
+}
 #endif
