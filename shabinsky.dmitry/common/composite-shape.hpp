@@ -3,12 +3,16 @@
 
 #include <memory>
 #include "shape.hpp"
+#include "matrix.hpp"
 
 namespace shabinsky
 {
-  class CompositeShape : Shape
+  class CompositeShape : public Shape
   {
   public:
+    using shapePtr = std::shared_ptr<shabinsky::Shape>;
+    using compositionPtr = std::unique_ptr<shapePtr[]>;
+    
     CompositeShape() noexcept;
     
     explicit CompositeShape(size_t length);
@@ -38,9 +42,12 @@ namespace shabinsky
     size_t getSize() const noexcept;
     
     size_t getLength() const noexcept;
+    
+    void rotate(double angle) override;
+  
+    Matrix getMatrix() const;
   
   private:
-    using compositionPtr = std::unique_ptr<std::shared_ptr<Shape>[]>;
     size_t size_;
     size_t length_;
     compositionPtr composition_;
@@ -48,4 +55,3 @@ namespace shabinsky
 }
 
 #endif //COMPOSITE_SHAPE_HPP
-
