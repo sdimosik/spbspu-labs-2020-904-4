@@ -51,10 +51,10 @@ namespace shabinsky
   
   rectangle_t Rectangle::getFrameRect() const
   {
-    double maxX = std::max(std::max(edges_[0].x, edges_[1].x), std::max(edges_[2].x, edges_[3].x)),
-      minX = std::min(std::min(edges_[0].x, edges_[1].x), std::min(edges_[2].x, edges_[3].x)),
-      maxY = std::max(std::max(edges_[0].y, edges_[1].y), std::max(edges_[2].y, edges_[3].y)),
-      minY = std::min(std::min(edges_[0].y, edges_[1].y), std::min(edges_[2].y, edges_[3].y));
+    double maxX = std::max({edges_[0].x, edges_[1].x, edges_[2].x, edges_[3].x}),
+      minX = std::min({edges_[0].x, edges_[1].x, edges_[2].x, edges_[3].x}),
+      maxY = std::max({edges_[0].y, edges_[1].y, edges_[2].y, edges_[3].y}),
+      minY = std::min({edges_[0].y, edges_[1].y, edges_[2].y, edges_[3].y});
     return rectangle_t{maxX - minX, maxY - minY, {(maxX + minX) / 2, (maxY + minY) / 2}};
   }
   
