@@ -1,7 +1,12 @@
+#define _USE_MATH_DEFINES
 #include "composite-shape.hpp"
 #include <iostream>
 #include <exception>
 #include <algorithm>
+#include <utility>
+#include <cmath>
+
+const double fullCircle = 360.0;
 
 namespace spasoevich
 {
@@ -9,7 +14,7 @@ namespace spasoevich
     shapeCount_(0),
     size_(0),
     arrayOfShapes_(nullptr)
-  {} 
+  {}
 
   CompositeShape::CompositeShape(const CompositeShape& copyShape) :
     shapeCount_(copyShape.shapeCount_),
@@ -61,7 +66,7 @@ namespace spasoevich
 
   CompositeShape::shape_ptr CompositeShape::operator[](size_t index) const
   {
-    if (index >= size_ || size_==0)
+    if (index >= size_ || size_ == 0)
     {
       throw std::out_of_range("Index is out of range.\n");
     }
@@ -159,7 +164,7 @@ namespace spasoevich
       {
         tempArray[i] = arrayOfShapes_[i];
       }
-      shapeCount_+=10;
+      shapeCount_ += 10;
       arrayOfShapes_ = std::move(tempArray);
     }
     arrayOfShapes_[size_++] = shape;
@@ -167,7 +172,7 @@ namespace spasoevich
 
   void CompositeShape::removeShape(size_t index)
   {
-    if ((index >= size_) || (size_==0))
+    if ((index >= size_) || (size_ == 0))
     {
       throw std::out_of_range("Index is out of range.\n");
     }
@@ -185,14 +190,44 @@ namespace spasoevich
     return size_;
   }
 
+  void CompositeShape::rotate(double angle) noexcept
+  {
+    const point_t center = getFrameRect().pos;
+    const double sinus = sin(angle * M_PI / 180);
+    const double cosinus = cos(angle * M_PI / 180);
+
+    for (size_t i = 0; i < size_; i++)
+    {
+      const double oldX = arrayOfShapes_[i]->getFrameRect().pos.x - center.x;
+      const double oldY = arrayOfShapes_[i]->getFrameRect().pos.y - center.y;
+
+      const double newX = oldX * fabs(cosinus) - oldY * fabs(sinus);
+      const double newY = oldX * fabs(sinus) + oldY * fabs(cosinus);
+
+      arrayOfShapes_[i]->move({ center.x + newX, center.y + newY });
+      arrayOfShapes_[i]->rotate(angle);
+    }
+  }
+
+  Matrix CompositeShape::part() const
+  {
+    Matrix matrix;
+    for (size_t i = 0; i < size_; ++i)
+    {
+      matrix.addShape(arrayOfShapes_[i]);
+    }
+    return matrix;
+  }
+
   void CompositeShape::printCompositeShapeData() noexcept
   {
     spasoevich::rectangle_t shape = getFrameRect();
     std::cout << "\nComposite shape parameters:\n"
-              << "Center: (" << getFrameRect().pos.x << "," << getFrameRect().pos.y << ")\n"
-              << "Area: " << getArea() << "\n"
-              << "Amount of shapes: " << shapeCount_ << "\n"
-              << "Frame rectangle width: " << shape.width << "\n"
-              << "Frame rectangle height: " << shape.height << "\n\n";
+      << "Center: (" << getFrameRect().pos.x << "," << getFrameRect().pos.y << ")\n"
+      << "Area: " << getArea() << "\n"
+      << "Amount of shapes: " << shapeCount_ << "\n"
+      << "Frame rectangle width: " << shape.width << "\n"
+      << "Frame rectangle height: " << shape.height << "\n\n";
   }
 }
+
