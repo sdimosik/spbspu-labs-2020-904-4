@@ -52,5 +52,8 @@ namespace  meshcheryakova
   {
     out << "Parameters of circle: radius = " << radius_ << '\n';
   }
+
+  void Circle::rotate(double) noexcept
+  {}
 }
 
