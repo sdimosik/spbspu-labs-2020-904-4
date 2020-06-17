@@ -19,8 +19,6 @@ namespace ushakov
 
     void move(double xAxis, double yAxis) override;
 
-    point_t getPosition() const;
-
     double getRadius() const;
 
     void print() const override;
@@ -28,6 +26,8 @@ namespace ushakov
     void printFrameRectangle() const override;
 
     void scale(double coefficient) override;
+
+    point_t getPosition() const override;
 
   private:
 

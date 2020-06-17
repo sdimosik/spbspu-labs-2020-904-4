@@ -26,6 +26,8 @@ namespace ushakov
     virtual void printFrameRectangle() const = 0;
 
     virtual void scale(double coefficient) = 0;
+
+    virtual point_t getPosition() const = 0;
   };
 
 }

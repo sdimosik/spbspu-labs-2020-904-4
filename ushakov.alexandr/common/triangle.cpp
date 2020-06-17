@@ -85,7 +85,7 @@ namespace ushakov
 
   void Triangle::print() const
   {
-    std::cout << "vertex 1.x = " << top1_.x << " vertex 1.y = " << top1_.y << " vertex 2.x = " << top2_.x
+    std::cout << "Triangle: vertex 1.x = " << top1_.x << " vertex 1.y = " << top1_.y << " vertex 2.x = " << top2_.x
               << " vertex 2.y = " << top2_.y << " vertex 3.x = " << top3_.x << " vertex 3.y = " << top3_.y << std::endl;
   }
 

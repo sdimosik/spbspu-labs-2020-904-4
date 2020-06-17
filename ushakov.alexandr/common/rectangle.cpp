@@ -63,7 +63,7 @@ namespace ushakov
 
   void Rectangle::print() const
   {
-    std::cout << "height = " << height_ << " width = " << width_ << " position.x = " << pos_.x
+    std::cout << "Rectangle: height = " << height_ << " width = " << width_ << " position.x = " << pos_.x
               << " position.y = " << pos_.y << std::endl;
   }
 
