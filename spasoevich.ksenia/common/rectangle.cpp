@@ -1,10 +1,16 @@
 #include "rectangle.hpp"
+#define _USE_MATH_DEFINES
 #include <stdexcept>
+#include <cmath>
+#include <iostream>
+
+const double fullCircle = 360.0;
 
 namespace spasoevich
 {
   Rectangle::Rectangle(const point_t& center, const double width, const double height) :
-    rect({ center, width, height })
+    rect({ center, width, height }),
+    angle_(0.0)
   {
     if (width <= 0 || height <= 0)
     {
@@ -19,7 +25,9 @@ namespace spasoevich
 
   rectangle_t Rectangle::getFrameRect() const noexcept
   {
-    return rect;
+    double angleInRadians = angle_ * M_PI / (fullCircle / 2);
+    return rectangle_t{ rect.pos, rect.width * cos(angleInRadians) + rect.height * sin(angleInRadians),
+       rect.width * sin(angleInRadians) + rect.height * cos(angleInRadians) };
   }
 
   void Rectangle::move(const double dx, const double dy) noexcept
@@ -44,5 +52,11 @@ namespace spasoevich
       rect.width = rect.width * coefficient;
       rect.height = rect.height * coefficient;
     }
+  }
+
+  void Rectangle::rotate(const double angle) noexcept
+  {
+    angle_ += angle;
+    angle_ = (angle_ < 0.0) ? (fullCircle + fmod(angle_, fullCircle)) : fmod(angle_, fullCircle);
   }
 }

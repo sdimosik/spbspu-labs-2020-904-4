@@ -13,6 +13,7 @@ namespace spasoevich
     void move(const double dx, const double dy) noexcept override;
     void move(const point_t& pt) noexcept override;
     void scale(const double coefficient) override;
+    void rotate(const double angle) noexcept override;
   private:
     point_t center_;
     double radius_;
