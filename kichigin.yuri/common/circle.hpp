@@ -17,6 +17,7 @@ namespace kichigin
     void move(const point_t& position) noexcept override;
     void move(double x, double y) noexcept override;
     void scale(double coefficient) override;
+    void rotate(double angle) noexcept override;
   private:
     double radius_;
     point_t pos_;

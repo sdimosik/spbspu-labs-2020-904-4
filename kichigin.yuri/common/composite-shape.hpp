@@ -5,7 +5,7 @@
 
 namespace kichigin
 {
-  class CompositeShape: Shape
+  class CompositeShape: public Shape
   {
   public:
     CompositeShape() noexcept;
@@ -24,6 +24,7 @@ namespace kichigin
     void move(const point_t& point) noexcept override;
     void move(double x, double y) noexcept override;
     void scale(double coefficient) override;
+    void rotate(double andgle) noexcept override;
   private:
     using arrayType = std::unique_ptr<std::shared_ptr<Shape>[]>;
     unsigned int fullSize_;
