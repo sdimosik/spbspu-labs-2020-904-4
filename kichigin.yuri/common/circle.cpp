@@ -63,4 +63,7 @@ namespace kichigin
     }
     radius_ *= coefficient;
   }
+
+  void Circle::rotate(double ) noexcept
+  {}
 }

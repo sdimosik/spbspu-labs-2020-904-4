@@ -1,11 +1,13 @@
 #include "rectangle.hpp"
 #include <stdexcept>
 #include <string>
+#include <cmath>
 
 namespace kichigin
 {
   Rectangle::Rectangle(double width, double height, const point_t& pos) :
-    figure_{ width, height, pos }
+    figure_{ width, height, pos },
+    angle_(0)
   {
     if (width <= 0.0)
     {
@@ -39,7 +41,12 @@ namespace kichigin
 
   rectangle_t Rectangle::getFrameRect() const noexcept
   {
-    return figure_;
+    if (angle_ == 0.0)
+    {
+      return figure_;
+    }
+    return rectangle_t{figure_.width * std::abs(std::cos(angle_)) + figure_.height * std::abs(std::sin(angle_)),
+        figure_.width * std::abs(std::sin(angle_)) + figure_.height * std::abs(std::cos(angle_)), figure_.pos};
   }
 
   void Rectangle::setWidth(double width)
@@ -79,5 +86,19 @@ namespace kichigin
     }
     figure_.width *= coefficient;
     figure_.height *= coefficient;
+  }
+
+  void Rectangle::rotate(double angle) noexcept
+  {
+    angle -= static_cast<long long>(angle / 360) * 360LL;
+    angle_ += angle * M_PI / 180.0;
+    if (angle_ > 2.0 * M_PI)
+    {
+      angle_ -= 2.0 * M_PI;
+    }
+    else if (angle_ < 2.0 * M_PI)
+    {
+      angle += 2.0 * M_PI;
+    }
   }
 }
