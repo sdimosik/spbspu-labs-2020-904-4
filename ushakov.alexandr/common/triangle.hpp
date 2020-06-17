@@ -25,7 +25,7 @@ namespace ushakov
 
     void scale(double coefficient) override;
 
-    point_t getPosition() const;
+    point_t getPosition() const override;
 
   private:
     point_t top1_;

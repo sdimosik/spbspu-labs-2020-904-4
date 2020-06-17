@@ -48,7 +48,7 @@ namespace ushakov
 
   void Circle::print() const
   {
-    std::cout << "radius = " << radius_ << " center.x = " << pos_.x << " center.y = " << pos_.y << std::endl;
+    std::cout << "Circle: radius = " << radius_ << " center.x = " << pos_.x << " center.y = " << pos_.y << std::endl;
   }
 
   void Circle::printFrameRectangle() const
