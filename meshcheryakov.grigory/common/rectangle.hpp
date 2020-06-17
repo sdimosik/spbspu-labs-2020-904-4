@@ -16,9 +16,12 @@ namespace meshcheryakov
     point_t getPosition() const noexcept override;
     double getWidth() const;
     double getHeight() const;
+    void rotate(const double angle) noexcept override;
+    double getAngle() const noexcept;
 
   private:
     rectangle_t rect_;
+    double angle_;
   };
 }
 #endif

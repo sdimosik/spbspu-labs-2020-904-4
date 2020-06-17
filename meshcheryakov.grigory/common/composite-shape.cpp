@@ -3,25 +3,28 @@
 #include <stdexcept>
 #include <string>
 #include <limits>
+#include <cmath>
 
 namespace meshcheryakov
 {
+  const double HALF_CIRCLE = 180;
+
   CompositeShape::CompositeShape() :
-    size_(0),
-    space_(0),
-    shapes_(nullptr)
+      size_(0),
+      space_(0),
+      shapes_(nullptr)
   {}
 
   CompositeShape::CompositeShape(size_t space) :
-    size_(0),
-    space_(space),
-    shapes_(std::make_unique<std::shared_ptr<Shape>[]>(space))
+      size_(0),
+      space_(space),
+      shapes_(std::make_unique<std::shared_ptr<Shape>[]>(space))
   {}
 
   CompositeShape::CompositeShape(const meshcheryakov::CompositeShape &other) :
-    size_(other.size_),
-    space_(other.space_),
-    shapes_(std::make_unique<std::shared_ptr<Shape>[]>(other.space_))
+      size_(other.size_),
+      space_(other.space_),
+      shapes_(std::make_unique<std::shared_ptr<Shape>[]>(other.space_))
   {
     for (size_t i = 0; i < size_; i++)
     {
@@ -30,16 +33,16 @@ namespace meshcheryakov
   }
 
   CompositeShape::CompositeShape(meshcheryakov::CompositeShape &&other) noexcept :
-    size_(other.size_),
-    space_(other.space_),
-    shapes_(std::move(other.shapes_))
+      size_(other.size_),
+      space_(other.space_),
+      shapes_(std::move(other.shapes_))
   {
     other.size_ = 0;
     other.space_ = 0;
     other.shapes_.reset();
   }
 
-  CompositeShape& CompositeShape::operator=(const CompositeShape &other)
+  CompositeShape &CompositeShape::operator=(const CompositeShape &other)
   {
     if (this == &other)
     {
@@ -56,7 +59,7 @@ namespace meshcheryakov
     return *this;
   }
 
-  CompositeShape& CompositeShape::operator=(CompositeShape &&other) noexcept
+  CompositeShape &CompositeShape::operator=(CompositeShape &&other) noexcept
   {
     if (this == &other)
     {
@@ -75,7 +78,8 @@ namespace meshcheryakov
   {
     if (index >= size_)
     {
-      throw (std::out_of_range("The shape index cannot be larger than the size. Invalid index = " + std::to_string(index)));
+      throw (std::out_of_range(
+          "The shape index cannot be larger than the size. Invalid index = " + std::to_string(index)));
     }
     return shapes_[index];
   }
@@ -112,7 +116,7 @@ namespace meshcheryakov
       bottomY = std::min(bottomY, rect.pos.y - (rect.height / 2));
     }
 
-    return {rightX - leftX, topY - bottomY, { ((rightX + leftX) / 2),   ((topY + bottomY) / 2)}};
+    return {rightX - leftX, topY - bottomY, {((rightX + leftX) / 2), ((topY + bottomY) / 2)}};
   }
 
   void CompositeShape::move(double dx, double dy) noexcept
@@ -129,11 +133,12 @@ namespace meshcheryakov
     move(point.x - frameRect.pos.x, point.y - frameRect.pos.y);
   }
 
-  void  CompositeShape::scale(const double coefficient)
+  void CompositeShape::scale(const double coefficient)
   {
     if (coefficient <= 0)
     {
-      throw std::invalid_argument("Coefficient should not be negative. Invalid coefficient = " + std::to_string(coefficient));
+      throw std::invalid_argument(
+          "Coefficient should not be negative. Invalid coefficient = " + std::to_string(coefficient));
     }
     double centreX = getFrameRect().pos.x;
     double centreY = getFrameRect().pos.y;
@@ -156,7 +161,7 @@ namespace meshcheryakov
     return size_;
   }
 
-  void CompositeShape::addShape(const std::shared_ptr <Shape> &shape)
+  void CompositeShape::addShape(const std::shared_ptr<Shape> &shape)
   {
     if (shape == nullptr)
     {
@@ -169,12 +174,11 @@ namespace meshcheryakov
     }
     if (size_ == space_)
     {
-      shapeArray tmp(std::make_unique<std::shared_ptr<Shape>[]>(space_ * 2));
+      shapeArray tmp(std::make_unique<std::shared_ptr<Shape>[]>(space_ = std::max(space_ * 2, std::size_t(1))));
       for (size_t i = 0; i < size_; i++)
       {
         tmp[i] = shapes_[i];
       }
-      space_ *= 2;
       shapes_ = std::move(tmp);
     }
     shapes_[size_++] = shape;
@@ -184,7 +188,8 @@ namespace meshcheryakov
   {
     if (size_ <= index || size_ == 0)
     {
-      throw std::out_of_range("The shape index cannot be larger than the size. Invalid index = " + std::to_string(index));
+      throw std::out_of_range(
+          "The shape index cannot be larger than the size. Invalid index = " + std::to_string(index));
     }
     for (size_t i = index; i < size_ - 1; i++)
     {
@@ -193,4 +198,29 @@ namespace meshcheryakov
     shapes_[size_ - 1] = nullptr;
     size_--;
   }
+
+  void CompositeShape::rotate(const double angle) noexcept
+  {
+    double angleRad = angle * M_PI / HALF_CIRCLE;
+    point_t position = getPosition();
+    for (size_t i = 0; i < size_; i++)
+    {
+      double distanceX = shapes_[i]->getPosition().x - position.x;
+      double distanceY = shapes_[i]->getPosition().y - position.y;
+      shapes_[i]->move(position.x + (distanceX * std::abs(cos(angleRad))) - (distanceY * std::abs(sin(angleRad))),
+                       position.y + (distanceX * std::abs(sin(angleRad))) + (distanceY * std::abs(cos(angleRad))));
+      shapes_[i]->rotate(angle);
+    }
+  }
+
+  Matrix CompositeShape::matrixLayering() const
+  {
+    Matrix matrix;
+    for (size_t i = 0; i < size_; i++)
+    {
+      matrix.addShape(shapes_[i]);
+    }
+    return matrix;
+  }
+
 }
