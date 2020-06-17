@@ -22,6 +22,8 @@ namespace  meshcheryakova
 
     void printParametersWithoutSpot(std::ostream &out) override;
 
+    void rotate(double angle) noexcept override;
+
   private:
     point_t pos_;
     double radius_;

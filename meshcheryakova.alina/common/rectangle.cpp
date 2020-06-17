@@ -1,3 +1,4 @@
+#include <math.h>
 #include "rectangle.hpp"
 
 namespace  meshcheryakova
@@ -5,7 +6,8 @@ namespace  meshcheryakova
   Rectangle::Rectangle(double width, double height, const point_t &spot) :
     width_(width),
     height_(height),
-    pos_(spot)
+    pos_(spot),
+    angle_(0)
   {
     if (width_ <= 0.0)
     {
@@ -24,7 +26,10 @@ namespace  meshcheryakova
 
   rectangle_t Rectangle::getFrameRect() const noexcept
   {
-    return rectangle_t{width_, height_, pos_};
+    double angle = M_PI * angle_ / 180;
+    double sin = fabs(std::sin(angle));
+    double cos = fabs(std::cos(angle));
+    return rectangle_t{(width_ * cos) + (height_ * sin), (width_ * sin) + (height_ * cos), pos_};
   }
 
   void Rectangle::move(double x, double y) noexcept
@@ -56,6 +61,15 @@ namespace  meshcheryakova
   void Rectangle::printParametersWithoutSpot(std::ostream &out)
   {
     out << " Parameters of rectangle: width = " << width_ << " height = " << height_ << '\n';
+  }
+
+  void Rectangle::rotate(double angle) noexcept
+  {
+    double full_turn = 360;
+
+    angle_ += angle;
+    angle_ = (angle_ < 0) ? (full_turn + fmod(angle_, full_turn)) : (fmod(angle_, full_turn));
+
   }
 }
 

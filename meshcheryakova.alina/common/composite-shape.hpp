@@ -9,6 +9,8 @@ namespace meshcheryakova
   class CompositeShape : public Shape
   {
   public:
+    using arrayPtr = std::unique_ptr<std::shared_ptr<Shape>[]>;
+
     CompositeShape() noexcept;
 
     CompositeShape(const CompositeShape &other);
@@ -41,8 +43,12 @@ namespace meshcheryakova
 
     void deleteElement(const size_t index);
 
+    void rotate(double angle) noexcept override;
+
+    size_t getSize() const noexcept;
+
+    arrayPtr& getShapes();
   private:
-    using arrayPtr = std::unique_ptr<std::shared_ptr<Shape>[]>;
     size_t spaciousness_;
     size_t size_;
     arrayPtr shapes_;
