@@ -1,10 +1,8 @@
-//
-// Created by Alexander on 10.05.2020.
-//
-
 #include <stdexcept>
 #include <limits>
+#include <cmath>
 #include "composite-shape.hpp"
+#include "utils.hpp"
 
 namespace dmitriev
 {
@@ -191,5 +189,36 @@ namespace dmitriev
       area += shapes_[i]->getArea();
     }
     return area;
+  }
+
+  void CompositeShape::rotate(double angle) noexcept
+  {
+    angle = fmod(angle, 360);
+    if (angle < 0)
+    {
+      angle += 360;
+    }
+    angle = utils::toRadians(angle);
+    const double centerX = getFrameRect().pos.x;
+    const double centerY = getFrameRect().pos.y;
+    for (size_t i = 0; i < size_; i++)
+    {
+      const double dX = shapes_[i]->getFrameRect().pos.x - centerX;
+      const double dY = shapes_[i]->getFrameRect().pos.y - centerY;
+      const double distanceX = fabs(dX * cos(angle)) - (dY * sin(angle));
+      const double distanceY = fabs(dX * sin(angle)) + (dY * cos(angle));
+      shapes_[i]->move({centerX + distanceX, centerY + distanceY});
+      shapes_[i]->rotate(utils::toDegree(angle));
+    }
+  }
+
+  Matrix CompositeShape::toMatrix() const noexcept
+  {
+    Matrix matrix;
+    for (size_t i = 0; i < size_; i++)
+    {
+      matrix.addShape(shapes_[i]);
+    }
+    return matrix;
   }
 }
