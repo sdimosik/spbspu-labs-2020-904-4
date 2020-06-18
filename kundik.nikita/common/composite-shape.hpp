@@ -24,6 +24,7 @@ namespace kundik {
     void move(double changeX, double changeY) noexcept override;
     void scale(double coefficient) override;
     void removeShape(size_t index);
+    void rotate(double angle) noexcept;
     point_t getCentrer() const noexcept;
   private:
     size_t size_;
