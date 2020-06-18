@@ -129,6 +129,7 @@ void dmitriev::Matrix::addShape(const std::shared_ptr<Shape> &shape)
     items_ = std::move(tmpItems);
   } else
   {
+    //Add new
     items_[rowToInsert * tmpCol - freeColumns] = shape;
   }
 }

@@ -177,7 +177,7 @@ namespace dmitriev
       shapes_[i]->scale(factor);
       double dX = shapes_[i]->getFrameRect().pos.x - centerX;
       double dY = shapes_[i]->getFrameRect().pos.y - centerY;
-      shapes_[i]->move(dX * factor, dY * factor);
+      shapes_[i]->move(dX * (factor - 1), dY * (factor - 1));
     }
   }
 
@@ -205,8 +205,8 @@ namespace dmitriev
     {
       const double dX = shapes_[i]->getFrameRect().pos.x - centerX;
       const double dY = shapes_[i]->getFrameRect().pos.y - centerY;
-      const double distanceX = fabs(dX * cos(angle)) - (dY * sin(angle));
-      const double distanceY = fabs(dX * sin(angle)) + (dY * cos(angle));
+      const double distanceX = fabs(dX * cos(angle)) - fabs((dY * sin(angle)));
+      const double distanceY = fabs(dX * sin(angle)) + fabs((dY * cos(angle)));
       shapes_[i]->move({centerX + distanceX, centerY + distanceY});
       shapes_[i]->rotate(utils::toDegree(angle));
     }
