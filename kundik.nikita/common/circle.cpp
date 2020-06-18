@@ -52,11 +52,14 @@ namespace kundik {
     return pos_.y;
   }
 
-  void Circle::scale(double coefficent) {
+  void Circle::scale(double coefficent) 
+  {
     if (coefficent <= 0.0)
     {
       throw std::invalid_argument(std::string("Invalid coefficent scaling value in circle = ") += std::to_string(coefficent));
     }
     radius_ *= coefficent;
   }
+  void Circle::rotate(double ) noexcept
+  {}
 }

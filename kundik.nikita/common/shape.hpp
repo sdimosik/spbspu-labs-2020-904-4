@@ -13,6 +13,7 @@ namespace kundik {
     virtual void move(const point_t& endPos) = 0;
     virtual void move(double changeX, double changeY) = 0;
     virtual void scale(double coefficent) = 0;
+    virtual void rotate(double angle) noexcept = 0;
   };
 }
 #endif
