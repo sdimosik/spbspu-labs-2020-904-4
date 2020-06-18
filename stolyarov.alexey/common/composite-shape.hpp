@@ -3,6 +3,7 @@
 
 #include <memory>
 #include "shape.hpp"
+#include "matrix.hpp"
 
 namespace stolyarov
 {
@@ -45,6 +46,10 @@ namespace stolyarov
     void printInf() override;
 
     void printFrameInf() override;
+
+    void rotate(const double angle) noexcept override;
+
+    Matrix makeLayering() const;
 
   private:
     using shapeArray = std::unique_ptr<shapePtr[]>;

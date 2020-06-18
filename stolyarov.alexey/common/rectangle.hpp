@@ -28,9 +28,14 @@ namespace stolyarov
 
     void scale(const double rate) override;
 
+    void rotate(const double angle) noexcept override;
+
+    double getAngle() const noexcept;
+
   private:
     double width_;
     double height_;
+    double angle_;
   };
 }
 
