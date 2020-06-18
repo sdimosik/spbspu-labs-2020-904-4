@@ -2,13 +2,18 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
+#include <cmath>
 
 namespace stolyarov
 {
+
+  const double CIRCLE_ANGLE = 360.0;
+
   Rectangle::Rectangle(double width, double height, const point_t& pos) :
     Shape(pos),
     width_(width),
-    height_(height)
+    height_(height),
+    angle_(0)
   {
     if (width <= 0)
     {
@@ -38,7 +43,8 @@ namespace stolyarov
 
   rectangle_t Rectangle::getFrameRect() const noexcept
   {
-    return rectangle_t({ width_, height_, pos_ });
+    double RadAngle = angle_ * M_PI / (CIRCLE_ANGLE / 2);
+    return { height_ * fabs(sin(RadAngle)) + width_ * fabs(cos(RadAngle)), width_ * fabs(sin(RadAngle)) + height_ * fabs(cos(RadAngle)), pos_ };
   }
 
   point_t Rectangle::getCenter() const noexcept
@@ -73,5 +79,23 @@ namespace stolyarov
     }
     height_ *= rate;
     width_ *= rate;
+  }
+
+  void Rectangle::rotate(const double angle) noexcept
+  {
+    angle_ += angle;
+    if (angle_ > 0.0)
+    {
+      angle_ = fmod(angle_, CIRCLE_ANGLE);
+    }
+    else
+    {
+      angle_ = CIRCLE_ANGLE + fmod(angle_, CIRCLE_ANGLE);
+    }
+  }
+
+  double Rectangle::getAngle() const noexcept
+  {
+    return angle_;
   }
 }

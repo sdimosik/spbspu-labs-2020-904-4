@@ -31,6 +31,8 @@ namespace stolyarov
 
     virtual void scale(const double rate) = 0;
 
+    virtual void rotate(const double angle) noexcept = 0;
+
   protected:
     point_t pos_;
   };

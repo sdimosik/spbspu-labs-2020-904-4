@@ -28,6 +28,8 @@ namespace stolyarov
 
     void scale(const double rate) override;
 
+    void rotate(const double) noexcept override;
+
   private:
     double radius_;
   };

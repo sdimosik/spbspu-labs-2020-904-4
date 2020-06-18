@@ -2,12 +2,15 @@
 #include <string>
 #include <algorithm>
 #include <iostream>
-#include <memory>
 #include <limits>
 #include <stdexcept>
+#include <cmath>
 
 namespace stolyarov
 {
+
+  const double CIRCLE_ANGLE = 360.0;
+
   CompositeShape::CompositeShape() :
     Shape(point_t{0.0, 0.0}),
     size_(0),
@@ -139,7 +142,7 @@ namespace stolyarov
   {
     if (rate <= 0)
     {
-      throw std::invalid_argument("Invalid rate received. False rate: " + std::to_string(rate));
+      throw std::invalid_argument("Invalid composite shape rate received. False rate: " + std::to_string(rate));
     }
 
     double centerX = getFrameRect().pos.x;
@@ -185,7 +188,7 @@ namespace stolyarov
   {
     if (index >= size_)
     {
-      throw std::out_of_range("Invalid index received. False index: " + std::to_string(index));
+      throw std::out_of_range("Invalid composite shape index was received. False index: " + std::to_string(index));
     }
     for (size_t i = index; i < size_ - 1; i++)
     {
@@ -197,7 +200,7 @@ namespace stolyarov
 
   void CompositeShape::printInf()
   {
-    std::cout << "Amount of elements:  " << size_ << ";\nCommon area:  " << getArea() << '\n';
+    std::cout << "Amount of elements:  " << size_ << ";\nCommon area:  " << getArea() << '\n' << '\n';
   }
 
   void CompositeShape::printFrameInf()
@@ -208,4 +211,31 @@ namespace stolyarov
         << "Parameters of the frame:" << '\n'
         << "height: " << getFrameRect().height << '\n' << "widht: " << getFrameRect().width << '\n' << '\n';
   }
+
+  void CompositeShape::rotate(const double angle) noexcept
+  {
+    double RadAngle = angle * M_PI / (CIRCLE_ANGLE / 2);
+    point_t commonCenter = getCenter();
+
+    for (size_t i = 0; i < size_; i++)
+    {
+      double distanceX = shapes_[i]->getCenter().x - commonCenter.x;
+      double distanceY = shapes_[i]->getCenter().y - commonCenter.y;
+      const double shiftX = (distanceX * fabs(cos(RadAngle))) - (distanceY * fabs(sin(RadAngle)));
+      const double shiftY = (distanceX * fabs(sin(RadAngle))) + (distanceY * fabs(cos(RadAngle)));
+      shapes_[i]->move({ commonCenter.x + shiftX, commonCenter.y + shiftY });
+      shapes_[i]->rotate(angle);
+    }
+  }
+
+  Matrix CompositeShape::makeLayering() const
+  {
+    Matrix matrix;
+    for (size_t i = 0; i < size_; i++)
+    {
+      matrix.addElement(shapes_[i]);
+    }
+    return matrix;
+  }
+
 }

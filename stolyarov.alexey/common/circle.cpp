@@ -69,4 +69,7 @@ namespace stolyarov
     }
     radius_ *= rate;
   }
+
+  void Circle::rotate(const double) noexcept
+  {}
 }
