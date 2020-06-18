@@ -138,13 +138,13 @@ namespace biryukova
     {
       for (size_t k = 0; k < getColumns(); k++)
       {
-        if (shapes_[(j * rows_) + k] == nullptr)
+        if (shapes_[(j * columns_) + k] == nullptr)
         {
           row = j;
           column = k;
           break;
         }
-        if (intersection(shape->getFrameRect(), this->operator[](j)[k]->getFrameRect()))
+        if (intersection(shape->getFrameRect(), shapes_[(j * columns_) + k]->getFrameRect()))
         {
           row = j + 1;
           column = 0;

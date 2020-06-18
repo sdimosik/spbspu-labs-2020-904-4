@@ -9,7 +9,6 @@ namespace biryukova
   {
   public:
     using shapePtr = std::shared_ptr<Shape>;
-    using shapesArray = std::unique_ptr<shapePtr[]>;
     class Layer
     {
     public:
@@ -37,6 +36,7 @@ namespace biryukova
     size_t getColumns() const noexcept;
     void insert(shapePtr shape);
   private:
+    using shapesArray = std::unique_ptr<shapePtr[]>;
     size_t rows_;
     size_t columns_;
     shapesArray shapes_;
