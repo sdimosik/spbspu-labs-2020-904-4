@@ -21,6 +21,8 @@ namespace maksimova
     virtual void print() const = 0;
 
     virtual void scale(const double coefficient) = 0;
+
+    virtual void rotate(const double angle) = 0;
   };
 }
 

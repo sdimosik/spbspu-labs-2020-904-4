@@ -62,4 +62,7 @@ namespace maksimova
       radius_ *= coefficient;
     }
   }
+
+  void Circle::rotate(const double) noexcept
+  {}
 }
