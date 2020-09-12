@@ -1,12 +1,14 @@
 #include "rectangle.hpp"
 #include <stdexcept>
+#include <cmath>
 
 namespace maksimova
 {
   Rectangle::Rectangle(const double width, const double height, const point_t &pos) :
     width_(width),
     height_(height),
-    position_(pos)
+    position_(pos),
+    angle_(0)
   {
     if (width_ <= 0 || height_ <= 0)
     {
@@ -64,4 +66,29 @@ namespace maksimova
   {
     return height_;
   }
+
+  void Rectangle::rotate(const double angle)
+  {
+    angle_ += angle;
+    if (angle_ > 0.0)
+    {
+      angle_ = fmod(angle_, CIRCLE_ANGLE);
+    }
+    else
+    {
+      angle_ = CIRCLE_ANGLE + fmod(angle_, CIRCLE_ANGLE);
+    }
+  }
+
+  double Rectangle::getAngle() const
+  {
+    return angle_;
+  }
+
+  Rectangle::Rectangle(const maksimova::rectangle_t &rectangle) :
+    width_(rectangle.width),
+    height_(rectangle.height),
+    position_(rectangle.pos),
+    angle_(0)
+  {}
 }
