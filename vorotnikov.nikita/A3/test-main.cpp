@@ -106,7 +106,6 @@ void compositeShapeGetFrameRectTest()
   compositeShape.addShape(shape_two);
   std::shared_ptr<vorotnikov::Shape> shape_three = std::make_shared<vorotnikov::Circle>(circle);
   compositeShape.addShape(shape_three);
-  vorotnikov::rectangle_t rectangle_frame = shape_one->getFrameRect();
   vorotnikov::rectangle_t circle_frame = shape_two->getFrameRect();
   vorotnikov::rectangle_t triangle_frame = shape_three->getFrameRect();
   assert(checkClose(compositeShape.getFrameRect().height,
