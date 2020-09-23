@@ -23,6 +23,8 @@ namespace meynik
 
     void scale(const double coefficient) override;
 
+    void rotate(double angle) override;
+
   private:
     point_t centre_;
     double radius_;

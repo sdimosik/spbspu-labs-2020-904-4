@@ -1,13 +1,18 @@
 #include "rectangle.hpp"
 #include <stdexcept>
 #include <iostream>
+#include <cmath>
 
 namespace bulanov
 {
+
+  const double  CIRCLE_ANGLE = 360.0;
+
   Rectangle::Rectangle(const point_t &center, double width, double height) :
     width_(width),
     height_(height),
-    pos_{center.x, center.y}
+    pos_{center.x, center.y},
+    angle_(0)
   {
     if (width <= 0)
     {
@@ -37,7 +42,9 @@ namespace bulanov
 
   rectangle_t Rectangle::getFrameRect() const noexcept
   {
-    return rectangle_t{width_, height_, pos_};
+    double RadAngle = angle_ * M_PI / (CIRCLE_ANGLE / 2);
+    return {height_ * fabs(sin(RadAngle)) + width_ * fabs(cos(RadAngle)),
+            width_ * fabs(sin(RadAngle)) + height_ * fabs(cos(RadAngle)), pos_};
   }
 
   void Rectangle::printInform() const
@@ -67,5 +74,24 @@ namespace bulanov
     width_ *= rate;
     height_ *= rate;
   }
+
+  void Rectangle::rotate(const double angle) noexcept
+  {
+    angle_ += angle;
+    if (angle_ > 0.0)
+    {
+      angle_ = fmod(angle_, CIRCLE_ANGLE);
+    }
+    else
+    {
+      angle_ = CIRCLE_ANGLE + fmod(angle_, CIRCLE_ANGLE);
+    }
+  }
+
+  double Rectangle::getAngle() const noexcept
+  {
+    return angle_;
+  }
+
 }
 

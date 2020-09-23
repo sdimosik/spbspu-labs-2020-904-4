@@ -22,10 +22,13 @@ namespace  meshcheryakova
 
     void printParametersWithoutSpot(std::ostream &out) override;
 
+    void rotate(double angle) noexcept override;
+
   private:
     double width_;
     double height_;
     point_t pos_;
+    double angle_;
   };
 }
 #endif //A2_RECTANGLE_HPP

@@ -42,8 +42,11 @@ namespace spasoevich
     {
       throw std::invalid_argument("Coefficent can't be less or equal to zero. ");
     }
-    
-      radius_ = radius_ * coefficient;
+
+    radius_ = radius_ * coefficient;
   }
+
+  void Circle::rotate(const double) noexcept
+  {}
 
 }

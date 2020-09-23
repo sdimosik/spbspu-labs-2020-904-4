@@ -2,6 +2,10 @@
 #include <iostream>
 #include <stdexcept>
 #include <string>
+#define _USE_MATH_DEFINES
+#include <cmath>
+
+const double HALF_CIRCLE = 180.0;
 
 namespace biryukova
 {
@@ -166,10 +170,7 @@ namespace biryukova
 
   void CompositeShape::move(const biryukova::point_t& point) noexcept
   {
-    for (size_t i = 0; i < size_; i++)
-    {
-      shapes_[i]->move(point);
-    }
+    move(point.x - getCentre().x, point.y - getCentre().y);
   }
 
   void CompositeShape::move(double x, double y) noexcept
@@ -209,5 +210,31 @@ namespace biryukova
   point_t CompositeShape::getCentre() const noexcept
   {
     return getFrameRect().pos;
+  }
+
+  void CompositeShape::rotate(double angle)
+  {
+    const point_t shapesCentre = getCentre();
+    const double sine = sin(((angle / 2) * M_PI) / HALF_CIRCLE);
+    const double cosine = cos(((angle / 2) * M_PI) / HALF_CIRCLE);
+    for (size_t i = 0; i < size_; i++)
+    {
+      const double distToCentreX = shapes_[i]->getCentre().x - shapesCentre.x;
+      const double distToCentreY = shapes_[i]->getCentre().y - shapesCentre.y;
+      const double dX = (distToCentreX * fabs(cosine)) - (distToCentreY * fabs(sine));
+      const double dY = (distToCentreX * fabs(sine)) + (distToCentreY * fabs(cosine));
+      shapes_[i]->move({shapesCentre.x + dX, shapesCentre.y + dY});
+      shapes_[i]->rotate(angle);
+    }
+  }
+
+  Matrix CompositeShape::partition() const
+  {
+    Matrix matrix;
+    for (size_t i = 0; i < size_; i++)
+    {
+      matrix.insert(shapes_[i]);
+    }
+    return matrix;
   }
 }

@@ -1,9 +1,12 @@
 #include "composite-shape.hpp"
 #include <stdexcept>
 #include <string>
+#include <cmath>
 
 namespace mukhin
 {
+  const double CIRCLE_ANGLE = 360.0;
+
   CompositeShape::CompositeShape() noexcept:
     size_(0),
     space_(0),
@@ -72,7 +75,6 @@ namespace mukhin
     }
     size_ = shapes.size_;
     space_ = shapes.space_;
-    shapes_.reset();
     shapes_ = std::move(shapes.shapes_);
     shapes.size_ = 0;
     shapes.space_ = 0;
@@ -187,6 +189,30 @@ namespace mukhin
     }
     shapes_[size_ - 1] = nullptr;
     size_--;
+  }
+
+  void CompositeShape::rotate(const double angle) noexcept
+  {
+    double angleRadian = angle * M_PI / (CIRCLE_ANGLE / 2);
+    for (size_t i = 0; i < size_; i++)
+    {
+      double spotX = shapes_[i]->getCore().x - getCore().x;
+      double spotY = shapes_[i]->getCore().y - getCore().y;
+      const double diffX = (spotX * fabs(cos(angleRadian))) - (spotY * fabs(sin(angleRadian)));
+      const double diffY = (spotX * fabs(sin(angleRadian))) + (spotY * fabs(cos(angleRadian)));
+      shapes_[i]->move({getCore().x + diffX, getCore().y + diffY});
+      shapes_[i]->rotate(angle);
+    } 
+  }
+
+  Matrix CompositeShape::getMatrixLayer()
+  {
+    Matrix temp;
+    for (size_t i = 0; i < size_; i++)
+    {
+      temp.addShape(shapes_[i]);
+    }
+    return temp;
   }
 
   size_t CompositeShape::getSize() const noexcept

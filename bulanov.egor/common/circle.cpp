@@ -62,6 +62,9 @@ namespace bulanov
     }
     radius_ *= rate;
   }
+
+  void Circle::rotate(const double ) noexcept
+  {}
 }
 
 

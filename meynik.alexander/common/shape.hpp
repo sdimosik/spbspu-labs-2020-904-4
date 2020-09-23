@@ -12,7 +12,7 @@ namespace meynik
 
     virtual double getArea() const noexcept = 0;
 
-    virtual rectangle_t getFrameRect() const = 0;
+    virtual rectangle_t getFrameRect() const noexcept = 0;
 
     virtual void move(const point_t& position) = 0;
 
@@ -23,6 +23,8 @@ namespace meynik
     virtual meynik::point_t getCentre() const noexcept = 0;
 
     virtual void scale(const double coefficient) = 0;
+
+    virtual void rotate(double angle) = 0;
 
   };
 }

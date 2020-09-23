@@ -3,6 +3,7 @@
 
 #include <memory>
 #include "shape.hpp"
+#include "matrix.hpp"
 
 
 namespace bakaeva
@@ -20,11 +21,13 @@ namespace bakaeva
 
     CompositeShape(CompositeShape &&other) noexcept;
 
+    ~CompositeShape() = default;
+
     CompositeShape &operator=(const CompositeShape &other);
 
     CompositeShape &operator=(CompositeShape &&other) noexcept;
 
-    shapePtr &operator[](const size_t index) const;
+    shapePtr &operator[](const size_t index);
 
     double getArea() const noexcept override;
 
@@ -36,17 +39,21 @@ namespace bakaeva
 
     void scale(const double coefficient) override;
 
-    void addShape(const shapePtr& shape);
+    void addShape(const shapePtr &shape);
 
     void removeShape(const size_t index);
 
     size_t getSize() const noexcept;
 
-    point_t getCenter() const noexcept;
+    point_t getCenter() const noexcept override;
 
     void printFrameRect() const override;
 
     void printData() const override;
+
+    void rotate(const double angle) noexcept override;
+
+    Matrix layering() const;
 
   private:
     using shapeArray = std::unique_ptr<shapePtr[]>;

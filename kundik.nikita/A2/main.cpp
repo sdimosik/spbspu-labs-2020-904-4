@@ -12,7 +12,7 @@ int main()
     kundik::Shape* shape_cir = new kundik::Circle(kundik::point_t{ 1, 1 }, 10);
     std::cout << "Circle area = " << shape_cir->getArea() << std::endl;
     delete shape_cir;
-    kundik::Rectangle rectangle(kundik::point_t{ 10, 13 }, 2, 8);
+    kundik::Rectangle rectangle(kundik::point_t{ 10, 13 }, -2, 8);
     std::cout << "Rectangle area = " << rectangle.getArea() << std::endl;
     std::cout << "Coordinates rectangle center = " << "( " << rectangle.getFrameRect().pos.x << ", " << rectangle.getFrameRect().pos.y << " )" << std::endl;
   }

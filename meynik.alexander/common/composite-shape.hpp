@@ -1,9 +1,9 @@
 #ifndef COMPOSITESHAPE_HPP
 #define COMPOSITESHAPE_HPP
 
-#include "shape.hpp"
-#include <ctime>
 #include <memory>
+#include "shape.hpp"
+#include "matrix.hpp"
 
 namespace meynik
 {
@@ -13,6 +13,8 @@ namespace meynik
     CompositeShape() noexcept;
 
     CompositeShape(const size_t capacity_);
+    
+    ~CompositeShape() = default;
 
     CompositeShape(const CompositeShape& array);
 
@@ -39,12 +41,16 @@ namespace meynik
     size_t getCapacity() const noexcept;
 
     rectangle_t getFrameRect() const noexcept override;
+    
+    Matrix getMatrix() const;
 
     void move(const double x, const double y) noexcept override;
 
     void move(const point_t& center) noexcept override;
 
     void scale(const double coefficient) override;
+
+    void rotate(double angle) override;
 
   private:
     using arrayPtr = std::unique_ptr<std::shared_ptr<Shape>[]>;

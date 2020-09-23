@@ -13,6 +13,7 @@ namespace mukhin
     void move(const double dx, const double dy) noexcept override;
     void move(const point_t& core) noexcept override;
     void scale(const double factor) override;
+    void rotate(const double angle) noexcept override;
     point_t getCore() const noexcept override;
     double getRadius() const noexcept;
   private:

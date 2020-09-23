@@ -1,6 +1,7 @@
 #include "composite-shape.hpp"
 #include <stdexcept>
 #include <string>
+#include <cmath>
 
 namespace gromov
 {
@@ -13,13 +14,13 @@ namespace gromov
   CompositeShape::CompositeShape(const size_t capacity_):
     size_(0),
     capacity_(capacity_),
-    array_(new std::shared_ptr<Shape>[capacity_])
+    array_(std::make_unique<std::shared_ptr<Shape>[]>(capacity_))
   {}
 
   CompositeShape::CompositeShape(const CompositeShape &array):
     size_(array.size_),
     capacity_(array.capacity_),
-    array_(new std::shared_ptr<Shape>[array.capacity_])
+    array_(std::make_unique<std::shared_ptr<Shape>[]>(array.capacity_))
   {
     for (size_t i = 0; i < size_; i++)
     {
@@ -33,11 +34,10 @@ namespace gromov
     array_(std::move(array.array_))
   {
     array.size_ = 0;
-    array.array_.reset();
     array.capacity_ = 0;
   }
   
-  std::shared_ptr<Shape> &CompositeShape::operator[](size_t index) const 
+  std::shared_ptr<Shape> &CompositeShape::operator[](size_t index)
   {
     if (size_ == 0 || index > (size_ - 1))
     {
@@ -52,8 +52,7 @@ namespace gromov
     {
       return *this;
     } 
-    arrayPtr temp;
-    temp.reset(new std::shared_ptr<Shape>[array.capacity_]);
+    arrayPtr temp = std::make_unique<std::shared_ptr<Shape>[]>(array.capacity_);
     for (size_t i = 0; i < array.size_; i++)
     {
       temp[i] = array.array_[i];
@@ -72,11 +71,9 @@ namespace gromov
     }
     size_ = array.size_;
     capacity_ = array.capacity_;
-    array_.reset();
     array_ = std::move(array.array_);
     array.size_ = 0;
     array.capacity_ = 0;
-    array.array_ = nullptr;
     return *this;
   }
 
@@ -89,14 +86,13 @@ namespace gromov
     if (capacity_ == 0)
     {
       capacity_ = 1;
-      arrayPtr temp;
-      temp.reset(new std::shared_ptr<Shape>[capacity_]);
+      arrayPtr temp = std::make_unique<std::shared_ptr<Shape>[]>(capacity_);
       array_ = std::move(temp);
     }
     if (capacity_ == size_)
     {
       const int coefficient = 2;
-      arrayPtr temp(new std::shared_ptr<Shape>[capacity_ * coefficient]);
+      arrayPtr temp = std::make_unique<std::shared_ptr<Shape>[]>(capacity_ * coefficient);
       for (size_t i = 0; i < size_; i++)
       {
         temp[i] = array_[i];
@@ -181,10 +177,8 @@ namespace gromov
 
   void CompositeShape::move(const point_t &center) noexcept
   {
-    for (size_t i = 0; i < size_; i++)
-    {
-      array_[i]->move(center);
-    }
+    const point_t currentCenter = getCentre();
+    move(center.x - currentCenter.x, center.y - currentCenter.y);
   }
 
   void CompositeShape::scale(const double coefficient)
@@ -198,7 +192,7 @@ namespace gromov
     for (size_t i = 0; i < size_; i++) 
     {
       array_[i]->scale(coefficient);
-      shapeCentre = array_[i]->getFrameRect().pos;
+      shapeCentre = array_[i]->getCentre();
       array_[i]->move((shapeCentre.x - centre.x) * (coefficient - 1), (shapeCentre.y - centre.y) * (coefficient - 1)); 
     }
   }
@@ -211,6 +205,33 @@ namespace gromov
   size_t CompositeShape::getCapacity() const noexcept
   {
     return capacity_;
+  }
+
+  void CompositeShape::rotate(double angle) noexcept
+  {
+    double angle_radian = (angle * M_PI) / 180;
+    point_t center = getCentre();
+    for (size_t i = 0; i < size_; i++)
+    {
+      point_t currentCenter = array_[i]->getCentre();
+      double distanceX = currentCenter.x - center.x;
+      double distanceY = currentCenter.y - center.y;
+      const double dX = (distanceX * abs(cos(angle_radian))) - (distanceY * abs(sin(angle_radian)));
+      const double dY = (distanceX * abs(sin(angle_radian))) + (distanceY * abs(cos(angle_radian)));
+      array_[i]->move({center.x + dX,center.y + dY});
+      array_[i]->rotate(angle);
+    }
+
+  }
+
+  Matrix CompositeShape::makePartition() const
+  {
+    Matrix matrix;
+    for(size_t i = 0; i < size_; ++i)
+    {
+      matrix.add(array_[i]);
+    }
+    return matrix;
   }
 
 }

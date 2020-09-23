@@ -22,6 +22,8 @@ namespace meshcheryakova
     virtual void scale(double coefficient) = 0;
 
     virtual void printParametersWithoutSpot(std::ostream &out) = 0;
+
+    virtual void rotate(double angle) noexcept = 0;
   };
 }
 #endif //A2_SHAPE_HPP

@@ -2,8 +2,8 @@
 
 #include <boost/test/included/unit_test.hpp>
 #include <boost/test/floating_point_comparison.hpp>
-#include "rectangle.hpp"
-#include "circle.hpp"
+#include "../common/circle.hpp"
+#include "../common/rectangle.hpp"
 
 const double ACCURACY = 0.0000001;
 

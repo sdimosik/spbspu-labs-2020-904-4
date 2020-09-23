@@ -1,8 +1,9 @@
 #ifndef A3_COMPOSITE_SHAPE_HPP
 #define A3_COMPOSITE_SHAPE_HPP
 
-#include "shape.hpp"
 #include <memory>
+#include "shape.hpp"
+#include "matrix.hpp"
 
 namespace bulanov
 {
@@ -23,7 +24,7 @@ namespace bulanov
 
     CompositeShape &operator=(CompositeShape &&element) noexcept;
 
-    shapePtr &operator[](const size_t index) const;
+    shapePtr &operator[](const size_t index);
 
     double getArea() const noexcept override;
 
@@ -45,13 +46,16 @@ namespace bulanov
 
     void printFrameInform() const override ;
 
+    void rotate(const double angle) noexcept override;
+
+    Matrix makeLayering() const;
+
 
   private:
     using shapeArray = std::unique_ptr<shapePtr[]>;
     size_t size_;
     size_t place_;
     shapeArray shapes_;
-
   };
 }
 

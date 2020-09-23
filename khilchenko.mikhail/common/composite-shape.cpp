@@ -1,9 +1,15 @@
 #include "composite-shape.hpp"
+
+#define _USE_MATH_DEFINES
+
 #include <exception>
 #include <string>
+#include <cmath>
 
 namespace khilchenko
 {
+  const double HALF_CIRCLE = 180;
+
   CompositeShape::CompositeShape() noexcept:
     size_(0),
     amount_(0),
@@ -174,6 +180,7 @@ namespace khilchenko
     if(size_ == 0)
     {
       shapes_.reset(new std::shared_ptr<Shape>[1]);
+      size_ = 1;
       amount_ = 0;
     }
     else if(amount_ == size_)
@@ -212,5 +219,26 @@ namespace khilchenko
   int CompositeShape::getAmount() const noexcept
   {
     return amount_;
+  }
+
+  void CompositeShape::rotate(double angle) noexcept
+  {
+    double angleInRad = angle * M_PI / HALF_CIRCLE;
+    for(size_t i = 0; i < amount_; i++)
+    {
+      shapes_[i]->rotate(angle);
+      shapes_[i]->move((getCenter().x - shapes_[i]->getCenter().x) * cos(angleInRad),
+          (getCenter().y - shapes_[i]->getCenter().y) * sin(angleInRad));
+    }
+  }
+
+  Matrix CompositeShape::getLayerMatrix()
+  {
+    Matrix result;
+    for(size_t i = 0; i < amount_; i++)
+    {
+      result.addShape(shapes_[i]);
+    }
+    return result;
   }
 }

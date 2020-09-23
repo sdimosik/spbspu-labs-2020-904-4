@@ -2,6 +2,7 @@
 #define COMPOSITE_SHAPE_HPP
 #include <memory>
 #include "shape.hpp"
+#include "matrix.hpp"
 
 namespace mukhin
 {
@@ -23,6 +24,8 @@ namespace mukhin
     void scale(const double factor) override;
     void addShape(const std::shared_ptr<Shape> &shape);
     void deleteShape(const size_t index);
+    void rotate(const double angle) noexcept override;
+    Matrix getMatrixLayer();
     size_t getSize() const noexcept;
     size_t getSpace() const noexcept;
   private:

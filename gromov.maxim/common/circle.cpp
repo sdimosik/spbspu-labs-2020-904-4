@@ -54,4 +54,7 @@ namespace gromov
     }
     radius_ *= coefficient;
   }
+
+  void Circle::rotate(const double) noexcept
+  {}
 }

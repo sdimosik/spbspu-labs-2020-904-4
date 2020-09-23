@@ -24,10 +24,17 @@ namespace bakaeva
 
     void scale(const double coefficient) override;
 
+    void rotate(const double angle) noexcept override;
+
+    point_t getCenter() const noexcept override;
+
+    double getAngle() const noexcept;
+
   private:
     double width_;
     double height_;
     point_t pos_;
+    double angle_;
   };
 }
 

@@ -1,3 +1,4 @@
+
 #include "triangle.hpp"
 #include <stdexcept>
 #include <cmath>
@@ -35,18 +36,6 @@ double Triangle::getArea() const
   return sqrt(p * (p - side1) * (p - side2) * (p - side3));
 }
 
-double calcCoordinate(double min, double max, double comparable, double val)
-{
-  if (comparable == min)
-  {
-    return min + val / 2;
-  }
-  else
-  {
-    return max - val / 2;
-  }
-}
-
 rectangle_t Triangle::getFrameRect() const
 {
   double xMin = std::min({top1_.x, top2_.x, top3_.x}),
@@ -55,39 +44,9 @@ rectangle_t Triangle::getFrameRect() const
       yMax = std::max({top1_.y, top2_.y, top3_.y}),
       width = xMax - xMin,
       height = yMax - yMin,
-      xPoint = 0,
-      yPoint = 0;
-  if ((top1_.x == xMin || top1_.x == xMax) && (top1_.y == yMin || top1_.y == yMax))
-  {
-    xPoint = calcCoordinate(xMin, xMax, top1_.x, width);
-    yPoint = calcCoordinate(yMin, yMax, top1_.y, height);
-  }
-  else
-  {
-    if ((top2_.x == xMin || top2_.x == xMax) && (top2_.y == yMin || top2_.y == yMax))
-    {
-      xPoint = calcCoordinate(xMin, xMax, top2_.x, width);
-      yPoint = calcCoordinate(yMin, yMax, top2_.y, height);
-    }
-    else
-    {
-      xPoint = calcCoordinate(xMin, xMax, top3_.x, width);
-      yPoint = calcCoordinate(yMin, yMax, top3_.y, height);
-    }
-  }
-  return rectangle_t {width, height, point_t {xPoint, yPoint}};
-}
-
-void Triangle::move(const point_t& dot)
-{
-  double xChange = (top1_.x + top2_.x + top3_.x) / 3 - dot.x;
-  top1_.x += xChange;
-  top2_.x += xChange;
-  top3_.x += xChange;
-  double yChange = (top1_.y + top2_.y + top3_.y) / 3 - dot.y;
-  top1_.y += yChange;
-  top2_.y += yChange;
-  top3_.y += yChange;
+      xPoint = xMin + width / 2,
+      yPoint = yMin + height / 2;
+  return rectangle_t{width, height, point_t{xPoint, yPoint}};
 }
 
 void Triangle::move(double xAxis, double yAxis)
@@ -98,4 +57,11 @@ void Triangle::move(double xAxis, double yAxis)
   top1_.y += yAxis;
   top2_.y += yAxis;
   top3_.y += yAxis;
+}
+
+void Triangle::move(const point_t& dot)
+{
+  double xChange = (top1_.x + top2_.x + top3_.x) / 3 - dot.x,
+      yChange = (top1_.y + top2_.y + top3_.y) / 3 - dot.y;
+  move(xChange, yChange);
 }

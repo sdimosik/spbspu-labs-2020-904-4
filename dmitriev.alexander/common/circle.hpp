@@ -20,6 +20,8 @@ namespace dmitriev
 
     void scale(double factor) override;
 
+    void rotate(double angle) noexcept override;
+
   private:
     point_t pos_;
     double radius_;

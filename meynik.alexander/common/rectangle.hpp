@@ -2,6 +2,8 @@
 #define RECTANGLE_HPP
 #include "shape.hpp"
 
+
+
 namespace meynik
 {
   class Rectangle : public Shape
@@ -11,7 +13,7 @@ namespace meynik
 
     double getArea() const noexcept override;
 
-    rectangle_t getFrameRect() const override;
+    rectangle_t getFrameRect() const noexcept override;
 
     void move(const point_t& position) override;
 
@@ -23,10 +25,15 @@ namespace meynik
 
     void scale(const double coefficient) override;
 
+    void rotate(double angle) override;
+
+    double getAngle() const noexcept;
+
   private:
     point_t pos_;
     double width_;
     double height_;
+    double angle_;
   };
 }
 

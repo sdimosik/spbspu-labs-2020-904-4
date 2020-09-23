@@ -1,6 +1,7 @@
 #include "composite-shape.hpp"
 #include <stdexcept>
 #include <string>
+#include <cmath>
 
 kichigin::CompositeShape::CompositeShape() noexcept:
   fullSize_(0),
@@ -198,5 +199,20 @@ void kichigin::CompositeShape::scale(double coefficient)
   for (unsigned int i = 0; i < currentSize_; i++)
   {
     array_[i]->scale(coefficient);
+  }
+}
+
+void kichigin::CompositeShape::rotate(double angle) noexcept
+{
+  point_t centerPosition = getFrameRect().pos;
+  for (unsigned int i = 0; i < currentSize_; i++)
+  {
+    array_[i]->rotate(angle);
+    point_t currentPositoin = array_[i]->getFrameRect().pos;
+    double y = (currentPositoin.x - centerPosition.x) * std::cos(angle * M_PI / 180)
+        - (currentPositoin.y - centerPosition.y) * std::sin(angle * M_PI / 180) + centerPosition.x;
+    double x = (currentPositoin.x - centerPosition.x) * std::sin(angle * M_PI / 180)
+        - (currentPositoin.y - centerPosition.y) * std::cos(angle * M_PI / 180) + centerPosition.y;
+    array_[i]->move(point_t{ x, y });
   }
 }
