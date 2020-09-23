@@ -3,6 +3,7 @@
 #include <cmath>
 #include <algorithm>
 #include "triangle.hpp"
+#include "optional.hpp"
 
 namespace vorotnikov {
   Triangle::Triangle(const point_t &point_one, const point_t &point_two, const point_t &point_three) :
@@ -58,6 +59,18 @@ namespace vorotnikov {
     return pos_.y;
   }
 
+  point_t Triangle::getPointOne() const {
+    return point_one_;
+  }
+
+  point_t Triangle::getPointTwo() const {
+    return point_two_;
+  }
+
+  point_t Triangle::getPointThree() const {
+    return point_three_;
+  }
+
   void Triangle::scale(double value) {
     if (value <= 0) {
       throw std::invalid_argument(std::string("Value must be positive, value = "
@@ -69,5 +82,15 @@ namespace vorotnikov {
     point_one_.y -= (value - 1) * (pos_.y - point_one_.y);
     point_two_.y -= (value - 1) * (pos_.y - point_two_.y);
     point_three_.y -= (value - 1) * (pos_.y - point_three_.y);
+  }
+
+  void Triangle::rotate(double angle) noexcept {
+    angle_ = optional::rotate_angle(angle_, angle);
+    point_t* points[3] = {&point_one_, &point_two_, &point_three_};
+    for(point_t* point : points) {
+      double tempX = point->x;
+      point->x = (point->x - pos_.x) * std::cos(angle_) - (point->y - pos_.y) * std::sin(angle_) + pos_.x;
+      point->y = (tempX - pos_.x) * std::sin(angle_) + (point->y - pos_.y) * std::cos(angle_) + pos_.y;
+    }
   }
 }

@@ -3,6 +3,7 @@
 
 #include <memory>
 #include "shape.hpp"
+#include "matrix.hpp"
 
 namespace vorotnikov
 {
@@ -38,6 +39,10 @@ namespace vorotnikov
     void move(double x, double y) noexcept override;
 
     void scale(double factor) override;
+
+    void rotate(double angle) noexcept override;
+
+    Matrix toMatrix() const noexcept;
 
   private:
     std::unique_ptr<std::shared_ptr<Shape>[]> shapes_;
