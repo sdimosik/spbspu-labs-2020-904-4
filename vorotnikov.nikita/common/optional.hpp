@@ -10,4 +10,4 @@ namespace optional
   double rotate_angle(double source_angle, const double angle);
 }
 
-#endif OPTIONAL_HPP
+#endif
