@@ -8,7 +8,7 @@
 
 namespace khilchenko
 {
-  const double HALF_CIRCLE = 180;
+  const double halfCircle = 180;
 
   Rectangle::Rectangle(double width, double height, const point_t &pos):
     angle_(0),
@@ -39,7 +39,7 @@ namespace khilchenko
 
   rectangle_t Rectangle::getFrameRect() const
   {
-    double angleInRad = angle_ * M_PI / HALF_CIRCLE;
+    double angleInRad = angle_ * M_PI / halfCircle;
     return rectangle_t{ figure_.pos, figure_.width * cos(angleInRad) + figure_.height* sin(angleInRad),
         figure_.width * sin(angleInRad) + figure_.height* cos(angleInRad)};
   }
