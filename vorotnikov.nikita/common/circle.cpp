@@ -39,4 +39,8 @@ namespace vorotnikov {
     }
     radius_ *= value;
   }
+
+  void Circle::rotate(const double) noexcept {
+
+  }
 }

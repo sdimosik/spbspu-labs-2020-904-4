@@ -16,6 +16,9 @@ namespace  vorotnikov {
     virtual void move(double x, double y) = 0;
 
     virtual void scale(double value) = 0;
+
+    virtual void rotate(double angle) noexcept = 0;
+
   };
 }
 #endif
