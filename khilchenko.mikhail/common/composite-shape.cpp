@@ -8,7 +8,7 @@
 
 namespace khilchenko
 {
-  const double HALF_CIRCLE = 180;
+  const double halfCircle = 180;
 
   CompositeShape::CompositeShape() noexcept:
     size_(0),
@@ -223,7 +223,7 @@ namespace khilchenko
 
   void CompositeShape::rotate(double angle) noexcept
   {
-    double angleInRad = angle * M_PI / HALF_CIRCLE;
+    double angleInRad = angle * M_PI / halfCircle;
     for(size_t i = 0; i < amount_; i++)
     {
       shapes_[i]->rotate(angle);
