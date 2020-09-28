@@ -35,12 +35,15 @@ int main()
     std::cout << "The coordinates of the rectangle after moving to the point (-25.4, 63.1) = ("
       << rect.getPosition().x << ", " << rect.getPosition().y << ")" << std::endl
       << "Triangle test: " << std::endl;
-    Triangle triangle(point1, 31.2, 24.6, 22.8);
+    point_t peak1{ 3.0, 4.0 };
+    point_t peak2{ 0.0, 4.0 };
+    point_t peak3{ 3.0, 0.0 };
+    Triangle triangle(peak1, peak2, peak3);
     std::cout << "Triangle coordinates = (" << triangle.getPosition().x
       << ", " << triangle.getPosition().y << ")" << std::endl
-      << "Triangle base = " << triangle.getBase() << std::endl
-      << "Triangle left side = " << triangle.getSideLeft() << std::endl
-      << "Triangle right side = " << triangle.getSideRight() << std::endl
+      << "Triangle 1 side = " << triangle.getSide1() << std::endl
+      << "Triangle 2 side = " << triangle.getSide2() << std::endl
+      << "Triangle 3 side = " << triangle.getSide3() << std::endl
       << "Triangle area = " << triangle.getArea() << std::endl;
     triangle.move(25.5, 46.6);
     std::cout << "The coordinates of the triangle after moving 25.5 along the x axis and 46.6 along the y axis = ("

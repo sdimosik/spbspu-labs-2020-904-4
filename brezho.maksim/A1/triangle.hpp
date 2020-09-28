@@ -6,20 +6,17 @@
 class Triangle : public Shape
 {
 public:
-  Triangle(const point_t& pos, double base, double sideLeft, double sideRight);
+  Triangle(const point_t& peak1, const point_t& peak2, const point_t& peak3);
   void move(const point_t& pos) override;
   void move(double x, double y) override;
   rectangle_t getFrameRect() const override;
-  double getBase() const;
-  double getSideLeft() const;
-  double getSideRight() const;
-  void setBase(double base);
-  void setSideLeft(double sideLeft);
-  void setSideRight(double sideRight);
+  double getSide1() const;
+  double getSide2() const;
+  double getSide3() const;
   point_t getPosition() const;
   double getArea() const override;
 private:
-  triangle_t triangle_;
+  point_t peaks_[3];
 };
 
 #endif
