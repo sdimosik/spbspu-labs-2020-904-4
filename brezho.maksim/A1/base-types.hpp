@@ -12,10 +12,4 @@ struct rectangle_t
   point_t pos;
 };
 
-struct triangle_t
-{
-  double base, sideLeft, sideRight;
-  point_t pos;
-};
-
 #endif
