@@ -1,5 +1,5 @@
-#ifndef A1_CIRCLE_HPP
-#define A1_CIRCLE_HPP
+#ifndef USHAKOV_A_CIRCLE_HPP
+#define USHAKOV_A_CIRCLE_HPP
 
 #include "shape.hpp"
 
@@ -9,33 +9,36 @@ namespace ushakov
   class Circle : public Shape
   {
   public:
-    Circle(const point_t& center, double radius);
+    Circle(const point_t& position, double radius);
 
-    double getArea() const override;
+    void move(const point_t& newPosition) noexcept override;
 
-    rectangle_t getFrameRect() const override;
-
-    void move(const point_t& point) override;
-
-    void move(double xAxis, double yAxis) override;
-
-    double getRadius() const;
-
-    void print() const override;
-
-    void printFrameRectangle() const override;
+    void move(double xAxis, double yAxis) noexcept override;
 
     void scale(double coefficient) override;
 
-    point_t getPosition() const override;
+    void rotate(double) noexcept override
+    {};
+
+    double getRadius() const noexcept;
+
+    double getArea() const noexcept override;
+
+    rectangle_t getFrameRect() const noexcept override;
+
+    point_t getPosition() const noexcept override;
+
+    void print() const noexcept override;
+
+    void printFrameRectangle() const noexcept override;
 
   private:
 
-    point_t pos_;
+    point_t position_;
 
     double radius_;
   };
 
 }
 
-#endif //A1_CIRCLE_HPP
+#endif //USHAKOV_A_CIRCLE_HPP

@@ -1,5 +1,5 @@
-#ifndef A1_BASE_TYPES_HPP
-#define A1_BASE_TYPES_HPP
+#ifndef USHAKOV_BASE_TYPES_HPP
+#define USHAKOV_BASE_TYPES_HPP
 
 namespace ushakov
 {
@@ -17,4 +17,4 @@ namespace ushakov
   };
 
 }
-#endif //A1_BASE_TYPES_HPP
+#endif //USHAKOV_BASE_TYPES_HPP

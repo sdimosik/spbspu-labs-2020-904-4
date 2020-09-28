@@ -1,8 +1,10 @@
-#ifndef A3_COMPOSITE_SHAPE_HPP
-#define A3_COMPOSITE_SHAPE_HPP
+#ifndef USHAKOV_A_COMPOSITE_SHAPE_HPP
+#define USHAKOV_A_COMPOSITE_SHAPE_HPP
 
 #include <memory>
+
 #include "shape.hpp"
+#include "matrix.hpp"
 
 namespace ushakov
 {
@@ -15,7 +17,7 @@ namespace ushakov
 
     ~CompositeShape() override = default;
 
-    CompositeShape(const CompositeShape& compositeShape);
+    CompositeShape(const CompositeShape& compositeShape) noexcept;
 
     CompositeShape(CompositeShape&& compositeShape) noexcept;
 
@@ -23,37 +25,42 @@ namespace ushakov
 
     CompositeShape& operator=(CompositeShape&& compositeShape) noexcept;
 
-    std::shared_ptr<Shape>& operator[](size_t index);
-
-    size_t getSize() const;
+    std::shared_ptr<Shape> operator[](size_t index) const;
 
     void addShape(const std::shared_ptr<Shape>& shape);
 
     void removeShape(size_t index);
 
+    void move(const point_t& newPosition) noexcept override;
+
+    void move(double xAxis, double yAxis) noexcept override;
+
+    void scale(double coefficient) override;
+
+    void rotate(double angle) noexcept override;
+
+    Matrix divide() const;
+
+    size_t getSize() const noexcept;
+
     double getArea() const noexcept override;
 
     rectangle_t getFrameRect() const noexcept override;
 
-    void move(const point_t& position) noexcept override;
+    point_t getPosition() const noexcept override;
 
-    void move(double x, double y) noexcept override;
+    void print() const noexcept override;
 
-    void print() const override;
-
-    void printFrameRectangle() const override;
-
-    void scale(double coefficient) override;
-
-    point_t getPosition() const override;
+    void printFrameRectangle() const noexcept override;
 
   private:
     using shapePtr = std::shared_ptr<Shape>;
+    using compositeShapePtr = std::unique_ptr<std::shared_ptr<Shape>[]>;
 
-    std::unique_ptr<std::shared_ptr<Shape>[]> shapes_;
+    compositeShapePtr shapes_;
     size_t size_;
     size_t capacity_;
   };
 }
 
-#endif //A3_COMPOSITE_SHAPE_HPP
+#endif //USHAKOV_A_COMPOSITE_SHAPE_HPP

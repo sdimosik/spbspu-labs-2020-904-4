@@ -1,5 +1,5 @@
-#ifndef A1_RECTANGLE_HPP
-#define A1_RECTANGLE_HPP
+#ifndef USHAKOV_A_RECTANGLE_HPP
+#define USHAKOV_A_RECTANGLE_HPP
 
 #include "shape.hpp"
 
@@ -8,36 +8,34 @@ namespace ushakov
   class Rectangle : public Shape
   {
   public:
-    Rectangle(double width, double height, const point_t& pos);
+    Rectangle(double width, double height, const point_t& position);
 
-    explicit Rectangle(const rectangle_t& rectangle);
+    void move(const point_t& newPosition) noexcept override;
 
-    double getArea() const override;
-
-    rectangle_t getFrameRect() const override;
-
-    void move(const point_t& point) override;
-
-    void move(double xAxis, double yAxis) override;
-
-    double getWidth() const;
-
-    double getHeight() const;
-
-    void print() const override;
-
-    void printFrameRectangle() const override;
+    void move(double xAxis, double yAxis) noexcept override;
 
     void scale(double coefficient) override;
 
-    point_t getPosition() const override;
+    void rotate(double angle) noexcept override;
+
+    double getWidth() const noexcept;
+
+    double getHeight() const noexcept;
+
+    double getArea() const noexcept override;
+
+    rectangle_t getFrameRect() const noexcept override;
+
+    point_t getPosition() const noexcept override;
+
+    void print() const noexcept override;
+
+    void printFrameRectangle() const noexcept override;
 
   private:
-    double width_;
-    double height_;
-    point_t pos_;
+    point_t tops_[4];
   };
 
 }
 
-#endif //A1_RECTANGLE_HPP
+#endif //USHAKOV_A_RECTANGLE_HPP

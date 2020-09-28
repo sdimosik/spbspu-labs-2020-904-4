@@ -1,72 +1,74 @@
 #include "circle.hpp"
+
 #include <cmath>
-#include <stdexcept>
+#include <iostream>
 
-namespace ushakov
+ushakov::Circle::Circle(const point_t& position, double radius) :
+  position_(position),
+  radius_(radius)
 {
-
-  Circle::Circle(const point_t& center, double radius) :
-      pos_(center),
-      radius_(radius)
+  if (radius <= 0)
   {
-    if (radius <= 0)
-    {
-      throw std::invalid_argument("Invalid radius");
-    }
+    throw std::invalid_argument("Circle constructor error: Invalid radius(" + std::to_string(radius) + ')');
+  }
+}
+
+void ushakov::Circle::move(const point_t& newPosition) noexcept
+{
+  position_ = newPosition;
+}
+
+void ushakov::Circle::move(double xAxis, double yAxis) noexcept
+{
+  position_.x += xAxis;
+  position_.y += yAxis;
+}
+
+void ushakov::Circle::scale(double coefficient)
+{
+  if (coefficient <= 0)
+  {
+    throw std::invalid_argument("Circle scale error: Invalid coefficient of scale, it must be positive("
+          + std::to_string(coefficient) + ')');
   }
 
-  double Circle::getArea() const
-  {
-    return M_PI * radius_ * radius_;
-  }
+  radius_ *= coefficient;
+}
 
-  rectangle_t Circle::getFrameRect() const
-  {
-    return rectangle_t{2 * radius_, 2 * radius_, pos_};
-  }
+double ushakov::Circle::getRadius() const noexcept
+{
+  return radius_;
+}
 
-  void Circle::move(const point_t& point)
-  {
-    pos_ = point;
-  }
+double ushakov::Circle::getArea() const noexcept
+{
+  return M_PI * radius_ * radius_;
+}
 
-  void Circle::move(double xAxis, double yAxis)
-  {
-    pos_.x += xAxis;
-    pos_.y += yAxis;
-  }
+ushakov::rectangle_t ushakov::Circle::getFrameRect() const noexcept
+{
+  return rectangle_t{2 * radius_, 2 * radius_, position_};
+}
 
-  point_t Circle::getPosition() const
-  {
-    return pos_;
-  }
+ushakov::point_t ushakov::Circle::getPosition() const noexcept
+{
+  return position_;
+}
 
-  double Circle::getRadius() const
-  {
-    return radius_;
-  }
+void ushakov::Circle::print() const noexcept
+{
+  std::cout << "Circle" << std::endl;
 
-  void Circle::print() const
-  {
-    std::cout << "Circle: radius = " << radius_ << " center.x = " << pos_.x << " center.y = " << pos_.y << std::endl;
-  }
+  std::cout << "  radius = " << radius_ << std::endl;
+  std::cout << "  center: x = " << position_.x << ", y = " << position_.y << std::endl;
+  std::cout << "  area: " << getArea() << std::endl;
+}
 
-  void Circle::printFrameRectangle() const
-  {
-    rectangle_t rect = getFrameRect();
+void ushakov::Circle::printFrameRectangle() const noexcept
+{
+  rectangle_t rectangle = getFrameRect();
 
-    std::cout << "height = " << rect.height << " width = " << rect.width << " center.x = " << rect.pos.x
-              << " center.y = "
-              << rect.pos.y << std::endl;
-  }
-
-  void Circle::scale(double coefficient)
-  {
-    if (coefficient <= 0)
-    {
-      throw std::invalid_argument("Invalid coefficient of scale, it must be positive");
-    }
-
-    radius_ *= coefficient;
-  }
+  std::cout << "Frame rectangle for this shape:" << std::endl;
+  std::cout << "  height = " << rectangle.height << ",  width = " << rectangle.width << std::endl;
+  std::cout << "  position: x = " << rectangle.pos.x << ", y = " << rectangle.pos.y << std::endl;
 }
