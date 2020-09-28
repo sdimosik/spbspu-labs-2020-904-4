@@ -1,7 +1,6 @@
-#ifndef A1_SHAPE_HPP
-#define A1_SHAPE_HPP
+#ifndef USHAKOV_A_SHAPE_HPP
+#define USHAKOV_A_SHAPE_HPP
 
-#include <iostream>
 #include "base-types.hpp"
 
 namespace ushakov
@@ -13,23 +12,24 @@ namespace ushakov
 
     virtual ~Shape() = default;
 
-    virtual double getArea() const = 0;
+    virtual void move(const point_t&) noexcept = 0;
 
-    virtual rectangle_t getFrameRect() const = 0;
+    virtual void move(double, double) noexcept = 0;
 
-    virtual void move(const point_t& point) = 0;
+    virtual void scale(double) = 0;
 
-    virtual void move(double xAxis, double yAxis) = 0;
+    virtual void rotate(double) noexcept = 0;
 
-    virtual void print() const = 0;
+    virtual double getArea() const noexcept = 0;
 
-    virtual void printFrameRectangle() const = 0;
+    virtual rectangle_t getFrameRect() const noexcept = 0;
 
-    virtual void scale(double coefficient) = 0;
+    virtual point_t getPosition() const noexcept = 0;
 
-    virtual point_t getPosition() const = 0;
+    virtual void print() const noexcept = 0;
+
+    virtual void printFrameRectangle() const noexcept = 0;
   };
-
 }
 
-#endif //A1_SHAPE_HPP
+#endif //USHAKOV_A_SHAPE_HPP

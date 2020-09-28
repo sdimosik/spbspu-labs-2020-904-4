@@ -1,117 +1,126 @@
-#include <cmath>
-
 #include "triangle.hpp"
 
-namespace ushakov
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+
+#include "detail.hpp"
+
+const int FULL_CIRCLE = 180;
+
+ushakov::Triangle::Triangle(const point_t& top1, const point_t& top2, const point_t& top3) :
+  tops_{top1, top2, top3}
 {
+  double a = ushakov::detail::getDistance(tops_[0], tops_[1]);
+  double b = ushakov::detail::getDistance(tops_[1], tops_[2]);
+  double c = ushakov::detail::getDistance(tops_[2], tops_[0]);
 
-  Triangle::Triangle(const point_t& top1, const point_t& top2, const point_t& top3) :
-      top1_(top1),
-      top2_(top2),
-      top3_(top3),
-      pos_{(top1.x + top2.x + top3.x) / 3, (top1.y + top2.y + top3.y) / 3}
+  if (a + b <= c || a + c <= b || b + c <= a)
   {
-    double a = (top1_.x - top2_.x) * (top1_.x - top2_.x) + (top1_.y - top2_.y) * (top1_.y - top2_.y);
-    double b = (top2_.x - top3_.x) * (top2_.x - top3_.x) + (top2_.y - top3_.y) * (top2_.y - top3_.y);
-    double c = (top3_.x - top1_.x) * (top3_.x - top1_.x) + (top3_.y - top1_.y) * (top3_.y - top1_.y);
+    throw std::invalid_argument("Triangle constructor error: Invalid triangle vertexes. It is not a triangle");
+  }
+}
 
-    if (a < 0 || b < 0 || c < 0)
-    {
-      throw std::invalid_argument("Invalid triangle vertex");
-    }
+void ushakov::Triangle::move(const point_t& newPosition) noexcept
+{
+  const point_t position = getPosition();
 
-    double aSqrt = sqrt(a);
-    double bSqrt = sqrt(b);
-    double cSqrt = sqrt(c);
+  const double xAxis = newPosition.x - position.x;
+  const double yAxis = newPosition.y - position.y;
 
-    if (aSqrt + bSqrt <= cSqrt || aSqrt + cSqrt <= bSqrt || bSqrt + cSqrt <= aSqrt)
-    {
-      throw std::invalid_argument("Invalid triangle vertex");
-    }
+  move(xAxis, yAxis);
+}
+
+void ushakov::Triangle::move(double xAxis, double yAxis) noexcept
+{
+  for (point_t& top : tops_)
+  {
+    top.x += xAxis;
+    top.y += yAxis;
+  }
+}
+
+void ushakov::Triangle::scale(double coefficient)
+{
+  if (coefficient <= 0)
+  {
+    throw std::invalid_argument("Triangle scale error: Invalid coefficient of scale, it must be positive("
+          + std::to_string(coefficient) + ')');
   }
 
-  double Triangle::getArea() const
+  const point_t position = getPosition();
+
+  tops_[0].x = position.x + (position.x - tops_[0].x) * coefficient;
+  tops_[0].y = position.y + (position.y - tops_[0].y) * coefficient;
+
+  tops_[1].x = position.x + (position.x - tops_[1].x) * coefficient;
+  tops_[1].y = position.y + (position.y - tops_[1].y) * coefficient;
+
+  tops_[2].x = position.x + (position.x - tops_[2].x) * coefficient;
+  tops_[2].y = position.y + (position.y - tops_[2].y) * coefficient;
+}
+
+void ushakov::Triangle::rotate(double angle) noexcept
+{
+  const double angleInRadians = angle * M_PI / FULL_CIRCLE;
+  const double sinValue = std::sin(angleInRadians);
+  const double cosValue = std::cos(angleInRadians);
+  const point_t position = getPosition();
+
+  for (point_t& top : tops_)
   {
-    double aSqrt = sqrt((top1_.x - top2_.x) * (top1_.x - top2_.x) + (top1_.y - top2_.y) * (top1_.y - top2_.y));
-    double bSqrt = sqrt((top2_.x - top3_.x) * (top2_.x - top3_.x) + (top2_.y - top3_.y) * (top2_.y - top3_.y));
-    double cSqrt = sqrt((top3_.x - top1_.x) * (top3_.x - top1_.x) + (top3_.y - top1_.y) * (top3_.y - top1_.y));
-    double p = (aSqrt + bSqrt + cSqrt) / 2;
+    const double previousX = top.x;
 
-    return sqrt(p * (p - aSqrt) * (p - bSqrt) * (p - cSqrt));
+    top.x = position.x + (top.x - position.x) * cosValue - (top.y - position.y) * sinValue;
+    top.y = position.y + (top.y - position.y) * cosValue + (previousX - position.x) * sinValue;
   }
+}
 
-  rectangle_t Triangle::getFrameRect() const
-  {
-    double xMin = std::min(top1_.x, std::min(top2_.x, top3_.x));
-    double xMax = std::max(top1_.x, std::max(top2_.x, top3_.x));
-    double yMin = std::min(top1_.y, std::min(top2_.y, top3_.y));
-    double yMax = std::max(top1_.y, std::max(top2_.y, top3_.y));
+double ushakov::Triangle::getArea() const noexcept
+{
+  // Heron's formula is used
 
-    return rectangle_t{
-        xMax - xMin, yMax - yMin,
-        point_t{xMin + (xMax - xMin) / 2, yMin + (yMax - yMin) / 2}
-    };
-  }
+  double a = ushakov::detail::getDistance(tops_[0], tops_[1]);
+  double b = ushakov::detail::getDistance(tops_[1], tops_[2]);
+  double c = ushakov::detail::getDistance(tops_[2], tops_[0]);
+  double p = (a + b + c) / 2;
 
-  void Triangle::move(const point_t& point)
-  {
-    double xCenter = (top1_.x + top2_.x + top3_.x) / 3;
-    double yCenter = (top1_.y + top2_.y + top3_.y) / 3;
+  return sqrt(p * (p - a) * (p - b) * (p - c));
+}
 
-    double xAxis = point.x - xCenter;
-    double yAxis = point.y - yCenter;
+ushakov::rectangle_t ushakov::Triangle::getFrameRect() const noexcept
+{
+  double xMin = std::min({tops_[0].x, tops_[1].x, tops_[2].x});
+  double xMax = std::max({tops_[0].x, tops_[1].x, tops_[2].x});
+  double yMin = std::min({tops_[0].y, tops_[1].y, tops_[2].y});
+  double yMax = std::max({tops_[0].y, tops_[1].y, tops_[2].y});
 
-    top1_.x += xAxis;
-    top1_.y += yAxis;
-    top2_.x += xAxis;
-    top2_.y += yAxis;
-    top3_.x += xAxis;
-    top3_.y += yAxis;
-    pos_.x += xAxis;
-    pos_.y += yAxis;
-  }
+  return rectangle_t{xMax - xMin, yMax - yMin, point_t{xMin + (xMax - xMin) / 2, yMin + (yMax - yMin) / 2}};
+}
 
-  void Triangle::move(double xAxis, double yAxis)
-  {
-    top1_.x += xAxis;
-    top1_.y += yAxis;
-    top2_.x += xAxis;
-    top2_.y += yAxis;
-    top3_.x += xAxis;
-    top3_.y += yAxis;
-    pos_.x += xAxis;
-    pos_.y += yAxis;
-  }
+ushakov::point_t ushakov::Triangle::getPosition() const noexcept
+{
+  return point_t{(tops_[0].x + tops_[1].x + tops_[2].x) / 3, (tops_[0].y + tops_[1].y + tops_[2].y) / 3};
+}
 
-  void Triangle::print() const
-  {
-    std::cout << "Triangle: vertex 1.x = " << top1_.x << " vertex 1.y = " << top1_.y << " vertex 2.x = " << top2_.x
-              << " vertex 2.y = " << top2_.y << " vertex 3.x = " << top3_.x << " vertex 3.y = " << top3_.y << std::endl;
-  }
+void ushakov::Triangle::print() const noexcept
+{
+  std::cout << "Triangle" << std::endl;
 
-  void Triangle::printFrameRectangle() const
-  {
-    rectangle_t rect = getFrameRect();
+  std::cout << "  vertexes:" << std::endl;
 
-    std::cout << "height = " << rect.height << " width = " << rect.width << " center.x = " << rect.pos.x
-              << " center.y = "
-              << rect.pos.y << std::endl;
-  }
+  std::cout << "    1: x = " << tops_[0].x << ", y = " << tops_[0].y << std::endl;
+  std::cout << "    2: x = " << tops_[1].x << ", y = " << tops_[1].y << std::endl;
+  std::cout << "    3: x = " << tops_[2].x << ", y = " << tops_[2].y << std::endl;
 
-  void Triangle::scale(double coefficient)
-  {
-    if (coefficient <= 0)
-    {
-      throw std::invalid_argument("Invalid coefficient of scale, it must be positive");
-    }
+  std::cout << "  area: " << getArea() << std::endl;
+}
 
-    top1_ = {pos_.x + (pos_.x - top1_.x) * coefficient, pos_.y + (pos_.y - top1_.y) * coefficient};
-    top2_ = {pos_.x + (pos_.x - top2_.x) * coefficient, pos_.y + (pos_.y - top2_.y) * coefficient};
-    top3_ = {pos_.x + (pos_.x - top3_.x) * coefficient, pos_.y + (pos_.y - top3_.y) * coefficient};
-  }
+void ushakov::Triangle::printFrameRectangle() const noexcept
+{
+  const rectangle_t rectangle = getFrameRect();
 
-  point_t Triangle::getPosition() const
-  {
-    return pos_;
-  }
+  std::cout << "Frame rectangle for this shape:" << std::endl;
+  std::cout << "  height = " << rectangle.height << ",  width = " << rectangle.width << std::endl;
+  std::cout << "  position: x = " << rectangle.pos.x << ", y = " << rectangle.pos.y << std::endl;
 }

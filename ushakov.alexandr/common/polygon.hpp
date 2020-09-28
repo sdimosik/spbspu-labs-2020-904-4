@@ -1,14 +1,16 @@
-#ifndef USHAKOV_A_TRIANGLE_HPP
-#define USHAKOV_A_TRIANGLE_HPP
+#ifndef USHAKOV_A_POLYGON_HPP
+#define USHAKOV_A_POLYGON_HPP
+
+#include <memory>
 
 #include "shape.hpp"
 
 namespace ushakov
 {
-  class Triangle : public Shape
+  class Polygon : public Shape
   {
   public:
-    Triangle(const point_t& top1, const point_t& top2, const point_t& top3);
+    Polygon(const std::initializer_list<point_t>& points);
 
     void move(const point_t& newPosition) noexcept override;
 
@@ -16,7 +18,7 @@ namespace ushakov
 
     void scale(double coefficient) override;
 
-    void rotate(double angle) noexcept override;
+    void rotate(double) noexcept override;
 
     double getArea() const noexcept override;
 
@@ -24,13 +26,17 @@ namespace ushakov
 
     point_t getPosition() const noexcept override;
 
-    void print() const noexcept override;
+    void print() const noexcept override ;
 
     void printFrameRectangle() const noexcept override;
 
   private:
-    point_t tops_[3];
+    bool isConvex() const;
+
+    size_t numberOfPoints_;
+
+    std::unique_ptr<point_t[]> points_;
   };
 }
 
-#endif //USHAKOV_A_TRIANGLE_HPP
+#endif //USHAKOV_A_POLYGON_HPP

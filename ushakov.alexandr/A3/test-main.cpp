@@ -366,7 +366,7 @@ BOOST_AUTO_TEST_CASE(test_CompositeShape_getFrameRect)
   shapes.addShape(rectangle);
   shapes.addShape(circle);
 
-  ushakov::Rectangle frameRectangle(shapes.getFrameRect());
+  ushakov::Rectangle frameRectangle(shapes.getFrameRect().width, shapes.getFrameRect().height, shapes.getFrameRect().pos);
 
   BOOST_CHECK_CLOSE(frameRectangle.getHeight(), frameHeight, ACCURACY);
   BOOST_CHECK_CLOSE(frameRectangle.getWidth(), frameWidth, ACCURACY);
