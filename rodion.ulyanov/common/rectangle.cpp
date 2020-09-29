@@ -38,8 +38,8 @@ namespace rodion
 
   void Rectangle::move(const double x, const double y)
   {
-    rectangle.pos.x = x;
-    rectangle.pos.y = y;
+    rectangle.pos.x += x;
+    rectangle.pos.y += y;
   }
 
   void Rectangle::scale(double value)

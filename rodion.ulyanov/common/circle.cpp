@@ -20,8 +20,8 @@ namespace rodion
 
   void Circle::move(const double x, const double y)
   {
-    centre.x = x;
-    centre.y = y;
+    centre.x += x;
+    centre.y += y;
   }
 
   rectangle_t Circle::getFrameRect() const
