@@ -50,7 +50,8 @@ void Triangle::move(const point_t &point) {
   move(point.x - centre.x, point.y - centre.y);
 }
 
-rectangle_t Triangle::getFrameRect() const {
+rectangle_t Triangle::getFrameRect() const
+{
   double left = std::min({point_A.x, point_B.x, point_C.x});
   double right = std::max({point_A.x, point_B.x, point_C.x});
   double low = std::min({point_A.y, point_B.y, point_C.y});

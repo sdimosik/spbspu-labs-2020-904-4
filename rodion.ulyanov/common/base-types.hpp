@@ -7,8 +7,6 @@ namespace rodion
   {
     double x;
     double y;
-    bool operator < (const point_t &other);
-    bool operator > (const point_t &other);
     bool operator == (const point_t &other);
   };
 
