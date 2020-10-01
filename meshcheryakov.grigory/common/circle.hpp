@@ -15,6 +15,7 @@ namespace meshcheryakov
       void scale(const double coefficient) override;
       point_t getPosition() const noexcept override;
       double getRadius() const;
+      void rotate(const double angle) noexcept override;
 
     private:
       double radius_;

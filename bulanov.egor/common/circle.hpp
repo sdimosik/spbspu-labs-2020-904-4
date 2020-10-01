@@ -26,6 +26,8 @@ namespace bulanov
 
     void scale(const double rate) override;
 
+    void rotate(const double angle) noexcept override;
+
   private:
     double radius_;
     point_t pos_;

@@ -26,6 +26,8 @@ namespace maksimova
 
     void scale(const double coefficient) override;
 
+    void rotate(const double) noexcept override;
+
   private:
     double radius_;
     point_t center_;

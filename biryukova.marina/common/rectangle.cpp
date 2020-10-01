@@ -1,17 +1,24 @@
+#define _USE_MATH_DEFINES
 #include "rectangle.hpp"
 #include <iostream>
 #include <string>
+#include <cmath>
+
+const double FULL_CIRCLE = 360.0;
+const double HALF_CIRCLE = 180.0;
 
 namespace biryukova
 {
   Rectangle::Rectangle(const point_t& centre, double width, double height) :
-    rectangle_(rectangle_t{ width, height, centre })
+    rectangle_(rectangle_t{width, height, centre}),
+    angle_(0)
   {
     testValidParameters(this->rectangle_);
   }
 
   Rectangle::Rectangle(const rectangle_t& rectangle) :
-    rectangle_(rectangle)
+    rectangle_(rectangle),
+    angle_(0)
   {
     testValidParameters(this->rectangle_);
   }
@@ -24,7 +31,11 @@ namespace biryukova
 
   rectangle_t Rectangle::getFrameRect() const noexcept
   {
-    return rectangle_;
+    const double sine = sin(((angle_ / 2) * M_PI) / HALF_CIRCLE);
+    const double cosine = cos(((angle_ / 2) * M_PI) / HALF_CIRCLE);
+    double width = (rectangle_.width * fabs(cosine)) + (rectangle_.height * fabs(sine));
+    double height = (rectangle_.height * fabs(cosine)) + (rectangle_.width * fabs(sine));
+    return {width, height, rectangle_.pos};
   }
 
   void Rectangle::move(const point_t& centre) noexcept
@@ -83,5 +94,18 @@ namespace biryukova
   point_t Rectangle::getCentre() const noexcept
   {
     return rectangle_.pos;
+  }
+
+  void Rectangle::rotate(double angle)
+  {
+    angle_ += angle;
+    if (angle_ < 0.0)
+    {
+      angle_ = FULL_CIRCLE + fmod(angle_, FULL_CIRCLE);
+    }
+    else
+    {
+      angle_ = fmod(angle_, FULL_CIRCLE);
+    }
   }
 }

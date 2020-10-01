@@ -1,8 +1,9 @@
 #ifndef COMPOSITE_SHAPE_HPP
 #define COMPOSITE_SHAPE_HPP
 
-#include "shape.hpp"
 #include <memory>
+#include "shape.hpp"
+#include "matrix.hpp"
 
 namespace khilchenko
 {
@@ -25,7 +26,9 @@ namespace khilchenko
     void addShape(const std::shared_ptr<Shape>& shape);
     void removeShape(size_t index);
     int getSize() const noexcept;
-    int getAmount() const noexcept; 
+    int getAmount() const noexcept;
+    void rotate(double angle) noexcept override;
+    Matrix getLayerMatrix();
   private:
     using arrayPtr = std::unique_ptr<std::shared_ptr<Shape>[]>;
     size_t size_;

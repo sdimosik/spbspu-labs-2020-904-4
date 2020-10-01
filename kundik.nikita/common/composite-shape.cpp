@@ -1,3 +1,6 @@
+#define _USE_MATH_DEFINES
+
+#include <cmath>
 #include "composite-shape.hpp"
 #include <stdexcept>
 #include <algorithm>
@@ -168,5 +171,15 @@ namespace kundik
   kundik::point_t CompositeShape::getCentrer() const noexcept
   {
     return getFrameRect().pos;
+  }
+  void CompositeShape::rotate(double angle) noexcept
+  {
+    angle = angle * M_PI / 180;
+    for (size_t i = 0; i < size_; i++)
+    {
+      arrayShapes_[i]->move({ arrayShapes_[i]->getFrameRect().pos.x * std::cos(angle) - arrayShapes_[i]->getFrameRect().pos.y * std::sin(angle),
+        arrayShapes_[i]->getFrameRect().pos.x * std::sin(angle) + arrayShapes_[i]->getFrameRect().pos.y * std::cos(angle) });
+      arrayShapes_[i]->rotate(angle);
+    }
   }
 }

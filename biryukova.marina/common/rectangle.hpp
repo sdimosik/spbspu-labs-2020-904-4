@@ -20,9 +20,11 @@ namespace biryukova
     double getHeight() const noexcept;
     double getWidth() const noexcept;
     point_t getCentre() const noexcept override;
+    void rotate(double angle) override;
   private:
     rectangle_t rectangle_;
     void testValidParameters(const rectangle_t& rectangle);
+    double angle_;
   };
 }
 

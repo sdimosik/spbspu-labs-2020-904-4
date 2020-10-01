@@ -1,11 +1,15 @@
 #include "rectangle.hpp"
 #include <stdexcept>
 #include <string>
+#include <cmath>
 
 namespace meshcheryakov
 {
+  const double HALF_CIRCLE = 180;
+
   Rectangle::Rectangle(const rectangle_t &rect) :
-    rect_(rect)
+    rect_(rect),
+    angle_(0)
   {
     if (rect_.width <= 0.0)
     {
@@ -26,7 +30,9 @@ namespace meshcheryakov
 
   rectangle_t Rectangle::getFrameRect() const
   {
-    return rect_;
+    double angleRad = angle_ * M_PI / HALF_CIRCLE;
+    return {rect_.width * std::abs(sin(angleRad)) + rect_.height * std::abs(cos(angleRad)), rect_.height
+        * std::abs(sin(angleRad)) + rect_.width * std::abs(cos(angleRad)), rect_.pos};
   }
 
   void Rectangle::move(double dx, double dy)
@@ -65,4 +71,16 @@ namespace meshcheryakov
   {
     return rect_.height;
   }
+
+  void Rectangle::rotate(const double angle) noexcept
+  {
+    angle_ += angle;
+    angle_ = (angle_ > 0.0) ? fmod(angle_, 2 * HALF_CIRCLE) : 2 * HALF_CIRCLE + fmod(angle_, 2 * HALF_CIRCLE);
+  }
+
+  double Rectangle::getAngle() const noexcept
+  {
+    return angle_;
+  }
+
 }

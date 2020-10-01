@@ -1,6 +1,8 @@
 #ifndef COMPOSITE_SHAPE_HPP
 #define COMPOSITE_SHAPE_HPP
+
 #include "shape.hpp"
+#include "matrix.hpp"
 #include <memory>
 
 namespace spasoevich
@@ -8,7 +10,7 @@ namespace spasoevich
   class CompositeShape : public Shape
   {
   public:
-    using shape_ptr=std::shared_ptr<Shape>;
+    using shape_ptr = std::shared_ptr<Shape>;
     CompositeShape();
     CompositeShape(const CompositeShape& copyShape);
     CompositeShape(CompositeShape&& moveShape) noexcept;
@@ -24,8 +26,10 @@ namespace spasoevich
     void removeShape(size_t index);
     size_t getSize() const noexcept;
     void printCompositeShapeData() noexcept;
+    void rotate(const double angle) noexcept override;
+    Matrix part() const;
   private:
-    using shape_array=std::unique_ptr<shape_ptr[]>;
+    using shape_array = std::unique_ptr<shape_ptr[]>;
     size_t shapeCount_;
     size_t size_;
     shape_array arrayOfShapes_;

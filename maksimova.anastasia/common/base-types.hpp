@@ -17,6 +17,8 @@ namespace maksimova
     point_t pos;
     void print() const;
   };
+
+  const double  CIRCLE_ANGLE = 360.0;
 }
 
 #endif

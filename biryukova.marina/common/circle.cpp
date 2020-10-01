@@ -64,4 +64,9 @@ namespace biryukova
   {
     return centre_;
   }
+
+  void Circle::rotate(double)
+  {
+
+  }
 }

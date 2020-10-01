@@ -1,3 +1,5 @@
+#include <stdexcept>
+#include <math.h>
 #include "composite-shape.hpp"
 
   namespace meshcheryakova
@@ -191,5 +193,35 @@
       }
       shapes_[size_] = nullptr;
     }
+
+    size_t CompositeShape::getSize() const noexcept
+    {
+      return size_;
+    }
+
+    void CompositeShape::rotate(double angle) noexcept
+    {
+      double radians = M_PI * angle / 180;
+      double sin = std::sin(radians);
+      double cos = std::cos(radians);
+      const point_t centre = getFrameRect().pos;
+
+      for (size_t i = 0; i < size_; i++)
+      {
+        point_t rotate_spot = shapes_[i]->getFrameRect().pos;
+        double x_before_rotate = rotate_spot.x - centre.x;
+        double y_before_rotate = rotate_spot.y - centre.y;
+        double rotation_x = x_before_rotate * cos - y_before_rotate * sin;
+        double rotation_y = x_before_rotate * sin + y_before_rotate * cos;
+        shapes_[i]->move(rotation_x + centre.x, rotation_y + centre.y);
+        shapes_[i]->rotate(angle);
+      }
+    }
+
+    CompositeShape::arrayPtr& CompositeShape::getShapes()
+    {
+      return shapes_;
+    }
+
   }
 

@@ -10,6 +10,8 @@ namespace maksimova
   public:
     Rectangle(const double width, const double height, const point_t& pos);
 
+    Rectangle(const rectangle_t& rectangle);
+
     double getArea() const override;
 
     rectangle_t getFrameRect() const override;
@@ -26,10 +28,15 @@ namespace maksimova
 
     double get_height() const;
 
+    void rotate(const double angle) override;
+
+    double getAngle() const;
+
   private:
     double width_;
     double height_;
     point_t position_;
+    double angle_;
   };
 }
 

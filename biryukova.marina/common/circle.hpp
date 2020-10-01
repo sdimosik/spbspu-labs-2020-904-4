@@ -17,6 +17,7 @@ namespace biryukova
     void scale(double coefficient) override;
     double getRadius() const noexcept;
     point_t getCentre() const noexcept override;
+    void rotate(double angle) override;
   private:
     double radius_;
     point_t centre_;

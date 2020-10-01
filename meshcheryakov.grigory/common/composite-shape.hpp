@@ -3,6 +3,7 @@
 
 #include <memory>
 #include "shape.hpp"
+#include "matrix.hpp"
 
 namespace meshcheryakov
 {
@@ -26,6 +27,8 @@ namespace meshcheryakov
     int getSize() const noexcept;
     void addShape(const std::shared_ptr<Shape>& shape);
     void removeShape(size_t index);
+    void rotate(const double angle) noexcept override;
+    Matrix matrixLayering() const;
 
   private:
     using shapeArray = std::unique_ptr<std::shared_ptr<Shape>[]>;

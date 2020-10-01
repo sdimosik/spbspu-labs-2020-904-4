@@ -1,9 +1,12 @@
 #include "composite-shape.hpp"
 #include <stdexcept>
 #include <string>
+#include <cmath>
 
 namespace meynik
 {
+  const double  HALF_CIRCLE = 180.0;
+
   CompositeShape::CompositeShape() noexcept :
     size_(0),
     capacity_(0),
@@ -42,7 +45,7 @@ namespace meynik
     if (size_ == 0 || index > (size_ - 1))
     {
       throw std::out_of_range(std::string("CompositeShape index out of range!Index value: ")
-          + std::to_string(index)+'\n');
+          + std::to_string(index) + '\n');
     }
     return array_[index];
   }
@@ -124,7 +127,7 @@ namespace meynik
     if (size_ == 0 || index > (size_ - 1))
     {
       throw std::out_of_range(std::string("Index of deleting shape lies beyong the limits")
-          + " of composite shape!" + "Index value:"+ std::to_string(index)+'\n');
+          + " of composite shape!" + "Index value:" + std::to_string(index) + '\n');
     }
     for (size_t i = index; i < (size_ - 1); i++)
     {
@@ -183,6 +186,16 @@ namespace meynik
     return { (rightSide - leftSide), (topSide - lowerSide), {(leftSide + (rightSide - leftSide) / 2), (lowerSide + (topSide - lowerSide) / 2)} };
   }
 
+  Matrix CompositeShape::getMatrix() const
+  {
+    Matrix temp;
+    for (size_t i = 0; i < size_; i++)
+    {
+      temp.addShape(array_[i]);
+    }
+    return temp;
+  }
+
   void CompositeShape::move(const double x, const double y) noexcept
   {
     for (size_t i = 0; i < size_; i++)
@@ -193,10 +206,7 @@ namespace meynik
 
   void CompositeShape::move(const point_t& center) noexcept
   {
-    for (size_t i = 0; i < size_; i++)
-    {
-      array_[i]->move(center);
-    }
+    this->move(center.x - this->getFrameRect().pos.x, center.y - this->getFrameRect().pos.y);
   }
 
   void CompositeShape::scale(const double coefficient)
@@ -213,6 +223,22 @@ namespace meynik
       array_[i]->scale(coefficient);
       shapeCentre = array_[i]->getFrameRect().pos;
       array_[i]->move((shapeCentre.x - centre.x) * (coefficient - 1), (shapeCentre.y - centre.y) * (coefficient - 1));
+    }
+  }
+
+  void CompositeShape::rotate(double angle)
+  {
+    double angleInRad = M_PI * angle / HALF_CIRCLE;
+    angleInRad = (angleInRad > 0.0) ? fmod(angleInRad, 2 * M_PI) : 2 * M_PI + fmod(angleInRad, 2 * M_PI);
+    point_t centre = getCentre();
+    for (size_t i = 0; i < size_; i++)
+    {
+      double deltaX = array_[i]->getCentre().x - centre.x;
+      double deltaY = array_[i]->getCentre().y - centre.y;
+      const double newX = centre.x + (deltaX * (cos(angleInRad))) - (deltaY * (sin(angleInRad)));
+      const double newY = centre.y + (deltaX * (sin(angleInRad))) + (deltaY * (cos(angleInRad)));
+      array_[i]->move({ newX, newY });
+      array_[i]->rotate(angle);
     }
   }
 

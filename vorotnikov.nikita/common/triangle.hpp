@@ -19,11 +19,20 @@ namespace vorotnikov {
 
     double getCenterY() const;
 
+    point_t getPointOne() const;
+
+    point_t getPointTwo() const;
+
+    point_t getPointThree() const;
+
     void scale(double value) override;
+
+    void rotate(double angle) noexcept override;
 
   private:
     point_t point_one_, point_two_, point_three_;
     point_t pos_;
+    double angle_ = 0.0;
   };
 }
 #endif

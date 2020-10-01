@@ -1,13 +1,14 @@
 #ifndef COMPOSITESHAPE_HPP
 #define COMPOSITESHAPE_HPP
 
-#include "shape.hpp"
 #include <ctime>
 #include <memory>
+#include "shape.hpp"
+#include "matrix.hpp"
 
 namespace gromov
 {
-  class CompositeShape : Shape
+  class CompositeShape : public Shape
   {
   public:
     CompositeShape() noexcept;
@@ -18,7 +19,7 @@ namespace gromov
 
     CompositeShape(CompositeShape &&array) noexcept;
 
-    std::shared_ptr<Shape> &operator[](size_t index) const;
+    std::shared_ptr<Shape> &operator[](size_t index);
 
     CompositeShape &operator=(const CompositeShape &array);
 
@@ -43,6 +44,10 @@ namespace gromov
     void move(const point_t &center) noexcept override;
 
     void scale(const double coefficient) override;
+
+    void rotate(const double angle = 0) noexcept override;
+
+    Matrix makePartition() const;
 
   private:
     using arrayPtr = std::unique_ptr<std::shared_ptr<Shape>[]>;

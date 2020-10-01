@@ -23,6 +23,8 @@ namespace  gromov
     point_t getCentre() const noexcept override;
 
     void scale(const double coefficient) override;
+
+    void rotate(double angle) noexcept override;
     
   private:
     double radius_;

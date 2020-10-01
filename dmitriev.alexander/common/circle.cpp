@@ -1,6 +1,6 @@
-#include "circle.hpp"
 #include <cmath>
 #include <stdexcept>
+#include "circle.hpp"
 
 namespace dmitriev
 {
@@ -42,5 +42,9 @@ namespace dmitriev
       throw std::invalid_argument("Invalid scale factor was given. Must be positive.");
     }
     radius_ *= factor;
+  }
+
+  void Circle::rotate(const double) noexcept
+  {
   }
 }

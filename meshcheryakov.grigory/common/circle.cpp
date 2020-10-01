@@ -57,4 +57,8 @@ namespace meshcheryakov
   {
     return radius_;
   }
+
+  void Circle::rotate(const double ) noexcept
+  {}
+
 }

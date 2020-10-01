@@ -23,6 +23,8 @@ namespace lovkacheva
 
     void scale(double coefficient) override;
 
+    void rotate(double angle) noexcept override;
+
   private:
     double radius_;
     point_t centre_;

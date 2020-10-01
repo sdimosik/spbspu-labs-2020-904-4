@@ -1,11 +1,13 @@
 #include "composite-shape.hpp"
 #include <iostream>
-#include <memory>
 #include <stdexcept>
 #include <limits>
+#include <cmath>
 
 namespace bakaeva
 {
+  const double  FULL_CIRCLE = 360.0;
+
   CompositeShape::CompositeShape() :
     volume_(10),
     size_(0),
@@ -72,7 +74,7 @@ namespace bakaeva
     return *this;
   }
 
-  CompositeShape::shapePtr &CompositeShape::operator[](const size_t index) const
+  CompositeShape::shapePtr &CompositeShape::operator[](const size_t index)
   {
     if (index >= size_ || size_ == 0)
     {
@@ -152,7 +154,7 @@ namespace bakaeva
   {
     if (shape == nullptr)
     {
-      throw std::invalid_argument("Added shape pointer must not be null!");
+      throw std::invalid_argument("Added in composite shape shape pointer must not be null!");
     }
 
     if (volume_ == size_)
@@ -172,7 +174,7 @@ namespace bakaeva
   {
     if (index >= size_ || size_ == 0)
     {
-      throw std::out_of_range(std::string("Index of shape is out of range = ") += std::to_string(index));
+      throw std::out_of_range(std::string("Index of removed shape is out of range = ") += std::to_string(index));
     }
 
     for (size_t i = index; i < size_ - 1; i++)
@@ -197,15 +199,41 @@ namespace bakaeva
   {
     rectangle_t tempFrameRect = getFrameRect();
     std::cout << "Frame rectangle of composite shape: height = " << tempFrameRect.height
-              << ", width = " << tempFrameRect.width << ", center = (" << tempFrameRect.pos.x
-              << ", " << tempFrameRect.pos.y << ")\n";
+        << ", width = " << tempFrameRect.width << ", center = (" << tempFrameRect.pos.x
+        << ", " << tempFrameRect.pos.y << ")\n";
   }
 
   void CompositeShape::printData() const
   {
     rectangle_t tempFrameRect = getFrameRect();
-    std::cout << "Number of figures is " << size_ << '\n' << "Total area is " << getArea() << '\n'
-              << "Composite shape's centre is (" << tempFrameRect.pos.x << ", " << tempFrameRect.pos.y << ")\n"
-              << "Frame rectangle have width = " << tempFrameRect.width << " height = " << tempFrameRect.height << '\n';
+    std::cout << "Composite shape:\n"<< "Number of figures is " << size_ << '\n' << "Total area is " << getArea()
+        << '\n' << "Composite shape's centre is (" << tempFrameRect.pos.x << ", " << tempFrameRect.pos.y << ")\n"
+        << "Frame rectangle have width = " << tempFrameRect.width << " height = " << tempFrameRect.height << '\n';
+  }
+
+  void CompositeShape::rotate(const double angle) noexcept
+  {
+    double angleInRad = angle * M_PI / (FULL_CIRCLE / 2);
+    point_t center = getCenter();
+
+    for (size_t i = 0; i < size_; i++)
+    {
+      double distanceX = shapes_[i]->getCenter().x - center.x;
+      double distanceY = shapes_[i]->getCenter().y - center.y;
+      const double dX = (distanceX * fabs(cos(angleInRad))) - (distanceY * fabs(sin(angleInRad)));
+      const double dY = (distanceX * fabs(sin(angleInRad))) + (distanceY * fabs(cos(angleInRad)));
+      shapes_[i]->move({center.x + dX,center.y + dY});
+      shapes_[i]->rotate(angle);
+    }
+  }
+
+  Matrix CompositeShape::layering() const
+  {
+    Matrix matrix;
+    for (size_t i = 0; i < size_; i++)
+    {
+      matrix.addShape(shapes_[i]);
+    }
+    return matrix;
   }
 }

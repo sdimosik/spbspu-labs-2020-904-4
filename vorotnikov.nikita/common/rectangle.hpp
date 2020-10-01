@@ -17,7 +17,10 @@ namespace vorotnikov {
 
     void scale(double value) override;
 
+    void rotate(double angle) noexcept override;
+
   private:
+    double angle_ = 0.0;
     double width_, height_;
     point_t pos_;
   };

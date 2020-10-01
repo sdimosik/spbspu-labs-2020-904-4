@@ -14,6 +14,7 @@ namespace kundik {
     void move(const point_t& end_pos) override;
     void move(double change_x, double change_y) override;
     virtual void scale(double coefficent);
+    void rotate(double angle) noexcept override;
     double getRadius() const;
     double getCenterX() const;
     double getCenterY() const;

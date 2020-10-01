@@ -139,3 +139,34 @@ Boost
 корню библиотеки.
 
 > Путь не должен содержать пробельные символы.
+Accepted Labs
+=============
+
+| Name                  | A1 | A2 | A3 | A4 | B1 | B2 | B3 | B4 | B5 | B6 | B7 | B8 |
+|-----------------------|----|----|----|----|----|----|----|----|----|----|----|----|
+| Anastasiev Alexey     | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Bakaeva Irina         | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Biryukova Marina      | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Brezho Maksim         | *  | *  | *  |    |    |    |    |    |    |    |    |    |
+| Bulanov Egor          | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Dmitriev Alexander    | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Gromov Maxim          | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
+| Khilchenko Mikhail    | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Kichigin Yuri         | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Kundik Nikita         | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Lovkacheva Julia      | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Maksimova Anastasia   | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Meshcheryakov Grigory | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Meshcheryakova Alina  | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
+| Meynik Alexander      | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Mukhin Fedor          | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Nizkovskii Lev        | *  |    |    |    |    |    |    |    |    |    |    |    |
+| Pashnin Dmitriy       | *  | *  | *  |    |    |    |    |    |    |    |    |    |
+| Rodion Ulyanov        | *  | *  | *  |    |    |    |    |    |    |    |    |    |
+| Shabinsky Dmitry      | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Spasoevich Ksenia     | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Stolyarov Alexey      | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Sviridov Artyom       | *  |    |    |    |    |    |    |    |    |    |    |    |
+| Ushakov Alexandr      | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Vorotnikov Nikita     | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| __Total__             |  25|  23|  23|  20|   2|   0|   0|   0|   0|   0|   0|   0|

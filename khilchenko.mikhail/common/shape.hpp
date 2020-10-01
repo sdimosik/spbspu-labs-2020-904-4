@@ -15,6 +15,7 @@ namespace khilchenko
     virtual void move(double x, double y) noexcept = 0;
     virtual point_t getCenter() const noexcept = 0;
     virtual void scale(double coefficient) = 0;
+    virtual void rotate(double angle) noexcept = 0;
   };
 }
 #endif

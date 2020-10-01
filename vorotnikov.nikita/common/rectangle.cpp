@@ -1,6 +1,8 @@
 #include <string>
 #include <stdexcept>
+#include <cmath>
 #include "rectangle.hpp"
+#include "optional.hpp"
 
 namespace vorotnikov {
   Rectangle::Rectangle(double width, double height, const point_t &pos) :
@@ -19,7 +21,9 @@ namespace vorotnikov {
   }
 
   rectangle_t Rectangle::getFrameRect() const {
-    return rectangle_t{width_, height_, pos_};
+    return rectangle_t{fabs(width_ * cos(angle_) + height_ * sin(angle_)),
+                       fabs(width_ * sin(angle_) + height_ * cos(angle_)), pos_
+    };
   }
 
   void Rectangle::move(const point_t &point) {
@@ -39,4 +43,10 @@ namespace vorotnikov {
     width_ *= value;
     height_ *= value;
   }
+
+  void Rectangle::rotate(const double angle) noexcept
+  {
+    angle_ = optional::rotate_angle(angle_, angle);
+  }
+
 }

@@ -1,56 +1,48 @@
 #include "triangle.hpp"
-#include <stdexcept>
 #include <cmath>
+#include <stdexcept>
 
 namespace anastasiev
 {
-  Triangle::Triangle(const point_t & a, const point_t & b, const point_t & c):
-    a_(a),
-    b_(b),
-    c_(c),
-    pos_{(a.x + b.x + c.x) / 3, (a.y + b.y + c.y) / 3 }
+  Triangle::Triangle(const point_t &a, const point_t &b, const point_t &c) :
+    vertices_({a, b, c})
   {
-    if (((c.x-a.x)/(b.x-a.x)==(c.y-a.y)/(b.y-a.y)))
+    if (((c.x - a.x) / (b.x - a.x) == (c.y - a.y) / (b.y - a.y)))
     {
       throw std::invalid_argument("Triangle tops cannot be on straight line.");
     }
   }
-
   point_t Triangle::getPosition() const
   {
-    return pos_;
-  }  
-
+    return {(vertices_[0].x + vertices_[1].x + vertices_[2].x) / 3,
+        (vertices_[0].y + vertices_[1].y + vertices_[2].y) / 3};
+  }
   double Triangle::getArea() const noexcept
   {
-    return (abs((b_.x - a_.x) * (c_.y - a_.y) - (c_.x -a_.x) * (b_.y - a_.y)))/2;
+    return (std::abs((vertices_[1].x - vertices_[0].x) * (vertices_[2].y - vertices_[0].y)
+        - (vertices_[2].x - vertices_[0].x) * (vertices_[1].y - vertices_[0].y))) / 2;
   }
-
   rectangle_t Triangle::getFrameRect() const noexcept
   {
-    double minX = std::fmin(std::fmin(a_.x, b_.x), c_.x),
-        maxX = std::fmax(std::fmax(a_.x, b_.x), c_.x),
-        minY = std::fmin(std::fmin(a_.y, b_.y), c_.y),
-        maxY = std::fmax(std::fmax(a_.y, b_.y), c_.y),
-        width = maxX - minX,
-        height = maxY - minY,
-        posX = maxX - width/2,
-        posY = maxY - height/2;
-    return rectangle_t{width, height, point_t{posX,posY}};
-  
+    double minX = std::min(std::min(vertices_[0].x, vertices_[1].x), vertices_[2].x);
+    double maxX = std::max(std::max(vertices_[0].x, vertices_[1].x), vertices_[2].x);
+    double minY = std::min(std::min(vertices_[0].y, vertices_[1].y), vertices_[2].y);
+    double maxY = std::max(std::max(vertices_[0].y, vertices_[1].y), vertices_[2].y);
+    return {maxX - minX, maxY - minY, point_t{maxX - (maxX - minX) / 2, maxY - (maxY - minY) / 2}};
   }
-  void Triangle::move(const point_t & pos) noexcept
+  void Triangle::move(const point_t &pos) noexcept
   {
-    double dx = pos.x - pos_.x,
-        dy = pos.y - pos_.y;
-    this->move(dx, dy);
+    double dx = pos.x - getPosition().x;
+    double dy = pos.y - getPosition().y;
+    move(dx, dy);
   }
   void Triangle::move(const double dx, const double dy) noexcept
   {
-    pos_ = {pos_.x + dx, pos_.y + dy};
-    a_ = {a_.x + dx, a_.y + dy};
-    b_ = {b_.x + dx, b_.y + dy};
-    c_ = {c_.x + dx, c_.y + dy};
+    for (point_t &vertex : vertices_)
+    {
+      vertex.x += dx;
+      vertex.y += dy;
+    }
   }
   void Triangle::scale(const double factor)
   {
@@ -58,9 +50,24 @@ namespace anastasiev
     {
       throw std::invalid_argument("Factor of scale must be positive.");
     }
-    a_ = {pos_.x + (pos_.x - a_.x) * factor, pos_.y + (pos_.y - a_.y) * factor};
-    b_ = {pos_.x + (pos_.x - b_.x) * factor, pos_.y + (pos_.y - b_.y) * factor};
-    c_ = {pos_.x + (pos_.x - c_.x) * factor, pos_.y + (pos_.y - c_.y) * factor};
-    
+    point_t pos = getPosition();
+    for (point_t &vertex : vertices_)
+    {
+      vertex = {pos.x + (pos.x - vertex.x) * factor, pos.y + (pos.y - vertex.y) * factor};
+    }
   }
-}//namespace anastasiev
+  void Triangle::rotate(double angle) noexcept
+  {
+    rotateAroundPoint(angle, getPosition());
+  }
+  void Triangle::rotateAroundPoint(double angle, const point_t &point) noexcept
+  {
+    angle = angle * M_PI / 180;
+    for (point_t &vertex : vertices_)
+    {
+      double tempX = vertex.x;
+      vertex.x = point.x + (vertex.x - point.x) * std::cos(angle) - (vertex.y - point.y) * std::sin(angle);
+      vertex.y = point.y + (vertex.y - point.y) * std::cos(angle) + (tempX - point.x) * std::sin(angle);
+    }
+  }
+} // namespace anastasiev

@@ -14,8 +14,10 @@ namespace anastasiev
     void move(const point_t &) noexcept override;
     void move(const double, const double) noexcept override;
     void scale(const double) override;
+    void rotate(double) noexcept override;
+    void rotateAroundPoint(double,const point_t&) noexcept override;
   private:
-    point_t a_, b_, c_, pos_;
+    point_t vertices_[3];
   };
 }//namespace anastasiev
 #endif

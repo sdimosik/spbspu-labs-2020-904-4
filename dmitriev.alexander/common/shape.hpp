@@ -19,6 +19,8 @@ namespace dmitriev
     virtual void move(double x, double y) noexcept = 0;
 
     virtual void scale(double factor) = 0;
+
+    virtual void rotate(double angle) noexcept = 0;
   };
 }
 #endif

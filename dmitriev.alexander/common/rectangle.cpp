@@ -1,12 +1,15 @@
-#include "rectangle.hpp"
 #include <stdexcept>
+#include <cmath>
+#include "rectangle.hpp"
+#include "utils.hpp"
 
 namespace dmitriev
 {
   Rectangle::Rectangle(const point_t &pos, const double width, const double height) :
     pos_(pos),
     width_(width),
-    height_(height)
+    height_(height),
+    angle_(0)
   {
     if (width <= 0 || height <= 0)
     {
@@ -21,7 +24,8 @@ namespace dmitriev
 
   rectangle_t Rectangle::getFrameRect() const noexcept
   {
-    return rectangle_t{width_, height_, pos_};
+    return {fabs(width_ * cos(angle_) + height_ * sin(angle_)),
+            fabs(width_ * sin(angle_) + height_ * cos(angle_)), pos_};
   }
 
   void Rectangle::move(const point_t &point) noexcept
@@ -43,5 +47,16 @@ namespace dmitriev
     }
     width_ *= factor;
     height_ *= factor;
+  }
+
+  void Rectangle::rotate(const double angle) noexcept
+  {
+    angle_ += utils::toRadians(angle);
+    const double full_circle = utils::toRadians(360);
+    angle_ = fmod(angle_, full_circle);
+    if (angle_ < 0)
+    {
+      angle_ += full_circle;
+    }
   }
 }
