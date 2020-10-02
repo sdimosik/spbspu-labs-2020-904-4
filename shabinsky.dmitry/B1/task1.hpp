@@ -41,7 +41,6 @@ namespace task1
   
     utils::bubbleSort<IteratorAccess>(list, utils::getArgSort(sortType));
     utils::print(list);
-  
   }
 }
 

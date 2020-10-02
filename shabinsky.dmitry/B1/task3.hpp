@@ -12,14 +12,10 @@ namespace task3
   void exec()
   {
     std::vector<int> vector;
-    int in;
+    int in = 0;
     
     while (std::cin >> in)
     {
-      if (std::cin.fail())
-      {
-        throw std::invalid_argument("Invalid data. Task3");
-      }
       if (in == 0)
       {
         break;
@@ -27,7 +23,7 @@ namespace task3
       vector.push_back(in);
     }
     
-    if (in != 0 || (!std::cin.eof() && !std::cin.good()))
+    if (!std::cin.eof() && !std::cin.good())
     {
       throw std::ios_base::failure("Fail with reading data");
     }
@@ -35,6 +31,11 @@ namespace task3
     if (vector.empty())
     {
       return;
+    }
+  
+    if (in != 0)
+    {
+      throw std::ios_base::failure("Fail with read number!");
     }
     
     bool isOne = false;

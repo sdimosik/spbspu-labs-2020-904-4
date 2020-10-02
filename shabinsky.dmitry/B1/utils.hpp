@@ -17,11 +17,11 @@ namespace utils
   void bubbleSort(Collection &collection, ArgSort argSort);
   
   template<class container>
-  void print(const container &collection);
+  void print(const container &collection, const std::string &string);
   
   void fillRandom(double *array, int size);
-
- //definition
+  
+  //definition
   
   enum class ArgSort
   {
@@ -51,12 +51,12 @@ namespace utils
       for (auto j = i; j != end; ++j)
       {
         if (argSort == ArgSort::ascending &&
-          Access<Collection>::getElement(collection, i) > Access<Collection>::getElement(collection, j))
+            Access<Collection>::getElement(collection, i) > Access<Collection>::getElement(collection, j))
         {
           std::swap(Access<Collection>::getElement(collection, i), Access<Collection>::getElement(collection, j));
         }
         else if (argSort == ArgSort::descending &&
-          Access<Collection>::getElement(collection, i) < Access<Collection>::getElement(collection, j))
+                 Access<Collection>::getElement(collection, i) < Access<Collection>::getElement(collection, j))
         {
           std::swap(Access<Collection>::getElement(collection, i), Access<Collection>::getElement(collection, j));
         }
@@ -65,13 +65,16 @@ namespace utils
   }
   
   template<class container>
-  void print(const container &collection)
+  void print(const container &collection, const std::string &string = " ", bool slashN = true)
   {
     for (auto i = collection.begin(); i != collection.end(); ++i)
     {
-      std::cout << *i << " ";
+      std::cout << *i << string;
     }
-    std::cout << "\n";
+    if (slashN)
+    {
+      std::cout << "\n";
+    }
   }
   
   void fillRandom(double *array, int size)

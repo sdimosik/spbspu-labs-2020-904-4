@@ -57,7 +57,7 @@ namespace task2
     }
     
     std::vector<char> vector(&data[0], &data[index]);
-    utils::print(vector);
+    utils::print(vector, "", false);
   }
 }
 
