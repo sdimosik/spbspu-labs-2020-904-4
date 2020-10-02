@@ -18,6 +18,7 @@ namespace task4
     }
     std::vector<double> vector(size);
     utils::fillRandom(vector.data(), size);
+    utils::print(vector);
     utils::bubbleSort<IteratorAccess>(vector, utils::getArgSort(sortType));
     utils::print(vector);
   }
