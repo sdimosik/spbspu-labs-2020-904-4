@@ -7,6 +7,22 @@
 
 namespace utils
 {
+  //declaration
+  
+  enum class ArgSort;
+  
+  ArgSort getArgSort(const char *sortType);
+  
+  template<template<class> class Access, class Collection>
+  void bubbleSort(Collection &collection, ArgSort argSort);
+  
+  template<class container>
+  void print(const container &collection);
+  
+  void fillRandom(double *array, int size);
+
+ //definition
+  
   enum class ArgSort
   {
     ascending,
