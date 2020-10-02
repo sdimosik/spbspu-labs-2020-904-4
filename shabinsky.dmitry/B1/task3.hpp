@@ -43,20 +43,23 @@ namespace task3
       isOne = true;
     }
     
-    auto it = vector.begin();
-    while (it != vector.end())
+    if (vector.back() == 1 || vector.back() == 2)
     {
-      if (!isOne && (*it % 3 == 0))
+      auto it = vector.begin();
+      while (it != vector.end())
       {
-        it = vector.insert(++it, 3, 1) + 3;
-      }
-      else if (isOne && (*it % 2 == 0))
-      {
-        it = vector.erase(it);
-      }
-      else
-      {
-        ++it;
+        if (!isOne && (*it % 3 == 0))
+        {
+          it = vector.insert(++it, 3, 1) + 3;
+        }
+        else if (isOne && (*it % 2 == 0))
+        {
+          it = vector.erase(it);
+        }
+        else
+        {
+          ++it;
+        }
       }
     }
     utils::print(vector);

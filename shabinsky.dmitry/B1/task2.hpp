@@ -45,10 +45,10 @@ namespace task2
         std::swap(data, temp);
       }
     }
-    
-    if (fin.fail() && !fin.eof())
+  
+    if (!fin.good() && !fin.eof())
     {
-      throw std::runtime_error("Error of reading");
+      throw std::ios_base::failure("Fail while reading");
     }
     fin.close();
     if (fin.is_open())

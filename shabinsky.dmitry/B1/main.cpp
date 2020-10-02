@@ -71,11 +71,6 @@ void checkValid(int argc, char *argv[])
       {
         throw std::invalid_argument("Invalid count argc for 2 task\n");
       }
-      int sizeArg = std::string(argv[2]).size();
-      if (std::string(argv[2]).substr(sizeArg - 4, 4) != ".txt")
-      {
-        throw std::invalid_argument("File extension in problem 2 is not equal '.txt'\n");
-      }
       break;
     }
     case 3:
