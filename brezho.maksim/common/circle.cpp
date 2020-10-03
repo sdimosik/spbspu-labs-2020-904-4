@@ -64,4 +64,7 @@ namespace brezho
     }
     radius_ *= coefficient;
   }
+
+  void Circle::rotate(double) noexcept
+  {}
 }

@@ -18,6 +18,7 @@ namespace brezho
     point_t getPosition() const noexcept override;
     double getArea() const noexcept override;
     void scale(double coefficient) override;
+    void rotate(double angle) noexcept override;
   private:
     point_t peaks_[3];
   };

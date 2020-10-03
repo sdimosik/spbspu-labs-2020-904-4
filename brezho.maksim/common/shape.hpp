@@ -14,6 +14,7 @@ namespace brezho
     virtual void move(const double x, const double y) noexcept = 0;
     virtual void move(const point_t& point) noexcept = 0;
     virtual void scale(double coefficient) = 0;
+    virtual void rotate(double angle) noexcept = 0;
   };
 }
 
