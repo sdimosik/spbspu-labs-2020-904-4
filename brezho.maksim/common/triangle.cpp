@@ -83,4 +83,17 @@ namespace brezho
       peaks_[i].y = center.y + (peaks_[i].y - center.y) * coefficient;
     }
   }
+
+  void Triangle::rotate(double angle) noexcept
+  {
+    double angle_radian = (angle * M_PI) / 180;
+    const double sin = std::sin(angle_radian), cos = std::cos(angle_radian);
+    const point_t center = getPosition();
+    for (size_t i = 0; i < 3; i++)
+    {
+      const double oldX = peaks_[i].x;
+      peaks_[i].x = center.x + (oldX - center.x) * cos - (peaks_[i].y - center.y) * sin;
+      peaks_[i].y = center.y + (oldX - center.x) * sin + (peaks_[i].y - center.y) * cos;
+    }
+  }
 }
