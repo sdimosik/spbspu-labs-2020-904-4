@@ -20,27 +20,27 @@ namespace task1
     {
       if (std::cin.fail())
       {
-        throw std::invalid_argument("Invalid data. Task3");
+        throw std::invalid_argument("Invalid data. Task 1");
       }
       vector.push_back(in);
     }
-  
-    if(!std::cin.eof() && !std::cin.good())
+    
+    if (!std::cin.eof() && !std::cin.good())
     {
-      throw std::ios_base::failure("Fail with reading data");
+      throw std::ios_base::failure("Fail with reading data. Task 1");
     }
     
     std::vector<int> vectorAt(vector);
     std::forward_list<int> list(vector.begin(), vector.end());
     
-    utils::bubbleSort<IndexAccess>(vector, utils::getArgSort(sortType));
-    utils::print(vector);
-  
-    utils::bubbleSort<AtAccess>(vectorAt, utils::getArgSort(sortType));
-    utils::print(vectorAt);
-  
-    utils::bubbleSort<IteratorAccess>(list, utils::getArgSort(sortType));
-    utils::print(list);
+    utils::bubbleSort<IndexAccess>(vector, utils::compareOrder<int>(utils::getArgSort(sortType)));
+    utils::println(vector);
+    
+    utils::bubbleSort<AtAccess>(vectorAt, utils::compareOrder<int>(utils::getArgSort(sortType)));
+    utils::println(vectorAt);
+    
+    utils::bubbleSort<IteratorAccess>(list, utils::compareOrder<int>(utils::getArgSort(sortType)));
+    utils::println(list);
   }
 }
 

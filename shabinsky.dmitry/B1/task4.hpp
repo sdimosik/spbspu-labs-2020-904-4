@@ -14,13 +14,13 @@ namespace task4
   {
     if (size <= 0)
     {
-      throw std::invalid_argument("Task4. Size should be > 0");
+      throw std::invalid_argument("Task4. Size should be > 0. Task 4");
     }
     std::vector<double> vector(size);
     utils::fillRandom(vector.data(), size);
-    utils::print(vector);
-    utils::bubbleSort<IteratorAccess>(vector, utils::getArgSort(sortType));
-    utils::print(vector);
+    utils::println(vector);
+    utils::bubbleSort<IteratorAccess>(vector, utils::compareOrder<double>(utils::getArgSort(sortType)));
+    utils::println(vector);
   }
 }
 

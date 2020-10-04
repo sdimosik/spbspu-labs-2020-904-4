@@ -4,6 +4,7 @@
 #include <vector>
 #include <iostream>
 #include <random>
+#include <functional>
 
 namespace utils
 {
@@ -13,11 +14,11 @@ namespace utils
   
   ArgSort getArgSort(const char *sortType);
   
-  template<template<class> class Access, class Collection>
-  void bubbleSort(Collection &collection, ArgSort argSort);
+  template<typename T>
+  std::function<bool(T, T)> compareOrder(ArgSort argSort);
   
-  template<class container>
-  void print(const container &collection, const std::string &string);
+  template<template<class> class Access, class Collection>
+  void bubbleSort(Collection &collection, std::function<bool(typename Collection::value_type, typename Collection::value_type)> compare);
   
   void fillRandom(double *array, int size);
   
@@ -41,8 +42,25 @@ namespace utils
     }
   }
   
+  template<typename T>
+  std::function<bool(T, T)> compareOrder(ArgSort argSort)
+  {
+    if (argSort == ArgSort::ascending)
+    {
+      return std::greater<const T>();
+    }
+    else if (argSort == ArgSort::descending)
+    {
+      return std::less<const T>();
+    }
+    else
+    {
+      throw std::invalid_argument("Invalid sort type!");
+    }
+  }
+  
   template<template<class> class Access, class Collection>
-  void bubbleSort(Collection &collection, ArgSort argSort)
+  void bubbleSort(Collection &collection, std::function<bool(typename Collection::value_type, typename Collection::value_type)> compare)
   {
     auto begin = Access<Collection>::begin(collection);
     auto end = Access<Collection>::end(collection);
@@ -50,13 +68,7 @@ namespace utils
     {
       for (auto j = i; j != end; ++j)
       {
-        if (argSort == ArgSort::ascending &&
-            Access<Collection>::getElement(collection, i) > Access<Collection>::getElement(collection, j))
-        {
-          std::swap(Access<Collection>::getElement(collection, i), Access<Collection>::getElement(collection, j));
-        }
-        else if (argSort == ArgSort::descending &&
-                 Access<Collection>::getElement(collection, i) < Access<Collection>::getElement(collection, j))
+        if (compare(Access<Collection>::getElement(collection, i), Access<Collection>::getElement(collection, j)))
         {
           std::swap(Access<Collection>::getElement(collection, i), Access<Collection>::getElement(collection, j));
         }
@@ -65,16 +77,13 @@ namespace utils
   }
   
   template<class container>
-  void print(const container &collection, const std::string &string = " ", bool slashN = true)
+  void println(const container &collection, const char * addedLine = " ")
   {
     for (auto i = collection.begin(); i != collection.end(); ++i)
     {
-      std::cout << *i << string;
+      std::cout << *i << addedLine;
     }
-    if (slashN)
-    {
-      std::cout << "\n";
-    }
+    std::cout << "\n";
   }
   
   void fillRandom(double *array, int size)

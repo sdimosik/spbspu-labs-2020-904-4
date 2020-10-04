@@ -25,35 +25,25 @@ namespace task3
     
     if (!std::cin.eof() && !std::cin.good())
     {
-      throw std::ios_base::failure("Fail with reading data");
+      throw std::ios_base::failure("Fail with reading data. Task 3");
     }
     
     if (vector.empty())
     {
       return;
     }
-  
+    
     if (in != 0)
     {
-      throw std::ios_base::failure("Fail with read number!");
+      throw std::ios_base::failure("Fail with read number! Task 3");
     }
     
-    bool isOne = false;
     if (vector.back() == 1)
-    {
-      isOne = true;
-    }
-    
-    if (vector.back() == 1 || vector.back() == 2)
     {
       auto it = vector.begin();
       while (it != vector.end())
       {
-        if (!isOne && (*it % 3 == 0))
-        {
-          it = vector.insert(++it, 3, 1) + 3;
-        }
-        else if (isOne && (*it % 2 == 0))
+        if (*it % 2 == 0)
         {
           it = vector.erase(it);
         }
@@ -63,7 +53,22 @@ namespace task3
         }
       }
     }
-    utils::print(vector);
+    else if (vector.back() == 2)
+    {
+      auto it = vector.begin();
+      while (it != vector.end())
+      {
+        if (*it % 3 == 0)
+        {
+          it = vector.insert(++it, 3, 1) + 3;
+        }
+        else
+        {
+          ++it;
+        }
+      }
+    }
+    utils::println(vector);
   }
 }
 

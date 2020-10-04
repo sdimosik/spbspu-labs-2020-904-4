@@ -18,7 +18,7 @@ namespace task2
     
     if (!fin.is_open())
     {
-      throw std::ios_base::failure("File cannot be open!");
+      throw std::ios_base::failure("File cannot be open! Task 2");
     }
     if (fin.peek() == EOF)
     {
@@ -48,16 +48,16 @@ namespace task2
   
     if (!fin.good() && !fin.eof())
     {
-      throw std::ios_base::failure("Fail while reading");
+      throw std::ios_base::failure("Fail while reading. Task 2");
     }
     fin.close();
     if (fin.is_open())
     {
-      throw std::runtime_error("Close of file is failed");
+      throw std::runtime_error("Close of file is failed. Task 2");
     }
     
     std::vector<char> vector(&data[0], &data[index]);
-    utils::print(vector, "", true);
+    utils::println(vector, "");
   }
 }
 
