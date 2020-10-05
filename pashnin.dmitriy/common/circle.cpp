@@ -46,4 +46,9 @@ namespace pashnin
     radius_ *= factor;
   }
   
+  void Circle::rotate(const double) noexcept
+  {
+  
+  }
+  
 }

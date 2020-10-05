@@ -1,6 +1,8 @@
 
 #include "rectangle.hpp"
+#include "specs.hpp"
 #include <stdexcept>
+#include <cmath>
 
 namespace pashnin
 {
@@ -23,7 +25,12 @@ namespace pashnin
   
   rectangle_t Rectangle::getFrameRect() const
   {
-    return rectangle_t{width_, height_, position_};
+    return rectangle_t
+      {
+        fabs(width_ * cos(angle_) + height_ * sin(angle_)),
+        fabs(width_ * sin(angle_) + height_ * cos(angle_)),
+        position_
+      };
   }
   
   void Rectangle::move(const point_t &dot)
@@ -46,6 +53,11 @@ namespace pashnin
     }
     width_ *= factor;
     height_ *= factor;
+  }
+  
+  void Rectangle::rotate(double angle) noexcept
+  {
+    angle_ = specs::changeAngle(angle_, angle);
   }
   
 }

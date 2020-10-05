@@ -1,5 +1,6 @@
 
 #include "triangle.hpp"
+#include "specs.hpp"
 #include <stdexcept>
 #include <cmath>
 #include <algorithm>
@@ -15,7 +16,8 @@ namespace pashnin
   Triangle::Triangle(const point_t &dot1, const point_t &dot2, const point_t &dot3) :
     top1_(dot1),
     top2_(dot2),
-    top3_(dot3)
+    top3_(dot3),
+    angle_(0.0)
   {
     if (top1_ == top2_ || top1_ == top3_ || top2_ == top3_)
     {
@@ -52,6 +54,26 @@ namespace pashnin
     return rectangle_t{width, height, point_t{xPoint, yPoint}};
   }
   
+  double Triangle::getCenterX() const {
+    return (top1_.x + top2_.x + top3_.x) / 3;
+  }
+  
+  double Triangle::getCenterY() const {
+    return (top1_.y + top2_.y + top3_.y) / 3;
+  }
+  
+  point_t Triangle::getTop1() const {
+    return top1_;
+  }
+  
+  point_t Triangle::getTop2() const {
+    return top2_;
+  }
+  
+  point_t Triangle::getTop3() const {
+    return top3_;
+  }
+  
   void Triangle::move(double xAxis, double yAxis)
   {
     top1_.x += xAxis;
@@ -64,8 +86,8 @@ namespace pashnin
   
   void Triangle::move(const point_t &dot)
   {
-    double xChange = (top1_.x + top2_.x + top3_.x) / 3 - dot.x,
-        yChange = (top1_.y + top2_.y + top3_.y) / 3 - dot.y;
+    double xChange = getCenterX() - dot.x,
+      yChange = getCenterY() - dot.y;
     move(xChange, yChange);
   }
   
@@ -106,6 +128,20 @@ namespace pashnin
     changeTopScaling(top1_, center, factor);
     changeTopScaling(top2_, center, factor);
     changeTopScaling(top3_, center, factor);
+  }
+  
+  void Triangle::rotate(double angle) noexcept
+  {
+    angle_ = specs::changeAngle(angle_, angle);
+    point_t* tops[3] = {&top1_, &top2_, &top3_};
+    double centerX = (top1_.x + top2_.x + top3_.x) / 3;
+    double centerY = (top1_.y + top2_.y + top3_.y) / 3;
+    for(point_t* top : tops)
+    {
+      double tempX = top->x;
+      top->x = (top->x - centerX) * cos(angle_) - (top->y - centerY) * sin(angle_) + centerX;
+      top->y = (tempX - centerX) * sin(angle_) + (top->y - centerY) * cos(angle_) + centerY;
+    }
   }
   
 }

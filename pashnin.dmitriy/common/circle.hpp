@@ -21,6 +21,8 @@ namespace pashnin
     void move(double xAxis, double yAxis) override;
   
     void scale(double factor) override;
+    
+    void rotate(double angle) noexcept override;
 
   private:
     double radius_;
