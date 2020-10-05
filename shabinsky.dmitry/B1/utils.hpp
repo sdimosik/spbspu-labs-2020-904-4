@@ -88,11 +88,15 @@ namespace utils
   
   void fillRandom(double *array, int size)
   {
-    if (array == nullptr || size <= 0)
+    if (array == nullptr)
     {
-      throw std::invalid_argument("fillRandom: array is nullptr or size 0");
+      throw std::invalid_argument("fillRandom: array is nullptr");
     }
-    std::default_random_engine generate;
+    if (size < 0)
+    {
+      throw std::invalid_argument("fillRandom: size should be >= 0. Current value: " + std::to_string(size));
+    }
+    std::default_random_engine generate(size);
     std::uniform_real_distribution<double> distrib(-1, 1);
     for (int i = 0; i < size; i++)
     {
