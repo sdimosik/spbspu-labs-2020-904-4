@@ -21,9 +21,11 @@ namespace pashnin
     void move(double xAxis, double yAxis) override;
   
     void scale(double factor) override;
+  
+    void rotate(double angle) noexcept override;
 
   private:
-    double width_, height_;
+    double width_, height_, angle_ = 0.0;
     point_t position_;
   };
   
