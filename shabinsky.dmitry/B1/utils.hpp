@@ -77,7 +77,7 @@ namespace utils
   }
   
   template<class container>
-  void println(const container &collection, const char * addedLine = " ")
+  void println(const container &collection, const char *addedLine = " ")
   {
     for (auto i = collection.begin(); i != collection.end(); ++i)
     {
@@ -88,6 +88,10 @@ namespace utils
   
   void fillRandom(double *array, int size)
   {
+    if (array == nullptr || size <= 0)
+    {
+      throw std::invalid_argument("fillRandom: array is nullptr or size 0");
+    }
     std::default_random_engine generate;
     std::uniform_real_distribution<double> distrib(-1, 1);
     for (int i = 0; i < size; i++)
