@@ -20,10 +20,13 @@ namespace rodion
       void move(const double x, const double y) override;
 
       void scale(double value) override;
+    
+      void rotate(double angle) noexcept override;
 
 
   private:
       rectangle_t rectangle;
+      double angle_ = 0.0;
   };
 };
 
