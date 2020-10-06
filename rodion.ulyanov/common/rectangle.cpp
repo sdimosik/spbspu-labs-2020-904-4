@@ -1,5 +1,9 @@
-
+#include <string>
+#include <stdexcept>
+#include <cmath>
 #include "rectangle.hpp"
+#include "optional.hpp"
+
 namespace rodion
 {
   Rectangle::Rectangle(const rectangle_t &rectangle) :
@@ -21,7 +25,10 @@ namespace rodion
 
   rectangle_t Rectangle::getFrameRect() const
   {
-    return rectangle;
+    return rectangle_t{fabs(rectangle.width * cos(angle_) + rectangle.height * sin(angle_)),
+      fabs(rectangle.width * sin(angle_) + rectangle.height * cos(angle_)), rectangle.pos
+    };
+
   }
 
   void Rectangle::show() const
@@ -52,4 +59,9 @@ namespace rodion
     rectangle.height *= value;
 
   }
+  void Rectangle::rotate(const double angle) noexcept
+  {
+    angle_ = optional::rotate_angle(angle_, angle);
+  }
+
 };

@@ -1,7 +1,9 @@
 #include <stdexcept>
 #include <algorithm>
 #include <limits>
+#include <cmath>
 #include "composite-shape.hpp"
+#include "optional.hpp"
 
 namespace rodion
 {
@@ -196,6 +198,35 @@ void CompositeShape::show() const
 {
   std::cout << "This compisite shape has a capasity of: " << capacity_ << ", size: " << size_ << '\n';
 }
+
+void CompositeShape::rotate(double angle) noexcept
+{
+  double angleRadian = optional::performToRadians(angle);
+  point_t center = getFrameRect().pos;
+
+  for (size_t i = 0; i < size_; ++i)
+  {
+    shapes_[i]->rotate(angle);
+
+    point_t centerShape = shapes_[i]->getFrameRect().pos;
+    double deltaX = centerShape.x - center.x;
+    double deltaY = centerShape.y - center.y;
+    double distanceX = (deltaX * abs(cos(angleRadian)) - deltaY * abs(sin(angleRadian)));
+    double distanceY = (deltaX * abs(sin(angleRadian)) + deltaY * abs(cos(angleRadian)));
+    shapes_[i]->move({center.x + distanceX, center.y + distanceY});
+  }
+}
+
+Matrix CompositeShape::toMatrix() const noexcept
+{
+  Matrix matrix;
+  for (size_t i = 0; i < size_; i++)
+  {
+    matrix.addShape(shapes_[i]);
+  }
+  return matrix;
+}
+
 }
 
 

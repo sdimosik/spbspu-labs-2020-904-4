@@ -20,6 +20,8 @@ namespace rodion
       virtual void show() const = 0;
 
       virtual void scale (double value) = 0;
+    
+      virtual void rotate(double angle) noexcept = 0;
   };
 };
 #endif /* shape_h */

@@ -26,7 +26,7 @@ namespace rodion
 
   rectangle_t Circle::getFrameRect() const
   {
-    return rectangle_t{radius, radius, centre};
+    return rectangle_t{2*radius, 2*radius, centre};
   }
 
   double Circle::getArea() const
@@ -48,5 +48,11 @@ namespace rodion
     }
     radius *= value;
   }
+
+  void Circle::rotate(const double) noexcept
+  {
+
+  }
+
 }
 

@@ -3,6 +3,7 @@
 
 #include <memory>
 #include "shape.hpp"
+#include "matrix.hpp"
 
 namespace rodion
 {
@@ -40,6 +41,11 @@ namespace rodion
     void move(double x, double y) noexcept override;
 
     void scale(double factor) override;
+    
+    void rotate(double angle) noexcept override;
+
+    Matrix toMatrix() const noexcept;
+
     
     void show () const override;
 
