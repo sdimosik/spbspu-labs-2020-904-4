@@ -149,7 +149,7 @@ Accepted Labs
 | Biryukova Marina      | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Brezho Maksim         | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Bulanov Egor          | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| Dmitriev Alexander    | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Dmitriev Alexander    | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Gromov Maxim          | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Khilchenko Mikhail    | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Kichigin Yuri         | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
@@ -161,8 +161,8 @@ Accepted Labs
 | Meynik Alexander      | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Mukhin Fedor          | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Nizkovskii Lev        | *  |    |    |    |    |    |    |    |    |    |    |    |
-| Pashnin Dmitriy       | *  | *  | *  |    |    |    |    |    |    |    |    |    |
-| Rodion Ulyanov        | *  | *  | *  |    |    |    |    |    |    |    |    |    |
+| Pashnin Dmitriy       | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Rodion Ulyanov        | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Shabinsky Dmitry      | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Spasoevich Ksenia     | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Stolyarov Alexey      | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
@@ -170,4 +170,4 @@ Accepted Labs
 | Unzhakov Vladislav    | *  |    |    |    |    |    |    |    |    |    |    |    |
 | Ushakov Alexandr      | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Vorotnikov Nikita     | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| __Total__             |  26|  24|  23|  21|  12|   0|   0|   0|   0|   0|   0|   0|
+| __Total__             |  26|  24|  23|  23|  13|   0|   0|   0|   0|   0|   0|   0|
