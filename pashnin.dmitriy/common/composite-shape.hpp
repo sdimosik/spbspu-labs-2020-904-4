@@ -4,6 +4,7 @@
 
 #include <memory>
 #include "shape.hpp"
+#include "matrix.hpp"
 
 namespace pashnin
 {
@@ -43,7 +44,11 @@ namespace pashnin
     void move(double x, double y) noexcept override;
   
     void scale(double factor) override;
-
+    
+    void rotate(double angle) noexcept override;
+  
+    Matrix toMatrix() const noexcept;
+    
   private:
     using arrShape = std::unique_ptr<shapePtr[]>;
     arrShape shapes_;

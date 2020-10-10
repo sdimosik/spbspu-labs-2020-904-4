@@ -1,7 +1,7 @@
 #include "triangle.hpp"
 #include <cmath>
 #include <algorithm>
-
+#include "optional.hpp"
 namespace rodion
 {
 point_t Triangle::calculateCentre() {
@@ -9,6 +9,19 @@ point_t Triangle::calculateCentre() {
   centre.y = (this->point_A.y + this->point_B.y + this->point_C.y) / 3;
   return centre;
 }
+
+point_t Triangle::getPointA() const {
+  return point_A;
+}
+
+point_t Triangle::getPointB() const {
+  return point_B;
+}
+
+point_t Triangle::getPointC() const {
+  return point_C;
+}
+
 
 Triangle::Triangle(const point_t &point_A, const point_t &point_B, const point_t &point_C) :
     point_A(point_A),
@@ -25,11 +38,13 @@ Triangle::Triangle(const point_t &point_A, const point_t &point_B, const point_t
   calculateCentre();
 }
 
-double Triangle::getArea() const {
-  double area = 0;
-  area = abs(
-      0.5 * ((point_A.x - point_C.x) * (point_B.y - point_C.y) - (point_B.x - point_A.x) * (point_A.y - point_C.y)));
-  return area;
+double Triangle::getArea() const
+{
+  const double A = optional::getDistance(point_A,point_B);
+  const double B = optional::getDistance(point_B,point_C);
+  const double C = optional::getDistance(point_C,point_A);
+  double half_p = (A+B+C)/2;
+  return (sqrt(half_p * (half_p - A) * (half_p - B) * (half_p - C)));
 }
 
 point_t Triangle::getCentre() const {
@@ -79,4 +94,21 @@ void Triangle::scale(double value)
   point_B.y -= (value - 1) * (centre.y - point_B.y);
   point_C.y -= (value - 1) * (centre.y - point_C.y);
 }
+
+void Triangle::rotate(double angle) noexcept
+{
+  const double angleRad = optional::performToRadians(angle);
+  const double sin = std::sin(angleRad),
+    cos = std::cos(angleRad);
+  point_t* points[3] = {&point_A, &point_B, &point_C};
+   for(point_t* point : points)
+  {
+    const double distanceX = point -> x - centre.x;
+    const double distanceY = point -> y - centre.y;
+    point -> x = centre.x + distanceX * cos - distanceY * sin;
+    point -> y = centre.y + distanceX * sin + distanceY * cos;
+  }
+ }
+ 
+
 };

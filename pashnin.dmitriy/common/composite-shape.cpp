@@ -1,7 +1,9 @@
 
 #include <memory>
 #include <stdexcept>
+#include <cmath>
 #include "composite-shape.hpp"
+#include "specs.hpp"
 
 namespace pashnin
 {
@@ -192,6 +194,33 @@ namespace pashnin
       double yChange = shapes_[i]->getFrameRect().pos.y - centerY;
       shapes_[i]->move(xChange * (factor - 1), yChange * (factor - 1));
     }
+  }
+  
+  void CompositeShape::rotate(double angle) noexcept
+  {
+    angle = specs::changeAngle(0.0, angle);
+    const double xCenter = getFrameRect().pos.x;
+    const double yCenter = getFrameRect().pos.y;
+    for (size_t i = 0; i < size_; i++)
+    {
+      const double xChange = shapes_[i]->getFrameRect().pos.x - xCenter;
+      const double yChange = shapes_[i]->getFrameRect().pos.y - yCenter;
+      const double distanceX = fabs(xChange * cos(angle)) - fabs((yChange * sin(angle)));
+      const double distanceY = fabs(xChange * sin(angle)) + fabs((yChange * cos(angle)));
+      shapes_[i]->move({xCenter + distanceX, yCenter + distanceY});
+      shapes_[i]->rotate(specs::toDegree(angle));
+    }
+  
+  }
+  
+  Matrix CompositeShape::toMatrix() const noexcept
+  {
+    Matrix matrix;
+    for (size_t i = 0; i < size_; i++)
+    {
+      matrix.addShape(shapes_[i]);
+    }
+    return matrix;
   }
   
 }

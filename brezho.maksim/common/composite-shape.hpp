@@ -4,6 +4,7 @@
 #include <ctime>
 #include <memory>
 #include "shape.hpp"
+#include "matrix.hpp"
 
 namespace brezho
 {
@@ -14,7 +15,8 @@ namespace brezho
     CompositeShape(const size_t fullSize_);
     CompositeShape(const CompositeShape& array);
     CompositeShape(CompositeShape&& array) noexcept;
-    std::shared_ptr<Shape>& operator[](size_t index);
+    ~CompositeShape() = default;
+    const std::shared_ptr<Shape>& operator[](const size_t index) const;
     CompositeShape& operator=(const CompositeShape& array);
     CompositeShape& operator=(CompositeShape&& array) noexcept;
     void move(const double x, const double y) noexcept override;
@@ -27,6 +29,8 @@ namespace brezho
     point_t getPosition() const noexcept override;
     double getArea() const noexcept override;
     void scale(const double coefficient) override;
+    void rotate(const double angle = 0) noexcept override;
+    Matrix makeMatrix() const;
 
   private:
     using arrayPtr = std::unique_ptr<std::shared_ptr<Shape>[]>;

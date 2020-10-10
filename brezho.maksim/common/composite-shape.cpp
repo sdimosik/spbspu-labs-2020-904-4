@@ -18,7 +18,7 @@ namespace brezho
     array_(std::make_unique<std::shared_ptr<Shape>[]>(fullSize_))
   {}
   
-  CompositeShape::CompositeShape(const CompositeShape & array):
+  CompositeShape::CompositeShape(const CompositeShape& array):
     fullSize_(array.fullSize_),
     usedSize_(array.usedSize_),
     array_(std::make_unique<std::shared_ptr<Shape>[]>(array.fullSize_))
@@ -37,7 +37,8 @@ namespace brezho
     array.fullSize_ = 0;
     array.usedSize_ = 0;
   }
-  std::shared_ptr<Shape>& CompositeShape::operator[](size_t index)
+
+  const std::shared_ptr<Shape>& CompositeShape::operator[](const size_t index) const
   {
     if (usedSize_ == 0 || index >= usedSize_)
     {
@@ -126,8 +127,8 @@ namespace brezho
     }
     if (fullSize_ == 0)
     {
+      arrayPtr temp = std::make_unique<std::shared_ptr<Shape>[]>(1);
       fullSize_ = 1;
-      arrayPtr temp = std::make_unique<std::shared_ptr<Shape>[]>(fullSize_);
       array_ = std::move(temp);
     }
 
@@ -203,4 +204,29 @@ namespace brezho
     }
   }
 
+  void CompositeShape::rotate(double angle) noexcept
+  {
+    double angle_radian = (angle * M_PI) / 180;
+    point_t center = getPosition();
+    for (size_t i = 0; i < usedSize_; i++)
+    {
+      point_t currentCenter = array_[i]->getPosition();
+      double distanceX = currentCenter.x - center.x;
+      double distanceY = currentCenter.y - center.y;
+      const double dX = (distanceX * abs(cos(angle_radian))) - (distanceY * abs(sin(angle_radian)));
+      const double dY = (distanceX * abs(sin(angle_radian))) + (distanceY * abs(cos(angle_radian)));
+      array_[i]->move({ center.x + dX,center.y + dY });
+      array_[i]->rotate(angle);
+    }
+  }
+
+  Matrix CompositeShape::makeMatrix() const
+  {
+    Matrix matrix;
+    for (size_t i = 0; i < usedSize_; i++)
+    {
+      matrix.addShape(array_[i]);
+    }
+    return matrix;
+  }
 }

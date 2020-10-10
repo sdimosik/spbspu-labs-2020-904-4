@@ -21,6 +21,8 @@ namespace pashnin
     virtual void move(double xAxis, double yAxis) = 0;
     
     virtual void scale(double factor) = 0;
+    
+    virtual void rotate(double angle) noexcept = 0;
   };
   
 }

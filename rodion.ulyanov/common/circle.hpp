@@ -14,6 +14,7 @@ namespace rodion
     rectangle_t getFrameRect() const override;
     double getArea () const override;
     void scale (double value) override;
+    void rotate(double angle) noexcept override;
 
   private:
     double radius;
