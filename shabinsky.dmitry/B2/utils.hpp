@@ -5,7 +5,7 @@
 #ifndef B2_UTILS_HPP
 #define B2_UTILS_HPP
 
-#include "QueuePriority.hpp"
+#include "queuePriority.hpp"
 #include <sstream>
 #include <iostream>
 
@@ -14,19 +14,19 @@ namespace utils
   const char *INVALID_COMMAND = "<INVALID COMMAND>";
   
   template<class T>
-  void add(QueuePriority<T> &queue, std::stringstream &in, std::ostream &out);
+  void add(queuePriority<T> &queue, std::stringstream &in, std::ostream &out);
   
   template<class T>
-  void get(QueuePriority<T> &queue, std::ostream &out);
+  void get(queuePriority<T> &queue, std::ostream &out);
   
   template<class T>
-  void accelerate(QueuePriority<T> &queue);
+  void accelerate(queuePriority<T> &queue);
   
   template<class T>
   void print(typename std::list<T>::iterator begin, typename std::list<T>::iterator end);
   
   template<class T>
-  void add(QueuePriority<T> &queue, std::stringstream &in, std::ostream &out)
+  void add(queuePriority<T> &queue, std::stringstream &in, std::ostream &out)
   {
     std::string typeIn, element, buffer;
     in >> typeIn;
@@ -45,19 +45,19 @@ namespace utils
       return;
     }
     
-    typename QueuePriority<T>::Priority type;
+    typename queuePriority<T>::Priority type;
     
     if (typeIn == "high")
     {
-      type = QueuePriority<T>::Priority::HIGH;
+      type = queuePriority<T>::Priority::HIGH;
     }
     else if (typeIn == "normal")
     {
-      type = QueuePriority<T>::Priority::NORMAL;
+      type = queuePriority<T>::Priority::NORMAL;
     }
     else if (typeIn == "low")
     {
-      type = QueuePriority<T>::Priority::LOW;
+      type = queuePriority<T>::Priority::LOW;
     }
     else
     {
@@ -68,7 +68,7 @@ namespace utils
   }
   
   template<class T>
-  void get(QueuePriority<T> &queue, std::ostream &out)
+  void get(queuePriority<T> &queue, std::ostream &out)
   {
     if (queue.isEmpty())
     {
@@ -79,7 +79,7 @@ namespace utils
   }
   
   template<class T>
-  void accelerate(QueuePriority<T> &queue)
+  void accelerate(queuePriority<T> &queue)
   {
     queue.accelerate();
   }
@@ -97,8 +97,8 @@ namespace utils
       std::cout << *begin << '\n';
       return;
     }
-    std::cout << *begin++ << ' ' << *std::prev(end--) << ' ';
-    print<T>(begin, end);
+    std::cout << *(--begin) << ' ' << *end << ' ';
+    print<T>(std::next(begin), end);
   }
 }
 

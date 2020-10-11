@@ -9,7 +9,7 @@
 #include <stdexcept>
 
 template<typename T>
-class QueuePriority
+class queuePriority
 {
 public:
   enum class Priority
@@ -32,23 +32,23 @@ private:
 };
 
 template<typename T>
-void QueuePriority<T>::add(const T &element, QueuePriority::Priority type)
+void queuePriority<T>::add(const T &element, queuePriority::Priority type)
 {
   switch (type)
   {
     case Priority::HIGH:
     {
-      high_.push_back(element);
+      high_.push_front(element);
       break;
     }
     case Priority::NORMAL:
     {
-      normal_.push_back(element);
+      normal_.push_front(element);
       break;
     }
     case Priority::LOW:
     {
-      low_.push_back(element);
+      low_.push_front(element);
       break;
     }
     default:
@@ -58,7 +58,7 @@ void QueuePriority<T>::add(const T &element, QueuePriority::Priority type)
 }
 
 template<typename T>
-T QueuePriority<T>::get()
+T queuePriority<T>::get()
 {
   if (!high_.empty())
   {
@@ -72,17 +72,17 @@ T QueuePriority<T>::get()
   {
     return low_.back();
   }
-  throw std::logic_error("QueuePriority is empty");
+  throw std::logic_error("queuePriority is empty");
 }
 
 template<typename T>
-bool QueuePriority<T>::isEmpty() const noexcept
+bool queuePriority<T>::isEmpty() const noexcept
 {
   return low_.empty() && normal_.empty() && high_.empty();
 }
 
 template<typename T>
-void QueuePriority<T>::accelerate()
+void queuePriority<T>::accelerate()
 {
   high_.splice(high_.end(), low_);
 }

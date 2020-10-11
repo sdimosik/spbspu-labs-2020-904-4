@@ -8,7 +8,7 @@
 #include <sstream>
 #include <string>
 #include <iostream>
-#include "QueuePriority.hpp"
+#include "queuePriority.hpp"
 #include "utils.hpp"
 
 namespace task1
@@ -17,7 +17,7 @@ namespace task1
   
   void exec()
   {
-    QueuePriority<std::string> queuePriority;
+    queuePriority<std::string> queuePriority;
     std::string lineIn;
     
     while (getline(std::cin, lineIn))
