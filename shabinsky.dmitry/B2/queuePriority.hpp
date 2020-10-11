@@ -60,17 +60,24 @@ void queuePriority<T>::add(const T &element, queuePriority::Priority type)
 template<typename T>
 T queuePriority<T>::get()
 {
+  std::list<T> *element = nullptr;
   if (!high_.empty())
   {
-    return high_.back();
+    element = &high_;
   }
   else if (!normal_.empty())
   {
-    return normal_.back();
+    element = &normal_;
   }
   else if (!low_.empty())
   {
-    return low_.back();
+    element = &low_;
+  }
+  if (element)
+  {
+    T result = element->front();
+    element->pop_front();
+    return result;
   }
   throw std::logic_error("queuePriority is empty");
 }
