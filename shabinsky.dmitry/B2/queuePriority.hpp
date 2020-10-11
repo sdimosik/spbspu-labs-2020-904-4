@@ -91,7 +91,10 @@ bool queuePriority<T>::isEmpty() const noexcept
 template<typename T>
 void queuePriority<T>::accelerate()
 {
-  high_.splice(high_.end(), low_);
+  if (!low_.empty())
+  {
+    high_.splice(high_.begin(), low_);
+  }
 }
 
 #endif //B2_QUEUEPRIORITY_HPP
