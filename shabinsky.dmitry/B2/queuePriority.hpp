@@ -75,8 +75,8 @@ T queuePriority<T>::get()
   }
   if (element)
   {
-    T result = element->front();
-    element->pop_front();
+    T result = element->back();
+    element->pop_back();
     return result;
   }
   throw std::logic_error("queuePriority is empty");

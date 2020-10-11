@@ -17,6 +17,7 @@ namespace task2
   {
     int num, count = 0;
     std::list<int> list;
+    
     while (std::cin >> num)
     {
       if (num < 1 || num > 20)

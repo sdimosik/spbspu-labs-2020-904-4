@@ -97,8 +97,8 @@ namespace utils
       std::cout << *begin << '\n';
       return;
     }
-    std::cout << *(--begin) << ' ' << *end << ' ';
-    print<T>(std::next(begin), end);
+    std::cout << *begin++ << ' ' << *std::prev(end--) << ' ';
+    print<T>(begin, end);
   }
 }
 
