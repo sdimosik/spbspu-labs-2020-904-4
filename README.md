@@ -148,15 +148,15 @@ Accepted Labs
 | Bakaeva Irina         | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Biryukova Marina      | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Brezho Maksim         | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| Bulanov Egor          | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Bulanov Egor          | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Dmitriev Alexander    | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
-| Gromov Maxim          | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
+| Gromov Maxim          | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Khilchenko Mikhail    | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Kichigin Yuri         | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Kundik Nikita         | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Lovkacheva Julia      | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
-| Maksimova Anastasia   | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| Meshcheryakov Grigory | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Maksimova Anastasia   | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
+| Meshcheryakov Grigory | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Meshcheryakova Alina  | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Meynik Alexander      | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Mukhin Fedor          | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
@@ -170,4 +170,4 @@ Accepted Labs
 | Unzhakov Vladislav    | *  |    |    |    |    |    |    |    |    |    |    |    |
 | Ushakov Alexandr      | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Vorotnikov Nikita     | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| __Total__             |  26|  24|  23|  23|  13|   0|   0|   0|   0|   0|   0|   0|
+| __Total__             |  26|  24|  23|  23|  16|   1|   0|   0|   0|   0|   0|   0|
