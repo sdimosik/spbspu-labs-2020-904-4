@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
   }
   catch (...)
   {
-    std::cerr << "Unknown problem \n";
+    std::cerr << "Unknown problem\n";
     return 2;
   }
   

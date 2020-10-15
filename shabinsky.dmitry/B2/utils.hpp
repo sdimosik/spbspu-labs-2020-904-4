@@ -75,7 +75,9 @@ namespace utils
       out << "<EMPTY>" << '\n';
       return;
     }
-    out << queue.get() << '\n';
+    T element;
+    queue.get(element);
+    out << element << '\n';
   }
   
   template<class T>

@@ -19,65 +19,42 @@ public:
   
   void add(const T &element, Priority type);
   
-  T get();
+  void get(T &element);
   
   void accelerate();
   
   bool isEmpty() const noexcept;
 
 private:
-  std::list<T> low_;
-  std::list<T> normal_;
-  std::list<T> high_;
+  static const size_t numberOfLevels = 3;
+  std::list<T> data_[numberOfLevels];
 };
 
 template<typename T>
 void queuePriority<T>::add(const T &element, queuePriority::Priority type)
 {
-  switch (type)
+  auto valueOfType = static_cast<size_t>(type);
+  if (valueOfType < numberOfLevels)
   {
-    case Priority::HIGH:
-    {
-      high_.push_front(element);
-      break;
-    }
-    case Priority::NORMAL:
-    {
-      normal_.push_front(element);
-      break;
-    }
-    case Priority::LOW:
-    {
-      low_.push_front(element);
-      break;
-    }
-    default:
-    {
-    }
+    data_[numberOfLevels - valueOfType - 1].push_back(element);
+  }
+  else
+  {
+    throw std::invalid_argument("Unknown type");
   }
 }
 
 template<typename T>
-T queuePriority<T>::get()
+void queuePriority<T>::get(T &element)
 {
-  std::list<T> *element = nullptr;
-  if (!high_.empty())
+  for (size_t i = 0; i < numberOfLevels; ++i)
   {
-    element = &high_;
-  }
-  else if (!normal_.empty())
-  {
-    element = &normal_;
-  }
-  else if (!low_.empty())
-  {
-    element = &low_;
-  }
-  if (element)
-  {
-    T result = element->back();
-    element->pop_back();
-    return result;
+    if (!data_[i].empty())
+    {
+      element = data_[i].back();
+      data_[i].pop_back();
+      return;
+    }
   }
   throw std::logic_error("queuePriority is empty");
 }
@@ -85,16 +62,13 @@ T queuePriority<T>::get()
 template<typename T>
 bool queuePriority<T>::isEmpty() const noexcept
 {
-  return low_.empty() && normal_.empty() && high_.empty();
+  return data_->empty();
 }
 
 template<typename T>
 void queuePriority<T>::accelerate()
 {
-  if (!low_.empty())
-  {
-    high_.splice(high_.begin(), low_);
-  }
+  data_[numberOfLevels - 1].splice(data_[numberOfLevels - 1].end(), data_[0]);
 }
 
 #endif //B2_QUEUEPRIORITY_HPP
