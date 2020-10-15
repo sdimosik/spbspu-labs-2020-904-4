@@ -33,10 +33,9 @@ private:
 template<typename T>
 void queuePriority<T>::add(const T &element, queuePriority::Priority type)
 {
-  auto valueOfType = static_cast<size_t>(type);
-  if (valueOfType < numberOfLevels)
+  if (static_cast<size_t>(type) < numberOfLevels)
   {
-    data_[numberOfLevels - valueOfType - 1].push_back(element);
+    data_[static_cast<size_t>(type) - 1].push_back(element);
   }
   else
   {
