@@ -31,11 +31,11 @@ private:
 };
 
 template<typename T>
-void queuePriority<T>::add(const T &element, queuePriority::Priority type)
+void queuePriority<T>::add(const T &element, const queuePriority::Priority type)
 {
   if (static_cast<size_t>(type) < numberOfLevels)
   {
-    data_[static_cast<size_t>(type) - 1].push_front(element);
+    data_[static_cast<size_t>(type)].push_front(element);
   }
   else
   {
