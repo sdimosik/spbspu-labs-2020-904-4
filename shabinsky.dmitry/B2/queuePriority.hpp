@@ -46,7 +46,7 @@ void queuePriority<T>::add(const T &element, const queuePriority::Priority type)
 template<typename T>
 void queuePriority<T>::get(T &element)
 {
-  for (size_t i = 0; i < NUMBER_OF_LEVELS; ++i)
+  for (size_t i = NUMBER_OF_LEVELS - 1; i >= 0; --i)
   {
     if (!data_[i].empty())
     {
@@ -61,7 +61,15 @@ void queuePriority<T>::get(T &element)
 template<typename T>
 bool queuePriority<T>::isEmpty() const noexcept
 {
-  return data_->empty();
+  for (size_t i = 0; i <= NUMBER_OF_LEVELS - 1; i++)
+  {
+    if (!data_[i].empty())
+    {
+      return false;
+    }
+  }
+  return true;
+  
 }
 
 template<typename T>
