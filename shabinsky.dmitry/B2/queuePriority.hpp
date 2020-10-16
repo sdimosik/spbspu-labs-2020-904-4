@@ -26,14 +26,14 @@ public:
   bool isEmpty() const noexcept;
 
 private:
-  static const size_t numberOfLevels = 3;
-  std::list<T> data_[numberOfLevels];
+  static const size_t NUMBER_OF_LEVELS = 3;
+  std::list<T> data_[NUMBER_OF_LEVELS];
 };
 
 template<typename T>
 void queuePriority<T>::add(const T &element, const queuePriority::Priority type)
 {
-  if (static_cast<size_t>(type) < numberOfLevels)
+  if (static_cast<size_t>(type) >= 0 && static_cast<size_t>(type) < NUMBER_OF_LEVELS)
   {
     data_[static_cast<size_t>(type)].push_front(element);
   }
@@ -46,7 +46,7 @@ void queuePriority<T>::add(const T &element, const queuePriority::Priority type)
 template<typename T>
 void queuePriority<T>::get(T &element)
 {
-  for (size_t i = 0; i < numberOfLevels; ++i)
+  for (size_t i = 0; i < NUMBER_OF_LEVELS; ++i)
   {
     if (!data_[i].empty())
     {
@@ -67,7 +67,7 @@ bool queuePriority<T>::isEmpty() const noexcept
 template<typename T>
 void queuePriority<T>::accelerate()
 {
-  data_[numberOfLevels - 1].splice(data_[numberOfLevels - 1].end(), data_[0]);
+  data_[NUMBER_OF_LEVELS - 1].splice(data_[NUMBER_OF_LEVELS - 1].begin(), data_[0]);
 }
 
 #endif //B2_QUEUEPRIORITY_HPP
