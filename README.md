@@ -151,23 +151,23 @@ Accepted Labs
 | Bulanov Egor          | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Dmitriev Alexander    | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Gromov Maxim          | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
-| Khilchenko Mikhail    | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
-| Kichigin Yuri         | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
+| Khilchenko Mikhail    | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
+| Kichigin Yuri         | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Kundik Nikita         | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| Lovkacheva Julia      | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
+| Lovkacheva Julia      | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Maksimova Anastasia   | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
-| Meshcheryakov Grigory | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
+| Meshcheryakov Grigory | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Meshcheryakova Alina  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
-| Meynik Alexander      | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
+| Meynik Alexander      | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Mukhin Fedor          | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Nizkovskii Lev        | *  |    |    |    |    |    |    |    |    |    |    |    |
 | Pashnin Dmitriy       | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Rodion Ulyanov        | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Shabinsky Dmitry      | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
-| Spasoevich Ksenia     | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
+| Spasoevich Ksenia     | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Stolyarov Alexey      | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Sviridov Artyom       | *  | *  |    |    |    |    |    |    |    |    |    |    |
 | Unzhakov Vladislav    | *  |    |    |    |    |    |    |    |    |    |    |    |
 | Ushakov Alexandr      | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Vorotnikov Nikita     | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| __Total__             |  26|  24|  23|  23|  16|   5|   0|   0|   0|   0|   0|   0|
+| __Total__             |  26|  24|  23|  23|  16|  11|   0|   0|   0|   0|   0|   0|
