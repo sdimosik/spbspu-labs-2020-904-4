@@ -36,17 +36,10 @@ void checkValid(int argc, char *argv[])
   
   for (const auto &symbol : std::string(argv[1]))
   {
-    if (symbol < '0' || symbol > '9')
+    if (symbol != '1' && symbol != '2')
     {
       throw std::invalid_argument("Invalid task number");
     }
-  }
-  
-  int task = std::stoi(argv[1]);
-  
-  if (task != 1 && task != 2)
-  {
-    throw std::invalid_argument("Invalid task number!");
   }
 }
 

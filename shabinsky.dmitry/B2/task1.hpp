@@ -1,7 +1,3 @@
-//
-// Created by sdimosik on 11.10.2020.
-//
-
 #ifndef B2_TASK1_HPP
 #define B2_TASK1_HPP
 

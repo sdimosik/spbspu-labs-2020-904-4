@@ -1,7 +1,3 @@
-//
-// Created by sdimosik on 11.10.2020.
-//
-
 #ifndef B2_QUEUEPRIORITY_HPP
 #define B2_QUEUEPRIORITY_HPP
 
@@ -12,10 +8,13 @@ template<typename T>
 class queuePriority
 {
 public:
-  enum class Priority : int
+  typedef enum : size_t
   {
-    LOW, NORMAL, HIGH, NUMBER_OF_LEVELS
-  };
+    LOW,
+    NORMAL,
+    HIGH,
+    NUMBER_OF_LEVELS
+  } Priority;
   
   void add(const T &element, Priority type);
   
@@ -26,16 +25,15 @@ public:
   bool isEmpty() const noexcept;
 
 private:
-  static const size_t NUMBER_OF_LEVELS = static_cast<size_t>(Priority::NUMBER_OF_LEVELS);
   std::list<T> data_[NUMBER_OF_LEVELS];
 };
 
 template<typename T>
 void queuePriority<T>::add(const T &element, const queuePriority::Priority type)
 {
-  if (static_cast<size_t>(type) >= 0 && static_cast<size_t>(type) < NUMBER_OF_LEVELS)
+  if (type >= 0 && type < NUMBER_OF_LEVELS)
   {
-    data_[static_cast<size_t>(type)].push_front(element);
+    data_[type].push_front(element);
   }
   else
   {
@@ -69,7 +67,6 @@ bool queuePriority<T>::isEmpty() const noexcept
     }
   }
   return true;
-  
 }
 
 template<typename T>
