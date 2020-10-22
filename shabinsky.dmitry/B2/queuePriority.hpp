@@ -12,9 +12,9 @@ template<typename T>
 class queuePriority
 {
 public:
-  enum class Priority
+  enum class Priority : int
   {
-    LOW, NORMAL, HIGH
+    LOW, NORMAL, HIGH, NUMBER_OF_LEVELS
   };
   
   void add(const T &element, Priority type);
@@ -26,7 +26,7 @@ public:
   bool isEmpty() const noexcept;
 
 private:
-  static const size_t NUMBER_OF_LEVELS = 3;
+  static const size_t NUMBER_OF_LEVELS = static_cast<size_t>(Priority::NUMBER_OF_LEVELS);
   std::list<T> data_[NUMBER_OF_LEVELS];
 };
 
