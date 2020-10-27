@@ -10,6 +10,7 @@
 void firstTask(const char *sortingType)
 {
   auto compare = detail::getCompare<std::vector<long>::value_type>(sortingType);
+
   std::vector<long> vector;
   int integer;
 
