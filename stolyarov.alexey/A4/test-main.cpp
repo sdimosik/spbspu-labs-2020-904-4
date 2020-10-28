@@ -3,10 +3,10 @@
 #include <boost/test/included/unit_test.hpp>
 #include <boost/test/floating_point_comparison.hpp>
 
-#include "../common/composite-shape.hpp"
-#include "../common/circle.hpp"
-#include "../common/rectangle.hpp"
-#include "../common/polygon.hpp"
+#include "composite-shape.hpp"
+#include "circle.hpp"
+#include "rectangle.hpp"
+#include "polygon.hpp"
 
 const double ACCURACY = 0.0000001;
 

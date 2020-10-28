@@ -11,9 +11,19 @@ namespace stolyarov
     Shape(point_t{ 0.0, 0.0 }),
     pointsNum_(pointsNum)
   {
+    if (points == nullptr)
+    {
+      throw std::invalid_argument("Invalid argument: pointer of points is nullptr");
+    }
+
     if (pointsNum_ < 3)
     {
       throw std::invalid_argument("Invalid argument: number of points in poligon must be 3 or more.");
+    }
+
+    if (!isConvex(points))
+    {
+      throw std::invalid_argument("Invalid argument: constructed poligon is not convex.");
     }
 
     points_ = std::make_unique<point_t[]>(pointsNum_);
@@ -21,11 +31,6 @@ namespace stolyarov
     for (size_t i = 0; i < pointsNum_; ++i)
     {
       points_[i] = points[i];
-    }
-
-    if (!isConvex())
-    {
-      throw std::invalid_argument("Invalid argument: constructed poligon is not convex.");
     }
 
     if (getArea() == 0)
@@ -40,7 +45,14 @@ namespace stolyarov
     Shape({ otherPolygon.pos_.x, otherPolygon.pos_.y }),
     pointsNum_(otherPolygon.pointsNum_)
   {
-    points_ = std::make_unique<point_t[]>(pointsNum_);
+    try
+    {
+      points_ = std::make_unique<point_t[]>(pointsNum_);
+    }
+    catch (const std::exception & message)
+    {
+      throw message;
+    }
     for (size_t i = 0; i < pointsNum_; ++i)
     {
       points_[i] = otherPolygon.points_[i];
@@ -102,11 +114,11 @@ namespace stolyarov
     double area = 0;
     for (size_t i = 0; i < pointsNum_ - 1; i++)
     {
-      area += (points_[i].x + points_[i + 1].x)
-        * (points_[i].y - points_[i + 1].y);
+      area += (points_[i].x + points_[i + 1].x) 
+          * (points_[i].y - points_[i + 1].y);
     }
-    area += (points_[pointsNum_ - 1].x + points_[0].x)
-      * (points_[pointsNum_ - 1].y - points_[0].y);
+    area += (points_[pointsNum_ - 1].x + points_[0].x) 
+        * (points_[pointsNum_ - 1].y - points_[0].y);
     return 0.5 * fabs(area);
   }
 
@@ -118,18 +130,18 @@ namespace stolyarov
   void stolyarov::Polygon::printInf()
   {
     std::cout << "Polygon information" << '\n'
-      << "plygon's location:" << '\n'
-      << "x: " << pos_.x << '\n' << "y: " << pos_.y << '\n'
-      << "Area of the polygon: " << getArea() << '\n' << '\n';
+        << "plygon's location:" << '\n'
+        << "x: " << pos_.x << '\n' << "y: " << pos_.y << '\n'
+        << "Area of the polygon: " << getArea() << '\n' << '\n';
   }
 
   void Polygon::printFrameInf()
   {
     std::cout << "Frame information" << '\n'
-      << "Center's location:" << '\n'
-      << "x: " << getFrameRect().pos.x << '\n' << "y: " << getFrameRect().pos.y << '\n'
-      << "Parameters of the frame:" << '\n'
-      << "height: " << getFrameRect().height << '\n' << "widht: " << getFrameRect().width << '\n' << '\n';
+        << "Center's location:" << '\n'
+        << "x: " << getFrameRect().pos.x << '\n' << "y: " << getFrameRect().pos.y << '\n'
+        << "Parameters of the frame:" << '\n'
+        << "height: " << getFrameRect().height << '\n' << "widht: " << getFrameRect().width << '\n' << '\n';
   }
 
   rectangle_t stolyarov::Polygon::getFrameRect() const noexcept
@@ -159,8 +171,8 @@ namespace stolyarov
   {
     if (rate <= 0)
     {
-      throw std::invalid_argument("Wrong Parameters: parameter must be positive number. Wrong argument: coefficient = " +
-        std::to_string(rate));
+      throw std::invalid_argument("Wrong Parameters: parameter must be positive number. Wrong argument: coefficient = " 
+          + std::to_string(rate));
     }
 
     const point_t prevCenter{ getCenter() };
@@ -181,24 +193,24 @@ namespace stolyarov
     const point_t center = getCenter();
     for (size_t i = 0; i < pointsNum_; ++i)
     {
-      double prevX = points_[i].x,
-        prevY = points_[i].y;
+      double prevX = points_[i].x;
+      double prevY = points_[i].y;
       points_[i].x = (prevX - center.x) * cosA - (prevY - center.y) * sinA + center.x;
       points_[i].y = (prevX - center.x) * sinA + (prevY - center.y) * cosA + center.y;
     }
   }
 
-  bool Polygon::isConvex()
+  bool Polygon::isConvex(const point_t* points)
   {
     for (size_t i = 0; i < (pointsNum_ - 1); ++i)
     {
-      double pos1 = (points_[i + 1].y - points_[i].y) * (points_[0].x - points_[i].x)
-        - (points_[i + 1].x - points_[i].x) * (points_[0].y - points_[i].y);
+      double pos1 = (points[i + 1].y - points[i].y) * (points[0].x - points[i].x)
+          - (points[i + 1].x - points[i].x) * (points[0].y - points[i].y);
       double pos2 = 0;
       for (size_t j = 1; j < pointsNum_; ++j)
       {
-        pos2 = (points_[i + 1].y - points_[i].y) * (points_[j].x - points_[i].x)
-          - (points_[i + 1].x - points_[i].x) * (points_[j].y - points_[i].y);
+        pos2 = (points[i + 1].y - points[i].y) * (points[j].x - points[i].x)
+            - (points[i + 1].x - points[i].x) * (points[j].y - points[i].y);
         if (pos2 * pos1 >= 0)
         {
           pos1 = pos2;
@@ -214,7 +226,8 @@ namespace stolyarov
 
   void Polygon::calculateCenter()
   {
-    double x = 0, y = 0;
+    double x = 0;
+    double y = 0;
     for (size_t i = 0; i < pointsNum_; i++)
     {
       x += points_[i].x;

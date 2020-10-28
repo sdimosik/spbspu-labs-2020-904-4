@@ -8,7 +8,6 @@
 
 namespace stolyarov
 {
-
   const double CIRCLE_ANGLE = 360.0;
 
   CompositeShape::CompositeShape() :
@@ -22,7 +21,7 @@ namespace stolyarov
     Shape(point_t{0.0, 0.0}),
     size_(figure.size_),
     place_(figure.place_),
-    shapes_(new std::shared_ptr<Shape>[figure.place_])
+    shapes_(std::make_unique<shapePtr[]>(figure.place_))
   {
     for (size_t i = 0; i < size_; i++)
     {
@@ -93,7 +92,6 @@ namespace stolyarov
       sumArea += shapes_[i]->getArea();
     }
     return sumArea;
-
   }
 
   rectangle_t CompositeShape::getFrameRect() const noexcept
@@ -119,7 +117,7 @@ namespace stolyarov
       lowest = std::min(lowest, rect.pos.y - partHeight);
       highest = std::max(highest, rect.pos.y + partHeight);
     }
-    return { rightmost - leftmost, highest - lowest,{(rightmost + leftmost) / 2, (highest + lowest) / 2} };
+    return { rightmost - leftmost, highest - lowest, {(rightmost + leftmost) / 2, (highest + lowest) / 2} };
   }
 
   void CompositeShape::move(double x, double y) noexcept
@@ -144,7 +142,6 @@ namespace stolyarov
     {
       throw std::invalid_argument("Invalid composite shape rate received. False rate: " + std::to_string(rate));
     }
-
     double centerX = getFrameRect().pos.x;
     double centerY = getFrameRect().pos.y;
     for (size_t i = 0; i < size_; i++)
@@ -237,5 +234,4 @@ namespace stolyarov
     }
     return matrix;
   }
-
 }

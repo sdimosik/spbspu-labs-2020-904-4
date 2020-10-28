@@ -70,7 +70,7 @@ int main()
     stolyarov::Circle crcl3(2.5, { 2.2, 2.2 });
     stolyarov::Rectangle rctngl4(1.3, 7.8, { 0.7, 0.5 });
     stolyarov::Circle crcl4(2.6, { 19.2, 19.2 });
-    stolyarov::Rectangle rctngl5(1.0, 1.0, {18.2, 18.2});
+    stolyarov::Rectangle rctngl5(1.0, 1.0, { 18.2, 18.2 });
 
     stolyarov::point_t point{ 1.2, 2.3 };
     stolyarov::point_t point1{ 2.1, 3.4 };
@@ -115,6 +115,9 @@ int main()
     matrix.addElement(matrixShape9);
     matrix.addElement(matrixShape10);
     matrix.printInf();
+
+    stolyarov::Matrix matrix1 = compositeShape.makeLayering();
+    matrix1.printInf();
   }
   catch (const std::invalid_argument & message)
   {
@@ -128,6 +131,3 @@ int main()
   }
   return 0;
 }
-
-
-
