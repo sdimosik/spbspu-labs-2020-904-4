@@ -47,7 +47,7 @@ namespace stolyarov
   private:
     size_t pointsNum_;
     std::unique_ptr<point_t[]> points_;
-    bool isConvex();
+    bool isConvex(const point_t* points);
     void calculateCenter();
   };
 }
