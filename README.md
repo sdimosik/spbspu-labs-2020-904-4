@@ -159,15 +159,16 @@ Accepted Labs
 | Meshcheryakov Grigory | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Meshcheryakova Alina  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Meynik Alexander      | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
-| Mukhin Fedor          | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
+| Mukhin Fedor          | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Nizkovskii Lev        | *  |    |    |    |    |    |    |    |    |    |    |    |
 | Pashnin Dmitriy       | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Rodion Ulyanov        | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| Shabinsky Dmitry      | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
+| Shabinsky Dmitry      | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Spasoevich Ksenia     | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Stolyarov Alexey      | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Sviridov Artyom       | *  | *  |    |    |    |    |    |    |    |    |    |    |
 | Unzhakov Vladislav    | *  |    |    |    |    |    |    |    |    |    |    |    |
-| Ushakov Alexandr      | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
+| Ushakov Alexandr      | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
+| Vasilevskaya Katya    | *  |    |    |    |    |    |    |    |    |    |    |    |
 | Vorotnikov Nikita     | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| __Total__             |  26|  24|  23|  23|  16|  13|   0|   0|   0|   0|   0|   0|
+| __Total__             |  27|  24|  23|  23|  16|  16|   0|   0|   0|   0|   0|   0|
