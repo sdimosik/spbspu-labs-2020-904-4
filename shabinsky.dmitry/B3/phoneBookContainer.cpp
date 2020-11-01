@@ -5,41 +5,64 @@ const std::string CURRENT_BOOKMARK = "current";
 const std::string INVALID_BOOKMARK = "<INVALID BOOKMARK>\n";
 const std::string EMPTY = "<EMPTY>\n";
 
-phoneBookContainer::phoneBookContainer()
+PhoneBookContainer::PhoneBookContainer(std::unique_ptr<PhoneBook> &&book)
 {
-  bookmarks_[CURRENT_BOOKMARK] = book_.begin();
+  book_ = std::move(book);
+  bookmarks_[CURRENT_BOOKMARK] = book_->beginIt();
 }
 
-void phoneBookContainer::add(const PhoneBook::Note &note)
+void PhoneBookContainer::add(const PhoneBook::Note &note)
 {
-  book_.push_back(note);
-  if (book_.size() == 1)
+  book_->pushBack(note);
+  if (book_->size() == 1)
   {
-    bookmarks_[CURRENT_BOOKMARK] = book_.begin();
+    bookmarks_[CURRENT_BOOKMARK] = book_->beginIt();
   }
 }
 
-void phoneBookContainer::insert(const std::string &bookmark, const phoneBookContainer::InsertType &insertType,
-                                const PhoneBook::Note &note)
+void PhoneBookContainer::insertBefore(const std::string &bookmark, const PhoneBook::Note &note)
 {
-  if (bookmark == CURRENT_BOOKMARK && book_.size() == 0)
+  if (bookmark == CURRENT_BOOKMARK && book_->size() == 0)
   {
     add(note);
     return;
   }
-  
   auto it = bookmarks_.find(bookmark);
   if (it == bookmarks_.end())
   {
     std::cout << INVALID_BOOKMARK;
     return;
   }
-  it->second = book_.insert(note, insertType, it->second);
+  book_->insert(note, it->second);
+  if (bookmarks_.size() == 1)
+  {
+    bookmarks_[CURRENT_BOOKMARK] = book_->beginIt();
+  }
 }
 
-void phoneBookContainer::removeNote(const std::string &bookmark)
+void PhoneBookContainer::insertAfter(const std::string &bookmark, const PhoneBook::Note &note)
 {
-  if (book_.size() == 0)
+  if (bookmark == CURRENT_BOOKMARK && book_->size() == 0)
+  {
+    add(note);
+    return;
+  }
+  auto it = bookmarks_.find(bookmark);
+  if (it == bookmarks_.end())
+  {
+    std::cout << INVALID_BOOKMARK;
+    return;
+  }
+  book_->insert(note, std::next(it->second));
+  if (bookmarks_.size() == 1)
+  {
+    bookmarks_[CURRENT_BOOKMARK] = book_->beginIt();
+  }
+}
+
+void PhoneBookContainer::removeNote(const std::string &bookmark)
+{
+  if (book_->size() == 0)
   {
     std::cout << EMPTY;
     return;
@@ -57,38 +80,38 @@ void phoneBookContainer::removeNote(const std::string &bookmark)
     {
       if (mark.second == itRemove)
       {
-        if (std::next(mark.second) != book_.end())
+        if (std::next(mark.second) != book_->endIt())
         {
           mark.second = std::next(itRemove);
         }
         else
         {
-          mark.second = book_.begin();
+          mark.second = book_->beginIt();
         }
       }
     }
-    book_.remove(itRemove);
+    book_->removeAt(itRemove);
   }
 }
 
-void phoneBookContainer::showNote(const std::string &bookmark)
+void PhoneBookContainer::showNote(const std::string &bookmark)
 {
   auto it = bookmarks_.find(bookmark);
   if (it == bookmarks_.end())
   {
     std::cout << INVALID_BOOKMARK;
   }
-  else if (book_.size() == 0)
+  else if (book_->size() == 0)
   {
     std::cout << EMPTY;
   }
   else
   {
-    return book_.show(it->second);
+    return PhoneBookContainer::show(it->second);
   }
 }
 
-void phoneBookContainer::storeBookmark(const std::string &bookmark, const std::string &bookmarkNew)
+void PhoneBookContainer::storeBookmark(const std::string &bookmark, const std::string &bookmarkNew)
 {
   auto it = bookmarks_.find(bookmark);
   if (it != bookmarks_.end())
@@ -101,12 +124,28 @@ void phoneBookContainer::storeBookmark(const std::string &bookmark, const std::s
   }
 }
 
-void phoneBookContainer::moveBookmark(const std::string &bookmark, int steps)
+void PhoneBookContainer::moveBookmark(const std::string &bookmark, int steps)
 {
   auto it = bookmarks_.find(bookmark);
   if (it != bookmarks_.end())
   {
-    it->second = book_.move(steps, it->second);
+    int counter = 0;
+    if (steps > 0)
+    {
+      while (counter != steps && it->second != std::prev(book_->endIt()))
+      {
+        it->second = std::next(it->second);
+        ++counter;
+      }
+    }
+    else if (steps < 0)
+    {
+      while (counter != steps && it->second != book_->beginIt())
+      {
+        it->second = std::prev(it->second);
+        --counter;
+      }
+    }
   }
   else
   {
@@ -114,22 +153,27 @@ void phoneBookContainer::moveBookmark(const std::string &bookmark, int steps)
   }
 }
 
-void phoneBookContainer::moveBookmark(const std::string &bookmark, const phoneBookContainer::MoveType &moveType)
+void PhoneBookContainer::moveBookmark(const std::string &bookmark, const PhoneBookContainer::MoveType moveType)
 {
   auto it = bookmarks_.find(bookmark);
   if (it != bookmarks_.end())
   {
     if (moveType == MoveType::FIRST)
     {
-      it->second = book_.begin();
+      it->second = book_->beginIt();
     }
     else
     {
-      it->second = std::prev(book_.end());
+      it->second = std::prev(book_->endIt());
     }
   }
   else
   {
     std::cout << INVALID_BOOKMARK;
   }
+}
+
+void PhoneBookContainer::show(PhoneBook::Iterator it)
+{
+  std::cout << it->number_ << " " << it->name_ << "\n";
 }

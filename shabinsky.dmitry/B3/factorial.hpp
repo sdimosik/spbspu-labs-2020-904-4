@@ -17,11 +17,11 @@ public:
     
     static const size_t MAX_POS = 11;
     
-    static size_t getFactorial(size_t position);
+    static size_t getFactorial(size_t);
     
     Iterator();
     
-    Iterator(size_t position);
+    Iterator(size_t);
     
     size_t &operator*();
     
@@ -49,7 +49,6 @@ public:
   static Iterator begin();
   
   static Iterator end();
-  
 };
 
 #endif //B3_FACTORIAL_HPP

@@ -1,7 +1,10 @@
 #ifndef B3_TASK1_HPP
 #define B3_TASK1_HPP
 
+#include <iostream>
 #include <sstream>
+#include <memory>
+#include "phoneBook.hpp"
 #include "phoneBookContainer.hpp"
 #include "command.hpp"
 
@@ -11,7 +14,8 @@ namespace task1
   
   void exec()
   {
-    phoneBookContainer phoneBook;
+    PhoneBook book;
+    PhoneBookContainer phoneBook(std::make_unique<PhoneBook>(book));
     std::string string;
     while (std::getline(std::cin, string))
     {

@@ -15,11 +15,6 @@ public:
     std::string number_;
     std::string name_;
   };
-  enum class InsertType
-  {
-    BEFORE,
-    AFTER
-  };
   enum class MoveType
   {
     FIRST,
@@ -28,25 +23,17 @@ public:
   
   using Iterator = std::list<Note>::iterator;
   
-  void show(Iterator it);
-  
-  Iterator next(Iterator it);
-  
-  Iterator prev(Iterator it);
-  
-  Iterator insert(const PhoneBook::Note &note, PhoneBook::InsertType type, Iterator it);
+  Iterator insert(const PhoneBook::Note &note, Iterator it);
   
   Iterator replace(PhoneBook::Note &note, Iterator it);
   
-  Iterator move(int step, Iterator it);
+  Iterator removeAt(Iterator it);
   
-  Iterator remove(Iterator it);
+  Iterator beginIt();
   
-  Iterator begin();
+  Iterator endIt();
   
-  Iterator end();
-  
-  void push_back(const Note &note);
+  void pushBack(const Note &note);
   
   size_t size() const;
 

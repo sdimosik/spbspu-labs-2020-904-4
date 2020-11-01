@@ -1,8 +1,5 @@
-//
-// Created by sdimosik on 29.10.2020.
-//
-
 #include "factorial.hpp"
+#include <stdexcept>
 
 Factorial::Iterator::Iterator() :
   position_(MIN_POS),

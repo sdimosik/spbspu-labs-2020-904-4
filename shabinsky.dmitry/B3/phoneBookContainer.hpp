@@ -1,21 +1,24 @@
 #ifndef B3_PHONEBOOKCONTAINER_HPP
 #define B3_PHONEBOOKCONTAINER_HPP
 
+#include <memory>
 #include "phoneBook.hpp"
 
-class phoneBookContainer
+class PhoneBookContainer
 {
 public:
   
-  using InsertType = PhoneBook::InsertType;
+  PhoneBookContainer(std::unique_ptr<PhoneBook> &&book);
   
   using MoveType = PhoneBook::MoveType;
   
-  phoneBookContainer();
+  static void show(PhoneBook::Iterator it);
   
   void add(const PhoneBook::Note &note);
   
-  void insert(const std::string &bookmark, const InsertType &insertType, const PhoneBook::Note &note);
+  void insertBefore(const std::string &bookmark, const PhoneBook::Note &note);
+  
+  void insertAfter(const std::string &bookmark, const PhoneBook::Note &note);
   
   void removeNote(const std::string &bookmark);
   
@@ -25,10 +28,10 @@ public:
   
   void moveBookmark(const std::string &bookmark, int steps);
   
-  void moveBookmark(const std::string &bookmark, const MoveType &moveType);
+  void moveBookmark(const std::string &bookmark, MoveType moveType);
 
 private:
-  PhoneBook book_;
+  std::unique_ptr<PhoneBook> book_;
   std::map<std::string, PhoneBook::Iterator> bookmarks_;
 };
 
