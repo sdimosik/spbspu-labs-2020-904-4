@@ -150,7 +150,7 @@ Accepted Labs
 | Brezho Maksim         | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Bulanov Egor          | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Dmitriev Alexander    | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
-| Gromov Maxim          | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
+| Gromov Maxim          | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
 | Khilchenko Mikhail    | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Kichigin Yuri         | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Kundik Nikita         | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
@@ -165,10 +165,10 @@ Accepted Labs
 | Rodion Ulyanov        | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Shabinsky Dmitry      | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Spasoevich Ksenia     | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
-| Stolyarov Alexey      | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Stolyarov Alexey      | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Sviridov Artyom       | *  | *  |    |    |    |    |    |    |    |    |    |    |
 | Unzhakov Vladislav    | *  |    |    |    |    |    |    |    |    |    |    |    |
 | Ushakov Alexandr      | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Vasilevskaya Katya    | *  |    |    |    |    |    |    |    |    |    |    |    |
 | Vorotnikov Nikita     | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| __Total__             |  27|  24|  23|  23|  16|  16|   0|   0|   0|   0|   0|   0|
+| __Total__             |  27|  24|  23|  23|  17|  16|   1|   0|   0|   0|   0|   0|
