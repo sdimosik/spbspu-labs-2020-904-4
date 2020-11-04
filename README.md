@@ -145,15 +145,15 @@ Accepted Labs
 | Name                  | A1 | A2 | A3 | A4 | B1 | B2 | B3 | B4 | B5 | B6 | B7 | B8 |
 |-----------------------|----|----|----|----|----|----|----|----|----|----|----|----|
 | Anastasiev Alexey     | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| Bakaeva Irina         | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
-| Biryukova Marina      | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
+| Bakaeva Irina         | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
+| Biryukova Marina      | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
 | Brezho Maksim         | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Bulanov Egor          | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Dmitriev Alexander    | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Gromov Maxim          | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
 | Khilchenko Mikhail    | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Kichigin Yuri         | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
-| Kundik Nikita         | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Kundik Nikita         | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Lovkacheva Julia      | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Maksimova Anastasia   | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Meshcheryakov Grigory | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
@@ -167,8 +167,8 @@ Accepted Labs
 | Spasoevich Ksenia     | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Stolyarov Alexey      | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
 | Sviridov Artyom       | *  | *  |    |    |    |    |    |    |    |    |    |    |
-| Unzhakov Vladislav    | *  |    |    |    |    |    |    |    |    |    |    |    |
+| Unzhakov Vladislav    | *  | *  |    |    |    |    |    |    |    |    |    |    |
 | Ushakov Alexandr      | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Vasilevskaya Katya    | *  |    |    |    |    |    |    |    |    |    |    |    |
 | Vorotnikov Nikita     | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| __Total__             |  27|  24|  23|  23|  17|  16|   1|   0|   0|   0|   0|   0|
+| __Total__             |  27|  25|  23|  23|  18|  16|   3|   0|   0|   0|   0|   0|
