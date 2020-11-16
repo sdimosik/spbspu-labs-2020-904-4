@@ -62,7 +62,6 @@ namespace stolyarov
       throw std::out_of_range("Invalid layer index received. False index: " + std::to_string(index));
     }
     return Layer(&figure_[columns_ * index], columns_);
-
   }
 
   void Matrix::addElement(const Matrix::shapePtr& shape)
@@ -149,7 +148,7 @@ namespace stolyarov
   void Matrix::printInf() const
   {
     std::cout << "Matrix size = " << levels_ * columns_ << '\n' << "levels: " << getLevels()
-      << " columns: " << getColumns() << '\n' << '\n';
+        << " columns: " << getColumns() << '\n' << '\n';
   }
 
   bool Matrix::checkIntersection(const Matrix::shapePtr& shape1, const Matrix::shapePtr& shape2) const noexcept
@@ -162,7 +161,7 @@ namespace stolyarov
     rectangle_t frame2 = shape2->getFrameRect();
 
     return (abs(frame1.pos.x - frame2.pos.x) < (frame1.width / 2 + frame2.width / 2)
-      && abs(frame1.pos.y - frame2.pos.y) < (frame1.height / 2 + frame2.height / 2));
+        && abs(frame1.pos.y - frame2.pos.y) < (frame1.height / 2 + frame2.height / 2));
   }
 
 }
