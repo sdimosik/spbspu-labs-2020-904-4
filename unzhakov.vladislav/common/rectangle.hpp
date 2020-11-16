@@ -1,18 +1,20 @@
-#ifndef CIRCLE_HPP
-#define CIRCLE_HPP
+#ifndef RECTANGLE_HPP
+#define RECTANGLE_HPP
 
 #include "shape.hpp"
 
 namespace unzhakov
 {
-  class Circle: public Shape
+  class Rectangle: public Shape
   {
   public:
-    Circle(const double radius, const point_t &pos);
+    Rectangle(double width, double height, const point_t &pos);
 
     rectangle_t getFrameRect() const override;
 
     double getArea() const override;
+
+    point_t getCenter() const override;
 
     void move(double x, double y) override;
 
@@ -24,10 +26,11 @@ namespace unzhakov
 
     void printFrameRectangle() const override;
 
-    void printArea() const;
+    void printArea() const override;
 
   private:
-    double radius_;
+    double width_;
+    double height_;
     point_t pos_;
   };
 }

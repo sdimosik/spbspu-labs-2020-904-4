@@ -26,6 +26,11 @@ double unzhakov::Circle::getArea() const
   return M_PI * radius_ * radius_;
 }
 
+unzhakov::point_t unzhakov::Circle::getCenter() const
+{
+  return pos_;
+}
+
 void unzhakov::Circle::move(double x, double y)
 {
   pos_.x += x;

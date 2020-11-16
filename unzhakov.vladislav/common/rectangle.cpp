@@ -29,6 +29,11 @@ double unzhakov::Rectangle::getArea() const
   return width_ * height_;
 }
 
+unzhakov::point_t unzhakov::Rectangle::getCenter() const
+{
+  return pos_;
+}
+
 void unzhakov::Rectangle::move(double x, double y)
 {
   pos_.x += x;
