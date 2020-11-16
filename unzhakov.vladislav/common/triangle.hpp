@@ -14,6 +14,8 @@ namespace unzhakov
 
     double getArea() const override;
 
+    point_t getCenter() const override;
+
     void move(const double x, const double y) override;
 
     void move(const point_t &center) override;

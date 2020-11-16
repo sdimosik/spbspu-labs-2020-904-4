@@ -2,17 +2,22 @@
 #define SHAPE_HPP
 
 #include "base-types.hpp"
+#include <memory>
 
 namespace unzhakov
 {
   class Shape
   {
   public:
+    using SharedPtr = std::shared_ptr<Shape>;
+
     virtual ~Shape() = default;
 
     virtual rectangle_t getFrameRect() const = 0;
 
     virtual double getArea() const = 0;
+
+    virtual point_t getCenter() const = 0;
 
     virtual void move(double x, double y) = 0;
 

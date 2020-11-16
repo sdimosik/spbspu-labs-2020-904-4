@@ -5,7 +5,7 @@
 #include <cmath>
 
 unzhakov::Triangle::Triangle(const unzhakov::point_t &vertex1, const unzhakov::point_t &vertex2,
-                        const unzhakov::point_t &vertex3):
+    const unzhakov::point_t &vertex3):
   vertex1_(vertex1),
   vertex2_(vertex2),
   vertex3_(vertex3),
@@ -29,8 +29,14 @@ unzhakov::rectangle_t unzhakov::Triangle::getFrameRect() const
 
 double unzhakov::Triangle::getArea() const
 {
-  return (fabs(((vertex1_.x - vertex3_.x) * (vertex2_.y - vertex3_.y))
-      - ((vertex2_.x - vertex3_.x) * (vertex1_.y - vertex3_.y))) / 2);
+  return (
+    fabs(((vertex1_.x - vertex3_.x) * (vertex2_.y - vertex3_.y))
+        - ((vertex2_.x - vertex3_.x) * (vertex1_.y - vertex3_.y))) / 2);
+}
+
+unzhakov::point_t unzhakov::Triangle::getCenter() const
+{
+  return center_;
 }
 
 void unzhakov::Triangle::move(const double x, const double y)
@@ -50,11 +56,11 @@ void unzhakov::Triangle::scale(const double coefficient)
     throw std::invalid_argument("Invalid coefficient in triangle = " + std::to_string(coefficient) + '\n');
   }
   vertex1_ = {(vertex1_.x - center_.x) * coefficient + center_.x,
-      (vertex1_.y - center_.y) * coefficient + center_.y};
+                (vertex1_.y - center_.y) * coefficient + center_.y};
   vertex2_ = {(vertex2_.x - center_.x) * coefficient + center_.x,
-      (vertex2_.y - center_.y) * coefficient + center_.y};
+                (vertex2_.y - center_.y) * coefficient + center_.y};
   vertex3_ = {(vertex3_.x - center_.x) * coefficient + center_.x,
-      (vertex3_.y - center_.y) * coefficient + center_.y};
+                (vertex3_.y - center_.y) * coefficient + center_.y};
 }
 
 void unzhakov::Triangle::printData() const
