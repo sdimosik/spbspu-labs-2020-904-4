@@ -9,27 +9,24 @@
 #include <iostream>
 #include "phoneBookContainer.hpp"
 
-const std::string INVALID_COMMAND = "<INVALID COMMAND>\n";
-const std::string INVALID_STEP = "<INVALID STEP>\n";
-
-bool isNameValid(std::string &name);
-
-bool isNumberValid(std::string &number);
-
-bool isBookmarkValid(std::string &bookmark);
-
-void addCommand(PhoneBookContainer &phoneBook, std::istream &sin);
-
-void storeCommand(PhoneBookContainer &phoneBook, std::istream &sin);
-
-void insertCommand(PhoneBookContainer &phoneBook, std::istream &sin);
-
-void eraseCommand(PhoneBookContainer &phoneBook, std::istream &sin);
-
-void showCommand(PhoneBookContainer &phoneBook, std::istream &sin);
-
-void moveCommand(PhoneBookContainer &phoneBook, std::istream &sin);
-
-void parseCommand(PhoneBookContainer &phoneBook, const std::string &command, std::istream &sin);
-
+namespace command
+{
+  void addCommand(PhoneBookContainer &phoneBook, std::string &number, std::string &name);
+  
+  void storeCommand(PhoneBookContainer &phoneBook, std::string &bookmark, std::string &newBookmark);
+  
+  void insertCommand(PhoneBookContainer &phoneBook, std::string &direction, std::string &bookmark, std::string &number,
+                     std::string &name);
+  
+  void eraseCommand(PhoneBookContainer &phoneBook, std::string &bookmark);
+  
+  void showCommand(PhoneBookContainer &phoneBook, std::string &bookmark);
+  
+  void moveCommand(PhoneBookContainer &phoneBook, std::string &bookmark, std::string &steps);
+  
+  void exec(PhoneBookContainer &phoneBook, const std::string &command, std::string &direction,
+            std::string &bookmark,
+            std::string &newBookmark,
+            std::string &number, std::string &name, std::string &steps);
+}
 #endif //B3_COMMAND_HPP

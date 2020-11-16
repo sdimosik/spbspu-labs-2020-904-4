@@ -6,7 +6,7 @@
 #include <memory>
 #include "phoneBook.hpp"
 #include "phoneBookContainer.hpp"
-#include "command.hpp"
+#include "parseAndExec.hpp"
 
 namespace task1
 {
@@ -22,7 +22,7 @@ namespace task1
       std::stringstream sin(string);
       std::string command;
       sin >> command;
-      parseCommand(phoneBook, command, sin);
+      parseAndExec(phoneBook, command, sin);
     }
     
     if (!std::cin.eof() && !std::cin.good())

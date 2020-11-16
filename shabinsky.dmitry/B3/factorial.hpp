@@ -44,8 +44,6 @@ public:
     size_t value_;
   };
   
-  Factorial() = delete;
-  
   static Iterator begin();
   
   static Iterator end();
