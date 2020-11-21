@@ -156,19 +156,19 @@ Accepted Labs
 | Kundik Nikita         | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Lovkacheva Julia      | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
 | Maksimova Anastasia   | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
-| Meshcheryakov Grigory | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
-| Meshcheryakova Alina  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
+| Meshcheryakov Grigory | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
+| Meshcheryakova Alina  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
 | Meynik Alexander      | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
 | Mukhin Fedor          | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
 | Nizkovskii Lev        | *  |    |    |    |    |    |    |    |    |    |    |    |
 | Pashnin Dmitriy       | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Rodion Ulyanov        | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| Shabinsky Dmitry      | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
-| Spasoevich Ksenia     | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
-| Stolyarov Alexey      | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
+| Shabinsky Dmitry      | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
+| Spasoevich Ksenia     | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
+| Stolyarov Alexey      | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
 | Sviridov Artyom       | *  | *  |    |    |    |    |    |    |    |    |    |    |
-| Unzhakov Vladislav    | *  | *  | *  |    |    |    |    |    |    |    |    |    |
+| Unzhakov Vladislav    | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Ushakov Alexandr      | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
-| Vasilevskaya Katya    | *  |    |    |    |    |    |    |    |    |    |    |    |
+| Vasilevskaya Katya    | *  | *  |    |    |    |    |    |    |    |    |    |    |
 | Vorotnikov Nikita     | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| __Total__             |  27|  25|  24|  23|  18|  18|  14|   7|   0|   0|   0|   0|
+| __Total__             |  27|  26|  24|  24|  18|  18|  16|  10|   0|   0|   0|   0|
