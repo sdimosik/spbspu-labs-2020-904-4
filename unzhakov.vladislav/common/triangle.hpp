@@ -8,7 +8,7 @@ namespace unzhakov
   class Triangle: public Shape
   {
   public:
-    Triangle(const point_t &vertex1, const point_t &vertex2, const point_t &vertex3);
+    Triangle(const point_t &vertex1, const point_t &vertex2, const point_t &vertex3, double angle = 0);
 
     rectangle_t getFrameRect() const override;
 
@@ -21,6 +21,8 @@ namespace unzhakov
     void move(const point_t &center) override;
 
     void scale(const double coefficient) override;
+
+    void rotate(const double angle) override;
 
     void printData() const override;
 

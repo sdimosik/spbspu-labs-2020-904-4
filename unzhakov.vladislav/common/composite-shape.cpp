@@ -262,3 +262,22 @@ void unzhakov::CompositeShape::scale(double coefficient)
     array_[i]->scale(coefficient);
   }
 }
+
+void unzhakov::CompositeShape::rotate(double angle)
+{
+  const double a = angle / 180 * M_PI;
+  const double sinAngle = sin(a);
+  const double cosAngle = cos(a);
+  const point_t frameRectCentre = getCenter();
+  for (size_t i = 0; i < size_; i++)
+  {
+    const point_t shapeCentre = array_[i]->getCenter();
+    double posX = (shapeCentre.x - frameRectCentre.x) * cosAngle - (shapeCentre.y - frameRectCentre.y) * sinAngle +
+                  frameRectCentre.x;
+    double posY = (shapeCentre.x - frameRectCentre.x) * sinAngle + (shapeCentre.y - frameRectCentre.y) * cosAngle +
+                  frameRectCentre.y;
+    array_[i]->move({posX, posY});
+    array_[i]->rotate(angle);
+  }
+}
+

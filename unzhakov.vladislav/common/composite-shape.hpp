@@ -51,6 +51,7 @@ namespace unzhakov
 
     void scale(double coefficient) override;
 
+    void rotate(double angle) override;
   private:
     std::unique_ptr<SharedPtr[]> array_;
     size_t size_;
