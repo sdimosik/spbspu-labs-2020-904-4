@@ -51,6 +51,10 @@ void unzhakov::Circle::scale(const double coefficient)
   radius_ *= coefficient;
 }
 
+void unzhakov::Circle::rotate(double)
+{}
+
+
 void unzhakov::Circle::printData() const
 {
   std::cout << "Circle radius: " << radius_ << "  "

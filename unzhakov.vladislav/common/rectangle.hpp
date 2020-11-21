@@ -8,7 +8,7 @@ namespace unzhakov
   class Rectangle: public Shape
   {
   public:
-    Rectangle(double width, double height, const point_t &pos);
+    Rectangle(double width, double height, const point_t& centre, double angle = 0);
 
     rectangle_t getFrameRect() const override;
 
@@ -16,11 +16,17 @@ namespace unzhakov
 
     point_t getCenter() const override;
 
+    double getWidth() const;
+
+    double getHeight() const;
+
     void move(double x, double y) override;
 
     void move(const point_t &center) override;
 
     void scale(const double coefficient) override;
+
+    void rotate(double angle) override;
 
     void printData() const override;
 
@@ -29,9 +35,7 @@ namespace unzhakov
     void printArea() const override;
 
   private:
-    double width_;
-    double height_;
-    point_t pos_;
+    point_t vertex_[4];
   };
 }
 #endif

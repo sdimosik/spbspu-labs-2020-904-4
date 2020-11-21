@@ -25,6 +25,8 @@ namespace unzhakov
 
     virtual void scale(const double coefficient) = 0;
 
+    virtual void rotate(double angle) = 0;
+
     virtual void printData() const = 0;
 
     virtual void printFrameRectangle() const = 0;

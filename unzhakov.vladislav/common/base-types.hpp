@@ -14,5 +14,10 @@ namespace unzhakov
     double height;
     point_t pos;
   };
+
+
+  bool isIntersect(const rectangle_t &rect1, const rectangle_t &rect2);
+
+  point_t rotatePoint(double degrees, const point_t &center, const point_t &point);
 }
 #endif

@@ -5,7 +5,7 @@
 #include <cmath>
 
 unzhakov::Triangle::Triangle(const unzhakov::point_t &vertex1, const unzhakov::point_t &vertex2,
-    const unzhakov::point_t &vertex3):
+    const unzhakov::point_t &vertex3, double angle):
   vertex1_(vertex1),
   vertex2_(vertex2),
   vertex3_(vertex3),
@@ -16,6 +16,7 @@ unzhakov::Triangle::Triangle(const unzhakov::point_t &vertex1, const unzhakov::p
   {
     throw std::invalid_argument("Invalid vertices value in triangle\n");
   }
+  rotate(angle);
 }
 
 unzhakov::rectangle_t unzhakov::Triangle::getFrameRect() const
@@ -62,6 +63,21 @@ void unzhakov::Triangle::scale(const double coefficient)
   vertex3_ = {(vertex3_.x - center_.x) * coefficient + center_.x,
                 (vertex3_.y - center_.y) * coefficient + center_.y};
 }
+
+void unzhakov::Triangle::rotate(double angle)
+{
+  const double a = angle / 180 * M_PI;
+  const double sinAngle = sin(a);
+  const double cosAngle = cos(a);
+  vertex1_ = {(vertex1_.x - center_.x) * cosAngle - (vertex1_.y - center_.y) * sinAngle + center_.x,
+              (vertex1_.x - center_.x) * sinAngle + (vertex1_.y - center_.y) * cosAngle + center_.y};
+  vertex2_ = {(vertex2_.x - center_.x) * cosAngle - (vertex2_.y - center_.y) * sinAngle + center_.x,
+              (vertex2_.x - center_.x) * sinAngle + (vertex2_.y - center_.y) * cosAngle + center_.y};
+  vertex3_ = {(vertex3_.x - center_.x) * cosAngle - (vertex3_.y - center_.y) * sinAngle + center_.x,
+              (vertex3_.x - center_.x) * sinAngle + (vertex3_.y - center_.y) * cosAngle + center_.y};
+  center_ = {(vertex1_.x + vertex2_.x + vertex3_.x) / 3, (vertex1_.y + vertex2_.y + vertex3_.y) / 3};
+}
+
 
 void unzhakov::Triangle::printData() const
 {
