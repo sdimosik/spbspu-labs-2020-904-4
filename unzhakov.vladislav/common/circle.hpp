@@ -28,6 +28,7 @@ namespace unzhakov
 
     void printArea() const;
 
+    void rotate(double angle) override;
   private:
     double radius_;
     point_t pos_;

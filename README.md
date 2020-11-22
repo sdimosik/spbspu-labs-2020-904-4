@@ -148,27 +148,27 @@ Accepted Labs
 | Bakaeva Irina         | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
 | Biryukova Marina      | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
 | Brezho Maksim         | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| Bulanov Egor          | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
-| Dmitriev Alexander    | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
+| Bulanov Egor          | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
+| Dmitriev Alexander    | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
 | Gromov Maxim          | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
-| Khilchenko Mikhail    | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
-| Kichigin Yuri         | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
-| Kundik Nikita         | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
+| Khilchenko Mikhail    | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
+| Kichigin Yuri         | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
+| Kundik Nikita         | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Lovkacheva Julia      | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
 | Maksimova Anastasia   | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
-| Meshcheryakov Grigory | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
-| Meshcheryakova Alina  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
-| Meynik Alexander      | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
+| Meshcheryakov Grigory | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
+| Meshcheryakova Alina  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
+| Meynik Alexander      | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
 | Mukhin Fedor          | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
 | Nizkovskii Lev        | *  |    |    |    |    |    |    |    |    |    |    |    |
 | Pashnin Dmitriy       | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Rodion Ulyanov        | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| Shabinsky Dmitry      | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
-| Spasoevich Ksenia     | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
-| Stolyarov Alexey      | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
+| Shabinsky Dmitry      | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
+| Spasoevich Ksenia     | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
+| Stolyarov Alexey      | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
 | Sviridov Artyom       | *  | *  |    |    |    |    |    |    |    |    |    |    |
-| Unzhakov Vladislav    | *  | *  |    |    |    |    |    |    |    |    |    |    |
+| Unzhakov Vladislav    | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Ushakov Alexandr      | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
-| Vasilevskaya Katya    | *  |    |    |    |    |    |    |    |    |    |    |    |
+| Vasilevskaya Katya    | *  | *  |    |    |    |    |    |    |    |    |    |    |
 | Vorotnikov Nikita     | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| __Total__             |  27|  25|  23|  23|  18|  16|  10|   3|   0|   0|   0|   0|
+| __Total__             |  27|  26|  24|  24|  18|  18|  16|  10|   0|   0|   0|   0|
