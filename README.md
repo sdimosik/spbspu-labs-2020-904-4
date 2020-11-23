@@ -150,7 +150,7 @@ Accepted Labs
 | Brezho Maksim         | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Bulanov Egor          | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
 | Dmitriev Alexander    | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
-| Gromov Maxim          | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
+| Gromov Maxim          | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |
 | Khilchenko Mikhail    | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
 | Kichigin Yuri         | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
 | Kundik Nikita         | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
@@ -171,4 +171,4 @@ Accepted Labs
 | Ushakov Alexandr      | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Vasilevskaya Katya    | *  | *  |    |    |    |    |    |    |    |    |    |    |
 | Vorotnikov Nikita     | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| __Total__             |  27|  26|  24|  24|  18|  18|  16|  10|   0|   0|   0|   0|
+| __Total__             |  27|  26|  24|  24|  18|  18|  16|  10|   1|   0|   0|   0|
