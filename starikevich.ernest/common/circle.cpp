@@ -1,8 +1,8 @@
 #include "circle.hpp"
 #include <stdexcept>
 #include <cmath>
+#include <string>
 #include <iostream>
-#include <string>  
 
 namespace starikevich
 {
@@ -65,6 +65,7 @@ namespace starikevich
     radius_ *= coefficient;
   }
 
-  void Circle::rotate(double) noexcept
+  void Circle::rotate(double) noexcept 
   {}
+
 }
