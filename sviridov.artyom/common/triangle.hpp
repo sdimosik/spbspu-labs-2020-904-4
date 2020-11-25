@@ -16,10 +16,12 @@ namespace sviridov
     point_t getPosVertexA() const;
     point_t getPosVertexB() const;
     point_t getPosVertexC() const;
+    friend bool operator==(const Triangle&, const Triangle&);
   private:
-      point_t vertex_[3];
+    point_t vertex_[3];
     void printInform(std::ostream&) const override;
   };
   std::ostream& operator<<(std::ostream&, const Triangle&);
+  bool operator==(const Triangle&, const Triangle&);
 }
 #endif

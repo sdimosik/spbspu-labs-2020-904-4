@@ -7,7 +7,6 @@ namespace sviridov
     return vertex_[0].getDistance(vertex_[1]) * vertex_[0].getDistance(vertex_[2]);
   }
 
-
   rectangle_t Rectangle::getFrameRect() const
   {
     rectangle_t frame_rectangle = {{vertex_[2].x + (vertex_[1].x - vertex_[0].x),
@@ -74,5 +73,10 @@ namespace sviridov
     {
       throw std::invalid_argument("No correct arguments for scale rectangle");
     }
+  }
+  bool operator==(const Rectangle & rect1, const Rectangle & rect2)
+  {
+        return ((rect1.vertex_[0] == rect2.vertex_[0]) && (rect1.vertex_[1] == rect2.vertex_[1])
+                && (rect1.vertex_[2] == rect2.vertex_[2]));
   }
 }

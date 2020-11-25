@@ -13,11 +13,13 @@ namespace sviridov
     void scale(double);
     void move(const point_t&) override;
     void move(double, double) override;
+    friend bool operator==(const Circle&, const Circle&);
   private:
     point_t pos_;
     double rad_;
     void printInform(std::ostream&) const override;
   };
   std::ostream& operator<<(std::ostream&, const Circle&);
+  bool operator==(const Circle&, const Circle&);
 }
 #endif

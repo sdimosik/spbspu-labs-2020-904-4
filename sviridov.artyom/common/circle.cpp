@@ -58,4 +58,9 @@ namespace sviridov
        throw std::invalid_argument("No correct arguments for scale circle");
      }
   }
+  bool operator==(const Circle & cir1, const Circle & cir2)
+  {
+    return ((cir1.pos_ == cir2.pos_) && isClose(cir1.rad_, cir2.rad_));
+  }
+
 }
