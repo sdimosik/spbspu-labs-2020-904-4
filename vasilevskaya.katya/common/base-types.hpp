@@ -15,6 +15,7 @@ namespace vasilevskaya
     double width;
     point_t pos;
   };
+  bool isOverlap(const rectangle_t& firstShape, const rectangle_t& secondShape);
 }
 
 #endif

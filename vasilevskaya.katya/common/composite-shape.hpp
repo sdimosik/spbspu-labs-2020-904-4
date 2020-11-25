@@ -4,6 +4,7 @@
 #include <memory>
 #include "shape.hpp"
 #include "base-types.hpp"
+#include "matrix.hpp"
 
 namespace vasilevskaya
 {
@@ -26,6 +27,7 @@ namespace vasilevskaya
     void printFigure() const override;
     void printFrameRect() const override;
     void scale(double quotient) override;
+    void rotate(double angle) override;
     void pushBack(const PointToShape& newShape);
     void remove(size_t index);
     size_t getCount() const;
@@ -33,12 +35,17 @@ namespace vasilevskaya
 
   private:
     std::allocator<PointToShape> allocatorForArray_;
+    using shapePtr = std::shared_ptr<Shape>;
+    using compositeShapePtr = std::unique_ptr<std::shared_ptr<Shape>[]>;
     size_t countShape_;
     size_t capacity_;
+    compositeShapePtr shapes_;
+    size_t size_;
     PointToShape* arrayShape_;
     const static size_t PRIMORDIAL_CAPACITY = 8;
     const static size_t EXPANSION_FACTOR = 2;
     void allocateMemory();
+    double angle_;
   };
 }
 

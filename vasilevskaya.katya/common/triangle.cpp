@@ -5,6 +5,10 @@
 #include <cmath>
 #include "base-types.hpp"
 
+const int FULL_CIRCLE = 180;
+
+
+
 vasilevskaya::Triangle::Triangle(const point_t& a, const point_t& b, const point_t& c) :
   a_(a),
   b_(b),
@@ -90,3 +94,19 @@ void vasilevskaya::Triangle::scale(double quotient)
   c_ = { pos_.x + (pos_.x - c_.x) * quotient, pos_.y + (pos_.y - c_.y) * quotient };
 }
 
+void vasilevskaya::Triangle::rotate(double angle)
+{
+
+  const double angleInRadians = angle * M_PI / FULL_CIRCLE;
+  const double sinValue = std::sin(angleInRadians);
+  const double cosValue = std::cos(angleInRadians);
+  const point_t position = getPosition();
+
+  for (point_t& top : tops_)
+  {
+    const double previousX = top.x;
+
+    top.x = position.x + (top.x - position.x) * cosValue - (top.y - position.y) * sinValue;
+    top.y = position.y + (top.y - position.y) * cosValue + (previousX - position.x) * sinValue;
+  }
+}

@@ -9,7 +9,7 @@ namespace vasilevskaya
   class Rectangle : public Shape
   {
   public:
-    Rectangle(const double height, const double width, const point_t& pos);
+    Rectangle(double height, double width, const point_t& pos, double angle = 0);
     double getArea() const override;
     point_t getPosition() const override;
     double getHeight() const;
@@ -20,8 +20,10 @@ namespace vasilevskaya
     void printFigure() const override;
     void printFrameRect() const override;
     void scale(double quotient) override;
+    void rotate(double angle) override;
   private:
     rectangle_t figure_;
+    double angle_;
   };
 }
 
