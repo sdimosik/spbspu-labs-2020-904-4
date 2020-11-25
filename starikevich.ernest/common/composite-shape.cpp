@@ -1,24 +1,24 @@
 #include "composite-shape.hpp"
-#include <string>
 #include <stdexcept>
+#include <string>
 #include <cmath>
 #include <algorithm>  
 
 namespace starikevich
 {
-  CompositeShape::CompositeShape() noexcept :
+  CompositeShape::CompositeShape() noexcept:
     fullSize_(0),
     usedSize_(0),
     array_(nullptr)
   {}
-
-  CompositeShape::CompositeShape(const size_t fullSize_) :
-    fullSize_(fullSize_),
+  
+  CompositeShape::CompositeShape(const size_t fullSize_):
+    fullSize_(fullSize_), 
     usedSize_(0),
     array_(std::make_unique<std::shared_ptr<Shape>[]>(fullSize_))
   {}
-
-  CompositeShape::CompositeShape(const CompositeShape& array) :
+  
+  CompositeShape::CompositeShape(const CompositeShape& array):
     fullSize_(array.fullSize_),
     usedSize_(array.usedSize_),
     array_(std::make_unique<std::shared_ptr<Shape>[]>(array.fullSize_))
@@ -200,7 +200,7 @@ namespace starikevich
       point_t posShape = array_[i]->getPosition();
       movingX = (posShape.x - pos1.x) * (coefficient - 1);
       movingY = (posShape.y - pos1.y) * (coefficient - 1);
-      array_[i]->move(movingX, movingY);
+      array_[i]->move( movingX, movingY );
     }
   }
 
@@ -218,5 +218,15 @@ namespace starikevich
       array_[i]->move({ center.x + dX,center.y + dY });
       array_[i]->rotate(angle);
     }
+  }
+
+  Matrix CompositeShape::makeMatrix() const
+  {
+    Matrix matrix;
+    for (size_t i = 0; i < usedSize_; i++)
+    {
+      matrix.addShape(array_[i]);
+    }
+    return matrix;
   }
 }

@@ -5,8 +5,7 @@ namespace starikevich
 {
   struct point_t
   {
-    double x;
-    double y;
+    double x, y;
   };
 
   struct rectangle_t
@@ -14,6 +13,7 @@ namespace starikevich
     double width, height;
     point_t pos;
   };
+
 }
 
 #endif
