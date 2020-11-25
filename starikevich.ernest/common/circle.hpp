@@ -16,12 +16,11 @@ namespace starikevich
     void setRadius(double radius);
     point_t getPosition() const noexcept override;
     double getArea() const noexcept override;
-    void rotate(double) noexcept override;
     void scale(double coefficient) override;
+    void rotate(double) noexcept override;
   private:
     point_t pos_;
     double radius_;
   };
 }
-
 #endif

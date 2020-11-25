@@ -1,9 +1,9 @@
 #include "triangle.hpp"
 #include <stdexcept>
 #include <cmath>
+#include <iostream>
 #include <string>
 #include <algorithm>
-#include <iostream>
 
 namespace starikevich
 {

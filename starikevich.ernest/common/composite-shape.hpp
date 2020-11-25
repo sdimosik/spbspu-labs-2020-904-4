@@ -1,9 +1,10 @@
 #ifndef COMPOSITESHAPE
 #define COMPOSITESHAPE
 
-#include <memory>
 #include <ctime>
+#include <memory>
 #include "shape.hpp"
+#include "matrix.hpp"
 
 namespace starikevich
 {
@@ -23,12 +24,13 @@ namespace starikevich
     starikevich::rectangle_t getFrameRect() const noexcept override;
     void addShape(const std::shared_ptr<Shape>& shape);
     void deleteShape(size_t index);
-    size_t getUsedSize() const noexcept;
     size_t getFullSize() const noexcept;
+    size_t getUsedSize() const noexcept;
     point_t getPosition() const noexcept override;
     double getArea() const noexcept override;
     void scale(const double coefficient) override;
     void rotate(const double angle = 0) noexcept override;
+    Matrix makeMatrix() const;
 
   private:
     using arrayPtr = std::unique_ptr<std::shared_ptr<Shape>[]>;
