@@ -1,9 +1,9 @@
 #include "rectangle.hpp"
 #include <stdexcept>
-#include <iostream>
-#include <string>
 #include <cmath>
+#include <string>
 #include <algorithm>
+#include <iostream>
 
 namespace starikevich
 {
