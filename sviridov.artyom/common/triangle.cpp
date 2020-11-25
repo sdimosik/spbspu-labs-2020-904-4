@@ -55,7 +55,7 @@ namespace sviridov
     out_triangle.printInform(out);
     return out;
   }
-
+  
   void Triangle::scale(double coefficient)
   {
     point_t center = Triangle::getFrameRect().pos;
@@ -84,5 +84,17 @@ namespace sviridov
   point_t Triangle::getPosVertexC() const
   {
     return vertex_[2];
+  }
+  bool operator==(const Triangle & tri1, const Triangle & tri2)
+  {
+        return (((tri1.vertex_[0] == tri2.vertex_[0])
+                 || (tri1.vertex_[0] == tri2.vertex_[1])
+                 || (tri1.vertex_[0] == tri2.vertex_[2]))
+                && ((tri1.vertex_[1] == tri2.vertex_[0])
+                    || (tri1.vertex_[1] == tri2.vertex_[1])
+                    || (tri1.vertex_[1] == tri2.vertex_[2]))
+                && ((tri1.vertex_[2] == tri2.vertex_[0])
+                    || (tri1.vertex_[2] == tri2.vertex_[1])
+                    || (tri1.vertex_[2] == tri2.vertex_[2])));
   }
 }

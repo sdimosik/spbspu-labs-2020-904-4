@@ -13,10 +13,12 @@ namespace sviridov
     void move(const point_t&) override;
     void move(double, double) override;
     void scale(double) override;
+    friend bool operator==(const Rectangle&, const Rectangle&);
   private:
-      point_t vertex_[3];
+    point_t vertex_[3];
     void printInform(std::ostream& out) const override;
   };
   std::ostream& operator<<(std::ostream&, const Rectangle&);
+  bool operator==(const Rectangle&, const Rectangle&);
 }
 #endif
