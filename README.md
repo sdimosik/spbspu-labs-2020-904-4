@@ -165,10 +165,11 @@ Accepted Labs
 | Rodion Ulyanov        | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Shabinsky Dmitry      | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
 | Spasoevich Ksenia     | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
+| Starikevich Ernest    | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Stolyarov Alexey      | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
-| Sviridov Artyom       | *  | *  |    |    |    |    |    |    |    |    |    |    |
+| Sviridov Artyom       | *  | *  | *  |    |    |    |    |    |    |    |    |    |
 | Unzhakov Vladislav    | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Ushakov Alexandr      | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
-| Vasilevskaya Katya    | *  | *  |    |    |    |    |    |    |    |    |    |    |
+| Vasilevskaya Katya    | *  | *  | *  |    |    |    |    |    |    |    |    |    |
 | Vorotnikov Nikita     | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| __Total__             |  27|  26|  24|  24|  18|  18|  16|  10|   1|   0|   0|   0|
+| __Total__             |  28|  27|  27|  25|  18|  18|  16|  10|   1|   0|   0|   0|
