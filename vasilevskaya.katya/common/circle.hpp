@@ -19,6 +19,7 @@ namespace vasilevskaya
     void printFigure() const override;
     void printFrameRect() const override;
     void scale(double quotient) override;
+    void rotate(double) override;
 
   private:
     point_t center_;

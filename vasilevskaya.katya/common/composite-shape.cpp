@@ -6,6 +6,7 @@
 #include "shape.hpp"
 #include "base-types.hpp"
 #include "composite-shape.hpp"
+#include "matrix.hpp"
 
 vasilevskaya::CompositeShape::CompositeShape():
   countShape_(0),
@@ -200,6 +201,23 @@ void vasilevskaya::CompositeShape::scale(double quotient)
     double differentY = arrayShape_[i]->getFrameRect().pos.y - centerFrameRect.y;
     arrayShape_[i]->move(differentX * (quotient - 1), differentY * (quotient - 1));
     arrayShape_[i]->scale(quotient);
+  }
+}
+
+void vasilevskaya::CompositeShape::rotate(double angle)
+{
+  point_t centerFrameRect = getPosition();
+  double angleRotation = angle * M_PI / 180;
+  for (size_t i = 0; i < countShape_; i++)
+  {
+    double deltaX = arrayShape_[i]->getPosition().x - centerFrameRect.x;
+    double deltaY = arrayShape_[i]->getPosition().y - centerFrameRect.y;
+    double newCoordinateX = centerFrameRect.x + deltaX * cos(angleRotation) - deltaY * sin(angleRotation);
+    double newCoordinateY = centerFrameRect.y + deltaX * sin(angleRotation) + deltaY * cos(angleRotation);
+    double accuracy = pow(10, 6);
+    newCoordinateX = round(newCoordinateX * accuracy) / accuracy;
+    newCoordinateY = round(newCoordinateY * accuracy) / accuracy;
+    arrayShape_[i]->move(newCoordinateX - arrayShape_[i]->getPosition().x, newCoordinateY - arrayShape_[i]->getPosition().y);
   }
 }
 
