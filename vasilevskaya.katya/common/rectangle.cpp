@@ -1,6 +1,7 @@
 #include "rectangle.hpp"
 #include <iostream>
 #include <stdexcept>
+#include <cmath>
 #include "base-types.hpp"
 
 vasilevskaya::Rectangle::Rectangle(const double height, const double width, const point_t& pos) :
@@ -71,3 +72,4 @@ void vasilevskaya::Rectangle::scale(double quotient)
   figure_.width *= quotient;
   figure_.height *= quotient;
 }
+

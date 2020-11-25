@@ -1,3 +1,4 @@
+#define _USE_MATH_DEFINES
 #include <iostream>
 #include "triangle.hpp"
 #include <algorithm>
@@ -88,3 +89,4 @@ void vasilevskaya::Triangle::scale(double quotient)
   b_ = { pos_.x + (pos_.x - b_.x) * quotient, pos_.y + (pos_.y - b_.y) * quotient };
   c_ = { pos_.x + (pos_.x - c_.x) * quotient, pos_.y + (pos_.y - c_.y) * quotient };
 }
+
