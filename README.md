@@ -170,6 +170,6 @@ Accepted Labs
 | Sviridov Artyom       | *  | *  | *  |    |    |    |    |    |    |    |    |    |
 | Unzhakov Vladislav    | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Ushakov Alexandr      | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
-| Vasilevskaya Katya    | *  | *  | *  |    |    |    |    |    |    |    |    |    |
+| Vasilevskaya Katya    | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Vorotnikov Nikita     | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| __Total__             |  28|  27|  27|  25|  18|  18|  16|  10|   1|   0|   0|   0|
+| __Total__             |  28|  27|  27|  26|  18|  18|  16|  10|   1|   0|   0|   0|
