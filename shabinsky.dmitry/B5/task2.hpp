@@ -43,6 +43,10 @@ namespace task2
   void exec()
   {
     std::vector<Shape> container{std::istream_iterator<Shape>(std::cin), std::istream_iterator<Shape>()};
+    if (std::cin.fail() && !std::cin.eof())
+    {
+      throw std::runtime_error("Fail while reading");
+    }
     container.erase(std::remove_if(container.begin(), container.end(), [](const Shape &shape) {
       return shape.points.empty();
     }), container.end());

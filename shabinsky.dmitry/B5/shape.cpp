@@ -25,14 +25,8 @@ std::ostream &operator<<(std::ostream &ostream, const Shape &shape)
 }
 
 std::istream &operator>>(std::istream &in, Shape &shape)
-{/*
-  std::string line;
-  getline(in, line);
-  line.erase(std::remove(line.begin(), line.end(), '\t'), line.end());
-  line.erase(std::remove(line.begin(), line.end(), ' '), line.end());
-  std::stringstream sin(line);*/
+{
   size_t vert;
-  /*sin >> vert;*/
   in >> std::ws >> vert;
   if (in.peek() == EOF || in.fail())
   {
@@ -41,11 +35,9 @@ std::istream &operator>>(std::istream &in, Shape &shape)
   
   vert < TRIANGLE_VERT ? throw std::invalid_argument("bad vertices count") : 0;
   
-  //shape.points = {std::istream_iterator<Point>(sin), std::istream_iterator<Point>()};
   std::vector<Point> temp;
   std::copy_n(std::istream_iterator<Point>(in), vert, std::back_inserter(temp));
   shape.points.swap(temp);
-  shape.points.size() != vert ? throw std::invalid_argument("points count cant be less or more than vertices") : 0;
   
   switch (shape.points.size())
   {

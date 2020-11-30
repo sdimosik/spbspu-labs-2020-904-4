@@ -11,11 +11,12 @@ std::istream &operator>>(std::istream &in, Point &point)
   char check = '\0';
   in.unsetf(std::ios_base::skipws);
   in >> skipSpaces >> check;
+  
   if (in.peek() == EOF)
   {
-    in.setstate(std::ios_base::failbit);
-    return in;
+    throw std::invalid_argument("wrong format");
   }
+  
   if (check != '(')
   {
     in.setstate(std::ios::failbit);
@@ -26,7 +27,7 @@ std::istream &operator>>(std::istream &in, Point &point)
     in.setstate(std::ios::failbit);
   }
   
-  in >> skipSpaces >>  point.y >> skipSpaces >> check;
+  in >> skipSpaces >> point.y >> skipSpaces >> check;
   if (check != ')')
   {
     in.setstate(std::ios::failbit);
