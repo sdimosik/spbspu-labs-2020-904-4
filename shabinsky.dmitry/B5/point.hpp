@@ -12,4 +12,6 @@ std::ostream &operator<<(std::ostream &, const Point &);
 
 std::istream &operator>>(std::istream &, Point &);
 
+std::istream &skipSpaces(std::istream &in);
+
 #endif //B5_POINT_HPP

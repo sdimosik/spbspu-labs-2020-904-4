@@ -8,21 +8,38 @@ std::ostream &operator<<(std::ostream &ostream, const Point &point)
 
 std::istream &operator>>(std::istream &in, Point &point)
 {
+  char check = '\0';
+  in.unsetf(std::ios_base::skipws);
+  in >> skipSpaces >> check;
   if (in.peek() == EOF)
   {
     in.setstate(std::ios_base::failbit);
     return in;
   }
-  in.get() != '(' ? throw std::invalid_argument("bad format data") : 0;
+  if (check != '(')
+  {
+    in.setstate(std::ios::failbit);
+  }
+  in >> skipSpaces >> point.x >> skipSpaces >> check;
+  if (check != ';')
+  {
+    in.setstate(std::ios::failbit);
+  }
   
-  int number;
-  in >> number;
-  point.x = number;
-  in.get() != ';' ? throw std::invalid_argument("bad format data") : 0;
+  in >> skipSpaces >>  point.y >> skipSpaces >> check;
+  if (check != ')')
+  {
+    in.setstate(std::ios::failbit);
+  }
+  
+  return in;
+}
 
-  in >> number;
-  point.y = number;
-  in.get() != ')' ? throw std::invalid_argument("bad format data") : 0;
-  
+std::istream &skipSpaces(std::istream &in)
+{
+  while (std::isblank(in.peek()))
+  {
+    in.get();
+  }
   return in;
 }
