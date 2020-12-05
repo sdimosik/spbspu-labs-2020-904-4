@@ -6,12 +6,20 @@ const size_t PENTAGON_VERT = 5;
 
 bool isSquare(Shape &shape)
 {
+  if (shape.points.size() != SQUARE_VERT)
+  {
+    return false;
+  }
   return sqrt(pow((shape.points[0].x - shape.points[1].x), 2) + pow(((shape.points[0].y - shape.points[1].y)), 2)) ==
          sqrt(pow((shape.points[0].x - shape.points[3].x), 2) + pow(((shape.points[0].y - shape.points[3].y)), 2));
 }
 
 bool isRectangle(Shape &shape)
 {
+  if (shape.points.size() != SQUARE_VERT)
+  {
+    return false;
+  }
   return sqrt(pow((shape.points[0].x - shape.points[2].x), 2) + pow(((shape.points[0].y - shape.points[2].y)), 2)) ==
          sqrt(pow((shape.points[1].x - shape.points[3].x), 2) + pow(((shape.points[1].y - shape.points[3].y)), 2));
 }
