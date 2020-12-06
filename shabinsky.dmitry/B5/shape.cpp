@@ -38,10 +38,15 @@ std::istream &operator>>(std::istream &in, Shape &shape)
   in >> std::ws >> vert;
   if (in.peek() == EOF || in.fail())
   {
+    in.setstate(std::ios::failbit);
     return in;
   }
   
-  vert < TRIANGLE_VERT ? throw std::invalid_argument("bad vertices count") : 0;
+  if (vert < TRIANGLE_VERT)
+  {
+    in.setstate(std::ios::failbit);
+    return in;
+  }
   
   std::vector<Point> temp;
   std::copy_n(std::istream_iterator<Point>(in), vert, std::back_inserter(temp));
