@@ -75,3 +75,6 @@ void vasilevskaya::Circle::scale(double quotient)
   }
   radius_ *= quotient;
 }
+
+void vasilevskaya::Circle::rotate(double)
+{}

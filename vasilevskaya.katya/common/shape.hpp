@@ -1,6 +1,8 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 
+#include <memory>
+
 namespace vasilevskaya
 {
   struct rectangle_t;
@@ -9,6 +11,7 @@ namespace vasilevskaya
   class Shape
   {
   public:
+    using PointToShape = std::shared_ptr<Shape>;
     virtual ~Shape() = default;
     virtual double getArea() const = 0;
     virtual point_t getPosition() const = 0;
@@ -18,6 +21,7 @@ namespace vasilevskaya
     virtual void printFigure() const = 0;
     virtual void scale(double quotient) = 0;
     virtual void printFrameRect() const = 0;
+    virtual void rotate(double angle) = 0;
   };
 }
 

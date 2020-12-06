@@ -1,10 +1,12 @@
 #include "rectangle.hpp"
 #include <iostream>
 #include <stdexcept>
+#include <cmath>
 #include "base-types.hpp"
 
-vasilevskaya::Rectangle::Rectangle(const double height, const double width, const point_t& pos) :
-  figure_{ height, width, {pos.x, pos.y} }
+vasilevskaya::Rectangle::Rectangle(double height, double width, const vasilevskaya::point_t& pos, double angle):
+  figure_{ height, width, {pos.x, pos.y} },
+  angle_(fmod(angle, 360))
 {
   if ((width < 0) || (height < 0))
   {
@@ -70,4 +72,9 @@ void vasilevskaya::Rectangle::scale(double quotient)
   }
   figure_.width *= quotient;
   figure_.height *= quotient;
+}
+
+void vasilevskaya::Rectangle::rotate(double angle)
+{
+  angle_ = fmod(angle_ + angle, 360);
 }

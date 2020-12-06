@@ -145,30 +145,31 @@ Accepted Labs
 | Name                  | A1 | A2 | A3 | A4 | B1 | B2 | B3 | B4 | B5 | B6 | B7 | B8 |
 |-----------------------|----|----|----|----|----|----|----|----|----|----|----|----|
 | Anastasiev Alexey     | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| Bakaeva Irina         | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
-| Biryukova Marina      | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
+| Bakaeva Irina         | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |
+| Biryukova Marina      | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |
 | Brezho Maksim         | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| Bulanov Egor          | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
-| Dmitriev Alexander    | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
-| Gromov Maxim          | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
-| Khilchenko Mikhail    | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
-| Kichigin Yuri         | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
-| Kundik Nikita         | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
-| Lovkacheva Julia      | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
+| Bulanov Egor          | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
+| Dmitriev Alexander    | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |
+| Gromov Maxim          | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |
+| Khilchenko Mikhail    | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |
+| Kichigin Yuri         | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |
+| Kundik Nikita         | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
+| Lovkacheva Julia      | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
 | Maksimova Anastasia   | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
-| Meshcheryakov Grigory | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
-| Meshcheryakova Alina  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
-| Meynik Alexander      | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
+| Meshcheryakov Grigory | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |
+| Meshcheryakova Alina  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
+| Meynik Alexander      | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |
 | Mukhin Fedor          | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
 | Nizkovskii Lev        | *  |    |    |    |    |    |    |    |    |    |    |    |
 | Pashnin Dmitriy       | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Rodion Ulyanov        | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Shabinsky Dmitry      | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
-| Spasoevich Ksenia     | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
-| Stolyarov Alexey      | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
-| Sviridov Artyom       | *  | *  |    |    |    |    |    |    |    |    |    |    |
+| Spasoevich Ksenia     | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |
+| Starikevich Ernest    | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
+| Stolyarov Alexey      | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
+| Sviridov Artyom       | *  | *  | *  |    |    |    |    |    |    |    |    |    |
 | Unzhakov Vladislav    | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Ushakov Alexandr      | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
-| Vasilevskaya Katya    | *  | *  |    |    |    |    |    |    |    |    |    |    |
+| Vasilevskaya Katya    | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Vorotnikov Nikita     | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| __Total__             |  27|  26|  24|  24|  18|  18|  16|  10|   0|   0|   0|   0|
+| __Total__             |  28|  27|  27|  26|  18|  18|  17|  14|   9|   5|   0|   0|

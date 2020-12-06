@@ -3,6 +3,7 @@
 
 #include "shape.hpp"
 #include "base-types.hpp"
+
 namespace vasilevskaya
 {
   class Circle : public Shape
@@ -18,6 +19,8 @@ namespace vasilevskaya
     void printFigure() const override;
     void printFrameRect() const override;
     void scale(double quotient) override;
+    void rotate(double) override;
+
   private:
     point_t center_;
     double radius_;
