@@ -16,7 +16,7 @@ private:
   int max_;
   int min_;
   double mean_;
-  size_t amount_;
+  size_t count_;
   size_t positive_;
   size_t negative_;
   long long oddSum_;

@@ -5,7 +5,7 @@ Functor::Functor() :
   max_(std::numeric_limits<int>::min()),
   min_(std::numeric_limits<int>::max()),
   mean_(),
-  amount_(),
+  count_(),
   positive_(),
   negative_(),
   oddSum_(),
@@ -44,12 +44,12 @@ void Functor::operator()(int number)
   
   number % 2 == 0 ? evenSum_ += number : oddSum_ += number;
   last_ = number;
-  amount_++;
+  count_++;
 }
 
 void Functor::print(std::ostream &out) const
 {
-  if (amount_ == 0)
+  if (count_ == 0)
   {
     out << "No Data\n";
     return;
@@ -57,7 +57,7 @@ void Functor::print(std::ostream &out) const
   
   out << "Max: " << max_
       << "\nMin: " << min_
-      << "\nMean: " << (static_cast<double>(evenSum_ + oddSum_) / amount_)
+      << "\nMean: " << (static_cast<double>(evenSum_ + oddSum_) / count_)
       << "\nPositive: " << positive_
       << "\nNegative: " << negative_
       << "\nOdd Sum: " << oddSum_
