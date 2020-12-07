@@ -7,42 +7,6 @@
 #include <algorithm>
 #include <iterator>
 
-std::istream& skipWhitespaces(std::istream& in)
-{
-  while(std::isblank(in.peek()))
-  {
-    in.get();
-  }
-  return in;
-}
-
-std::istream& operator>>(std::istream& in, Point& point)
-{
-  auto fmtflags = in.flags();
-  in.unsetf(std::ios_base::skipws);
-  const char leftParenthesis = '(';
-  const char rightParenthesis = ')';
-  const char semicolon = ';';
-  char delimiter = '\0';
-  in >> skipWhitespaces >> delimiter;
-  if(delimiter != leftParenthesis)
-  {
-    in.setstate(std::ios::failbit);
-  }
-  in >> skipWhitespaces >> point.x >> skipWhitespaces >> delimiter;
-  if(delimiter != semicolon)
-  {
-    in.setstate(std::ios::failbit);
-  }
-  in >> skipWhitespaces >> point.y >> skipWhitespaces >> delimiter;
-  if(delimiter != rightParenthesis)
-  {
-    in.setstate(std::ios::failbit);
-  }
-  in.flags(fmtflags);
-  return in;
-}
-
 std::istream& operator>>(std::istream& in, Shape& shape)
 {
   size_t amountOfVertices;
@@ -80,12 +44,6 @@ std::istream& operator>>(std::istream& in, Shape& shape)
     shape.typeOfShape = Shape::TypeOfShape::POLYGON;
   }
   return in;
-}
-
-std::ostream& operator<<(std::ostream& out, const Point& point)
-{
-  out << '(' << point.x << ';' << point.y << ')';
-  return out;
 }
 
 std::ostream& operator<<(std::ostream& out, const Shape& shape)

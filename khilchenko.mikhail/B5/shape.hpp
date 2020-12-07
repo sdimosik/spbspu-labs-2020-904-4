@@ -4,11 +4,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
-
-struct Point
-{
-  int x,y;
-};
+#include "point.hpp"
 
 struct Shape
 {
@@ -24,9 +20,7 @@ struct Shape
   TypeOfShape typeOfShape;
 };
 
-std::istream& operator>>(std::istream&, Point&);
 std::istream& operator>>(std::istream&, Shape&);
-std::ostream& operator<<(std::ostream&, const Point&);
 std::ostream& operator<<(std::ostream&, const Shape&);
 
 bool isRectangle(const Shape&);
