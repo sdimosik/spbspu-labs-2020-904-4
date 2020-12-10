@@ -7,6 +7,8 @@
 class Shape
 {
 public:
+  using ShapePtr = std::shared_ptr<Shape>;
+  
   Shape(int, int);
   
   virtual ~Shape() = default;
@@ -22,8 +24,8 @@ protected:
   int y_;
 };
 
-std::ostream &operator<<(std::ostream &, const std::shared_ptr<Shape> &);
+std::ostream &operator<<(std::ostream &, const Shape::ShapePtr &);
 
-std::istream &operator>>(std::istream &, std::shared_ptr<Shape> &);
+std::istream &operator>>(std::istream &, Shape::ShapePtr &);
 
 #endif

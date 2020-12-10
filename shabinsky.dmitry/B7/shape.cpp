@@ -21,13 +21,13 @@ bool Shape::isUpper(const Shape &shape) const
   return y_ > shape.y_;
 }
 
-std::ostream &operator<<(std::ostream &ostream, const std::shared_ptr<Shape> &shape)
+std::ostream &operator<<(std::ostream &ostream, const Shape::ShapePtr &shape)
 {
   shape->draw(ostream);
   return ostream;
 }
 
-std::shared_ptr<Shape> getShapeByType(const std::string &type, const int x, const int y)
+Shape::ShapePtr getShapeByType(const std::string &type, const int x, const int y)
 {
   if (type == "CIRCLE")
   {
@@ -44,7 +44,7 @@ std::shared_ptr<Shape> getShapeByType(const std::string &type, const int x, cons
   throw std::invalid_argument("Wrong format type: " + type);
 }
 
-std::istream &operator>>(std::istream &in, std::shared_ptr<Shape> &shape)
+std::istream &operator>>(std::istream &in, Shape::ShapePtr &shape)
 {
   std::string type;
   in >> std::ws;
