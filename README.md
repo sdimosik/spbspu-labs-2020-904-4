@@ -146,25 +146,25 @@ Accepted Labs
 |-----------------------|----|----|----|----|----|----|----|----|----|----|----|----|
 | Anastasiev Alexey     | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Bakaeva Irina         | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |
-| Biryukova Marina      | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |
+| Biryukova Marina      | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |
 | Brezho Maksim         | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| Bulanov Egor          | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
-| Dmitriev Alexander    | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |
-| Gromov Maxim          | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |
-| Khilchenko Mikhail    | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |
-| Kichigin Yuri         | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |
-| Kundik Nikita         | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
-| Lovkacheva Julia      | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
-| Maksimova Anastasia   | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
-| Meshcheryakov Grigory | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |
-| Meshcheryakova Alina  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
-| Meynik Alexander      | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |
-| Mukhin Fedor          | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |    |
+| Bulanov Egor          | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |
+| Dmitriev Alexander    | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |
+| Gromov Maxim          | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |
+| Khilchenko Mikhail    | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |
+| Kichigin Yuri         | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |
+| Kundik Nikita         | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |
+| Lovkacheva Julia      | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |
+| Maksimova Anastasia   | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
+| Meshcheryakov Grigory | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |
+| Meshcheryakova Alina  | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |
+| Meynik Alexander      | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |
+| Mukhin Fedor          | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |
 | Nizkovskii Lev        | *  |    |    |    |    |    |    |    |    |    |    |    |
 | Pashnin Dmitriy       | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| Rodion Ulyanov        | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| Shabinsky Dmitry      | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
-| Spasoevich Ksenia     | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |
+| Rodion Ulyanov        | *  | *  | *  | *  | *  |    |    |    |    |    |    |    |
+| Shabinsky Dmitry      | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |    |
+| Spasoevich Ksenia     | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  | *  |    |
 | Starikevich Ernest    | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Stolyarov Alexey      | *  | *  | *  | *  | *  | *  | *  | *  |    |    |    |    |
 | Sviridov Artyom       | *  | *  | *  |    |    |    |    |    |    |    |    |    |
@@ -172,4 +172,4 @@ Accepted Labs
 | Ushakov Alexandr      | *  | *  | *  | *  | *  | *  |    |    |    |    |    |    |
 | Vasilevskaya Katya    | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
 | Vorotnikov Nikita     | *  | *  | *  | *  |    |    |    |    |    |    |    |    |
-| __Total__             |  28|  27|  27|  26|  18|  18|  17|  14|   9|   5|   0|   0|
+| __Total__             |  28|  27|  27|  26|  19|  18|  17|  17|  15|  13|   6|   0|
