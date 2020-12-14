@@ -135,68 +135,6 @@ void Text::readPunctuation(std::istream &in, char &ch)
   words_.push_back(punctuation);
 }
 
-/*void Text::print(std::ostream &out, size_t lineWidth)
-{
-  size_t countLength = 0;
-  using Type = Line::Type;
-  
-  for (auto it = words_.begin(); it != words_.end(); it = std::next(it))
-  {
-    std::string word = it->line;
-    Type type = it->type;
-    
-    // last word
-    if (it == std::prev(words_.end()))
-    {
-      lineBreakForPrint(out, countLength, word.size(), lineWidth);
-      out << word << std::endl;
-    }
-      // word is WORD or NUMBER
-    else if (type == Type::WORD || type == Type::NUMBER)
-    {
-      std::string nextWord = it->line;
-      Type nextType = it->type;
-      lineBreakForPrint(out, countLength, word.size(), lineWidth);
-      
-      // next word is PUNCTUATION
-      if (nextType == Type::PUNCTUATION)
-      {
-        if (nextWord == "---")
-        {
-          lineBreakForPrint(out, countLength, word.size() + DASH.size(), lineWidth);
-          out << word << SPACE;
-          countLength += word.size() + 1;
-        }
-        else if (((countLength + word.size() + 1) > lineWidth) ||
-                 ((type == Type::WORD) &&
-                  (countLength + word.size() + DASH.size() + 2 > lineWidth) &&
-                  (std::next(it) != std::prev(words_.end())) && (std::next(std::next(it))->line == DASH)))
-        {
-          out << std::endl;
-          countLength = 0;
-        }
-        out << word;
-        countLength += word.size();
-        if (!lineBreakForPrint(out, countLength, nextWord.size() + 1, lineWidth))
-        {
-          out << std::endl;
-          countLength++;
-        }
-      }
-      else
-      {
-        out << word;
-        countLength += word.size();
-        if (!lineBreakForPrint(out, countLength, std::next(it)->line.size() + 1, lineWidth))
-        {
-          out << SPACE;
-          countLength++;
-        }
-      }
-    }
-  }
-}*/
-
 void Text::print(std::ostream &out, size_t lineWidth)
 {
   using TokenType = Line::Type;
@@ -205,7 +143,6 @@ void Text::print(std::ostream &out, size_t lineWidth)
   
   while (word != words_.end())
   {
-    
     if (word == std::prev(words_.end()))
     {
       lineBreakForPrint(out, count, word->line.size(), lineWidth, false);
