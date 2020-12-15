@@ -1,8 +1,11 @@
 #ifndef B8_TASK_HPP
 #define B8_TASK_HPP
 
-#include <iostream>
-#include "text.hpp"
+#include <iterator>
+#include <functional>
+#include <algorithm>
+#include "stateMachine.hpp"
+#include "iteratorInput.hpp"
 
 namespace task
 {
@@ -10,9 +13,13 @@ namespace task
   
   void exec(size_t lineWidth)
   {
-    Text textHandler;
-    textHandler.read(std::cin);
-    textHandler.print(std::cout, lineWidth);
+    StateMachine stateMachine(std::cout, lineWidth);
+    std::for_each(IteratorInput(std::cin), IteratorInput(), std::ref(stateMachine));
+    
+    if ((!std::cin.eof()) && (std::cin.fail()))
+    {
+      throw std::invalid_argument("Fail while reading");
+    }
   }
 }
 
